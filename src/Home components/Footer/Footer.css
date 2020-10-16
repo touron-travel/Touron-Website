@@ -2,94 +2,104 @@
 
 .footer {
   background-color: #000;
-  padding: 20px 30px;
-  border-bottom: 1px solid white;
+  background-size: auto;
+  padding: 20px 20px;
 }
-.footer-section {
+.footnav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
-.tour-ideas h4,
-.tour-types h4,
-.quick-links h4 {
-  font-size: 18px;
-  margin-bottom: 30px;
+.footnav-area {
+  display: flex;
+  list-style: none;
+  color: #ffffff;
+}
+.footnav-links {
+  text-decoration: none;
+  margin-right: 20px;
+  margin-left: 20px;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+.footnav-links:hover {
   color: #ff7f00;
-  font-family: "Roboto", sans-serif;
 }
-.tour-ideas p,
-.tour-types p,
-.quick-links p {
-  margin-bottom: 10px;
-  font-family: "Roboto", sans-serif;
+
+.icons {
+  display: flex;
+  color: rgba(255, 255, 255, 0.38);
+}
+.icons {
+  padding-left: 20px;
+  float: right;
+}
+.footnav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.29);
+  padding-bottom: 20px;
+}
+.facebook {
+  margin-left: 20px;
+}
+.twitter {
+  margin-left: 20px;
+}
+.mail {
+  margin-left: 20px;
+  margin-right: 10px;
 }
 .link {
   text-decoration: none;
   color: #fff;
 }
-.footer-section p {
-  font-size: 15px;
-  padding-right: 30px;
-}
-.footer-section ul li {
-  list-style: none;
-}
-.icons {
-  display: flex;
-  padding-left: 770px;
-  justify-content: space-evenly;
+.link p {
   margin-top: 10px;
-  color: rgba(255, 255, 255, 0.38);
 }
-.contact-section h4 {
+.link p:hover {
   color: #ff7f00;
 }
-
-.address p {
-  font-size: 15px;
-  padding: 5px;
-  line-height: 2;
-  color: #fff;
-}
-.payment-options h4 {
-  font-family: "Roboto", sans-serif;
-  text-align: center;
-  font-size: 25px;
-  padding: 10px;
-  color: #fff;
-}
-.option {
-  margin-left: 50px;
+.footer-section {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
-  color: #fff;
+  padding: 50px 0px;
 }
 .copyrights p {
   margin: 15px 10px 0 10px;
   font-family: "Roboto", sans-serif;
   text-align: center;
-  color: #fff;
+  color: #696e7d;
+  font-size: 14px;
 }
 .copyrights span {
   color: #ff7f00;
+  font-size: 14px;
 }
-.option .cc {
-  font-size: 50px;
+._title {
+  font-size: 13px;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.34);
+  text-transform: uppercase;
 }
-.option .zest,
-.neft {
-  margin-top: 10px;
+.address p {
+  font-size: 14px;
+  padding: 5px;
+  /* line-height: 1; */
+  margin-top: 5px;
+  color: #fff;
 }
-.icons .instagram:hover {
+.address span {
+  color: #696e7d;
+  font-size: 14px;
+}
+.instagram:hover {
   color: #fd1d1d;
 }
-.icons .facebook:hover {
+.facebook:hover {
   color: #009fff;
 }
-.icons .twitter:hover {
+.twitter:hover {
   color: #00acee;
 }
-.icons .mail:hover {
+.mail:hover {
   color: #ffffff;
 }

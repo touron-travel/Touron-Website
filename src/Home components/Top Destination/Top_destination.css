@@ -43,18 +43,35 @@
   height: 120px;
   opacity: 0.9;
   border-radius: 8px;
+  transition: 0.5s;
+  position: relative;
 }
 .section_item .city {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  /* font-family: "Roboto", sans-serif; */
   position: relative;
   top: -80px;
+  z-index: 1;
 }
-.section_item p {
+/* .section_item p {
   font-size: 20px;
-  font-weight: 600;
+  font-weight: 900;
   color: #fff;
   text-align: center;
-}
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  top: -80px;
+} */
 
 .city {
   margin: 10px;
+}
+.section_item .section_image:hover {
+  z-index: 1;
+  transform: scale(1.25);
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
