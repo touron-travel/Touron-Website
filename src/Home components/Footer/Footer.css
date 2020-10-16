@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.footer {
+  background-color: #000;
+  padding: 20px 30px;
+  border-bottom: 1px solid white;
+}
+.footer-section {
+  display: flex;
+  justify-content: space-around;
+}
+.tour-ideas h4,
+.tour-types h4,
+.quick-links h4 {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: #ff7f00;
+  font-family: "Roboto", sans-serif;
+}
+.tour-ideas p,
+.tour-types p,
+.quick-links p {
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+}
+.link {
+  text-decoration: none;
+  color: #fff;
+}
+.footer-section p {
+  font-size: 15px;
+  padding-right: 30px;
+}
+.footer-section ul li {
+  list-style: none;
+}
+.icons {
+  display: flex;
+  padding-left: 770px;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.38);
+}
+.contact-section h4 {
+  color: #ff7f00;
+}
+
+.address p {
+  font-size: 15px;
+  padding: 5px;
+  line-height: 2;
+  color: #fff;
+}
+.payment-options h4 {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  font-size: 25px;
+  padding: 10px;
+  color: #fff;
+}
+.option {
+  margin-left: 50px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  color: #fff;
+}
+.copyrights p {
+  margin: 15px 10px 0 10px;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  color: #fff;
+}
+.copyrights span {
+  color: #ff7f00;
+}
+.option .cc {
+  font-size: 50px;
+}
+.option .zest,
+.neft {
+  margin-top: 10px;
+}
+.icons .instagram:hover {
+  color: #fd1d1d;
+}
+.icons .facebook:hover {
+  color: #009fff;
+}
+.icons .twitter:hover {
+  color: #00acee;
+}
+.icons .mail:hover {
+  color: #ffffff;
+}

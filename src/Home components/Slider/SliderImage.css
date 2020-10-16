@@ -1,0 +1,91 @@
+.slider1,
+.slider2,
+.slider3,
+.slider4 {
+  height: 100vh;
+  width: 100%;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+h1 {
+  color: white;
+}
+
+.slider1 {
+  background-image: url("../../assests/slide1.jpg");
+}
+
+.slider2 {
+  background-image: url("../../assests/slide2.jpg");
+}
+
+.slider3 {
+  background-image: url("../../assests/slide3.jpg");
+}
+.slider4 {
+  background-image: url("../../assests/slide4.jpg");
+}
+.slide::before {
+  height: 8%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  position: absolute;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #0005 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #0005 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #0005 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0);
+  z-index: 2;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+}
+.trending {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  margin-left: 30px;
+}
+.countryName {
+  font-size: 5vw;
+  font-weight: 500;
+  margin: 0;
+}
+.desc {
+  font-size: 15px;
+  color: #fff;
+}
+.tour {
+  background-color: #ff7f00;
+  border-radius: 20px;
+  margin-right: 8px;
+}
+.tour h4 {
+  color: white;
+  font-size: 15px;
+  padding: 0px 10px;
+}
+.ctour h4 {
+  color: white;
+  font-size: 15px;
+  padding: 0px 15px;
+  text-align: center;
+}
+
+.ctour {
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 30px;
+  margin: 8px;
+}
