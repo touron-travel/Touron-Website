@@ -21,14 +21,15 @@
   font-size: 15px;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
+  color: #fff;
 }
 .footnav-links:hover {
   color: #ff7f00;
+  text-decoration: none;
 }
 
 .icons {
   display: flex;
-  color: rgba(255, 255, 255, 0.38);
 }
 .icons {
   padding-left: 20px;
@@ -48,6 +49,9 @@
   margin-left: 20px;
   margin-right: 10px;
 }
+ul {
+  list-style: none;
+}
 .link {
   text-decoration: none;
   color: #fff;
@@ -55,8 +59,9 @@
 .link p {
   margin-top: 10px;
 }
-.link p:hover {
+.link:hover {
   color: #ff7f00;
+  text-decoration: none;
 }
 .footer-section {
   display: flex;
@@ -90,6 +95,12 @@
 .address span {
   color: #696e7d;
   font-size: 14px;
+}
+.instagram,
+.facebook,
+.twitter,
+.mail {
+  color: rgba(255, 255, 255, 0.34);
 }
 .instagram:hover {
   color: #fd1d1d;

@@ -30,4 +30,5 @@
 }
 .nav-links:hover {
   color: #ff7f00;
+  text-decoration: none;
 }
