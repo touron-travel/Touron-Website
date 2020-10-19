@@ -53,7 +53,7 @@ h1.mb-0.bread {
   font-weight: 800;
 }
 .intro {
-  background-color: #fff;
+  background-color: #f6f9fb;
   padding-top: 92px;
   padding-bottom: 92px;
 }
@@ -126,6 +126,129 @@ p.intro_text {
   margin-right: 0px;
 }
 
+.stats {
+  padding-top: 100px;
+  padding-bottom: 105px;
+  background-color: #fff;
+}
+.section_title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #2d2c2c;
+  margin: 0px;
+  text-transform: uppercase;
+  width: auto;
+}
+.stats_text {
+  margin-top: 21px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+p.stats_text {
+  font-family: "Open Sans", sans-serif;
+  font-size: 15px;
+  line-height: 2;
+  font-weight: 400;
+  color: #929191;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+}
+.stats_years {
+  display: flex;
+  justify-content: space-around;
+  padding-left: 116px;
+  padding-right: 116px;
+  margin-top: 39px;
+  margin-bottom: 39px;
+}
+.stats_years_last {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fa9e1b;
+  margin-right: auto;
+  padding-left: 60px;
+}
+.stats_years_new {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fa9e1b;
+  padding-right: 60px;
+}
+.stats_item {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+.stats_last {
+  display: flex;
+}
+.stats_new {
+  display: flex;
+}
+.stat_bar {
+  width: 50%;
+  height: 2px;
+  background: #e1e1e1;
+  margin-top: 33px;
+}
+.stats_number {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2d2c2c;
+  display: flex;
+  justify-content: flex-start;
+}
+.stats_number1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #2d2c2c;
+  display: flex;
+  justify-content: flex-end;
+}
+.stats_type {
+  font-size: 14px;
+  font-weight: 600;
+  color: #929191;
+  display: flex;
+  justify-content: flex-start;
+}
+.stats_type1 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #929191;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.stats_last_content {
+  padding-left: 30px;
+}
+.stats_last_content1 {
+  padding-left: 30px;
+}
+
+.stats_new_content {
+  padding-right: 30px;
+}
+.stats_new_content1 {
+  padding-right: 30px;
+}
+
+.stats_last_icon {
+  padding-top: 20px;
+}
+.stats_new_icon {
+  padding-top: 20px;
+}
+.stats_new_icon1 {
+  padding-right: 50px;
+  padding-top: 20px;
+}
+.stats_last_icon1 {
+  padding-left: 50px;
+  padding-top: 20px;
+}
 /* .about {
   background: #000;
   background-size: auto;

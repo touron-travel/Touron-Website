@@ -4,12 +4,17 @@ import Navbar from "../Home components/Navbar/Navbar";
 // import Footer from "../Home components/Footer/Footer";
 import bg from "../assests/bg_3.jpg";
 import intro from "../assests/intro.png";
+import stats_1 from "../assests/stats_1.png";
+import stats_2 from "../assests/stats_2.png";
+import stats_3 from "../assests/stats_3.png";
+import stats_4 from "../assests/stats_4.png";
 import { Link } from "react-router-dom";
 
 
 export default function About() {
   return ( 
   <div className="about">
+
   <div className="about_top">
     <div className="nav">
       <Navbar />
@@ -41,6 +46,116 @@ export default function About() {
       </div>
     </div>
   </div>
+   
+   <div className="stats">
+
+     <div className="row">
+       <div className="col text-center">
+         <div className="section_title">years statistics</div>
+       </div>
+     </div>
+     <div className="row">
+       <div className="col-lg-10 offset-lg-1 text-center">
+         <p className="stats_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus quis vulputate eros, iaculis consequat nisl. Nunc et suscipit urna. Integer elementum orci eu vehicula pretium. Donec bibendum tristique condimentum. Aenean in lacus ligula.</p>
+       </div>
+     </div>
+     
+       
+         <div className="stats_years">
+            <div className="stats_years_last">2020</div>
+		    <div className="stats_years_new float-right">2021</div>
+         </div>
+       
+     
+    <div className="stats_content">
+        <div className="stats_item">
+			<div className="stats_last">
+				<div className="stats_last_icon">
+					<img src={stats_1} alt=""/>
+				</div>
+				<div className="stats_last_content">
+					<div className="stats_number">1642</div>
+					<div className="stats_type">Clients</div>
+				</div>
+			</div>
+			<div className="stat_bar"></div>
+			<div className="stats_new">
+			<div className="stats_new_content">
+					<div className="stats_number1">3527</div>
+					<div className="stats_type1">Clients</div>
+				</div>
+				<div className="stats_new_icon">
+					<img src={stats_1} alt=""/>
+				</div>	
+			</div>
+		</div>
+		<div className="stats_item">
+			<div className="stats_last">
+				<div className="stats_last_icon1">
+					<img src={stats_2} alt=""/>
+				</div>
+				<div className="stats_last_content1">
+					<div className="stats_number">768</div>
+					<div className="stats_type">Returing Clients</div>
+				</div>
+			</div>
+			<div className="stat_bar"></div>
+			<div className="stats_new">
+			<div className="stats_new_content1">
+					<div className="stats_number1">145</div>
+					<div className="stats_type1">Returing Clients</div>
+				</div>
+				<div className="stats_new_icon1">
+					<img src={stats_2} alt=""/>
+				</div>	
+			</div>
+		</div>
+		<div className="stats_item">
+			<div className="stats_last">
+				<div className="stats_last_icon">
+					<img src={stats_3} alt=""/>
+				</div>
+				<div className="stats_last_content">
+					<div className="stats_number">11546</div>
+					<div className="stats_type">Reach</div>
+				</div>
+			</div>
+			<div className="stat_bar"></div>
+			<div className="stats_new">
+			<div className="stats_new_content">
+					<div className="stats_number1">9321</div>
+					<div className="stats_type1">Reach</div>
+				</div>
+				<div className="stats_new_icon">
+					<img src={stats_3} alt=""/>
+				</div>	
+			</div>
+		</div>
+		<div className="stats_item">
+			<div className="stats_last">
+				<div className="stats_last_icon">
+					<img src={stats_4} alt=""/>
+				</div>
+				<div className="stats_last_content">
+					<div className="stats_number">3926</div>
+					<div className="stats_type">More Items</div>
+				</div>
+			</div>
+			<div className="stat_bar"></div>
+			<div className="stats_new">
+			<div className="stats_new_content">
+					<div className="stats_number1">17429</div>
+					<div className="stats_type1">More Items</div>
+				</div>
+				<div className="stats_new_icon">
+					<img src={stats_4} alt=""/>
+				</div>	
+			</div>
+		</div>
+	</div>
+    </div>
+   
+
   </div>
 
 
