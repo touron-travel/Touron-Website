@@ -1,17 +1,35 @@
 import React from "react";
 import "./About.css";
 import Navbar from "../Home components/Navbar/Navbar";
-// import Footer from "../Home components/Footer/Footer";
+import Footer from "../Home components/Footer/Footer";
 import bg from "../assests/bg_3.jpg";
 import intro from "../assests/intro.png";
 import stats_1 from "../assests/stats_1.png";
 import stats_2 from "../assests/stats_2.png";
 import stats_3 from "../assests/stats_3.png";
 import stats_4 from "../assests/stats_4.png";
+import testimg from "../assests/testimg.jpg";
+import person1 from "../assests/person_1.jpg";
+import team1 from "../assests/team_1.jpg";
+import team2 from "../assests/team_2.jpg";
+import team3 from "../assests/team_3.jpg";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
 
 
 export default function About() {
+	
+		const settings = {
+		  dots: false,
+		  autoplay: true,
+		  infinite: true,
+		  speed: 1000,
+		  slidesToShow: 3,
+		  slidesToScroll: 1
+		};
+
+
+
   return ( 
   <div className="about">
 
@@ -154,7 +172,207 @@ export default function About() {
 		</div>
 	</div>
     </div>
-   
+
+	<div className="testimony_section">
+    <img className="testimage" src={testimg} alt="" />
+		<div className="heading_section">
+			<span className="subheading1">Testimonial</span>
+			<h2 className="subheading">Tourist Feedback</h2>
+		</div>
+		<Slider {...settings} className="slid">
+          
+		  <div className="item_test1">
+            <div className="testimony">
+				<div className="testimony_text">
+					<p className="star">
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+					</p>
+					<p className="testi_para">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+				</div>
+				<div className="user_test"> 
+				<div className="user_image">
+					<img src={person1} alt=""/>
+				</div>
+				<div className="user_name">
+					<p className="name">Roger scott</p>
+                    <p className="desti">Marketing Manager</p>
+				</div>
+				</div>
+			</div>
+          </div>
+		  <div className="item_test2">
+            <div className="testimony">
+				<div className="testimony_text">
+					<p className="star">
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+					</p>
+					<p className="testi_para">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+				</div>
+				<div className="user_test"> 
+				<div className="user_image">
+					<img src={person1} alt=""/>
+				</div>
+				<div className="user_name">
+					<p className="name">Roger scott</p>
+                    <p className="desti">Marketing Manager</p>
+				</div>
+				</div>
+			</div>
+          </div>
+		  <div className="item_test3">
+            <div className="testimony">
+				<div className="testimony_text">
+					<p className="star">
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+					</p>
+					<p className="testi_para">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+				</div>
+				<div className="user_test"> 
+				<div className="user_image">
+					<img src={person1} alt=""/>
+				</div>
+				<div className="user_name">
+					<p className="name">Roger scott</p>
+                    <p className="desti">Marketing Manager</p>
+				</div>
+				</div>
+			</div>
+          </div>
+		  <div className="item_test4">
+            <div className="testimony">
+				<div className="testimony_text">
+					<p className="star">
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+					</p>
+					<p className="testi_para">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+				</div>
+				<div className="user_test"> 
+				<div className="user_image">
+					<img src={person1} alt=""/>
+				</div>
+				<div className="user_name">
+					<p className="name">Roger scott</p>
+                    <p className="desti">Marketing Manager</p>
+				</div>
+				</div>
+			</div>
+          </div>
+		  <div className="item_test5">
+            <div className="testimony">
+				<div className="testimony_text">
+					<p className="star">
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+					</p>
+					<p className="testi_para">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+				</div>
+				<div className="user_test"> 
+				<div className="user_image">
+					<img src={person1} alt=""/>
+				</div>
+				<div className="user_name">
+					<p className="name">Roger scott</p>
+                    <p className="desti">Marketing Manager</p>
+				</div>
+				</div>
+			</div>
+          </div>
+		  <div className="item_test6">
+            <div className="testimony">
+				<div className="testimony_text">
+					<p className="star">
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+						<span className="fa fa-star"></span>
+					</p>
+					<p className="testi_para">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+				</div>
+				<div className="user_test"> 
+				<div className="user_image">
+					<img src={person1} alt=""/>
+				</div>
+				<div className="user_name">
+					<p className="name">Roger scott</p>
+                    <p className="desti">Marketing Manager</p>
+				</div>
+				</div>
+			</div>
+          </div>
+        </Slider>
+	</div>
+
+	<div className="hero">
+     <div className="hero_content">
+       <div className="sub_border">
+       <p className="hero_subtitle">WORDS FROM</p>
+       </div>
+     <p className="hero_title">MR.VIKASH MANOHARAN CEO, FOUNDER</p>
+     <p className="hero_desc">Founded in August of 2018, TourOn has since planned and lead more than 200 dream tours. Vikash Manoharan, Founder of TourOn, is a travel enthusiast and found TourOn to help others realize their wanderlust goals. Vikash used to work in the IT industry until one day he realized, a life confined to a desk is not one for him. TourOn took wings out of his passion for travel and has grown through his ideas as an experienced traveler.</p>
+     </div>
+     <div className="hero_image">
+       <img src="https://touron.in/assets/frontend/images/homepage/about-us-2.jpg" alt=""/>
+     </div>
+   </div>
+
+     <div className="team">
+		 <h2 className="title_name">Our Team</h2>
+		 <p className="title_desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus debitis fugit tempora, in, officiis dolorum asperiores temporibus tempore dolores sapiente doloribus reiciendis modi reprehenderit quis minus unde minima! Dignissimos, in?</p>
+		<div className="team_content">
+	     <div className="team_content1">
+		 <div className="team_img">
+			 <img src={team3} alt=""/>
+		 </div>
+		 <div className="teamk">
+		 <div className="team_name">CEO, Co-Founder</div>
+		 <div className="team_desti">Vince Richardson</div>
+		 </div>
+		 </div>
+		 <div className="team_content1">
+		 <div className="team_img">
+			 <img src={team1} alt=""/>
+		 </div>
+		 <div className="teamk">
+		 <div className="team_name">CTO, Co-Founder</div>
+		 <div className="team_desti">Jean Loven</div>
+		 </div>
+		 </div>
+		 <div className="team_content1">
+		 <div className="team_img">
+			 <img src={team2} alt=""/>
+		 </div>
+		 <div className="teamk">
+		 <div className="team_name">Marketer, Co-Founder</div>
+		 <div className="team_desti">Jeff Stark</div>
+		 </div>
+		 </div>
+		</div>
+	 </div>
+
+
+	<div className="footer">
+        <Footer />
+      </div>
 
   </div>
 
@@ -204,9 +422,7 @@ export default function About() {
   //    </div>
   //  </div>
   // </div>
-  // <div className="footer">
-  //       <Footer />
-  //     </div>
-  // </div>
+  // 
     )
 }
+
