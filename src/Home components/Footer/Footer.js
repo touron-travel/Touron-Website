@@ -188,7 +188,7 @@ export default function Footer() {
            <div className="contact">
             <div className="contact-section">
                <div className="_title">Contact us</div> 
-              <div className="address">
+              <div className="footer_address">
                 <p><span>Address:</span>tour On</p>
                 <p>Workafella, Rathha Towers,</p>
                 <p>Tek Meadows - A Block, 4th Floor,</p>
