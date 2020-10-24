@@ -153,3 +153,11 @@ p.locate {
   background: #fff;
   transition: 0.5s;
 }
+a {
+  text-decoration: none;
+  color: #fff;
+}
+a:hover {
+  text-decoration: none;
+  color: #ff7f00;
+}
