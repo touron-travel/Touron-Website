@@ -14,7 +14,7 @@ export default function PopularTourTile({ t }) {
           </Link>
           <p className="description">{t.aboutTour.slice(0, 100)}</p>
           <div className="days">
-            <span className="icon">
+            <span className="icons">
               <AccessTimeIcon />
             </span>
             <span>{t.tourDuration}</span>

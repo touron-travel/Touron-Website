@@ -77,8 +77,8 @@ span {
   display: flex;
 }
 
-.icon {
-  margin-top: 10px;
+.icons {
+  padding: 0px;
 }
 .ptour {
   background-color: transparent;
