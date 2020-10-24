@@ -155,10 +155,11 @@ input.bt {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
+  border: 2px solid #ff7f00;
+  font-weight: 500;
 }
 .box input[type="submit"]:hover {
   color: #ff7f00;
   background: #fff;
-  border: 1px solid #ff7f00;
   transition: 0.5s;
 }
