@@ -71,7 +71,7 @@ export default function Contact() {
               <textarea required="message" />
               <label>Message</label>
             </div>
-            <input type="submit" className="bt" name="" value="Send Message" />
+            <button className="bt">Send Message</button>
           </form>
         </div>
       </div>

@@ -68,22 +68,13 @@ p.locate {
   align-items: center;
   justify-content: center;
 }
-.box {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
+.contact_info .box {
   background: rgba(0, 0, 0, 0.8);
   width: 500px;
   padding: 40px;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  /* justify-content: flex-end; */
-
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%); */
 }
 .box h2 {
   color: #ff7f00;
@@ -140,13 +131,11 @@ p.locate {
   border-bottom: 1px solid #fff;
   margin-bottom: 30px;
 }
-input.bt {
+.bt {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: auto;
-}
-.box input[type="submit"] {
   background: transparent;
   border: none;
   outline: none;
@@ -158,7 +147,8 @@ input.bt {
   border: 2px solid #ff7f00;
   font-weight: 500;
 }
-.box input[type="submit"]:hover {
+
+.bt:hover {
   color: #ff7f00;
   background: #fff;
   transition: 0.5s;
