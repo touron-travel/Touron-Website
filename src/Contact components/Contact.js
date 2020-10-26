@@ -3,6 +3,7 @@ import "./Contact.css";
 import Navbar from "../Home components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import Footer from "../Home components/Footer/Footer";
+import GMaps from "./map";
 
 export default function Contact() {
   return (
@@ -74,6 +75,10 @@ export default function Contact() {
             <button className="bt">Send Message</button>
           </form>
         </div>
+      </div>
+
+      <div className="mapping">
+        <GMaps />
       </div>
 
       <div className="footer">
