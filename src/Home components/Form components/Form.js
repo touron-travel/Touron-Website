@@ -4,10 +4,9 @@ import axios from "axios";
 import { API } from "../../backend";
 import { useEffect, useState } from "react";
 
-
 export default function Form() {
   const [country, setCountry] = useState([]);
-  
+
   console.log(country, "country");
 
   useEffect(() => {
@@ -23,64 +22,44 @@ export default function Form() {
     getCountry();
   }, []);
 
- 
-
-
-  // const submit = ()=>{
-  //   console.log(name,number,destination,date,cnamae)
-  // }
   return (
-    <>
-      <div className="search_tour">
-        <div className="form">
-          <div className="search_tour_form">
-            <h2 className="section_subtitle">SEARCH TOUR</h2>
-            <p className="section_title">
-              Ready to rest? We are ready to help with the search
-            </p>
-          </div>
-          <div className="fields">
-            <div className="field">
-              <div className="label">Name</div>
-              <div className="field_wrap keywords">
-                <input type="text" className="input" />
-              </div>
-            </div>
-            
-            <div className="field">
-              <div className="label">Mobile no</div>
-              <div className="field_wrap select_field">
-              <input type="text" className="no"/>
-              </div>
-            </div>
-            <div className="field">
-              <div className="label">Country name</div>
-              <div className="field_wrap select_field">
-                <select name="tour-activity">
-                  {country.map((c,index)=>{
-                    return (
-                    <option key={index} value={c.countryName}>{c.countryName}</option>
-                    )
-                  })}
-                
-                </select>
-              </div>
-            </div>
-            <div className="field">
-              <div className="label">Duration</div>
-              <div className="field_wrap select_field">
-                <select name="tour-activity">
-                  <option value="travel_1">4 - 5 Days</option>
-                  <option value="travel_2">5 - 7 Days</option>
-                </select>
-              </div>
-            </div>
-            <div>
-            <button type="submit" className="button">Submit</button>
-            </div>
-          </div>   
+    <div className="search_form">
+      <h1>Search tour</h1>
+      <p> Ready to rest? We are ready to help with the search</p>
+      <form className="searches">
+        <div className="searchBox">
+          <label>Name</label>
+          <input type="text" name="" required="name" />
         </div>
-      </div>
-    </>
+        <div className="searchBox">
+          <label>Mobile no</label>
+          <input type="text" name="" required="name" />
+        </div>
+        <div className="searchBox">
+          <label>Country Name</label>
+          <div className="select_search">
+            <select>
+              {country.map((c, index) => {
+                return (
+                  <option key={index} value={c.countryName}>
+                    {c.countryName}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
+        </div>
+        <div className="searchBox">
+          <label>Duration</label>
+          <div className="select_search">
+            <select>
+              <option value="travel_1">4 - 5 Days</option>
+              <option value="travel_2">5 - 7 Days</option>
+            </select>
+          </div>
+        </div>
+        <button className="search_bt">Submit</button>
+      </form>
+    </div>
   );
 }

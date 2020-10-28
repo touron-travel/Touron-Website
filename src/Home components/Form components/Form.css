@@ -1,23 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Andika&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
-.search_tour {
-  height: 300px;
-}
-
-.search_tour .form {
+.search_form {
   background: #fff;
-  padding: 60px;
+  padding: 80px 60px;
   margin: 20px;
   border-radius: 14px;
   position: relative;
   top: -100px;
-  bottom: 0;
   -webkit-box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
   -moz-box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
   box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
 }
-.section_subtitle {
+.search_form h1 {
   color: #ff7f00;
   font-weight: 800;
   letter-spacing: 1px;
@@ -25,26 +17,31 @@
   margin-bottom: 5px;
   margin-top: 0;
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
+  font-size: 20px;
 }
-.section_title {
+.search_form p {
   font-size: 40px;
-  font-weight: 800;
+  font-weight: 600;
   color: #3e4559;
-  width: 600px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  width: auto;
 }
-.fields {
+.searchBox {
+  display: flex;
+  flex-direction: column;
+}
+.searches {
   display: flex;
   justify-content: space-between;
+  margin-top: 10px;
 }
-.fields .field .label {
+.searchBox label {
   font-size: 15px;
   font-weight: 500;
   color: rgba(62, 69, 89, 0.35);
   margin-bottom: 15px;
 }
-.fields .field .input {
+.searchBox input {
   padding-left: 24px;
   padding-right: 46px;
   width: 100%;
@@ -53,12 +50,15 @@
   border-radius: 10px;
   border-style: solid;
   cursor: pointer;
-}
-.fields .field input {
   outline: 0;
-  cursor: pointer;
 }
-.field .select_field {
+.searchBox select {
+  border: 0;
+  padding: 10px 0;
+  cursor: pointer;
+  outline: 0;
+}
+.select_search {
   padding-left: 24px;
   padding-right: 46px;
   width: 100%;
@@ -67,19 +67,7 @@
   border-radius: 10px;
   border-style: solid;
 }
-select {
-  padding: 10px 0px;
-  border: 0;
-  outline: none;
-  outline-offset: -1px;
-  cursor: pointer;
-}
-input.no {
-  border: 0;
-  padding: 10px 0px;
-}
-
-button.button {
+.search_bt {
   color: #000;
   background-color: #ff7f00;
   padding: 10px 15px;
@@ -88,6 +76,5 @@ button.button {
   border-color: #ff7f00;
   cursor: pointer;
   border-style: solid;
+  outline: 0;
 }
-
-
