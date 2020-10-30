@@ -7,7 +7,7 @@
   text-decoration: none;
 }
 .login_form {
-  background: url(../assests/login1.jpg);
+  background: url(../assests/login.jpg);
   width: 100%;
   height: 100vh;
   background-size: cover;
@@ -17,7 +17,7 @@
 }
 .login_text,
 .login_box {
-  margin-top: 45vh;
+  margin-top: 28vh;
   flex: 1;
 }
 .login_text {
@@ -26,6 +26,14 @@
 }
 .login_box {
   margin-left: 25%;
+}
+.login_box .logbox {
+  background: rgba(0, 0, 0, 0.8);
+  width: 310px;
+  padding: 30px;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
 }
 .login_text h1 {
   font-size: 70px;
@@ -42,7 +50,7 @@
   font-weight: 500;
 }
 .login_text .link:hover {
-  color: #ff7f00;
+  color: aqua;
 }
 .loginForm {
   background: transparent;
@@ -52,18 +60,39 @@
   flex-direction: column;
   width: 250px;
 }
-.login_box input {
-  margin: 20px 0;
-  padding: 10px;
+.login_box .email input,
+.login_box .password input {
+  padding: 10px 0 10px 20px;
   background: transparent;
   border: none;
   outline: none;
   color: #fff;
   font-family: "Raleway", sans-serif;
 }
-.login_box .mobile,
+/* .login_box .buttonfix input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+} */
+.login_box .email {
+  border: 1px solid #fff;
+  margin: 20px 0;
+  border-radius: 30px;
+}
 .login_box .password {
-  border-bottom: 1px solid #fff;
+  border: 1px solid #fff;
+  margin: 20px 0;
+  border-radius: 30px;
+}
+.login_box .email i,
+.login_box .password i {
+  padding: 10px 0 10px 10px;
+}
+.login_box .logbutton {
+  border: none;
+  outline: none;
 }
 .login_box .logbutton {
   background: transparent;
@@ -71,12 +100,22 @@
   color: #fff;
   font-size: 20px;
   font-weight: 500;
+  width: 50%;
+  border-radius: 30px;
+  padding: 10px 0px;
+  margin-top: 10px;
+  font-family: "Raleway", sans-serif;
+}
+.login_box .buttonfix {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .login_box .logbutton:hover {
   background: #fff;
   color: #000;
 }
 .login_box input::placeholder {
-  color: #000;
+  color: #fff;
   font-weight: 800;
 }

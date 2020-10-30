@@ -26,7 +26,9 @@
 }
 .nav-links {
   text-decoration: none;
-  color: white;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
 }
 .nav-links:hover {
   color: #ff7f00;

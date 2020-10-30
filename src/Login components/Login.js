@@ -12,28 +12,28 @@ export default function Login() {
       <div className="login_text">
         <h1>Login</h1>
         <p>
-          No Account?{" "}
+          No Account?
           <Link to="/signup" className="link">
             Register
           </Link>
         </p>
       </div>
       <div className="login_box">
-        <form className="loginForm">
-          <input
-            type="text"
-            className="mobile"
-            placeholder="Mobile no"
-            required
-          />
-          <input
-            type="password"
-            className="password"
-            placeholder="Passowrd"
-            required
-          />
-          <input type="submit" className="logbutton" value="Login" />
-        </form>
+        <div className="logbox">
+          <form className="loginForm">
+            <div className="email">
+              <i className="fa fa-envelope"></i>
+              <input type="email" placeholder="Email" required />
+            </div>
+            <div className="password">
+              <i className="fal fa-key"></i>
+              <input type="password" placeholder="Passowrd" required />
+            </div>
+            <div className="buttonfix">
+              <input type="submit" className="logbutton" value="Login" />
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
