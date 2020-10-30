@@ -15,16 +15,19 @@
   background-attachment: fixed;
   display: flex;
 }
-.login_text,
-.login_box {
+.login_text {
   margin-top: 45vh;
+  flex: 1;
+}
+.slogin_box {
+  margin-top: 26vh;
   flex: 1;
 }
 .login_text {
   margin-left: 10%;
   font-weight: 300px;
 }
-.login_box {
+.slogin_box {
   margin-left: 25%;
 }
 .login_text h1 {
@@ -52,7 +55,7 @@
   flex-direction: column;
   width: 250px;
 }
-.login_box input {
+.slogin_box input {
   margin: 20px 0;
   padding: 10px;
   background: transparent;
@@ -61,22 +64,24 @@
   color: #fff;
   font-family: "Raleway", sans-serif;
 }
-.login_box .mobile,
-.login_box .password {
+.slogin_box .names,
+.slogin_box .mobile,
+.slogin_box .password,
+.slogin_box .cnfrmpassword {
   border-bottom: 1px solid #fff;
 }
-.login_box .logbutton {
+.slogin_box .logbutton {
   background: transparent;
   border: 1px solid #fff;
   color: #fff;
   font-size: 20px;
   font-weight: 500;
 }
-.login_box .logbutton:hover {
+.slogin_box .logbutton:hover {
   background: #fff;
   color: #000;
 }
-.login_box input::placeholder {
+.slogin_box input::placeholder {
   color: #000;
   font-weight: 800;
 }

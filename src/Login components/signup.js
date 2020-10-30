@@ -1,25 +1,31 @@
 import React from "react";
-import "./Login.css";
+import "./signup.css";
 import { Link } from "react-router-dom";
 import Navbar from "../Home components/Navbar/Navbar";
 
-export default function Login() {
+export default function signup() {
   return (
     <div className="login_form">
       <div className="nav">
         <Navbar />
       </div>
       <div className="login_text">
-        <h1>Login</h1>
+        <h1>Signup</h1>
         <p>
-          No Account?{" "}
-          <Link to="/signup" className="link">
-            Register
+          Have Account?{" "}
+          <Link to="/login" className="link">
+            Login
           </Link>
         </p>
       </div>
-      <div className="login_box">
+      <div className="slogin_box">
         <form className="loginForm">
+          <input
+            type="text"
+            className="names"
+            placeholder="Your name"
+            required
+          />
           <input
             type="text"
             className="mobile"
@@ -32,7 +38,13 @@ export default function Login() {
             placeholder="Passowrd"
             required
           />
-          <input type="submit" className="logbutton" value="Login" />
+          <input
+            type="password"
+            className="cnfrmpassword"
+            placeholder="Confirm Passowrd"
+            required
+          />
+          <input type="submit" className="logbutton" value="Register" />
         </form>
       </div>
     </div>

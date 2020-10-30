@@ -6,6 +6,7 @@ import HowItWorks from "./How it works components/How-it-works";
 import Contact from "./Contact components/Contact";
 import Destination from "./Destination components/Destination";
 import Login from "./Login components/Login";
+import signup from "./Login components/signup";
 
 export default function Routes() {
   return (
@@ -17,6 +18,7 @@ export default function Routes() {
         <Route path="/contact" component={Contact} />
         <Route path="/destination" component={Destination} />
         <Route path="/login" component={Login} />
+        <Route path="/signup" component={signup} />
       </Switch>
     </BrowserRouter>
   );
