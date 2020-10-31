@@ -3,7 +3,7 @@ import "./Contact.css";
 import Navbar from "../Home components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import Footer from "../Home components/Footer/Footer";
-import GMaps from "./map";
+// import GMaps from "./map";
 
 export default function Contact() {
   return (
@@ -77,9 +77,9 @@ export default function Contact() {
         </div>
       </div>
 
-      <div className="mapping">
+      {/* <div className="mapping">
         <GMaps />
-      </div>
+      </div> */}
 
       <div className="footer">
         <Footer />
