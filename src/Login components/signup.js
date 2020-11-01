@@ -5,11 +5,11 @@ import Navbar from "../Home components/Navbar/Navbar";
 
 export default function signup() {
   return (
-    <div className="login_form">
+    <div className="signup_form">
       <div className="nav">
         <Navbar />
       </div>
-      <div className="login_text">
+      <div className="signup_text">
         <h1>Signup</h1>
         <p>
           Have Account?
@@ -18,11 +18,11 @@ export default function signup() {
           </Link>
         </p>
       </div>
-      <div className="slogin_box">
+      <div className="signup_box">
         <div className="signbox">
-          <form className="loginForm">
+          <form className="signForm">
             <div className="names">
-              <i class="fas fa-user"></i>
+              <i className="fas fa-user"></i>
               <input type="text" placeholder="Name" required />
             </div>
             <div className="email">
@@ -30,7 +30,7 @@ export default function signup() {
               <input type="email" placeholder="Email" required />
             </div>
             <div className="mobile">
-              <i class="fas fa-phone"></i>
+              <i className="fas fa-phone"></i>
               <input type="text" placeholder="Mobile no" required />
             </div>
             <div className="password">
@@ -38,7 +38,7 @@ export default function signup() {
               <input type="password" placeholder="Passowrd" required />
             </div>
             <div className="buttonfix">
-              <input type="submit" className="logbutton" value="Register" />
+              <input type="submit" className="signbutton" value="Register" />
             </div>
           </form>
         </div>
