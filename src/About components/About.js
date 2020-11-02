@@ -193,7 +193,7 @@ export default function About() {
       <div className="testimony_section">
         <div className="heading_section">
           <span className="subheading1">Testimonial</span>
-          <h2 className="subheading">Tourist Feedback</h2>
+          <h2 className="subheading">Traveller Feedback</h2>
         </div>
         <Slider {...settings} className="slid">
           <div className="item_test1">
