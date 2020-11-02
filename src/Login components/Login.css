@@ -13,22 +13,12 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+.login_flex {
   display: flex;
-}
-.login_text {
-  margin-top: 34vh;
-  flex: 1;
-}
-.login_box {
-  margin-top: 28vh;
-  flex: 1;
-}
-.login_text {
-  margin-left: 10%;
-  font-weight: 300px;
-}
-.login_box {
-  margin-left: 25%;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 170px;
 }
 .login_box .logbox {
   background: rgba(0, 0, 0, 0.8);

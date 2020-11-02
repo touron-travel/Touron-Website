@@ -13,22 +13,12 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+}
+.signup_flex {
   display: flex;
-}
-.signup_text {
-  margin-top: 34vh;
-  flex: 1;
-}
-.signup_box {
-  margin-top: 16vh;
-  flex: 1;
-}
-.signup_text {
-  margin-left: 10%;
-  font-weight: 300px;
-}
-.signup_box {
-  margin-left: 25%;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 90px;
 }
 .signup_box .signbox {
   background: rgba(0, 0, 0, 0.8);
