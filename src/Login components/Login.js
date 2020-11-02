@@ -5,11 +5,11 @@ import Navbar from "../Home components/Navbar/Navbar";
 
 export default function Login() {
   return (
-    <div className="login_form">
+    <>
       <div className="nav">
         <Navbar />
       </div>
-      <div className="login_flex">
+      <div className="login_form">
         <div className="login_text">
           <h1>Login</h1>
           <p>
@@ -24,11 +24,16 @@ export default function Login() {
             <form className="loginForm">
               <div className="email">
                 <i className="fa fa-envelope"></i>
-                <input type="email" placeholder="Email" required />
+                <input type="email" placeholder="Email" size="35" required />
               </div>
               <div className="password">
                 <i className="fal fa-key"></i>
-                <input type="password" placeholder="Passowrd" required />
+                <input
+                  type="password"
+                  placeholder="Passowrd"
+                  size="35"
+                  required
+                />
               </div>
               <div className="buttonfix">
                 <input type="submit" className="logbutton" value="Login" />
@@ -37,6 +42,6 @@ export default function Login() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
