@@ -1,7 +1,5 @@
 .top_destination {
-  padding: 0px 40px;
-}
-.top_destination.mainpage-slider {
+  padding: 50px 40px;
   background: #fff;
   height: 550px;
 }
@@ -23,7 +21,7 @@
   margin-bottom: 5px;
   font-family: "Roboto", sans-serif;
 }
-.section_heading .section_titles {
+.section_heading .section_titles h2 {
   font-size: 40px;
   font-weight: 900;
   color: #3e4559;

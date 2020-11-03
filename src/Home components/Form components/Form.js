@@ -53,8 +53,9 @@ export default function Form() {
           <label>Duration</label>
           <div className="select_search">
             <select>
-              <option value="travel_1">4 - 5 Days</option>
-              <option value="travel_2">5 - 7 Days</option>
+              <option value="travel_1">3 - 4 Days</option>
+              <option value="travel_2">4 - 5 Days</option>
+              <option value="travel_3">5 - 7 Days</option>
             </select>
           </div>
         </div>

@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Andika&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Arizonia&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
 
 .aboutimage {
   background-image: url(./../assests/bg_3.jpg);
@@ -12,7 +12,7 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-.abouttile{
+.abouttile {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -357,50 +357,50 @@ p.stats_text {
   margin-right: 30px;
   margin-bottom: 30px;
 }
-.team{
+.team {
   padding: 50px 30px;
   background-color: #000;
 }
-.title_name{
-  font-family: 'Abril Fatface', cursive;
+.title_name {
+  font-family: "Abril Fatface", cursive;
   color: #ff7f00;
   display: flex;
   justify-content: center;
 }
-.team_content{
+.team_content {
   display: flex;
   justify-content: space-evenly;
 }
-.team_content1{
+.team_content1 {
   background-color: #ff7f00;
   height: 450px;
   border-radius: 10px;
 }
-.team_img img{
+.team_img img {
   height: 340px;
   width: 340px;
 }
-.title_desc{
+.title_desc {
   text-align: center;
   padding: 0px 140px;
   color: #696e7d;
   line-height: 2;
   margin-bottom: 50px;
 }
-.team_name{
+.team_name {
   text-transform: uppercase;
   color: #2d2c2c;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   font-weight: 600;
 }
-.team_desti{
+.team_desti {
   font-size: 26px;
-  font-family: 'Abril Fatface', cursive;
+  font-family: "Abril Fatface", cursive;
 }
-.teamk{
+.teamk {
   padding: 20px 20px;
 }
-.team_desti:hover{
+.team_desti:hover {
   color: #fff;
   cursor: pointer;
 }

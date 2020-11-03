@@ -22,10 +22,12 @@ export default function Top_destination() {
   }, []);
 
   return (
-    <div className="top_destination mainpage-slider">
+    <div className="top_destination">
       <div className="section_heading">
         <div className="section_subtitle">top destinations</div>
-        <div className="section_titles">Touron - Operator</div>
+        <div className="section_titles">
+          <h2>Touron - Operator</h2>
+        </div>
         <div className="description">
           <div className="left">
             <p className="text">
