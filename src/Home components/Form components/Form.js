@@ -24,7 +24,7 @@ export default function Form() {
 
   return (
     <div className="search_form">
-      <h1>Search tour</h1>
+      <h2>Search tour</h2>
       <p> Ready to rest? We are ready to help with the search</p>
       <form className="searches">
         <div className="searchBox">

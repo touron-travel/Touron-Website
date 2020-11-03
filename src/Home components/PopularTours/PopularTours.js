@@ -39,12 +39,12 @@ export default function PopularTours() {
         <div className="tour-slider-title">
           <p>popularly</p>
           <h2>
-            Most Popular <br /> Holiday Tours
+            Most popular <br /> holiday tours
           </h2>
         </div>
         <div>
           <div className="ptour">
-            <h4>View all Tour</h4>
+            <h4>View all tours</h4>
           </div>
         </div>
       </div>
@@ -52,9 +52,7 @@ export default function PopularTours() {
         <div className="tour-slider">
           <Slider {...settings} accessibility pauseOnHover={false}>
             {tour.map((t, index) => {
-              return(
-               <PopulatTourTile t={t} key={index} />
-              )
+              return <PopulatTourTile t={t} key={index} />;
             })}
           </Slider>
         </div>

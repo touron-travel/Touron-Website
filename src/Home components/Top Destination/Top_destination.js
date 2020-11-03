@@ -25,7 +25,7 @@ export default function Top_destination() {
     <div className="top_destination mainpage-slider">
       <div className="section_heading">
         <div className="section_subtitle">top destinations</div>
-        <div className="section_title">Touron - Operator</div>
+        <div className="section_titles">Touron - Operator</div>
         <div className="description">
           <div className="left">
             <p className="text">
@@ -46,8 +46,7 @@ export default function Top_destination() {
       <div className="section_content popular_destination__content">
         <div className="section_item">
           {city.map((t, index) => {
-             return( <TopdestinationTile t={t} key={index} />
-             )
+            return <TopdestinationTile t={t} key={index} />;
           })}
         </div>
       </div>
