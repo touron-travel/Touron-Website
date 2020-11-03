@@ -46,7 +46,6 @@ h1 {
 
 .button {
   display: flex;
-  align-items: center;
 }
 .trending {
   display: flex;
@@ -58,34 +57,36 @@ h1 {
   margin-left: 30px;
 }
 .countryName {
-  font-size: 5vw;
+  /* font-size: 5vw;
   font-weight: 500;
-  margin: 0;
-}
-.desc {
-  font-size: 15px;
+  /* font-family: "Roboto", sans-serif; */
+  margin-bottom: 20px;
+  font-size: 50px;
+  font-weight: 900;
+  font-family: "Polar", Helvetica, Arial, sans-serif;
   color: #fff;
 }
-.tour {
+.desc {
+  font-size: 18px;
+  color: #fff;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  margin-bottom: 24px;
+}
+.button .tour h4 {
   background-color: #ff7f00;
-  border-radius: 20px;
-  margin-right: 8px;
-}
-.tour h4 {
-  color: white;
-  font-size: 15px;
-  padding: 0px 10px;
-}
-.ctour h4 {
-  color: white;
-  font-size: 15px;
-  padding: 0px 15px;
-  text-align: center;
-}
-
-.ctour {
-  background-color: transparent;
-  border: 1px solid white;
   border-radius: 30px;
-  margin: 8px;
+  color: white;
+  font-size: 16px;
+  padding: 15px 48px;
+  font-family: "Roboto", sans-serif;
+}
+.button .ctour h4 {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.36);
+  border-radius: 30px;
+  color: white;
+  font-size: 16px;
+  padding: 14px 48px;
+  margin-left: 18px;
+  font-family: "Roboto", sans-serif;
 }

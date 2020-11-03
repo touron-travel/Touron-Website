@@ -1,23 +1,17 @@
-@import url("https://fonts.googleapis.com/css2?family=Andika&display=swap");
-
 .header {
   width: 100%;
-  margin: 0px auto;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.29);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 15px;
 }
 .nav-area {
   list-style: none;
-  /* flex-basis: 80%; */
   display: flex;
 }
 .nav-area li {
-  padding: 5px 20px;
-  font-size: 16px;
-  font-weight: 500;
-  /* font-family: "Andika", sans-serif; */
+  padding: 0px 20px;
 }
 .logo img {
   width: 60px;
@@ -27,8 +21,9 @@
 .nav-links {
   text-decoration: none;
   color: #fff;
-  font-weight: 600;
-  font-size: 18px;
+  font-weight: 500;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
 }
 .nav-links:hover {
   color: #ff7f00;

@@ -32,8 +32,9 @@
 }
 .cat-body p,
 .cat-bod p {
-  font-family: "Roboto";
-  font-weight: 300;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
 }
 .cat-body p:hover,
 .cat-bod p:hover {

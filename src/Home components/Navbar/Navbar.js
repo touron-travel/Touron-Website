@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import Image from "../../assests/logo.jpeg";
 
-
-
 export default function Navbar() {
   return (
     <div className="header">
       <div className="logo">
         <img src={Image} alt="" />
       </div>
-      <div>
+      <div className="navi">
         <ul className="nav-area">
           <li className="nav-items">
             <Link to="/" className="nav-links">
