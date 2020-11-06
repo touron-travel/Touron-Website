@@ -16,6 +16,21 @@
   justify-content: space-around;
   padding-top: 90px;
 }
+.signup_form::after {
+  opacity: 0.1;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+}
+.signup_text,
+.signup_box {
+  position: relative;
+  z-index: 1;
+}
 .signup_box .signbox {
   background: rgba(0, 0, 0, 0.8);
   padding: 30px;

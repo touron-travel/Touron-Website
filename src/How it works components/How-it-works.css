@@ -9,6 +9,17 @@
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+.work_img::after {
+  height: 100vh;
+  opacity: 0.3;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+}
 .work_title {
   display: flex;
   flex-direction: column;
@@ -17,6 +28,8 @@
   align-items: center;
   justify-content: flex-end;
   padding-bottom: 20px;
+  position: relative;
+  z-index: 1;
 }
 .work_overview {
   background-color: #fafafa;

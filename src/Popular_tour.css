@@ -1,0 +1,336 @@
+.Popular_tours {
+  background-image: url(./assests/header5.jpg);
+  width: 100%;
+  height: 120vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.Popular_tours::before {
+  height: 28%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  position: absolute;
+  z-index: 0;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0);
+}
+/* .Popular_tours::after {
+  height: 120vh;
+  opacity: 0.3;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+} */
+.pophome {
+  position: relative;
+  z-index: 1;
+  left: 100px;
+  top: 10px;
+  font-size: 15px;
+}
+.pophome1 {
+  text-decoration: none;
+  color: #fff;
+}
+.defaulthome {
+  color: rgba(255, 255, 255, 0.54);
+  pointer-events: none;
+}
+.pophome1:hover {
+  text-decoration: none;
+  color: #fff;
+}
+.defaulthome:hover {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.54);
+  pointer-events: none;
+}
+.pop_title_search {
+  position: relative;
+  z-index: 1;
+  top: 40px;
+}
+.poptitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 40px;
+  color: #fff;
+  font-weight: 900;
+  margin-left: 40px;
+  margin-bottom: 28px;
+}
+.popsearch {
+  background: #fff;
+  padding: 40px 60px;
+  margin: 0 40px 20px;
+  border-radius: 14px;
+}
+.poptour_item {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 50px;
+  position: relative;
+  z-index: 1;
+  top: 40px;
+}
+.poptour_item .poptour-img {
+  width: 120px;
+  height: 110px;
+  opacity: 0.9;
+  border-radius: 8px;
+}
+.popcity {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  top: -70px;
+  z-index: 1;
+}
+.poptour_section {
+  background-color: #000;
+  padding: 0px 30px 120px;
+  display: flex;
+  justify-content: space-between;
+}
+.poptour_trends {
+  width: 766px;
+  height: 430px;
+  margin-bottom: 20px;
+}
+.poptour_img {
+  width: 766px;
+  height: 430px;
+  border-radius: 20px;
+  mask-image: linear-gradient(to bottom, rgb(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
+}
+.poptour_details {
+  position: relative;
+  bottom: 200px;
+  padding: 30px 50px 50px;
+}
+.poptour_title {
+  font-size: 28px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+.poptour_description {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 18px;
+  color: rgba(255, 255, 255, 0.65);
+  font-style: italic;
+  line-height: 1.4;
+  max-width: 520px;
+}
+.poptour_days span {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  color: rgba(255, 255, 255, 0.65);
+  padding-left: 5px;
+}
+.latest_tour {
+  width: 410px;
+  /* height: 640px; */
+  background: #ffffff;
+  padding: 34px 30px;
+  font-family: "Roboto", sans-serif;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.latest_tour-title {
+  font-size: 24px;
+  color: #3e4559;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+.latest_tour-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.latest_title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #3e4559;
+  margin-bottom: 4px;
+}
+.latest_cost {
+  font-weight: 900;
+  color: #ff7f00;
+  margin-bottom: 7px;
+}
+.latest_days i {
+  color: #3e4559;
+  padding-top: 3px;
+  padding-right: 4px;
+}
+.latest_days span {
+  color: rgba(62, 69, 89, 0.65);
+  font-size: 16px;
+}
+.latest_plan {
+  position: relative;
+  top: -2px;
+}
+.latest_tour-item {
+  display: flex;
+  padding: 24px 0px;
+  border-bottom: 1px solid #e6e6e6;
+}
+.latest_tour-item-last {
+  display: flex;
+  padding: 24px 0px 10px;
+}
+.tour_category {
+  width: 410px;
+  /* height: 302px; */
+  background: #0b104a;
+  border-radius: 14px;
+  padding: 34px 30px 14px 30px;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
+}
+.tour_category-title {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 25px;
+  font-weight: 900;
+}
+.tour_category-list ul li {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.recent_articles {
+  width: 410px;
+  /* height: 510px; */
+  padding: 34px 30px;
+  border: 1.5px solid #e2e2e2;
+  border-radius: 14px;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 20px;
+}
+.recent_articles-title {
+  font-size: 24px;
+  color: #ffffff;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+.recent_articles-image {
+  width: 90px;
+  height: 90px;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+.recent_articles-item {
+  display: flex;
+  padding: 24px 0px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.23);
+}
+.recent_articles-item-last {
+  display: flex;
+  padding: 24px 0px 10px;
+}
+.articles_title {
+  color: #ffffff;
+  font-size: 16px;
+  max-width: 196px;
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+.articles_days span {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+.articles_month {
+  position: relative;
+  top: -2px;
+}
+.question_block {
+  width: 410px;
+  /* height: 308px; */
+  background: #db6500;
+  border-radius: 14px;
+  padding: 34px 30px;
+  font-family: "Roboto", sans-serif;
+}
+.question_block-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 25px;
+}
+.question_block-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.5;
+  width: 350px;
+  margin-bottom: 20px;
+}
+.question_block-tel {
+  font-size: 26px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.question_block-mail {
+  font-size: 18px;
+  color: #fff;
+}
+.pageno_flex {
+  display: flex;
+  margin-top: 50px;
+}
+.pageno_icon {
+  background: rgba(255, 255, 255, 0.16);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+.pageno {
+  display: flex;
+}
+.pageno p {
+  background: rgba(255, 255, 255, 0.16);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-right: 5px;
+}
+.pageno p:hover {
+  background-color: #fff;
+  color: #db6500;
+  cursor: pointer;
+}

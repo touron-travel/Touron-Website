@@ -43,7 +43,7 @@
   width: 552px;
   height: 403px;
   border-radius: 20px;
-  mask-image: linear-gradient(to bottom, rgb(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  mask-image: linear-gradient(to bottom, rgb(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
 }
 .trends {
   height: 450px;
