@@ -44,11 +44,11 @@ export default function PopularTours() {
           </h2>
         </div>
         <div>
-          <div className="ptour">
-            <Link to="/popular_tour" className="plink">
+          <Link to="/popular_tour" className="plink">
+            <div className="ptour">
               <h4>View all tours</h4>
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="tour-slider-home">

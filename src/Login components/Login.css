@@ -99,6 +99,7 @@
   padding: 10px 0px;
   margin-top: 10px;
   font-family: "Roboto", sans-serif;
+  transition: ease 0.5s;
 }
 .login_box .buttonfix {
   display: flex;
