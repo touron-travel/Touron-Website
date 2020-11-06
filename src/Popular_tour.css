@@ -328,6 +328,7 @@
   justify-content: center;
   color: #fff;
   margin-right: 5px;
+  transition: ease 0.5s;
 }
 .pageno p:hover {
   background-color: #fff;
