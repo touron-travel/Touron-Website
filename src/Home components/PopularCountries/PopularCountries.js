@@ -1,6 +1,7 @@
 import React from "react";
 import "./PopularCountries.css";
 import countryimg from "../../assests/country.jpg";
+import { Link } from "react-router-dom";
 
 export default function PopularCountries() {
   return (
@@ -30,7 +31,9 @@ export default function PopularCountries() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis,
               nesciunt.Lorem ipsum dolor sit amet consectetur.
             </p>
-            <p className="countryview">View all tours</p>
+            <Link to="/popular_tour">
+              <p className="countryview">View all tours</p>
+            </Link>
           </div>
         </div>
         <div className="country_content1">
@@ -46,7 +49,9 @@ export default function PopularCountries() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis,
               nesciunt.Lorem ipsum dolor sit amet consectetur.
             </p>
-            <p className="countryview">View all tours</p>
+            <Link to="/popular_tour">
+              <p className="countryview">View all tours</p>
+            </Link>
           </div>
         </div>
         <div className="country_content1">
@@ -62,7 +67,9 @@ export default function PopularCountries() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis,
               nesciunt.Lorem ipsum dolor sit amet consectetur.
             </p>
-            <p className="countryview">View all tours</p>
+            <Link to="/popular_tour">
+              <p className="countryview">View all tours</p>
+            </Link>
           </div>
         </div>
       </div>
