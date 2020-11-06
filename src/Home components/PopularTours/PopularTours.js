@@ -7,6 +7,7 @@ import PopulatTourTile from "./PopularTourTile";
 import home1 from "../../assests/home1.jpg";
 import home2 from "../../assests/home2.jpg";
 import home3 from "../../assests/home3.jpg";
+import { Link } from "react-router-dom";
 
 export default function PopularTours() {
   const [tour, setTour] = useState([]);
@@ -44,7 +45,9 @@ export default function PopularTours() {
         </div>
         <div>
           <div className="ptour">
-            <h4>View all tours</h4>
+            <Link to="/popular_tour" className="plink">
+              <h4>View all tours</h4>
+            </Link>
           </div>
         </div>
       </div>

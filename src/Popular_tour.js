@@ -204,6 +204,19 @@ export default function Popular_tour() {
           </div>
         </div>
         <div>
+          <div className="tour_category">
+            <div className="tour_category-title">Tour Category</div>
+            <div className="tour_category-list">
+              <ul>
+                <li>Outdoor Activities</li>
+                <li>City Tours</li>
+                <li>Cultural & Thematic Tours</li>
+                <li>Indulgence & Luxury Tours</li>
+                <li>Family Friendly Tours</li>
+                <li>Holiday & Seasonal Tours</li>
+              </ul>
+            </div>
+          </div>
           <div className="latest_tour">
             <div className="latest_tour-title">Latest Tours</div>
             <div className="latest_tour-list">
@@ -283,19 +296,6 @@ export default function Popular_tour() {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="tour_category">
-            <div className="tour_category-title">Tour Category</div>
-            <div className="tour_category-list">
-              <ul>
-                <li>Outdoor Activities</li>
-                <li>City Tours</li>
-                <li>Cultural & Thematic Tours</li>
-                <li>Indulgence & Luxury Tours</li>
-                <li>Family Friendly Tours</li>
-                <li>Holiday & Seasonal Tours</li>
-              </ul>
             </div>
           </div>
           <div className="recent_articles">
