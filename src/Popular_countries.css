@@ -13,7 +13,7 @@
   position: relative;
 }
 .Popular_countries::before {
-  height: 28%;
+  height: 20%;
   bottom: 0;
   left: 0;
   right: 0;
@@ -28,7 +28,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0);
 }
 .Popular_countries::after {
-  opacity: 0.3;
+  opacity: 0.48;
   position: absolute;
   content: "";
   top: 0;
