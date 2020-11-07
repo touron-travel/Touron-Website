@@ -12,9 +12,11 @@ export default function PopularCountries() {
           <h2>Popular Countries</h2>
         </div>
         <div>
-          <div className="pcountry">
-            <h4>View all countries</h4>
-          </div>
+          <Link to="./popular_countries" className="plink">
+            <div className="pcountry">
+              <h4>View all countries</h4>
+            </div>
+          </Link>
         </div>
       </div>
       <div className="country_content">

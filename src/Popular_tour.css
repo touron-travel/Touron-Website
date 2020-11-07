@@ -4,6 +4,7 @@
   height: 120vh;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
   /* background-attachment: fixed; */
   display: flex;
   /* align-items: center; */
@@ -27,8 +28,8 @@
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0);
 }
-/* .Popular_tours::after {
-  height: 120vh;
+.Popular_tours::after {
+  /* height: 120vh; */
   opacity: 0.3;
   position: absolute;
   content: "";
@@ -37,7 +38,7 @@
   right: 0;
   bottom: 0;
   background: #000;
-} */
+}
 .pophome {
   position: relative;
   z-index: 1;
@@ -327,6 +328,8 @@
   align-items: center;
   justify-content: center;
   color: #fff;
+  font-size: 17px;
+  font-weight: 500;
   margin-right: 5px;
   transition: ease 0.5s;
 }

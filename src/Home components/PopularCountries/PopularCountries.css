@@ -28,6 +28,10 @@
   color: #3e4559;
   border: 2px solid #cfd1d5;
   border-radius: 30px;
+  transition: ease 0.5s;
+}
+.pcountry:hover {
+  background-color: #cfd1d5;
 }
 .pcountry h4 {
   font-size: 16px;

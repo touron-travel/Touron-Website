@@ -1,0 +1,188 @@
+.Popular_countries {
+  background-image: url(./assests/header2.jpg);
+  min-height: 660px;
+  /* height: 100vh; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  /* background-attachment: fixed; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* flex-direction: column; */
+  position: relative;
+}
+.Popular_countries::before {
+  height: 28%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  position: absolute;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0);
+}
+.Popular_countries::after {
+  opacity: 0.3;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+}
+.popcountry {
+  position: relative;
+  z-index: 1;
+  left: 100px;
+  top: 70px;
+  font-size: 15px;
+}
+.popcountry1 {
+  text-decoration: none;
+  color: #fff;
+}
+.defaultcountry {
+  color: rgba(255, 255, 255, 0.54);
+  pointer-events: none;
+}
+.popcountry1:hover {
+  text-decoration: none;
+  color: #fff;
+}
+.defaultcountry:hover {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.54);
+  pointer-events: none;
+}
+.countriesSection-title {
+  font-family: "Roboto", sans-serif;
+  position: relative;
+  z-index: 1;
+  top: 110px;
+  left: 40px;
+}
+.countrySection-Subtitle {
+  font-size: 16px;
+  font-weight: 900;
+  color: #fff;
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0;
+}
+.countrySection-Title {
+  font-size: 40px;
+  font-weight: 900;
+  color: #fff;
+}
+.popularCountries_section {
+  background-color: #000;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  height: 900px;
+  flex-wrap: wrap;
+  padding: 0px 40px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.popularCountries_content1 {
+  background-color: #fff;
+  height: 460px;
+  width: 31%;
+  border-radius: 10px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+  position: relative;
+  top: -57vh;
+}
+.countries_img img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 10px 0px 0px;
+}
+.countriesk {
+  box-sizing: border-box;
+  padding: 0px 36px 25px;
+  position: relative;
+  top: -20px;
+}
+.countriesname {
+  font-size: 28px;
+  font-weight: 900;
+  color: #3e4559;
+  margin-bottom: 12px;
+  font-family: "Roboto", sans-serif;
+}
+.countriesdesc {
+  font-size: 16px;
+  color: #818693;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.3;
+  font-family: "Roboto", sans-serif;
+}
+.countriesview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: "Roboto", sans-serif;
+  color: #3e4559;
+  margin: 0;
+}
+.countriesflag img {
+  width: 62px;
+  height: 62px;
+  position: relative;
+  border-radius: 50%;
+  overflow: hidden;
+  top: -28px;
+  left: 36px;
+}
+.countries-pageno_flex {
+  display: flex;
+  margin-top: 50px;
+  position: relative;
+  top: -57vh;
+  left: 75vh;
+}
+.countries-pageno_icon {
+  background: rgba(255, 255, 255, 0.16);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+}
+.countries-pageno {
+  display: flex;
+}
+.countries-pageno p {
+  background: rgba(255, 255, 255, 0.16);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+  margin-right: 5px;
+  transition: ease 0.5s;
+}
+.countries-pageno p:hover {
+  background-color: #fff;
+  color: #db6500;
+  cursor: pointer;
+}

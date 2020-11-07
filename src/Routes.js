@@ -8,6 +8,7 @@ import Destination from "./Destination components/Destination";
 import Login from "./Login components/Login";
 import signup from "./Login components/signup";
 import Popular_tour from "./Popular_tour";
+import Popular_countries from "./Popular_countries";
 
 export default function Routes() {
   return (
@@ -21,6 +22,7 @@ export default function Routes() {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={signup} />
         <Route path="/popular_tour" component={Popular_tour} />
+        <Route path="/popular_countries" component={Popular_countries} />
       </Switch>
     </BrowserRouter>
   );
