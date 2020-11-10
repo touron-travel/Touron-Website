@@ -6,9 +6,6 @@ import Navbar from "../Home components/Navbar/Navbar";
 export default function signup() {
   return (
     <>
-      <div className="nav">
-        <Navbar />
-      </div>
       <div className="signup_form">
         <div className="signup_text">
           <h1>Signup</h1>

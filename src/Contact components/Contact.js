@@ -8,11 +8,7 @@ import Footer from "../Home components/Footer/Footer";
 export default function Contact() {
   return (
     <div className="contact">
-      <div className="contact_top">
-        <div className="nav">
-          <Navbar />
-        </div>
-      </div>
+      <div className="contact_top"></div>
       <div className="contact_img">
         <div className="contact_title">
           <p className="breadcrumbs">
@@ -80,10 +76,6 @@ export default function Contact() {
       {/* <div className="mapping">
         <GMaps />
       </div> */}
-
-      <div className="footer">
-        <Footer />
-      </div>
     </div>
   );
 }

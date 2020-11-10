@@ -13,9 +13,6 @@ export default function Home() {
   return (
     <div className="home">
       <div className="home_top">
-        <div className="nav">
-          <Navbar />
-        </div>
         <div className="slider">
           <SliderImage />
         </div>
@@ -34,9 +31,6 @@ export default function Home() {
       </div>
       <div className="topdestination">
         <TopDestination />
-      </div>
-      <div className="footer">
-        <Footer />
       </div>
     </div>
   );

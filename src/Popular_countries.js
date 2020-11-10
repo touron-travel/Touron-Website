@@ -8,9 +8,6 @@ import Footer from "./Home components/Footer/Footer";
 export default function Popular_countries() {
   return (
     <>
-      <div className="nav">
-        <Navbar />
-      </div>
       <div className="Popular_countries">
         <div className="popularCountry_Back">
           <div className="popcountry">
@@ -153,9 +150,6 @@ export default function Popular_countries() {
             <i className="fa fa-chevron-right"></i>
           </div>
         </div>
-      </div>
-      <div className="footer">
-        <Footer />
       </div>
     </>
   );

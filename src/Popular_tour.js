@@ -41,9 +41,6 @@ export default function Popular_tour() {
 
   return (
     <>
-      <div className="nav">
-        <Navbar />
-      </div>
       <div className="Popular_tours">
         <div className="pophome">
           <Link to="/" className="pophome1">
@@ -385,9 +382,6 @@ export default function Popular_tour() {
             <div className="question_block-mail">info@hellodigi.ru</div>
           </div>
         </div>
-      </div>
-      <div className="footer">
-        <Footer />
       </div>
     </>
   );

@@ -28,11 +28,7 @@ export default function About() {
 
   return (
     <div className="about">
-      <div className="about_top">
-        <div className="nav">
-          <Navbar />
-        </div>
-      </div>
+      <div className="about_top"></div>
       <div className="aboutimage">
         <div className="abouttile">
           <p className="breadcrumbs">
@@ -416,10 +412,6 @@ export default function About() {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="footer">
-        <Footer />
       </div>
     </div>
   );

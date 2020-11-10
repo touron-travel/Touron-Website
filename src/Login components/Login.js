@@ -6,9 +6,6 @@ import Navbar from "../Home components/Navbar/Navbar";
 export default function Login() {
   return (
     <>
-      <div className="nav">
-        <Navbar />
-      </div>
       <div className="login_form">
         <div className="login_text">
           <h1>Login</h1>

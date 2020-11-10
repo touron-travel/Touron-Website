@@ -8,11 +8,7 @@ import Footer from "../Home components/Footer/Footer";
 export default function HowItWorks() {
   return (
     <div className="work">
-      <div className="work_top">
-        <div className="nav">
-          <Navbar />
-        </div>
-      </div>
+      <div className="work_top"></div>
       <div className="work_img">
         <div className="work_title">
           <p className="breadcrumbs">
@@ -39,9 +35,6 @@ export default function HowItWorks() {
       </div>
       <div>
         <Tourplan />
-      </div>
-      <div className="footer">
-        <Footer />
       </div>
     </div>
   );
