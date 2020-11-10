@@ -44,13 +44,7 @@ export default function PopularTours() {
           </h2>
         </div>
         <div>
-          <Link
-            to={{
-              pathname: "/popular_tour",
-              tours: tour,
-            }}
-            className="plink"
-          >
+          <Link to="/popular_tour" className="plink">
             <div className="ptour">
               <h4>View all tours</h4>
             </div>

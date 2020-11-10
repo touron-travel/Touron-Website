@@ -1,25 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./Top_destination.css";
-import axios from "axios";
-import { API } from "../../backend";
 import TopdestinationTile from "./Top_destinationTile";
+import { ApiContext } from "../../Context/ApiContext";
 
 export default function Top_destination() {
-  const [city, setCity] = useState([]);
-  console.log(city, "city");
-
-  useEffect(() => {
-    const getCities = async () => {
-      await axios
-        .get(`${API}/city?page=1&pageSize=7`)
-        .then((res) => {
-          setCity(res.data);
-        })
-        .catch((err) => console.log(err, "File missing"));
-    };
-
-    getCities();
-  }, []);
+  const { cities } = useContext(ApiContext);
+  // const [city, setCity] = useState(cities);
+  // console.log(city, "city");
 
   return (
     <div className="top_destination">
@@ -47,8 +34,8 @@ export default function Top_destination() {
       </div>
       <div className="section_content popular_destination__content">
         <div className="section_item">
-          {city.map((t, index) => {
-            return <TopdestinationTile t={t} key={index} />;
+          {cities.map((t, index) => {
+            if (index < 7) return <TopdestinationTile t={t} key={index} />;
           })}
         </div>
       </div>
