@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "./PopularTours.css";
 import axios from "axios";
 import { API } from "../../backend";
-import PopulatTourTile from "./PopularTourTile";
+import PopularTourTile from "./PopularTourTile";
 import home1 from "../../assests/home1.jpg";
 import home2 from "../../assests/home2.jpg";
 import home3 from "../../assests/home3.jpg";
@@ -44,7 +44,13 @@ export default function PopularTours() {
           </h2>
         </div>
         <div>
-          <Link to="/popular_tour" className="plink">
+          <Link
+            to={{
+              pathname: "/popular_tour",
+              tours: tour,
+            }}
+            className="plink"
+          >
             <div className="ptour">
               <h4>View all tours</h4>
             </div>
@@ -55,7 +61,7 @@ export default function PopularTours() {
         <div className="tour-slider">
           <Slider {...settings} accessibility pauseOnHover={false}>
             {tour.map((t, index) => {
-              return <PopulatTourTile t={t} key={index} />;
+              return <PopularTourTile t={t} key={index} />;
             })}
           </Slider>
         </div>

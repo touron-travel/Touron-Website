@@ -4,20 +4,27 @@ import "./Popular_tour.css";
 import axios from "axios";
 import { API } from "./backend";
 import Navbar from "./Home components/Navbar/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Footer from "./Home components/Footer/Footer";
 import popimg from "./assests/world10.jpg";
-import poptourimg1 from "./assests/prevput4.jpg";
-import poptourimg3 from "./assests/prevput5.jpg";
-import poptourimg4 from "./assests/prevput6.jpg";
-import poptourimg2 from "./assests/pop3.jpg";
+// import poptourimg1 from "./assests/prevput4.jpg";
+// import poptourimg3 from "./assests/prevput5.jpg";
+// import poptourimg4 from "./assests/prevput6.jpg";
+// import poptourimg2 from "./assests/pop3.jpg";
 import latest_tour1 from "./assests/sidebar7.jpg";
 import article_img from "./assests/sidebar5.jpg";
+import Popular_tourTile from "./Popular_tourTile";
 
 export default function Popular_tour() {
   const [country, setCountry] = useState([]);
 
   console.log(country, "country");
+
+  const location = useLocation();
+  console.log(location, "location");
+
+  const tours = location.tours;
+  console.log(tours, "tours");
 
   useEffect(() => {
     const getCountry = async () => {
@@ -124,7 +131,12 @@ export default function Popular_tour() {
       </div>
       <div className="poptour_section">
         <div>
-          <div className="poptour_trends">
+          <div className="poptour-api">
+            {tours.map((t, index) => {
+              if (index < 4) return <Popular_tourTile t={t} key={index} />;
+            })}
+          </div>
+          {/* <div className="poptour_trends">
             <img className="poptour_img" src={poptourimg2} alt="" />
             <div className="poptour_details">
               <h3 className="poptour_title">Seychelles</h3>
@@ -187,7 +199,7 @@ export default function Popular_tour() {
                 <span>Full day tour</span>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="pageno_flex">
             <div className="pageno_icon">
               <i className="fa fa-chevron-left"></i>

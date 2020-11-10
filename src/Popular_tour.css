@@ -121,7 +121,7 @@
   width: 766px;
   height: 430px;
   border-radius: 20px;
-  mask-image: linear-gradient(to bottom, rgb(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
 }
 .poptour_details {
   position: relative;
