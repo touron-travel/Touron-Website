@@ -10,25 +10,32 @@ import Popular_tourTile from "./Popular_tourTile";
 import { ApiContext } from "./Context/ApiContext";
 
 export default function Popular_tour() {
-  const { tours, countries } = useContext(ApiContext);
-  const [cityName, setCityName] = useState("");
+  const { tours, countries, cities } = useContext(ApiContext);
   const [tour, setTour] = useState(tours);
   const location = useLocation();
-  console.log(cityName, "cityNmae");
+  const [cityName, setCityName] = useState("");
 
+  const getCity = () => {
+    return cities.filter((c) => {
+      if (c.countryName === "Australia") return c.cityName;
+    });
+  };
+
+  // const setCityName = () => {
+  //   setCityName("Galle");
+  // };
   const getCityTours = async () => {
-    setCityName(location.cityName);
     const cityTourResponse = await axios.get(
       `${API}/tour/cityname/${location.cityName}`
     );
-    // setCities(cityResponse.data);
     console.log(cityTourResponse.data, "cityTOurs");
     setTour(cityTourResponse.data);
   };
 
   useEffect(() => {
     getCityTours();
-  }, []);
+    console.log(getCity(), "test");
+  }, [cityName]);
 
   return (
     <>
@@ -97,9 +104,15 @@ export default function Popular_tour() {
       <div className="poptour_section">
         <div>
           <div className="poptour-api">
-            {tour.map((t, index) => {
-              if (index < 4) return <Popular_tourTile t={t} key={index} />;
-            })}
+            {tour.length == 0 ? (
+              <h1>Tours not Found</h1>
+            ) : (
+              <>
+                {tour.map((t, index) => {
+                  if (index < 4) return <Popular_tourTile t={t} key={index} />;
+                })}
+              </>
+            )}
           </div>
           <div className="pageno_flex">
             <div className="pageno_icon">

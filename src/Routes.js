@@ -21,22 +21,38 @@ export default function Routes() {
   const [cities, setCities] = useState([]);
 
   const getTours = async () => {
-    const tourResponse = await axios.get(`${API}/tour`);
-    setTour(tourResponse.data);
+    try {
+      const tourResponse = await axios.get(`${API}/tour`);
+      setTour(tourResponse.data);
+    } catch (err) {
+      console.log(err, "err");
+    }
   };
 
   const getCountries = async () => {
-    const countryResponse = await axios.get(`${API}/country`);
-    setCountries(countryResponse.data);
+    try {
+      const countryResponse = await axios.get(`${API}/country`);
+      setCountries(countryResponse.data);
+    } catch (err) {
+      console.log(err, "err");
+    }
   };
   const getCities = async () => {
-    const cityResponse = await axios.get(`${API}/city`);
-    setCities(cityResponse.data);
+    try {
+      const cityResponse = await axios.get(`${API}/city`);
+      setCities(cityResponse.data);
+    } catch (err) {
+      console.log(err, "err");
+    }
   };
 
   useEffect(() => {
     getCities();
+  }, []);
+  useEffect(() => {
     getCountries();
+  }, []);
+  useEffect(() => {
     getTours();
   }, []);
 
