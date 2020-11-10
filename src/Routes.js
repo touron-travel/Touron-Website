@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import About from "./About components/About";
 import HowItWorks from "./How it works components/How-it-works";
@@ -14,7 +14,7 @@ import Footer from "./Home components/Footer/Footer";
 
 export default function Routes() {
   return (
-    <BrowserRouter>
+    <Router>
       <div className="nav">
         <Navbar />
       </div>
@@ -32,6 +32,6 @@ export default function Routes() {
       <div className="footer">
         <Footer />
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
