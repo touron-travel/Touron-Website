@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import { ApiContext } from "./Context/ApiContext";
 import Categories from "./Home components/Categories/Categories";
-import Footer from "./Home components/Footer/Footer";
 import Form from "./Home components/Form components/Form";
-import Navbar from "./Home components/Navbar/Navbar";
 import PopularCountries from "./Home components/PopularCountries/PopularCountries";
 import PopularTours from "./Home components/PopularTours/PopularTours";
 import SliderImage from "./Home components/Slider/SliderImage";

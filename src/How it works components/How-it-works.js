@@ -1,9 +1,7 @@
 import React from "react";
-import Navbar from "../Home components/Navbar/Navbar";
 import "./How-it-works.css";
 import { Link } from "react-router-dom";
 import Tourplan from "./Tourplan";
-import Footer from "../Home components/Footer/Footer";
 
 export default function HowItWorks() {
   return (

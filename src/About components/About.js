@@ -1,7 +1,5 @@
 import React from "react";
 import "./About.css";
-import Navbar from "../Home components/Navbar/Navbar";
-import Footer from "../Home components/Footer/Footer";
 // import bg from "../assests/bg_3.jpg";
 import intro from "../assests/intro.png";
 import stats_1 from "../assests/stats_1.png";

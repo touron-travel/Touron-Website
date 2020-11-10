@@ -1,9 +1,7 @@
 import React from "react";
 import "./Popular_countries.css";
-import Navbar from "./Home components/Navbar/Navbar";
 import { Link } from "react-router-dom";
 import countryimg from "./assests/country.jpg";
-import Footer from "./Home components/Footer/Footer";
 
 export default function Popular_countries() {
   return (
