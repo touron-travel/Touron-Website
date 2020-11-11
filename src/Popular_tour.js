@@ -10,32 +10,37 @@ import Popular_tourTile from "./Popular_tourTile";
 import { ApiContext } from "./Context/ApiContext";
 
 export default function Popular_tour() {
-  const { tours, countries, cities } = useContext(ApiContext);
+  const { cities, tours, countries } = useContext(ApiContext);
+  console.log(tours.length, cities.length, "bf");
   const [tour, setTour] = useState(tours);
+  console.log(tour.length, "a");
   const location = useLocation();
   const [cityName, setCityName] = useState("");
+  const [cityNames, setCityNames] = useState([]);
+  console.log(cityNames, "k");
 
-  const getCity = () => {
-    return cities.filter((c) => {
-      if (c.countryName === "Australia") return c.cityName;
-    });
-  };
-
-  // const setCityName = () => {
-  //   setCityName("Galle");
-  // };
-  const getCityTours = async () => {
-    const cityTourResponse = await axios.get(
-      `${API}/tour/cityname/${location.cityName}`
-    );
-    console.log(cityTourResponse.data, "cityTOurs");
+  const getCityTours = async (name) => {
+    console.log(name, "name");
+    // if (name == "") {
+    //   const cityTourResponse = await axios.get(
+    //     `${API}/tour/cityname/${location.cityName}`
+    //   );
+    //   console.log(cityTourResponse.data, "citytour");
+    //   setTour(cityTourResponse.data);
+    // }
+    const cityTourResponse = await axios.get(`${API}/tour/cityname/${name}`);
+    console.log(cityTourResponse.data, "citytour");
     setTour(cityTourResponse.data);
   };
 
+  const getCityNames = async (name) => {
+    const cityName = await axios.get(`${API}/city/countryname/${name}`);
+    console.log(cityName.data, "name");
+    setCityNames(cityName.data);
+  };
   useEffect(() => {
-    getCityTours();
-    console.log(getCity(), "test");
-  }, [cityName]);
+    getCityTours(location.cityName);
+  }, []);
 
   return (
     <>
@@ -93,7 +98,13 @@ export default function Popular_tour() {
           {countries.map((country, index) => {
             if (index < 9)
               return (
-                <div className="popscity">
+                <div
+                  className="popscity"
+                  key={index}
+                  onClick={() => {
+                    getCityNames(country.countryName);
+                  }}
+                >
                   <img className="poptour-img" src={country.imageUrl} alt="" />
                   <p className="popcity">{country.countryName}</p>
                 </div>
@@ -101,6 +112,20 @@ export default function Popular_tour() {
           })}
         </div>
       </div>
+
+      {cityNames.map((c, index) => {
+        return (
+          <div className="poptour_section" key={index}>
+            <h1
+              onClick={() => {
+                getCityTours(c.cityName);
+              }}
+            >
+              {c.cityName}
+            </h1>
+          </div>
+        );
+      })}
       <div className="poptour_section">
         <div>
           <div className="poptour-api">

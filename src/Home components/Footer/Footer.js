@@ -12,68 +12,86 @@ import MailIcon from "@material-ui/icons/Mail";
 export default function Footer() {
   return (
     <>
-
-
-    <div className="footer">
-      <div className="footnav">
-        <div className="navigation">
-        <ul className="footnav-area">
-          <li className="footnav-items">
-           <Link to="/" className="footnav-links">
-               Home  
-             </Link> 
-          </li>
-          <li className="footnav-items">
-          <Link to="/" className="footnav-links">
-               About 
-             </Link> 
-          </li>
-          <li className="footnav-items">
-          <Link to="/" className="footnav-links">
-               How it Works  
-             </Link> 
-          </li>
-          <li className="footnav-items">
-          <Link to="/" className="footnav-links">
-               Contact  
-             </Link> 
-          </li>
-          <li className="footnav-items">
-          <Link to="/" className="footnav-links">
-               Destination Guide  
-             </Link> 
-          </li>
-          <li className="footnav-items">
-          <Link to="/" className="footnav-links">
-               Login/Register 
-             </Link> 
-          </li>
-        </ul>
-        </div>
-        <div className="social-icons">
-          <div className="icons">
-            <p>
-              <a href="https://www.instagram.com/touronholidays/" target="_blank" className="instagram">
-                <InstagramIcon />
-              </a>
-            </p>
-            <p>
-              <a href="https://www.facebook.com/touronholidays/" target="_blank" className="facebook">
-                <FacebookIcon />
-              </a>
-            </p>
-            <p>
-              <a href="https://www.twitter.com/touronholidays/" target="_blank" className="twitter">
-                <TwitterIcon />
-              </a>
-            </p>
-            <p>
-              <a href="mailto:hello@touron.in" target="_blank" className="mail">
-                <MailIcon />
-              </a>
-            </p>
+      <div className="footer">
+        <div className="footnav">
+          <div className="navigation">
+            <ul className="footnav-area">
+              <li className="footnav-items">
+                <Link to="/" className="footnav-links">
+                  Home
+                </Link>
+              </li>
+              <li className="footnav-items">
+                <Link to="/" className="footnav-links">
+                  About
+                </Link>
+              </li>
+              <li className="footnav-items">
+                <Link to="/" className="footnav-links">
+                  How it Works
+                </Link>
+              </li>
+              <li className="footnav-items">
+                <Link to="/" className="footnav-links">
+                  Contact
+                </Link>
+              </li>
+              <li className="footnav-items">
+                <Link to="/" className="footnav-links">
+                  Destination Guide
+                </Link>
+              </li>
+              <li className="footnav-items">
+                <Link to="/" className="footnav-links">
+                  Login/Register
+                </Link>
+              </li>
+            </ul>
           </div>
-        </div>
+          <div className="social-icons">
+            <div className="icons">
+              <p>
+                <a
+                  href="https://www.instagram.com/touronholidays/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="instagram"
+                >
+                  <InstagramIcon />
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.facebook.com/touronholidays/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="facebook"
+                >
+                  <FacebookIcon />
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://www.twitter.com/touronholidays/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="twitter"
+                >
+                  <TwitterIcon />
+                </a>
+              </p>
+              <p>
+                <a
+                  href="mailto:hello@touron.in"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mail"
+                >
+                  <MailIcon />
+                </a>
+              </p>
+            </div>
+          </div>
         </div>
         <div className="footer-section">
           <div className="book-now">
@@ -184,30 +202,33 @@ export default function Footer() {
               </ul>
             </div>
           </div>
-          
-           <div className="contact">
+
+          <div className="contact">
             <div className="contact-section">
-               <div className="_title">Contact us</div> 
+              <div className="_title">Contact us</div>
               <div className="footer_address">
-                <p><span>Address:</span>tour On</p>
+                <p>
+                  <span>Address:</span>tour On
+                </p>
                 <p>Workafella, Rathha Towers,</p>
                 <p>Tek Meadows - A Block, 4th Floor,</p>
                 <p>Opposite to Accenture, Sholinganallur,</p>
                 <p>OMR, Chennai-119</p>
-                <p><span>Phone:</span>8667801206</p>
+                <p>
+                  <span>Phone:</span>8667801206
+                </p>
               </div>
             </div>
-          </div> 
+          </div>
         </div>
-         <div className="copyrights">
-          <p className="text-center"> &copy; 2020 <span>tour On</span> (A Brand of Lotsatravel Holiday LLP) | All rights reserved.</p>
-        </div> 
-    </div>
-
+        <div className="copyrights">
+          <p className="text-center">
+            {" "}
+            &copy; 2020 <span>tour On</span> (A Brand of Lotsatravel Holiday
+            LLP) | All rights reserved.
+          </p>
+        </div>
+      </div>
     </>
-
-);
+  );
 }
-
-    
- 

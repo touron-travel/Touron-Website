@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 
 export default function PopularTours() {
   const [tour, setTour] = useState([]);
-  console.log(tour, "tour");
 
   useEffect(() => {
     const getTours = async () => {

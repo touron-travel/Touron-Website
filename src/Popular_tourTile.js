@@ -1,5 +1,4 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import "./Popular_tour.css";
 
 export default function Popular_tourTile({ t }) {

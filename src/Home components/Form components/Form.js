@@ -1,26 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Form.css";
-import axios from "axios";
-import { API } from "../../backend";
-import { useEffect, useState } from "react";
+import { ApiContext } from "../../Context/ApiContext";
 
 export default function Form() {
-  const [country, setCountry] = useState([]);
-
-  console.log(country, "country");
-
-  useEffect(() => {
-    const getCountry = async () => {
-      await axios
-        .get(`${API}/country`)
-        .then((res) => {
-          setCountry(res.data);
-        })
-        .catch((err) => console.log(err, "File missing"));
-    };
-
-    getCountry();
-  }, []);
+  const { countries } = useContext(ApiContext);
 
   return (
     <div className="search_form">
@@ -39,7 +22,7 @@ export default function Form() {
           <label>Country Name</label>
           <div className="select_search">
             <select>
-              {country.map((c, index) => {
+              {countries.map((c, index) => {
                 return (
                   <option key={index} value={c.countryName}>
                     {c.countryName}
