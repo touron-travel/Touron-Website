@@ -9,6 +9,8 @@ export default function SliderImage() {
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: true,
+    dots: true,
   };
 
   return (

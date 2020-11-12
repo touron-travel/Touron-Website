@@ -33,13 +33,27 @@ export default function Popular_tour() {
     setTour(cityTourResponse.data);
   };
 
+  const categoryTours = async (category, idealtype, tourtype) => {
+    console.log(category, idealtype, tourtype);
+    const tourResponse = await axios.get(
+      `${API}/filtertour?tourCategory=${category}&idealType=${idealtype}&tourType=${tourtype}`
+    );
+    console.log(tourResponse.data, "res");
+    setTour(tourResponse.data);
+  };
+
   const getCityNames = async (name) => {
     const cityName = await axios.get(`${API}/city/countryname/${name}`);
     console.log(cityName.data, "name");
     setCityNames(cityName.data);
   };
   useEffect(() => {
-    getCityTours(location.cityName);
+    console.log(location.cityName, "lo");
+    if (location.cityName == undefined) {
+      getCityTours("Singapore");
+    } else {
+      getCityTours(location.cityName);
+    }
   }, []);
 
   return (
@@ -113,19 +127,34 @@ export default function Popular_tour() {
         </div>
       </div>
 
-      {cityNames.map((c, index) => {
-        return (
-          <div className="poptour_section" key={index}>
+      <div
+        style={{
+          display: "flex",
+          backgroundColor: "black",
+          flexDirection: "row",
+          border: 2 || "solid" || "red",
+        }}
+      >
+        {cityNames.map((c, index) => {
+          return (
             <h1
+              key={index}
+              style={{
+                color: "#fff",
+                marginRight: 10,
+                borderRadius: 10,
+                borderWidth: 2,
+                borderColor: "white",
+              }}
               onClick={() => {
                 getCityTours(c.cityName);
               }}
             >
               {c.cityName}
             </h1>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
       <div className="poptour_section">
         <div>
           <div className="poptour-api">
@@ -134,7 +163,7 @@ export default function Popular_tour() {
             ) : (
               <>
                 {tour.map((t, index) => {
-                  if (index < 4) return <Popular_tourTile t={t} key={index} />;
+                  return <Popular_tourTile t={t} key={index} />;
                 })}
               </>
             )}
@@ -159,12 +188,37 @@ export default function Popular_tour() {
             <div className="tour_category-title">Tour Category</div>
             <div className="tour_category-list">
               <ul>
-                <li>Outdoor Activities</li>
-                <li>City Tours</li>
-                <li>Cultural & Thematic Tours</li>
-                <li>Indulgence & Luxury Tours</li>
-                <li>Family Friendly Tours</li>
-                <li>Holiday & Seasonal Tours</li>
+                <li onClick={() => categoryTours("Activities", "", "")}>
+                  Outdoor Activities
+                </li>
+                <li onClick={() => categoryTours("Hop On and Off", "", "")}>
+                  Hop On and Off
+                </li>
+                <li onClick={() => categoryTours("Attraction", "", "")}>
+                  Attraction
+                </li>
+                <li onClick={() => categoryTours("Learning", "", "")}>
+                  Learning
+                </li>
+                <li onClick={() => categoryTours("", "Family and kids", "")}>
+                  Family and kids
+                </li>
+                <li onClick={() => categoryTours("", "Young Couple", "")}>
+                  Young Couple
+                </li>
+                <li onClick={() => categoryTours("", "Solo", "")}>Solo</li>
+                <li onClick={() => categoryTours("", "Mature Couple", "")}>
+                  Mature Couple
+                </li>
+                <li onClick={() => categoryTours("", "", "Full Day Tour")}>
+                  Full Day Tour
+                </li>
+                <li onClick={() => categoryTours("", "", "Half Day Tour")}>
+                  Half Day Tour
+                </li>
+                <li onClick={() => categoryTours("", "", "Night Tour")}>
+                  Night Tour
+                </li>
               </ul>
             </div>
           </div>
