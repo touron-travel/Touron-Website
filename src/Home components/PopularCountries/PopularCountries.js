@@ -33,10 +33,10 @@ export default function PopularCountries() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis,
               nesciunt.Lorem ipsum dolor sit amet consectetur.
             </p>
-            <Link to="/popular_tour">
-              <p className="countryview">View all tours</p>
-            </Link>
           </div>
+          <Link className="plink" to="/popular_tour">
+            <p className="countryview">View all tours</p>
+          </Link>
         </div>
         <div className="country_content1">
           <div className="country_img">
@@ -51,10 +51,10 @@ export default function PopularCountries() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis,
               nesciunt.Lorem ipsum dolor sit amet consectetur.
             </p>
-            <Link to="/popular_tour">
-              <p className="countryview">View all tours</p>
-            </Link>
           </div>
+          <Link className="plink" to="/popular_tour">
+            <p className="countryview">View all tours</p>
+          </Link>
         </div>
         <div className="country_content1">
           <div className="country_img">
@@ -69,10 +69,10 @@ export default function PopularCountries() {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis,
               nesciunt.Lorem ipsum dolor sit amet consectetur.
             </p>
-            <Link to="/popular_tour">
-              <p className="countryview">View all tours</p>
-            </Link>
           </div>
+          <Link className="plink" to="/popular_tour">
+            <p className="countryview">View all tours</p>
+          </Link>
         </div>
       </div>
     </div>

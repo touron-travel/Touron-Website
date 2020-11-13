@@ -1,5 +1,5 @@
 .Popular_tours {
-  background-image: url(./assests/header5.jpg);
+  background-image: url(../assests/header5.jpg);
   width: 100%;
   height: 120vh;
   background-size: cover;
@@ -113,13 +113,13 @@
   justify-content: space-between;
 }
 .poptour_trends {
-  width: 766px;
-  height: 430px;
+  width: 95%;
+  height: 480px;
   margin-bottom: 20px;
 }
 .poptour_img {
-  width: 766px;
-  height: 430px;
+  width: 100%;
+  height: 480px;
   border-radius: 20px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
 }

@@ -2,12 +2,12 @@ import React from "react";
 import { useEffect, useState, useContext } from "react";
 import "./Popular_tour.css";
 import axios from "axios";
-import { API } from "./backend";
+import { API } from "../backend";
 import { Link, useLocation } from "react-router-dom";
-import latest_tour1 from "./assests/sidebar7.jpg";
-import article_img from "./assests/sidebar5.jpg";
+import latest_tour1 from "../assests/sidebar7.jpg";
+import article_img from "../assests/sidebar5.jpg";
+import { ApiContext } from "../Context/ApiContext";
 import Popular_tourTile from "./Popular_tourTile";
-import { ApiContext } from "./Context/ApiContext";
 
 export default function Popular_tour() {
   const { cities, tours, countries } = useContext(ApiContext);
@@ -21,13 +21,7 @@ export default function Popular_tour() {
 
   const getCityTours = async (name) => {
     console.log(name, "name");
-    // if (name == "") {
-    //   const cityTourResponse = await axios.get(
-    //     `${API}/tour/cityname/${location.cityName}`
-    //   );
-    //   console.log(cityTourResponse.data, "citytour");
-    //   setTour(cityTourResponse.data);
-    // }
+
     const cityTourResponse = await axios.get(`${API}/tour/cityname/${name}`);
     console.log(cityTourResponse.data, "citytour");
     setTour(cityTourResponse.data);
@@ -163,7 +157,7 @@ export default function Popular_tour() {
             ) : (
               <>
                 {tour.map((t, index) => {
-                  return <Popular_tourTile t={t} key={index} />;
+                  if (index < 4) return <Popular_tourTile t={t} key={index} />;
                 })}
               </>
             )}

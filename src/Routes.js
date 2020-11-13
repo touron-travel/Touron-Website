@@ -7,7 +7,7 @@ import Contact from "./Contact components/Contact";
 import Destination from "./Destination components/Destination";
 import Login from "./Login components/Login";
 import signup from "./Login components/signup";
-import Popular_tour from "./Popular_tour";
+import Popular_tour from "./Tours page/Popular_tour";
 import Popular_countries from "./Popular_countries";
 import Navbar from "./Home components/Navbar/Navbar";
 import Footer from "./Home components/Footer/Footer";
@@ -24,6 +24,7 @@ export default function Routes() {
     try {
       const tourResponse = await axios.get(`${API}/tour`);
       setTour(tourResponse.data);
+      console.log(tourResponse.data);
     } catch (err) {
       console.log(err, "err");
     }

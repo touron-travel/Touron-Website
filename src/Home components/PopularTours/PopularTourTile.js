@@ -7,7 +7,9 @@ export default function PopularTourTile({ t }) {
   return (
     <div className="poptour1">
       <div className="trends">
-        <img className="pop-image" src={t.imageUrl} alt="" />
+        <div className="crop-bottom">
+          <img className="pop-image" src={t.imageUrl} alt="" />
+        </div>
         <div className="tour-details">
           <Link to="" className="link">
             <h3 className="title">{t.tourName}</h3>

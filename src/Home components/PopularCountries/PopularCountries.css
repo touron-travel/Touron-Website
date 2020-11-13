@@ -1,6 +1,5 @@
 .country {
   padding: 40px 40px;
-  height: 130vh;
   background-color: #f7f7f7;
 }
 .country-header {
@@ -45,7 +44,6 @@
 }
 .country_content1 {
   background-color: #fff;
-  height: 460px;
   width: 31%;
   border-radius: 10px;
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
@@ -57,9 +55,9 @@
 }
 .countryk {
   box-sizing: border-box;
-  padding: 0px 36px 25px;
-  position: relative;
-  top: -20px;
+  padding: 0px 36px 15px;
+  /* position: relative;
+  top: -20px;*/
 }
 .countryname {
   font-size: 28px;
@@ -85,6 +83,11 @@
   font-family: "Roboto", sans-serif;
   color: #3e4559;
   margin: 0;
+  border-top: 1px solid #e6e6e6;
+  padding: 20px 0px;
+}
+.countryview:hover {
+  text-decoration: none;
 }
 .countryflag img {
   width: 62px;
