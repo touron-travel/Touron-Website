@@ -8,7 +8,7 @@ import Destination from "./Destination components/Destination";
 import Login from "./Login components/Login";
 import signup from "./Login components/signup";
 import Popular_tour from "./Tours page/Popular_tour";
-import Popular_countries from "./Popular_countries";
+import Popular_countries from "./Country Page/Popular_countries";
 import Navbar from "./Home components/Navbar/Navbar";
 import Footer from "./Home components/Footer/Footer";
 import axios from "axios";

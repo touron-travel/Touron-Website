@@ -1,7 +1,7 @@
 import React from "react";
 import "./Popular_countries.css";
 import { Link } from "react-router-dom";
-import countryimg from "./assests/country.jpg";
+import countryimg from "../assests/country.jpg";
 
 export default function Popular_countries() {
   return (
