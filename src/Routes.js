@@ -24,7 +24,7 @@ export default function Routes() {
     try {
       const tourResponse = await axios.get(`${API}/tour`);
       setTour(tourResponse.data);
-      console.log(tourResponse.data);
+      // console.log(tourResponse.data);
     } catch (err) {
       console.log(err, "err");
     }

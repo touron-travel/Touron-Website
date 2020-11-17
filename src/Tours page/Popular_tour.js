@@ -10,45 +10,48 @@ import { ApiContext } from "../Context/ApiContext";
 import Popular_tourTile from "./Popular_tourTile";
 
 export default function Popular_tour() {
-  const { cities, tours, countries } = useContext(ApiContext);
-  console.log(tours.length, cities.length, "bf");
-  const [tour, setTour] = useState(tours);
-  console.log(tour.length, "a");
+  const { countries } = useContext(ApiContext);
+  const [tour, setTour] = useState([]);
   const location = useLocation();
   const [cityName, setCityName] = useState("");
   const [cityNames, setCityNames] = useState([]);
-  console.log(cityNames, "k");
-
+  const [tourLength, setTourLength] = useState(0);
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(4);
+  const [tourShown, setTourShown] = useState(4);
+  // console.log(page, tourShown, tourLength, "page");
   const getCityTours = async (name) => {
-    console.log(name, "name");
-
-    const cityTourResponse = await axios.get(`${API}/tour/cityname/${name}`);
-    console.log(cityTourResponse.data, "citytour");
+    console.log(page, "inside");
+    const cityTourResponse = await axios.get(
+      `${API}/tour/cityname/${name}?page=${page}&pageSize=${pageSize}`
+    );
+    const cityTourLength = await axios.get(`${API}/tour/cityname/${name}`);
+    setTourLength(cityTourLength.data.length);
+    // console.log(cityTourResponse.data.length, "citytour");
     setTour(cityTourResponse.data);
   };
 
   const categoryTours = async (category, idealtype, tourtype) => {
-    console.log(category, idealtype, tourtype);
     const tourResponse = await axios.get(
       `${API}/filtertour?tourCategory=${category}&idealType=${idealtype}&tourType=${tourtype}`
     );
-    console.log(tourResponse.data, "res");
     setTour(tourResponse.data);
   };
 
   const getCityNames = async (name) => {
     const cityName = await axios.get(`${API}/city/countryname/${name}`);
-    console.log(cityName.data, "name");
     setCityNames(cityName.data);
   };
   useEffect(() => {
-    console.log(location.cityName, "lo");
-    if (location.cityName == undefined) {
-      getCityTours("Singapore");
-    } else {
+    if (location.cityName !== undefined) {
       getCityTours(location.cityName);
+      setCityName(location.cityName);
     }
   }, []);
+
+  useEffect(() => {
+    if (location.cityName === undefined) getCityTours(cityName);
+  }, [page]);
 
   return (
     <>
@@ -110,6 +113,9 @@ export default function Popular_tour() {
                   className="popscity"
                   key={index}
                   onClick={() => {
+                    setPage(1);
+                    setPageSize(4);
+                    setTourShown(4);
                     getCityNames(country.countryName);
                   }}
                 >
@@ -120,62 +126,66 @@ export default function Popular_tour() {
           })}
         </div>
       </div>
-
-      <div
-        style={{
-          display: "flex",
-          backgroundColor: "black",
-          flexDirection: "row",
-          border: 2 || "solid" || "red",
-        }}
-      >
+      <div className="cityname_container ">
         {cityNames.map((c, index) => {
           return (
-            <h1
+            <h4
+              className={cityName == c.cityName ? "active" : ""}
               key={index}
-              style={{
-                color: "#fff",
-                marginRight: 10,
-                borderRadius: 10,
-                borderWidth: 2,
-                borderColor: "white",
-              }}
               onClick={() => {
+                setPage(1);
+                setPageSize(4);
                 getCityTours(c.cityName);
+                setCityName(c.cityName);
               }}
             >
               {c.cityName}
-            </h1>
+            </h4>
           );
         })}
       </div>
+
       <div className="poptour_section">
         <div>
           <div className="poptour-api">
-            {tour.length == 0 ? (
-              <h1>Tours not Found</h1>
+            {tour.length == 0 && page == 1 ? (
+              <h1>Tours not Found for {cityName}</h1>
             ) : (
               <>
                 {tour.map((t, index) => {
-                  if (index < 4) return <Popular_tourTile t={t} key={index} />;
+                  return <Popular_tourTile t={t} key={index} />;
                 })}
               </>
             )}
           </div>
-          <div className="pageno_flex">
-            <div className="pageno_icon">
-              <i className="fa fa-chevron-left"></i>
+          {tour.length === 0 || tourLength == 4 || tourLength <= 4 ? null : (
+            <div className="pageno_flex">
+              <div className="previous">
+                <div
+                  className="prev_icon"
+                  onClick={() => {
+                    setPage(page - 1);
+                    setTourShown(tourShown - 4);
+                  }}
+                >
+                  <i className="fa fa-chevron-left"></i>
+                </div>
+              </div>
+              {tourShown >= tourLength ? null : (
+                <div className="next">
+                  <div
+                    className="next_icon"
+                    onClick={() => {
+                      setPage(page + 1);
+                      setTourShown(tourShown + 4);
+                    }}
+                  >
+                    <i className="fa fa-chevron-right"></i>
+                  </div>
+                </div>
+              )}
             </div>
-            <div className="pageno">
-              <p>1</p>
-              <p>2</p>
-              <p>3</p>
-              <p>4</p>
-            </div>
-            <div className="pageno_icon">
-              <i className="fa fa-chevron-right"></i>
-            </div>
-          </div>
+          )}
         </div>
         <div>
           <div className="tour_category">
@@ -258,25 +268,6 @@ export default function Popular_tour() {
                 </div>
               </div>
               <div className="latest_tour-item">
-                <div>
-                  <img
-                    className="latest_tour-image"
-                    src={latest_tour1}
-                    alt=""
-                  />
-                </div>
-                <div>
-                  <div className="latest_title">A tour of the Islands</div>
-                  <div className="latest_cost">$3,500</div>
-                  <div className="latest_days">
-                    <span>
-                      <i className="far fa-clock"></i>
-                    </span>
-                    <span className="latest_plan">7 days</span>
-                  </div>
-                </div>
-              </div>
-              <div className="latest_tour-item-last">
                 <div>
                   <img
                     className="latest_tour-image"
