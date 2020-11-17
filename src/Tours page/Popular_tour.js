@@ -5,7 +5,7 @@ import axios from "axios";
 import { API } from "../backend";
 import { Link, useLocation } from "react-router-dom";
 import latest_tour1 from "../assests/sidebar7.jpg";
-import article_img from "../assests/sidebar5.jpg";
+import article_img from "../assests/sidebar7.jpg";
 import { ApiContext } from "../Context/ApiContext";
 import Popular_tourTile from "./Popular_tourTile";
 
