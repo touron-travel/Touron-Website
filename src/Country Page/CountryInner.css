@@ -1,0 +1,31 @@
+.countryInner_Details {
+  /* background-color: #000000; */
+}
+.countryInner_image img {
+  width: 100%;
+  height: 350px;
+}
+.countryInner_cities {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cityName_container {
+  /* height: 50px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -25px;
+  background: #ffffff;
+  border-radius: 30px;
+  box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
+}
+.cityName_container h2 {
+  text-align: center;
+  padding: 18px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  margin-bottom: 0;
+}
