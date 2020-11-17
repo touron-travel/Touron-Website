@@ -14,6 +14,7 @@ import Footer from "./Home components/Footer/Footer";
 import axios from "axios";
 import { API } from "./backend";
 import { ApiContext } from "./Context/ApiContext";
+import CountryInner from "./Country Page/CountryInner";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
@@ -73,6 +74,7 @@ export default function Routes() {
           <Route path="/signup" component={signup} />
           <Route path="/popular_tour" component={Popular_tour} />
           <Route path="/popular_countries" component={Popular_countries} />
+          <Route path="/countryinner/:country" component={CountryInner} />
         </Switch>
         <div className="footer">
           <Footer />
