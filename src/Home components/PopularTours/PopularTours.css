@@ -26,15 +26,30 @@
 }
 
 .tour-details p {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.65);
+  font-style: italic;
+  margin-bottom: 18px;
+  line-height: 1.4;
   width: 500px;
-  color: #fff;
+  font-family: "Roboto", sans-serif;
+  /*  color: #fff;
   justify-content: flex-end;
   display: flex;
-  margin: 5px 0px;
+  margin: 5px 0px; */
 }
 
 .tour-details h3 {
-  color: rgb(255, 127, 0);
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+  transition: 0.5s ease;
+}
+.tour-details h3:hover {
+  color: #ff7f00;
 }
 .poptour1 {
   margin: 20px;
@@ -57,13 +72,18 @@
   bottom: 180px;
   padding: 20px;
 }
-
-span {
-  font-size: 20px;
-  color: white;
-  margin: 0 3px;
+.icons {
+  color: #fff;
 }
-
+.ic {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 400;
+  font-family: "Roboto", sans-serif;
+}
+.ig {
+  padding-left: 15px;
+}
 .link {
   text-decoration: none;
 }
@@ -76,7 +96,7 @@ span {
   display: flex;
 }
 
-.icons {
+.days .icons {
   padding: 0px;
 }
 .ptour h4 {

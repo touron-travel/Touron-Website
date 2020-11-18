@@ -19,9 +19,11 @@ export default function PopularTourTile({ t }) {
             <span className="icons">
               <AccessTimeIcon />
             </span>
-            <span>{t.tourDuration}</span>
-            <span>/</span>
-            <span>{t.tourType}</span>
+            <div className="ig">
+              <span className="ic">{t.tourDuration}</span>
+              <span className="ic">/</span>
+              <span className="ic">{t.tourType}</span>
+            </div>
           </div>
         </div>
       </div>

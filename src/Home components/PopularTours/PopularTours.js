@@ -385,7 +385,7 @@ export default function PopularTours() {
 
   var settings = {
     infinite: true,
-    autoplay: true,
+    // autoplay: true,
     speed: 1000,
     arrows: false,
     slidesToShow: 2,
