@@ -1,11 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Top_destination.css";
 import TopdestinationTile from "./Top_destinationTile";
-import { ApiContext } from "../../Context/ApiContext";
 
 export default function Top_destination() {
-  // const { cities } = useContext(ApiContext);
-
   const cities = [
     {
       coordinates: {

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import "./PopularTours.css";
-import axios from "axios";
-import { API } from "../../backend";
 import PopularTourTile from "./PopularTourTile";
 import home1 from "../../assests/home1.jpg";
 import home2 from "../../assests/home2.jpg";
@@ -401,7 +399,10 @@ export default function PopularTours() {
           </h2>
         </div>
         <div>
-          <Link to="/popular_tour" className="plink">
+          <Link
+            to={{ pathname: "/popular_tour", cityName: "Singapore" }}
+            className="popular_link"
+          >
             <div className="ptour">
               <h4>View all tours</h4>
             </div>

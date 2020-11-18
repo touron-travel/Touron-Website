@@ -14,6 +14,7 @@ export default function Popular_tour() {
   const [tour, setTour] = useState([]);
   const location = useLocation();
   const [cityName, setCityName] = useState("");
+  const [countryName, setCountryName] = useState("");
   const [cityNames, setCityNames] = useState([]);
   const [tourLength, setTourLength] = useState(0);
   const [page, setPage] = useState(1);
@@ -45,18 +46,19 @@ export default function Popular_tour() {
   useEffect(() => {
     if (location.cityName !== undefined) {
       getCityTours(location.cityName);
-      setCityName(location.cityName);
+    } else {
+      getCityTours("Singapore");
     }
   }, []);
 
   useEffect(() => {
-    if (location.cityName === undefined) getCityTours(cityName);
+    if (cityName !== "") getCityTours(cityName);
   }, [page]);
 
   return (
     <>
       <div className="Popular_tours">
-        <div className="pophome">
+        {/* <div className="pophome">
           <Link to="/" className="pophome1">
             Home
           </Link>
@@ -64,7 +66,7 @@ export default function Popular_tour() {
           <Link to="#" className="defaulthome">
             Most popular holiday tours
           </Link>
-        </div>
+        </div> */}
         <div className="pop_title_search">
           <div className="poptitle">Search Tours</div>
           <div className="popsearch">
@@ -116,35 +118,48 @@ export default function Popular_tour() {
                     setPage(1);
                     setPageSize(4);
                     setTourShown(4);
+                    setCountryName(country.countryName);
                     getCityNames(country.countryName);
                   }}
                 >
                   <img className="poptour-img" src={country.imageUrl} alt="" />
-                  <p className="popcity">{country.countryName}</p>
+                  <p
+                    className="popcity"
+                    style={{
+                      color:
+                        countryName === country.countryName
+                          ? "#db6500"
+                          : "#fff",
+                    }}
+                  >
+                    {country.countryName}
+                  </p>
                 </div>
               );
           })}
         </div>
       </div>
-      <div className="cityname_container ">
-        {cityNames.map((c, index) => {
-          return (
-            <h4
-              className={cityName == c.cityName ? "active" : ""}
-              key={index}
-              onClick={() => {
-                setPage(1);
-                setPageSize(4);
-                getCityTours(c.cityName);
-                setCityName(c.cityName);
-              }}
-            >
-              {c.cityName}
-            </h4>
-          );
-        })}
-      </div>
 
+      {cityNames.length === 0 ? null : (
+        <div className="cityname_container ">
+          {cityNames.map((c, index) => {
+            return (
+              <h4
+                className={cityName == c.cityName ? "active" : ""}
+                key={index}
+                onClick={() => {
+                  setPage(1);
+                  setPageSize(4);
+                  getCityTours(c.cityName);
+                  setCityName(c.cityName);
+                }}
+              >
+                {c.cityName}
+              </h4>
+            );
+          })}
+        </div>
+      )}
       <div className="poptour_section">
         <div>
           <div className="poptour-api">
