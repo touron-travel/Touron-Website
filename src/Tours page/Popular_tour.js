@@ -8,6 +8,7 @@ import latest_tour1 from "../assests/sidebar7.jpg";
 import article_img from "../assests/sidebar7.jpg";
 import { ApiContext } from "../Context/ApiContext";
 import Popular_tourTile from "./Popular_tourTile";
+import Slider from "react-slick";
 
 export default function Popular_tour() {
   const { countries } = useContext(ApiContext);
@@ -54,6 +55,15 @@ export default function Popular_tour() {
   useEffect(() => {
     if (cityName !== "") getCityTours(cityName);
   }, [page]);
+
+  var settings = {
+    infinite: true,
+    autoplay: true,
+    speed: 1000,
+    arrows: false,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+  };
 
   return (
     <>
@@ -108,11 +118,16 @@ export default function Popular_tour() {
           </div>
         </div>
         <div className="poptour_item">
+          {/* <Slider {...settings} accessibility pauseOnHover={false}> */}
           {countries.map((country, index) => {
             if (index < 9)
               return (
                 <div
-                  className="popscity"
+                  className={
+                    country.countryName === countryName
+                      ? "popscity_select"
+                      : "popscity"
+                  }
                   key={index}
                   onClick={() => {
                     setPage(1);
@@ -137,6 +152,7 @@ export default function Popular_tour() {
                 </div>
               );
           })}
+          {/* </Slider> */}
         </div>
       </div>
 

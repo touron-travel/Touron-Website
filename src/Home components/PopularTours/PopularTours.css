@@ -107,7 +107,9 @@
   color: #fff;
 }
 .ptour h4:hover {
-  background-color: rgba(255, 255, 255, 0.36);
+  background-color: #8d4fff;
+
+  /* background-color: rgba(255, 255, 255, 0.36); */
 }
 .ptour h4 {
   font-size: 16px;
