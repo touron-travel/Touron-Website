@@ -56,7 +56,6 @@ export default function Popular_tour() {
     if (cityName !== "") getCityTours(cityName);
   }, [page]);
 
-
   return (
     <>
       <div className="Popular_tours">
@@ -110,7 +109,6 @@ export default function Popular_tour() {
           </div>
         </div>
         <div className="poptour_item">
-
           {countries.map((country, index) => {
             if (index > 8 && index < 17)
               return (
@@ -180,7 +178,17 @@ export default function Popular_tour() {
             ) : (
               <>
                 {tour.map((t, index) => {
-                  return <Popular_tourTile t={t} key={index} />;
+                  return (
+                    <Link
+                      className="plink"
+                      to={{
+                        pathname: `/tourdetails/${t._id}`,
+                        tour: t,
+                      }}
+                    >
+                      <Popular_tourTile t={t} key={index} />
+                    </Link>
+                  );
                 })}
               </>
             )}

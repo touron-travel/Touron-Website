@@ -417,11 +417,11 @@ export default function PopularTours() {
                 <Link
                   className="plink"
                   to={{
-                    pathname: `/tourdetails/${t.countryName}`,
+                    pathname: `/tourdetails/${t._id}`,
                     tour: t,
                   }}
                 >
-                  <PopularTourTile t={t} key={index} />;
+                  <PopularTourTile t={t} key={index} />
                 </Link>
               );
             })}
