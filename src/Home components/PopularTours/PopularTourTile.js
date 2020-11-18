@@ -11,9 +11,7 @@ export default function PopularTourTile({ t }) {
           <img className="pop-image" src={t.imageUrl} alt="" />
         </div>
         <div className="tour-details">
-          <Link to="" className="link">
-            <h3 className="title">{t.tourName}</h3>
-          </Link>
+          <h3 className="title">{t.tourName}</h3>
           <p className="description">{t.aboutTour.slice(0, 100)}</p>
           <div className="days">
             <span className="icons">
