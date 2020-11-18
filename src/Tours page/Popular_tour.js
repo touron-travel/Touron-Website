@@ -56,35 +56,6 @@ export default function Popular_tour() {
     if (cityName !== "") getCityTours(cityName);
   }, [page]);
 
-  const SampleNextArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "red" }}
-        onClick={onClick}
-      />
-    );
-  };
-
-  const SamplePrevArrow = (props) => {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "block", background: "green" }}
-        onClick={onClick}
-      />
-    );
-  };
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 1,
-  };
 
   return (
     <>
@@ -139,12 +110,16 @@ export default function Popular_tour() {
           </div>
         </div>
         <div className="poptour_item">
-          {/* <Slider {...settings}> */}
+
           {countries.map((country, index) => {
             if (index > 8 && index < 17)
               return (
                 <div
-                  className="popscity"
+                  className={
+                    country.countryName === countryName
+                      ? "popscity_select"
+                      : "popscity"
+                  }
                   key={index}
                   onClick={() => {
                     setPage(1);

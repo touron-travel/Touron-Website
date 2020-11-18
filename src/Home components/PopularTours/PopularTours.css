@@ -108,9 +108,11 @@
   color: #fff;
 }
 .ptour h4:hover {
+
   /* background-color: rgba(255, 255, 255, 0.36); */
   background: linear-gradient(to right, #fa9e1b, #a719ca, #8d4fff);
   border: none;
+
 }
 .ptour h4 {
   font-size: 16px;
