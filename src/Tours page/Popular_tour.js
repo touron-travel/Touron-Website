@@ -8,6 +8,7 @@ import latest_tour1 from "../assests/sidebar7.jpg";
 import article_img from "../assests/sidebar7.jpg";
 import { ApiContext } from "../Context/ApiContext";
 import Popular_tourTile from "./Popular_tourTile";
+import Slider from "react-slick";
 
 export default function Popular_tour() {
   const { countries } = useContext(ApiContext);
@@ -54,6 +55,36 @@ export default function Popular_tour() {
   useEffect(() => {
     if (cityName !== "") getCityTours(cityName);
   }, [page]);
+
+  const SampleNextArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "red" }}
+        onClick={onClick}
+      />
+    );
+  };
+
+  const SamplePrevArrow = (props) => {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "block", background: "green" }}
+        onClick={onClick}
+      />
+    );
+  };
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 1,
+  };
 
   return (
     <>
@@ -108,8 +139,9 @@ export default function Popular_tour() {
           </div>
         </div>
         <div className="poptour_item">
+          {/* <Slider {...settings}> */}
           {countries.map((country, index) => {
-            if (index < 9)
+            if (index > 8 && index < 17)
               return (
                 <div
                   className="popscity"
@@ -137,6 +169,7 @@ export default function Popular_tour() {
                 </div>
               );
           })}
+          {/* </Slider> */}
         </div>
       </div>
 
@@ -145,7 +178,11 @@ export default function Popular_tour() {
           {cityNames.map((c, index) => {
             return (
               <h4
-                className={cityName == c.cityName ? "active" : ""}
+                className={
+                  cityName == c.cityName || cityNames.length == 1
+                    ? "active"
+                    : ""
+                }
                 key={index}
                 onClick={() => {
                   setPage(1);

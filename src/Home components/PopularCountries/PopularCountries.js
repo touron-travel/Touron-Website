@@ -108,16 +108,25 @@ export default function PopularCountries() {
         {popularCountries.map((c) => {
           return (
             <div className="country_content2">
-              <div className="country_img">
-                <img src={c.imageUrl} alt="" />
-              </div>
-              <div className="countryflag">
-                <img src={c.imageUrl} alt="" />
-              </div>
-              <div className="countryk">
-                <div className="countryname">{c.countryName}</div>
-                <p className="countrydesc">{c.aboutCountry.slice(0, 300)}</p>
-              </div>
+              <Link
+                className="plink"
+                to={{
+                  pathname: `/countryinner/${c.countryName}`,
+                  country: c,
+                }}
+              >
+                <div className="country_img">
+                  <img src={c.imageUrl} alt="" />
+                </div>
+                <div className="countryflag">
+                  <img src={c.imageUrl} alt="" />
+                </div>
+                <div className="countryk">
+                  <div className="countryname">{c.countryName}</div>
+                  <p className="countrydesc">{c.aboutCountry.slice(0, 300)}</p>
+                </div>
+              </Link>
+
               <Link className="plink" to="/popular_tour">
                 <p className="countryview">View all tours</p>
               </Link>

@@ -383,8 +383,10 @@ export default function PopularTours() {
 
   var settings = {
     infinite: true,
-    // autoplay: true,
+    autoplay: true,
     speed: 1000,
+    centerMode: true,
+    centerPadding: "100px",
     arrows: false,
     slidesToShow: 2,
     slidesToScroll: 1,
@@ -394,9 +396,7 @@ export default function PopularTours() {
       <div className="tour-slider-header">
         <div className="tour-slider-title">
           <p>popularly</p>
-          <h2>
-            Most popular <br /> holiday tours
-          </h2>
+          <h2>Most popular holiday tours</h2>
         </div>
         <div>
           <Link
@@ -413,7 +413,17 @@ export default function PopularTours() {
         <div className="tour-slider">
           <Slider {...settings} accessibility pauseOnHover={false}>
             {tour.map((t, index) => {
-              return <PopularTourTile t={t} key={index} />;
+              return (
+                <Link
+                  className="plink"
+                  to={{
+                    pathname: `/tourdetails/${t.countryName}`,
+                    tour: t,
+                  }}
+                >
+                  <PopularTourTile t={t} key={index} />;
+                </Link>
+              );
             })}
           </Slider>
         </div>
