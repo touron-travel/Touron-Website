@@ -56,14 +56,6 @@ export default function Popular_tour() {
     if (cityName !== "") getCityTours(cityName);
   }, [page]);
 
-  var settings = {
-    infinite: true,
-    autoplay: true,
-    speed: 1000,
-    arrows: false,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-  };
 
   return (
     <>
@@ -118,9 +110,9 @@ export default function Popular_tour() {
           </div>
         </div>
         <div className="poptour_item">
-          {/* <Slider {...settings} accessibility pauseOnHover={false}> */}
+
           {countries.map((country, index) => {
-            if (index < 9)
+            if (index > 8 && index < 17)
               return (
                 <div
                   className={
@@ -161,7 +153,11 @@ export default function Popular_tour() {
           {cityNames.map((c, index) => {
             return (
               <h4
-                className={cityName == c.cityName ? "active" : ""}
+                className={
+                  cityName == c.cityName || cityNames.length == 1
+                    ? "active"
+                    : ""
+                }
                 key={index}
                 onClick={() => {
                   setPage(1);

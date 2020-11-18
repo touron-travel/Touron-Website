@@ -30,7 +30,9 @@
   transition: ease 0.5s;
 }
 .pcountry:hover {
-  background-color: #cfd1d5;
+  /* background-color: #cfd1d5; */
+  background: linear-gradient(to right, #fa9e1b, #a719ca, #8d4fff);
+  border: none;
 }
 .pcountry h4 {
   font-size: 16px;
