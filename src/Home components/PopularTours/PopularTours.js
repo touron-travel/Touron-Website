@@ -421,7 +421,7 @@ export default function PopularTours() {
                     tour: t,
                   }}
                 >
-                  <PopularTourTile t={t} key={index} />;
+                  <PopularTourTile t={t} key={index} />
                 </Link>
               );
             })}
