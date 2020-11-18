@@ -6,7 +6,7 @@ import PopularTours from "./Home components/PopularTours/PopularTours";
 import SliderImage from "./Home components/Slider/SliderImage";
 import TopDestination from "./Home components/Top Destination/Top_destination";
 import "./Home.css";
-// const tawkTo = require("tawkto-react");
+const tawkTo = require("tawkto-react");
 import tawkTo from "tawkto-react";
 
 export default function Home() {
