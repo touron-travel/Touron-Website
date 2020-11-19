@@ -76,7 +76,7 @@ export default function Routes() {
           <Route path="/popular_tour" component={Popular_tour} />
           <Route path="/popular_countries" component={Popular_countries} />
           <Route path="/countryinner/:country" component={CountryInner} />
-          <Route path="/tourdetails/:tourid" component={TourInner} />
+          <Route path="/tourdetails/:tourname" component={TourInner} />
         </Switch>
         <div className="footer">
           <Footer />

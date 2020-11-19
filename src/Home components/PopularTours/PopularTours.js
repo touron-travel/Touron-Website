@@ -417,8 +417,7 @@ export default function PopularTours() {
                 <Link
                   className="plink"
                   to={{
-                    pathname: `/tourdetails/${t._id}`,
-                    tour: t,
+                    pathname: `/tourdetails/${t.tourName}`,
                   }}
                 >
                   <PopularTourTile t={t} key={index} />
