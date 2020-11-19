@@ -1,52 +1,76 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import "./CountryInner.css";
+import axios from "axios";
+import { API } from "../backend";
 
 const CountryInner = () => {
-  let data = {
-    visa: {
-      onArrival: "Yes",
-      cost: 0,
-    },
-    general: {
-      bestTimeToVisit: [
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ],
-      currency: "Maldivian rufiyaa",
-      timeZone: "-30 min",
-    },
-    _id: "5ef5f055db65dc0017ca6936",
-    countryName: "Maldives",
-    aboutCountry:
-      "The Maldives, officially the Republic of Maldives, is a small island nation in South Asia, located in the Arabian Sea of the Indian Ocean. It lies southwest of Sri Lanka and India, about 1,000 kilometres from the Asian continent",
-    idealDays: "4-5 days",
-    imageUrl:
-      "https://images.pexels.com/photos/3601426/pexels-photo-3601426.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-    weather: "26 to 32",
-    bestPlaces: "Male",
-    __v: 0,
-    createdAt: "2020-08-26T07:54:32.309Z",
-    updatedAt: "2020-09-04T07:17:10.894Z",
+  const { countryname } = useParams();
+  console.log(countryname, "df");
+
+  const [countryDetails, setCountryDetails] = useState({});
+  console.log(countryDetails, "gb");
+
+  const [tourDetails, setTourDetails] = useState([]);
+  console.log(tourDetails, "gt");
+
+  const [cityDetails, setCityDetails] = useState([]);
+  console.log(cityDetails, "ct");
+
+  const getCountries = async () => {
+    try {
+      const countryResponse = await axios.get(`${API}/country/${countryname}`);
+      setCountryDetails(...countryResponse.data);
+      console.log(countryResponse.data, "sd");
+    } catch (err) {
+      console.log(err, "err");
+    }
   };
+  const getCities = async () => {
+    try {
+      const cityResponse = await axios.get(
+        `${API}/city/countryname/${countryname}`
+      );
+      setCityDetails(cityResponse.data);
+      console.log(cityResponse.data, "jh");
+    } catch (err) {
+      console.log(err, "err");
+    }
+  };
+  const getTours = async () => {
+    try {
+      const tourResponse = await axios.get(
+        `${API}/tour/countryname/${countryname}`
+      );
+      setTourDetails(tourResponse.data);
+      console.log(tourResponse.data, "jhjh");
+    } catch (err) {
+      console.log(err, "err");
+    }
+  };
+  useEffect(() => {
+    getCountries();
+    getCities();
+    getTours();
+  }, []);
 
   return (
     <div className="countryInner_Details">
       <div className="countryInner_image">
-        <img src={data.imageUrl} />
+        <img src={countryDetails.imageUrl} />
+        <div className="countryInner_name">
+          <h1>{countryDetails.countryName}</h1>
+        </div>
       </div>
       <div className="countryInner_cities">
         <div className="cityName_container">
-          <a href="#">About</a>
-          <a href="#">Cities</a>
-          <a href="#">Tours</a>
+          <p>About</p>
+          <p>Cities</p>
+          <p>Tours</p>
         </div>
       </div>
       <div className="countryInner_about">
-        <div>
+        <div className="countryInner_aboutLeft">
           <div className="inner_home">
             <div className="icon_home">
               <i className="far fa-home-alt"></i>
@@ -55,7 +79,7 @@ const CountryInner = () => {
               <i className="fa fa-chevron-right"></i>
             </div>
             <div>
-              <span className="inner_title">Singapore</span>
+              <span className="inner_title">{countryDetails.countryName}</span>
             </div>
           </div>
           <div className="inner_about">
@@ -64,21 +88,14 @@ const CountryInner = () => {
             <p className="having">Adventure</p>
           </div>
           <div className="main_about">
-            <div className="inner_name">Singapore</div>
-            <div className="inner_desc">
-              Singapore, is an island city-state off southern Malaysia with a
-              tropical climate and multicultural population that has been a part
-              of Hindu-Buddhist empires. It will be a visual treat to visit
-              Singapore as it is known for its different cultural attractions.
-              Singapore is also famous for the red and gold Buddha tooth relic
-              temple, said to house one of Buddha’s teeth.
-            </div>
+            <div className="inner_name">{countryDetails.countryName}</div>
+            <div className="inner_desc">{countryDetails.aboutCountry}</div>
           </div>
           <div className="available">
             <div className="available_m">
               <div className="available_t">
                 <div>
-                  <i class="fal fa-map-marker-alt"></i>
+                  <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
                   <p className="locat">Places</p>
@@ -87,27 +104,7 @@ const CountryInner = () => {
               </div>
               <div className="available_t">
                 <div>
-                  <i class="fal fa-map-marker-alt"></i>
-                </div>
-                <div>
-                  <p className="locat">Places</p>
-                  <p className="locat">Singapore</p>
-                </div>
-              </div>
-            </div>
-            <div className="available_m">
-              <div className="available_t">
-                <div>
-                  <i class="fal fa-map-marker-alt"></i>
-                </div>
-                <div>
-                  <p className="locat">Places</p>
-                  <p className="locat">Singapore</p>
-                </div>
-              </div>
-              <div className="available_t">
-                <div>
-                  <i class="fal fa-map-marker-alt"></i>
+                  <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
                   <p className="locat">Places</p>
@@ -118,7 +115,7 @@ const CountryInner = () => {
             <div className="available_m">
               <div className="available_t">
                 <div>
-                  <i class="fal fa-map-marker-alt"></i>
+                  <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
                   <p className="locat">Places</p>
@@ -127,7 +124,27 @@ const CountryInner = () => {
               </div>
               <div className="available_t">
                 <div>
-                  <i class="fal fa-map-marker-alt"></i>
+                  <i className="fal fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <p className="locat">Places</p>
+                  <p className="locat">Singapore</p>
+                </div>
+              </div>
+            </div>
+            <div className="available_m">
+              <div className="available_t">
+                <div>
+                  <i className="fal fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <p className="locat">Places</p>
+                  <p className="locat">Singapore</p>
+                </div>
+              </div>
+              <div className="available_t">
+                <div>
+                  <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
                   <p className="locat">Places</p>
@@ -137,7 +154,43 @@ const CountryInner = () => {
             </div>
           </div>
         </div>
-        <div>Content</div>
+        <div className="countryInner_aboutRight">Content</div>
+      </div>
+      <div className="highlights">
+        <div className="highlights_title">
+          <p>Cities</p>
+        </div>
+        <div className="highlights_image-flex">
+          {cityDetails.map((city, index) => (
+            <div className="highlights_image" key={index}>
+              <img src={city.imageUrl} alt="" />
+              <div className="highlights_image-subtitle">{city.cityName}</div>
+            </div>
+          ))}
+        </div>
+        <div className="highlights_about">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
+            sint dicta? Pariatur amet ad voluptas consectetur ducimus officia,
+            distinctio magnam ullam facere facilis maiores laboriosam incidunt,
+            sequi iure commodi fugiat! Lorem ipsum dolor sit amet consectetur,
+            adipisicing elit. Necessitatibus, aspernatur cumque nostrum tempora
+            nulla aliquid laboriosam iure corrupti autem sed doloribus cum
+            accusamus aperiam aut! Exercitationem corporis quo eius illo?
+          </p>
+        </div>
+      </div>
+      <div className="countryInner_tours">
+        <div className="countryInner_tours_title">
+          <p>Tours</p>
+        </div>
+        <div className="countryInner_tours_image-flex">
+          {tourDetails.map((tour, index) => (
+            <div className="countryInner_tours_image" key={index}>
+              <img src={tour.imageUrl} alt="" />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
