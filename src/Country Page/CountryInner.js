@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import "./CountryInner.css";
 
 const CountryInner = () => {
@@ -40,13 +40,13 @@ const CountryInner = () => {
       </div>
       <div className="countryInner_cities">
         <div className="cityName_container">
-          <a href="#">About</a>
-          <a href="#">Cities</a>
-          <a href="#">Tours</a>
+          <p>About</p>
+          <p>Cities</p>
+          <p>Tours</p>
         </div>
       </div>
       <div className="countryInner_about">
-        <div>
+        <div className="countryInner_aboutLeft">
           <div className="inner_home">
             <div className="icon_home">
               <i className="far fa-home-alt"></i>
@@ -78,7 +78,7 @@ const CountryInner = () => {
             <div className="available_m">
               <div className="available_t">
                 <div>
-                  <i class="fal fa-map-marker-alt"></i>
+                  <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
                   <p className="locat">Places</p>
@@ -87,27 +87,7 @@ const CountryInner = () => {
               </div>
               <div className="available_t">
                 <div>
-                  <i class="fal fa-map-marker-alt"></i>
-                </div>
-                <div>
-                  <p className="locat">Places</p>
-                  <p className="locat">Singapore</p>
-                </div>
-              </div>
-            </div>
-            <div className="available_m">
-              <div className="available_t">
-                <div>
-                  <i class="fal fa-map-marker-alt"></i>
-                </div>
-                <div>
-                  <p className="locat">Places</p>
-                  <p className="locat">Singapore</p>
-                </div>
-              </div>
-              <div className="available_t">
-                <div>
-                  <i class="fal fa-map-marker-alt"></i>
+                  <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
                   <p className="locat">Places</p>
@@ -118,7 +98,7 @@ const CountryInner = () => {
             <div className="available_m">
               <div className="available_t">
                 <div>
-                  <i class="fal fa-map-marker-alt"></i>
+                  <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
                   <p className="locat">Places</p>
@@ -127,7 +107,27 @@ const CountryInner = () => {
               </div>
               <div className="available_t">
                 <div>
-                  <i class="fal fa-map-marker-alt"></i>
+                  <i className="fal fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <p className="locat">Places</p>
+                  <p className="locat">Singapore</p>
+                </div>
+              </div>
+            </div>
+            <div className="available_m">
+              <div className="available_t">
+                <div>
+                  <i className="fal fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <p className="locat">Places</p>
+                  <p className="locat">Singapore</p>
+                </div>
+              </div>
+              <div className="available_t">
+                <div>
+                  <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
                   <p className="locat">Places</p>
@@ -136,8 +136,45 @@ const CountryInner = () => {
               </div>
             </div>
           </div>
+          <div className="highlights">
+            <div className="highlights_title">
+              <p>Highlights</p>
+            </div>
+            <div className="highlights_image-flex">
+              <div className="highlights_image">
+                <img
+                  src="https://flynote-cms-production.s3.ap-south-1.amazonaws.com/itinerary/c1e5e7c3-ef0d-495e-a767-bcb1824035c5/images/3709157520_72c1bef81c_c_2393224b-9148-43a3-8356-4126578508e3.jpg?ts=1583132849398"
+                  alt=""
+                />
+                <div className="highlights_image-title">Jurong Bird Park</div>
+                <div className="highlights_image-subtitle">
+                  A treat of all bird lovers
+                </div>
+              </div>
+              <div className="highlights_image">
+                <img
+                  src="https://flynote-cms-production.s3.ap-south-1.amazonaws.com/itinerary/c1e5e7c3-ef0d-495e-a767-bcb1824035c5/images/taylor-simpson-qjOllrFRTn0-unsplash_c35cc780-d178-4452-a89a-30aef1e66df2.jpg?ts=1583132599055"
+                  alt=""
+                />
+                <div className="highlights_image-title">Sentosa Island</div>
+                <div className="highlights_image-subtitle">
+                  Rejuvenate and Relax
+                </div>
+              </div>
+              <div className="highlights_image">
+                <img
+                  src="https://flynote-cms-production.s3.ap-south-1.amazonaws.com/itinerary/c1e5e7c3-ef0d-495e-a767-bcb1824035c5/images/darshan-patel-IMyqcG3N1iE-unsplash_44ee1a07-207d-406b-a7a2-ecbd9b6afda2.jpg?ts=1583132612252"
+                  alt=""
+                />
+                <div className="highlights_image-title">Universal Studios</div>
+                <div className="highlights_image-subtitle">
+                  Enjoy an adrenline pumping time
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>Content</div>
+        <div className="countryInner_aboutRight">Content</div>
       </div>
     </div>
   );
