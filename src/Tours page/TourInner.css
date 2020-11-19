@@ -29,10 +29,12 @@
 }
 .TourFeatures_Container {
   display: flex;
+  padding: 70px 150px;
 }
 
 .TourName_Navigation {
   flex-basis: 50%;
+  /* padding: 50px; */
 }
 
 .TourName_Navigation h1 {
@@ -46,26 +48,29 @@
 }
 
 .AboutTour {
-  padding: 40px;
+  /* padding: 40px; */
 }
 
-.Highlights {
-  padding: 10px;
+.TourHighlights {
+  padding: 0 0 0 100px;
 }
 
 .AboutTour h1,
-.Highlights h1 {
+.Highlights h1,
+.Informations h1 {
   color: black;
-  font-size: 50px;
+  font-size: 40px;
   padding: 20px;
   font-weight: bolder;
 }
 
 .Highlights li {
-  padding: 10px;
+  padding: 10px 0;
 }
-.Highlights ol {
-  padding: 20px 0px 20px 100px;
+.Highlights ul {
+  padding: 20px 0px 20px 40px;
+  text-decoration: brown;
+  list-style: lower-roman;
 }
 .AboutTour p {
   padding: 20px;
@@ -92,8 +97,8 @@
   flex-direction: row;
   /* height: 100px; */
   background-color: white;
-  box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
-  border-radius: 25px;
+  box-shadow: 2px 2px 20px 0 #7ed6df;
+  border-radius: 15px;
 }
 
 .TourFeatures .travel i {
@@ -129,4 +134,44 @@
 .Idealfor h6 {
   color: #95a5a6;
   font-size: 14px;
+}
+
+.Informations_Container {
+  display: flex;
+  padding: 0px 150px;
+}
+
+.Informations .labels {
+  /* flex-basis: 70%; */
+  padding: 0 20px;
+  display: flex;
+}
+
+.labels h6:hover {
+  cursor: pointer;
+}
+.labels h6 {
+  font-size: 15px;
+  font-weight: bold;
+  font-family: monospace;
+  padding: 10px;
+  background-color: #dff9fb;
+  margin-left: 20px;
+  border-radius: 50px;
+}
+.Selectedlabels {
+  font-size: 15px;
+  font-weight: bold;
+  font-family: monospace;
+  padding: 10px;
+  box-shadow: 0px 1px 10px 2px #7ed6df;
+
+  margin-left: 20px;
+  border-radius: 50px;
+}
+
+.Informations h2 {
+  padding: 20px;
+  flex-basis: 50%;
+  font-size: 20px;
 }

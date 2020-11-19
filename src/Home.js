@@ -6,14 +6,14 @@ import PopularTours from "./Home components/PopularTours/PopularTours";
 import SliderImage from "./Home components/Slider/SliderImage";
 import TopDestination from "./Home components/Top Destination/Top_destination";
 import "./Home.css";
-import tawkTo from "tawkto-react";
+
 
 export default function Home() {
-  const tawkToPropertyId = "5fb4d33d1535bf152a5721bb";
+  // const tawkToPropertyId = "5fb4d33d1535bf152a5721bb";
 
-  useEffect(() => {
-    tawkTo(tawkToPropertyId);
-  }, []);
+  // useEffect(() => {
+  //   tawkTo(tawkToPropertyId);
+  // }, []);
   return (
     <div className="home">
       <div className="home_top">

@@ -173,8 +173,8 @@ export default function Popular_tour() {
       <div className="poptour_section">
         <div>
           <div className="poptour-api">
-            {tour.length == 0 && page == 1 ? (
-              <h1>Tours not Found for {cityName}</h1>
+            {tour.length == 0 && page == 1 && cityName == "" ? (
+              <h1>Tours not Found </h1>
             ) : (
               <>
                 {tour.map((t, index) => {
@@ -182,8 +182,7 @@ export default function Popular_tour() {
                     <Link
                       className="plink"
                       to={{
-                        pathname: `/tourdetails/${t._id}`,
-                        tour: t,
+                        pathname: `/tourdetails/${t.tourName}`,
                       }}
                     >
                       <Popular_tourTile t={t} key={index} />
