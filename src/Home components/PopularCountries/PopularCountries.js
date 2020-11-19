@@ -105,14 +105,13 @@ export default function PopularCountries() {
         </div>
       </div>
       <div className="country_content">
-        {popularCountries.map((c) => {
+        {popularCountries.map((c, index) => {
           return (
-            <div className="country_content2">
+            <div className="country_content2" key={index}>
               <Link
                 className="plink"
                 to={{
-                  pathname: `/countryinner/${c.countryName}`,
-                  country: c,
+                  pathname: `/countrydetails/${c.countryName}`,
                 }}
               >
                 <div className="country_img">

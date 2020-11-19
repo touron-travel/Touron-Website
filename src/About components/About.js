@@ -189,7 +189,7 @@ export default function About() {
           <span className="subheading1">Testimonial</span>
           <h2 className="subheading">Traveller Feedback</h2>
         </div>
-        <Slider {...settings} className="slid">
+        <Slider {...settings}>
           <div className="item_test1">
             <div className="testimony">
               <div className="testimony_text">

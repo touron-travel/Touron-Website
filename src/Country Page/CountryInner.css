@@ -1,9 +1,19 @@
-.countryInner_Details {
-  /* background-color: #000000; */
-}
 .countryInner_image img {
   width: 100%;
-  height: 350px;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  position: relative;
+}
+.countryInner_name {
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  /* width: 100%;
+  height: 100%; */
 }
 .countryInner_cities {
   width: 100%;
@@ -100,6 +110,7 @@
 }
 .highlights {
   padding-top: 32px;
+  margin: 0 75px;
 }
 .highlights_title p {
   font-size: 24px;
@@ -127,19 +138,6 @@
   object-fit: cover;
   border-radius: 16px;
 }
-.highlights_image-title {
-  text-decoration: none;
-  text-align: inherit;
-  white-space: normal;
-  font-size: 20px;
-  font-weight: normal;
-  color: #ffffff;
-  display: block;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  padding: 20px;
-}
 .highlights_image-subtitle {
   text-decoration: none;
   text-align: inherit;
@@ -154,6 +152,44 @@
   left: 0px;
   padding: 20px;
 }
+.highlights_image-subtitle-select {
+  text-decoration: none;
+  text-align: inherit;
+  white-space: normal;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
+  color: #db6500;
+  display: block;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  padding: 20px;
+}
 .highlights_image-flex {
   display: flex;
+}
+.highlights_about {
+  padding-top: 32px;
+}
+.countryInner_tours {
+  margin: 0 75px;
+}
+.countryInner_tours_title p {
+  font-size: 24px;
+  padding-bottom: 12px;
+}
+.countryInner_tours_image-flex {
+  display: flex;
+}
+.countryInner_tours_image {
+  margin-bottom: 72px;
+}
+.countryInner_tours_image img {
+  width: 500px;
+  object-fit: cover;
+  height: 423px;
+  border-radius: 20px;
+  /* mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)); */
+  margin-right: 20px;
 }
