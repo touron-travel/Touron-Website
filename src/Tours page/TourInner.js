@@ -25,8 +25,6 @@ const TourInner = () => {
     infinite: true,
     autoplay: true,
     speed: 1000,
-    // centerMode: true,
-    // centerPadding: "100px",
     arrows: false,
     slidesToShow: 2,
     slidesToScroll: 1,
@@ -36,7 +34,7 @@ const TourInner = () => {
     try {
       const tourResponse = await axios.get(`${API}/tour/${tourid}`);
       setTourDetails(tourResponse.data);
-      console.log(tourResponse.data, "ddds");
+      console.log(tourResponse.json(), "ddds");
     } catch (err) {
       console.log(err, "errbcbbdcb");
     }
@@ -85,10 +83,13 @@ const TourInner = () => {
           <div className="TourHighlights">
             <div className="Highlights">
               <h1>Highlights</h1>
-              <ul>
-                <li>{tourDetails.pickUpPoint}</li>
-                <li>{tourDetails.tourPreferance} Tour</li>
-              </ul>
+
+              {tourDetails.pickUpPoint !== undefined ? (
+                <ul>
+                  <li>{tourDetails.pickUpPoint.join(",")}</li>
+                  <li>{tourDetails.tourPreferance} Tour</li>
+                </ul>
+              ) : null}
             </div>
           </div>
         </div>
@@ -99,14 +100,20 @@ const TourInner = () => {
           <i className="fas fa-globe-europe tourtype"></i>
           <div className="Idealfor">
             <h2>Tour Type</h2>
-            <h6>{tourDetails.tourCategory}</h6>
+            {tourDetails.tourCategory !== undefined ? (
+              <>
+                <h6>{tourDetails.tourCategory.join(",")}</h6>
+              </>
+            ) : null}
           </div>
         </div>
         <div className="travel">
           <i className="far fa-hiking idealfor"></i>
           <div className="Idealfor">
             <h2>Ideal For</h2>
-            <h6>{tourDetails.idealType} </h6>
+            {tourDetails.idealType !== undefined ? (
+              <h6>{tourDetails.idealType.join(",")} </h6>
+            ) : null}
           </div>
         </div>
 
@@ -154,7 +161,11 @@ const TourInner = () => {
       <div className="Informations_Container">
         <div className="Informations">
           <h1>Similar Tours in {tourDetails.countryName}</h1>
-          <div className="similartours"></div>
+          <div className="similartours">
+            {similarTours.map((t) => {
+              return <p>{t.tourName}</p>;
+            })}
+          </div>
         </div>
       </div>
     </div>
