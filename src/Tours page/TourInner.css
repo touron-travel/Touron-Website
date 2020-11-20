@@ -6,14 +6,17 @@
   height: 500px;
   object-fit: cover;
   object-position: center;
+  position: relative;
 }
 
 .TourName {
   position: absolute;
-  top: 15%;
+  top: 250px;
   left: 5%;
 }
-
+.Tourintro {
+  position: relative;
+}
 .TourName h2 {
   color: #fff;
   font-weight: bold;

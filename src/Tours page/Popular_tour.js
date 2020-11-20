@@ -114,7 +114,7 @@ export default function Popular_tour() {
               return (
                 <div
                   className={
-                    country.countryName === countryName
+                    country.countryName == countryName
                       ? "popscity_select"
                       : "popscity"
                   }
@@ -132,9 +132,7 @@ export default function Popular_tour() {
                     className="popcity"
                     style={{
                       color:
-                        countryName === country.countryName
-                          ? "#db6500"
-                          : "#fff",
+                        countryName == country.countryName ? "#db6500" : "#fff",
                     }}
                   >
                     {country.countryName}
@@ -146,7 +144,7 @@ export default function Popular_tour() {
         </div>
       </div>
 
-      {cityNames.length === 0 ? null : (
+      {cityNames.length == 0 ? null : (
         <div className="cityname_container ">
           {cityNames.map((c, index) => {
             return (
@@ -182,7 +180,7 @@ export default function Popular_tour() {
                     <Link
                       className="plink"
                       to={{
-                        pathname: `/tourdetails/${t.tourName}`,
+                        pathname: `/tourdetails/${t.countryName}/${t.tourName}/${t._id}`,
                       }}
                     >
                       <Popular_tourTile t={t} key={index} />
@@ -192,7 +190,7 @@ export default function Popular_tour() {
               </>
             )}
           </div>
-          {tour.length === 0 || tourLength == 4 || tourLength <= 4 ? null : (
+          {tour.length == 0 || tourLength == 4 || tourLength <= 4 ? null : (
             <div className="pageno_flex">
               <div className="previous">
                 <div

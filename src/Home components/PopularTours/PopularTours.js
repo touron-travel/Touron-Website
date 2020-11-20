@@ -368,19 +368,6 @@ export default function PopularTours() {
   ];
   const [tour, setTour] = useState(tours);
 
-  // useEffect(() => {
-  //   const getTours = async () => {
-  //     await axios
-  //       .get(`${API}/tour?page=1&pageSize=10`)
-  //       .then((res) => {
-  //         setTour(res.data);
-  //       })
-  //       .catch((err) => console.log(err, "File missing"));
-  //   };
-
-  //   getTours();
-  // }, []);
-
   var settings = {
     infinite: true,
     autoplay: true,
@@ -418,7 +405,7 @@ export default function PopularTours() {
                   className="plink"
                   key={index}
                   to={{
-                    pathname: `/tourdetails/${t.tourName}`,
+                    pathname: `/tourdetails/${t.countryName}/${t.tourName}/${t._id}`,
                   }}
                 >
                   <PopularTourTile t={t} />
