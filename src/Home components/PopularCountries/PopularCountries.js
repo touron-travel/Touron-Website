@@ -111,7 +111,7 @@ export default function PopularCountries() {
               <Link
                 className="plink"
                 to={{
-                  pathname: `/countrydetails/${c.countryName}`,
+                  pathname: `/countrydetails/${c.countryName}/${c._id}`,
                 }}
               >
                 <div className="country_img">
