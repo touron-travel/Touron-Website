@@ -1,26 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "./CountryInner.css";
 import axios from "axios";
 import { API } from "../backend";
+import { Link } from "react-scroll";
 
 const CountryInner = () => {
-  const { countryname } = useParams();
-  console.log(countryname, "df");
+  const { countryid, countryname } = useParams();
 
   const [countryDetails, setCountryDetails] = useState({});
-  console.log(countryDetails, "gb");
+  console.log(countryDetails, "cd");
+
+  var sectionStyle = {
+    backgroundImage: `url(${countryDetails.imageUrl})`,
+  };
 
   const [tourDetails, setTourDetails] = useState([]);
-  console.log(tourDetails, "gt");
 
   const [cityDetails, setCityDetails] = useState([]);
-  console.log(cityDetails, "ct");
+  const [selectedCity, setSelectedCity] = useState("");
+  console.log(selectedCity, "name");
 
   const getCountries = async () => {
     try {
-      const countryResponse = await axios.get(`${API}/country/${countryname}`);
-      setCountryDetails(...countryResponse.data);
+      const countryResponse = await axios.get(
+        `${API}/country/edit/${countryid}`
+      );
+      setCountryDetails(countryResponse.data);
       console.log(countryResponse.data, "sd");
     } catch (err) {
       console.log(err, "err");
@@ -36,6 +42,8 @@ const CountryInner = () => {
     } catch (err) {
       console.log(err, "err");
     }
+
+    console.log(cityDetails, "p");
   };
   const getTours = async () => {
     try {
@@ -50,23 +58,59 @@ const CountryInner = () => {
   };
   useEffect(() => {
     getCountries();
-    getCities();
+  }, []);
+  useEffect(() => {
     getTours();
   }, []);
+  useEffect(() => {
+    getCities();
+  }, []);
+
+  var settings = {
+    infinite: true,
+    autoplay: true,
+    speed: 1000,
+    arrows: false,
+    // slidesToShow: 5,
+    // slidesToScroll: 1,
+  };
 
   return (
     <div className="countryInner_Details">
-      <div className="countryInner_image">
-        <img src={countryDetails.imageUrl} />
+      <div className="countryInner_image" style={sectionStyle}>
         <div className="countryInner_name">
           <h1>{countryDetails.countryName}</h1>
         </div>
       </div>
       <div className="countryInner_cities">
         <div className="cityName_container">
-          <p>About</p>
-          <p>Cities</p>
-          <p>Tours</p>
+          <Link
+            activeClass="active"
+            to="countryInner_about"
+            // spy={true}
+            smooth={true}
+            duration={500}
+          >
+            <p>About</p>
+          </Link>
+          <Link
+            activeClass="active"
+            to="highlights"
+            // spy={true}
+            smooth={true}
+            duration={500}
+          >
+            <p>Cities</p>
+          </Link>
+          <Link
+            activeClass="active"
+            to="countryInner_tours"
+            // spy={true}
+            smooth={true}
+            duration={500}
+          >
+            <p>Tours</p>
+          </Link>
         </div>
       </div>
       <div className="countryInner_about">
@@ -88,18 +132,18 @@ const CountryInner = () => {
             <p className="having">Adventure</p>
           </div>
           <div className="main_about">
-            <div className="inner_name">{countryDetails.countryName}</div>
+            <div className="inner_name">About {countryDetails.countryName}</div>
             <div className="inner_desc">{countryDetails.aboutCountry}</div>
           </div>
           <div className="available">
-            <div className="available_m">
+            <div className="available-left">
               <div className="available_t">
                 <div>
                   <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
-                  <p className="locat">Places</p>
-                  <p className="locat">Singapore</p>
+                  <h6>Weather</h6>
+                  <p className="locat">{countryDetails.weather} ℃</p>
                 </div>
               </div>
               <div className="available_t">
@@ -107,19 +151,13 @@ const CountryInner = () => {
                   <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
-                  <p className="locat">Places</p>
-                  <p className="locat">Singapore</p>
-                </div>
-              </div>
-            </div>
-            <div className="available_m">
-              <div className="available_t">
-                <div>
-                  <i className="fal fa-map-marker-alt"></i>
-                </div>
-                <div>
-                  <p className="locat">Places</p>
-                  <p className="locat">Singapore</p>
+                  <h6>Visa On Arrival</h6>
+
+                  <p className="locat">
+                    {countryDetails.visa !== undefined
+                      ? countryDetails.visa.onArrival
+                      : ""}
+                  </p>
                 </div>
               </div>
               <div className="available_t">
@@ -127,19 +165,23 @@ const CountryInner = () => {
                   <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
-                  <p className="locat">Places</p>
-                  <p className="locat">Singapore</p>
+                  <h6>Ideal Days</h6>
+                  <p className="locat">{countryDetails.idealDays}</p>
                 </div>
               </div>
             </div>
-            <div className="available_m">
+            <div className="avalable-right">
               <div className="available_t">
                 <div>
                   <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
-                  <p className="locat">Places</p>
-                  <p className="locat">Singapore</p>
+                  <h6>Curreny</h6>
+                  <p className="locat">
+                    {countryDetails.general !== undefined
+                      ? countryDetails.general.currency
+                      : ""}
+                  </p>
                 </div>
               </div>
               <div className="available_t">
@@ -147,8 +189,21 @@ const CountryInner = () => {
                   <i className="fal fa-map-marker-alt"></i>
                 </div>
                 <div>
-                  <p className="locat">Places</p>
-                  <p className="locat">Singapore</p>
+                  <h6>Best time to visit</h6>
+                  <p className="locat">
+                    {countryDetails.general !== undefined
+                      ? countryDetails.general.bestTimeToVisit.join(",")
+                      : ""}
+                  </p>
+                </div>
+              </div>
+              <div className="available_t">
+                <div>
+                  <i className="fal fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h6>Major Cities</h6>
+                  <p className="locat">{countryDetails.bestPlaces}</p>
                 </div>
               </div>
             </div>
@@ -160,24 +215,32 @@ const CountryInner = () => {
         <div className="highlights_title">
           <p>Cities</p>
         </div>
+
         <div className="highlights_image-flex">
-          {cityDetails.map((city, index) => (
-            <div className="highlights_image" key={index}>
-              <img src={city.imageUrl} alt="" />
-              <div className="highlights_image-subtitle">{city.cityName}</div>
-            </div>
-          ))}
+          {cityDetails.map((city, index) => {
+            return (
+              <div
+                className="highlights_image"
+                key={index}
+                onClick={() => setSelectedCity(city.cityName)}
+              >
+                <img src={city.imageUrl} alt="" />
+                <div className="highlights_image-subtitle">{city.cityName}</div>
+              </div>
+            );
+          })}
         </div>
+
         <div className="highlights_about">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci,
-            sint dicta? Pariatur amet ad voluptas consectetur ducimus officia,
-            distinctio magnam ullam facere facilis maiores laboriosam incidunt,
-            sequi iure commodi fugiat! Lorem ipsum dolor sit amet consectetur,
-            adipisicing elit. Necessitatibus, aspernatur cumque nostrum tempora
-            nulla aliquid laboriosam iure corrupti autem sed doloribus cum
-            accusamus aperiam aut! Exercitationem corporis quo eius illo?
-          </p>
+          {cityDetails.map((city, index) => {
+            if (city.cityName === selectedCity)
+              return (
+                <div className="highlights_about-desc" key={index}>
+                  <h2>{city.cityName}</h2>
+                  <p>{city.aboutCity}</p>
+                </div>
+              );
+          })}
         </div>
       </div>
       <div className="countryInner_tours">
