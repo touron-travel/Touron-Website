@@ -76,7 +76,10 @@ export default function Routes() {
           <Route path="/popular_tour" component={Popular_tour} />
           <Route path="/popular_countries" component={Popular_countries} />
 
-          <Route path="/countrydetails/:countryname" component={CountryInner} />
+          <Route
+            path="/countrydetails/:countryname/:countryid"
+            component={CountryInner}
+          />
           <Route
             path="/tourdetails/:countryname/:tourname/:tourid"
             component={TourInner}

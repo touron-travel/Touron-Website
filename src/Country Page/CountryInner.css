@@ -1,19 +1,44 @@
-.countryInner_image img {
+@import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
+
+/* .countryInner_etails {
+  background-color: black;
+} */
+.countryInner_image {
   width: 100%;
   height: 100vh;
-  object-fit: cover;
-  object-position: center;
-  position: relative;
-}
-.countryInner_name {
-  position: absolute;
-  top: 10%;
-  left: 40%;
-  /* display: flex;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top center;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center; */
-  /* width: 100%;
-  height: 100%; */
+}
+.cityName_container p:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+.active {
+  color: #db6500;
+}
+.countryInner_image::after {
+  height: 100vh;
+  opacity: 0.3;
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+}
+.countryInner_name h1 {
+  font-family: "Kaushan Script", cursive;
+  font-weight: 100;
+  font-size: 100px;
+  position: relative;
+  z-index: 1;
 }
 .countryInner_cities {
   width: 100%;
@@ -42,14 +67,13 @@
 }
 .countryInner_about {
   display: flex;
-  padding-top: 75px;
-  margin: 0px 75px;
+  padding: 75px 75px 0;
 }
 .countryInner_aboutLeft {
-  flex-basis: 50%;
+  flex-basis: 60%;
 }
 .countryInner_aboutRight {
-  flex-basis: 50%;
+  flex-basis: 40%;
 }
 .inner_home {
   display: flex;
@@ -86,13 +110,20 @@
   font-family: "Roboto", sans-serif;
   padding-bottom: 12px;
 }
-.available_m {
+.available {
   display: flex;
   padding-top: 32px;
+}
+.available-left {
+  flex-basis: 50%;
+}
+.available-right {
+  /* flex-basis: 20%; */
 }
 .available_t {
   display: flex;
   margin-right: 40px;
+  padding: 10px;
 }
 .available i {
   width: 40px;
@@ -104,53 +135,64 @@
   justify-content: center;
   color: #5a8ec1;
 }
-.locat {
+.locat,
+.available_t h6 {
   margin-bottom: 0px;
   margin-left: 20px;
 }
+.locat {
+  font-size: 13px;
+  margin-top: 5px;
+}
 .highlights {
-  padding-top: 32px;
-  margin: 0 75px;
+  /* padding: 32px 72px 0; */
 }
 .highlights_title p {
-  font-size: 24px;
-  padding-bottom: 12px;
+  font-size: 34px;
+  padding: 72px 72px 20px;
 }
-.highlights_image {
-  position: relative;
-  width: 200px;
-  height: 300px;
-  margin-right: 20px;
-}
+
 .highlights_image::before {
   content: "";
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 200px;
+  height: 300px;
   top: 0px;
   left: 0px;
   background-color: rgba(0, 0, 0, 0.3);
   border-radius: 16px;
 }
+.highlights_image {
+  border-radius: 16px;
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+  box-shadow: 5px 0px 10px #666666;
+  position: relative;
+  transition: 0.5s;
+}
 .highlights_image img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
   border-radius: 16px;
+  width: 200px;
+  height: 100%;
+  margin: 0;
+}
+.highlights_image:hover {
+  cursor: pointer;
+  box-shadow: none;
 }
 .highlights_image-subtitle {
-  text-decoration: none;
-  text-align: inherit;
+  text-align: center;
   white-space: normal;
-  font-size: 16px;
+  font-size: 28px;
   font-weight: normal;
   line-height: 20px;
   color: #ffffff;
-  display: block;
   position: absolute;
-  bottom: 0px;
-  left: 0px;
+  bottom: 0;
   padding: 20px;
+  font-family: "Caveat", cursive;
 }
 .highlights_image-subtitle-select {
   text-decoration: none;
@@ -168,15 +210,17 @@
 }
 .highlights_image-flex {
   display: flex;
+  margin: 0;
+  padding: 0 72px;
 }
 .highlights_about {
   padding-top: 32px;
 }
 .countryInner_tours {
-  margin: 0 75px;
+  padding: 0 75px;
 }
 .countryInner_tours_title p {
-  font-size: 24px;
+  font-size: 34px;
   padding-bottom: 12px;
 }
 .countryInner_tours_image-flex {
@@ -192,4 +236,12 @@
   border-radius: 20px;
   /* mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)); */
   margin-right: 20px;
+}
+
+.highlights_about {
+  width: 50%;
+  /* background-color: #dff9fb; */
+  border-radius: 20px;
+  margin: 30px 0;
+  padding: 40px 72px;
 }
