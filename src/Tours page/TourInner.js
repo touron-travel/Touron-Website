@@ -6,8 +6,15 @@ import { API } from "../backend";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import PopularTourTile from "../Home components/PopularTours/PopularTourTile";
+// import "~slick-carousel/slick/slick.css";
+
+// import "~slick-carousel/slick/slick-theme.css";
+
+import "../../node_modules/slick-carousel/slick/slick.css";
+import "../../node_modules/slick-carousel/slick/slick-theme.css";
+
 const TourInner = () => {
-  const { tourname } = useParams();
+  const { tourname, countryname, tourid } = useParams();
   const [toggleInfo, setToggleInfo] = useState("Inclusion");
   const [tourDetails, setTourDetails] = useState({});
   const [similarTours, setSimilarTours] = useState([]);
@@ -27,8 +34,8 @@ const TourInner = () => {
 
   const getTours = async () => {
     try {
-      const tourResponse = await axios.get(`${API}/tour/tourname/${tourname}`);
-      setTourDetails(...tourResponse.data);
+      const tourResponse = await axios.get(`${API}/tour/${tourid}`);
+      setTourDetails(tourResponse.data);
       console.log(tourResponse.data, "ddds");
     } catch (err) {
       console.log(err, "errbcbbdcb");
@@ -37,7 +44,7 @@ const TourInner = () => {
   const getSimilarTours = async () => {
     try {
       const tourResponse = await axios.get(
-        `${API}/tour/countryname/${tourDetails.countryName}`
+        `${API}/tour/countryname/${countryname}`
       );
       setSimilarTours(tourResponse.data);
       console.log(tourResponse.data, "ddsssssssssds");
@@ -50,18 +57,20 @@ const TourInner = () => {
     getTours();
   }, []);
   useEffect(() => {
-    if (tourDetails.countryName !== "") getSimilarTours();
+    getSimilarTours();
   }, [tourDetails]);
 
   return (
     <div className="TourInner_Details">
-      <div className="TourInner_image">
-        <img src={tourDetails.imageUrl} />
-      </div>
+      <div className="Tourintro">
+        <div className="TourInner_image">
+          <img src={tourDetails.imageUrl} />
+        </div>
 
-      <div className="TourName">
-        <h2>{tourDetails.tourName}</h2>
-        <h6>{tourDetails.ratings} / 5 Stars</h6>
+        <div className="TourName">
+          <h2>{tourDetails.tourName}</h2>
+          <h6>{tourDetails.ratings} / 5 Stars</h6>
+        </div>
       </div>
 
       <div className="TourFeatures_Container">
@@ -145,24 +154,7 @@ const TourInner = () => {
       <div className="Informations_Container">
         <div className="Informations">
           <h1>Similar Tours in {tourDetails.countryName}</h1>
-          <div className="similartours">
-            <Slider {...settings} accessibility pauseOnHover={false}>
-              {similarTours.map((t, index) => {
-                return (
-                  <Link
-                    className="plink"
-                    to={{
-                      pathname: `/tourdetails/${t.tourName}`,
-                    }}
-                  >
-                    <img src={t.imageUrl} alt="" />
-                    <h6>{t.tourName}</h6>
-                    <h6>{t.tourName}</h6>
-                  </Link>
-                );
-              })}
-            </Slider>
-          </div>
+          <div className="similartours"></div>
         </div>
       </div>
     </div>
