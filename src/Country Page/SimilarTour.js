@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SimilarTour = ({ tour, selectedTour, setSelectedTour }) => {
   return (
@@ -18,7 +19,14 @@ const SimilarTour = ({ tour, selectedTour, setSelectedTour }) => {
               key={index}
               onMouseOver={() => setSelectedTour(tour.tourName)}
             >
-              <img src={tour.imageUrl} alt="" />
+              <Link
+                className="plink"
+                to={{
+                  pathname: `/tourdetails/${tour.countryName}/${tour.tourName}/${tour._id}`,
+                }}
+              >
+                <img src={tour.imageUrl} alt="" />
+              </Link>
               <div className="countryInner_tour_image-subtitle">
                 {tour.tourName}
               </div>
