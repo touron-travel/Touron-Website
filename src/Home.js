@@ -7,7 +7,6 @@ import SliderImage from "./Home components/Slider/SliderImage";
 import TopDestination from "./Home components/Top Destination/Top_destination";
 import "./Home.css";
 
-
 export default function Home() {
   // const tawkToPropertyId = "5fb4d33d1535bf152a5721bb";
 

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap");
 
-/* .countryInner_etails {
+/* .countryInner_Details {
   background-color: black;
 } */
 .countryInner_image {
@@ -18,8 +18,6 @@
 .cityName_container p:hover {
   cursor: pointer;
   text-decoration: none;
-}
-.active {
   color: #db6500;
 }
 .countryInner_image::after {
@@ -64,6 +62,8 @@
   font-family: "Roboto", sans-serif;
   margin-bottom: 0;
   color: #000000;
+  font-weight: 500;
+  transition: 0.5s;
 }
 .countryInner_about {
   display: flex;
@@ -80,12 +80,18 @@
 }
 .icon_home i {
   font-size: 13px;
-  color: #5a8ec1;
+  /* color: #5a8ec1; */
+  color: #db6500;
 }
 .icon_right i {
   padding: 0px 8px;
   font-size: 12px;
   color: #666666;
+}
+.inner_name i {
+  padding: 0px 8px;
+  font-size: 20px;
+  color: #000;
 }
 .inner_title {
   color: #666666;
@@ -99,7 +105,8 @@
 .having {
   font-size: 12px;
   color: #ffffff;
-  background-color: #5a8ec1;
+  /* background-color: #5a8ec1; */
+  background-color: #db6500;
   margin-right: 4px;
   padding: 2px 8px;
   border-radius: 5px;
@@ -115,14 +122,13 @@
   padding-top: 32px;
 }
 .available-left {
-  flex-basis: 50%;
+  flex-basis: 80%;
 }
 .available-right {
-  /* flex-basis: 20%; */
+  flex-basis: 20%;
 }
 .available_t {
   display: flex;
-  margin-right: 40px;
   padding: 10px;
 }
 .available i {
@@ -134,6 +140,7 @@
   align-items: center;
   justify-content: center;
   color: #5a8ec1;
+  /* color: #db6500; */
 }
 .locat,
 .available_t h6 {
@@ -144,11 +151,12 @@
   font-size: 13px;
   margin-top: 5px;
 }
-.highlights {
-  /* padding: 32px 72px 0; */
-}
-.highlights_title p {
-  font-size: 34px;
+
+.highlights_title h2 {
+  font-size: 40px;
+  font-weight: 900;
+  color: #3e4559;
+  font-family: "Roboto", sans-serif;
   padding: 72px 72px 20px;
 }
 
@@ -179,10 +187,8 @@
   height: 100%;
   margin: 0;
 }
-.highlights_image:hover,
 .highlights_image_selected {
   cursor: pointer;
-  box-shadow: none;
   border-radius: 16px;
   width: 200px;
   height: 300px;
@@ -205,18 +211,17 @@
   font-family: "Caveat", cursive;
 }
 .highlights_image-subtitle-select {
-  text-decoration: none;
-  text-align: inherit;
+  text-align: center;
   white-space: normal;
-  font-size: 16px;
+  font-size: 28px;
   font-weight: normal;
   line-height: 20px;
   color: #db6500;
-  display: block;
   position: absolute;
   bottom: 0px;
   left: 0px;
   padding: 20px;
+  font-family: "Caveat", sans-serif;
 }
 .highlights_image-flex {
   display: flex;
@@ -232,34 +237,36 @@
   display: none;
 }
 .highlights_about {
-  padding-top: 32px;
+  width: 70%;
+  /* background-color: #dff9fb; */
+  background-color: #db6500;
+  border-radius: 20px;
+  margin: 30px 72px;
+  padding: 40px 72px;
 }
-.countryInner_tours {
-  padding: 0 75px;
-}
-.countryInner_tours_title p {
-  font-size: 34px;
-  padding-bottom: 12px;
+.countryInner_tours_title h2 {
+  font-size: 40px;
+  font-weight: 900;
+  color: #3e4559;
+  font-family: "Roboto", sans-serif;
+  padding: 72px 72px 20px;
 }
 .countryInner_tours_image-flex {
-  display: flex;
+  overflow: auto;
+  padding-left: 72px;
+}
+.countryInner_tours_image-flex::-webkit-scrollbar {
+  display: none;
 }
 .countryInner_tours_image {
   margin-bottom: 72px;
+  display: flex;
 }
 .countryInner_tours_image img {
-  width: 500px;
+  width: 400px;
   object-fit: cover;
-  height: 423px;
+  height: 250px;
   border-radius: 20px;
   /* mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5)); */
   margin-right: 20px;
-}
-
-.highlights_about {
-  width: 50%;
-  /* background-color: #dff9fb; */
-  border-radius: 20px;
-  margin: 30px 0;
-  padding: 40px 72px;
 }
