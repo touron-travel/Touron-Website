@@ -76,6 +76,16 @@ const TourInner = () => {
           </div>
         </div>
       </div>
+      <div className="Tourintro">
+        <div className="TourInner_image">
+          <img src={tourDetails.imageUrl} />
+        </div>
+
+        <div className="TourName">
+          <h2>{tourDetails.tourName}</h2>
+          <h6>{tourDetails.ratings} / 5 Stars</h6>
+        </div>
+      </div>
 
       <div className="TourFeatures">
         <div className="travel">
@@ -107,16 +117,7 @@ const TourInner = () => {
           </div>
         </div>
       </div>
-      <div className="Tourintro">
-        <div className="TourInner_image">
-          <img src={tourDetails.imageUrl} />
-        </div>
 
-        <div className="TourName">
-          <h2>{tourDetails.tourName}</h2>
-          <h6>{tourDetails.ratings} / 5 Stars</h6>
-        </div>
-      </div>
       <div className="Informations_Container">
         <div className="Informations">
           <h1>

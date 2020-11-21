@@ -15,6 +15,7 @@ const CountryInner = () => {
   const [tourDetails, setTourDetails] = useState([]);
   const [cityDetails, setCityDetails] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
+  const [selectedTour, setSelectedTour] = useState("");
   console.log(selectedCity, "name");
 
   const getCountries = async () => {
@@ -79,7 +80,11 @@ const CountryInner = () => {
         selectedCity={selectedCity}
         setSelectedCity={setSelectedCity}
       />
-      <SimilarTour tour={tourDetails} />
+      <SimilarTour
+        tour={tourDetails}
+        selectedTour={selectedTour}
+        setSelectedTour={setSelectedTour}
+      />
     </div>
   );
 };
