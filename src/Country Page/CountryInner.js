@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import "./CountryInner.css";
 import axios from "axios";
 import { API } from "../backend";
-import { Link as Links } from "react-dom";
 import { Link } from "react-scroll";
 
 const CountryInner = () => {
@@ -17,7 +16,6 @@ const CountryInner = () => {
   };
 
   const [tourDetails, setTourDetails] = useState([]);
-
   const [cityDetails, setCityDetails] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
   console.log(selectedCity, "name");
@@ -230,9 +228,13 @@ const CountryInner = () => {
           {cityDetails.map((city, index) => {
             return (
               <div
-                className="highlights_image"
+                className={
+                  selectedCity == city.cityName
+                    ? "highlights_image_selected"
+                    : "highlights_image"
+                }
                 key={index}
-                onClick={() => setSelectedCity(city.cityName)}
+                onMouseOver={() => setSelectedCity(city.cityName)}
               >
                 <img src={city.imageUrl} alt="" />
                 <div className="highlights_image-subtitle">{city.cityName}</div>
@@ -248,7 +250,6 @@ const CountryInner = () => {
                 <div className="highlights_about-desc" key={index}>
                   <h2>{city.cityName}</h2>
                   <p>{city.aboutCity}</p>
-                  {/* <p>{city.famousPlacesToVisit}</p> */}
                 </div>
               );
           })}
