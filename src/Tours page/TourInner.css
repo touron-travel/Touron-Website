@@ -212,10 +212,7 @@
   display: flex;
 }
 
-.labels_details {
-  display: flex;
-}
-
 .question_block {
   flex-basis: 50%;
+  height: 300px;
 }
