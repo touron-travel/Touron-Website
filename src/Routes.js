@@ -16,6 +16,7 @@ import { API } from "./backend";
 import { ApiContext } from "./Context/ApiContext";
 import CountryInner from "./Country Page/CountryInner";
 import TourInner from "./Tours page/TourInner";
+import ScrollToTop from "./ScrollToTop";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
@@ -62,32 +63,34 @@ export default function Routes() {
   return (
     <ApiContext.Provider value={{ tours, countries, cities }}>
       <Router>
-        <div className="nav">
-          <Navbar />
-        </div>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/how-it-works" component={HowItWorks} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/destination" component={Destination} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={signup} />
-          <Route path="/popular_tour" component={Popular_tour} />
-          <Route path="/popular_countries" component={Popular_countries} />
+        <ScrollToTop>
+          <div className="nav">
+            <Navbar />
+          </div>
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/about" component={About} />
+            <Route path="/how-it-works" component={HowItWorks} />
+            <Route path="/contact" component={Contact} />
+            <Route path="/destination" component={Destination} />
+            <Route path="/login" component={Login} />
+            <Route path="/signup" component={signup} />
+            <Route path="/popular_tour" component={Popular_tour} />
+            <Route path="/popular_countries" component={Popular_countries} />
 
-          <Route
-            path="/countrydetails/:countryname/:countryid"
-            component={CountryInner}
-          />
-          <Route
-            path="/tourdetails/:countryname/:tourname/:tourid"
-            component={TourInner}
-          />
-        </Switch>
-        <div className="footer">
-          <Footer />
-        </div>
+            <Route
+              path="/countrydetails/:countryname/:countryid"
+              component={CountryInner}
+            />
+            <Route
+              path="/tourdetails/:countryname/:tourname/:tourid"
+              component={TourInner}
+            />
+          </Switch>
+          <div className="footer">
+            <Footer />
+          </div>
+        </ScrollToTop>
       </Router>
     </ApiContext.Provider>
   );

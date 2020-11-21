@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "./CountryInner.css";
 import axios from "axios";
 import { API } from "../backend";
+import { Link as Links } from "react-dom";
 import { Link } from "react-scroll";
 
 const CountryInner = () => {
@@ -42,8 +43,6 @@ const CountryInner = () => {
     } catch (err) {
       console.log(err, "err");
     }
-
-    console.log(cityDetails, "p");
   };
   const getTours = async () => {
     try {
@@ -56,14 +55,25 @@ const CountryInner = () => {
       console.log(err, "err");
     }
   };
+
+  const getFirstCityName = () => {
+    setTimeout(() => {
+      console.log(cityDetails.length, "p");
+      if (cityDetails.length > 0 && selectedCity == "") {
+        setSelectedCity(cityDetails[0].cityName);
+        console.log(cityDetails[0], "op");
+      }
+    }, 2000);
+  };
+  getFirstCityName();
   useEffect(() => {
     getCountries();
   }, []);
   useEffect(() => {
-    getTours();
+    getCities();
   }, []);
   useEffect(() => {
-    getCities();
+    getTours();
   }, []);
 
   var settings = {
@@ -238,6 +248,7 @@ const CountryInner = () => {
                 <div className="highlights_about-desc" key={index}>
                   <h2>{city.cityName}</h2>
                   <p>{city.aboutCity}</p>
+                  {/* <p>{city.famousPlacesToVisit}</p> */}
                 </div>
               );
           })}
