@@ -5,17 +5,10 @@ import axios from "axios";
 import { API } from "../backend";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-import PopularTourTile from "../Home components/PopularTours/PopularTourTile";
-// import "~slick-carousel/slick/slick.css";
-
-// import "~slick-carousel/slick/slick-theme.css";
-
-import "../../node_modules/slick-carousel/slick/slick.css";
-import "../../node_modules/slick-carousel/slick/slick-theme.css";
 
 const TourInner = () => {
   const { tourname, countryname, tourid } = useParams();
-  const [toggleInfo, setToggleInfo] = useState("Inclusion");
+  const [toggleInfo, setToggleInfo] = useState("Tips");
   const [tourDetails, setTourDetails] = useState({});
   const [similarTours, setSimilarTours] = useState([]);
 
@@ -60,21 +53,10 @@ const TourInner = () => {
 
   return (
     <div className="TourInner_Details">
-      <div className="Tourintro">
-        <div className="TourInner_image">
-          <img src={tourDetails.imageUrl} />
-        </div>
-
-        <div className="TourName">
-          <h2>{tourDetails.tourName}</h2>
-          <h6>{tourDetails.ratings} / 5 Stars</h6>
-        </div>
-      </div>
-
       <div className="TourFeatures_Container">
         <div className="TourName_Navigation">
           <div className="AboutTour">
-            <h1>Intresting News</h1>
+            <h1>{tourDetails.tourName}</h1>
             <p>{tourDetails.aboutTour}</p>
           </div>
         </div>
@@ -86,8 +68,8 @@ const TourInner = () => {
 
               {tourDetails.pickUpPoint !== undefined ? (
                 <ul>
-                  <li>{tourDetails.pickUpPoint.join(",")}</li>
-                  <li>{tourDetails.tourPreferance} Tour</li>
+                  <li>Pick Up : {tourDetails.pickUpPoint.join(",")}</li>
+                  <li>Tour Type : {tourDetails.tourPreferance} </li>
                 </ul>
               ) : null}
             </div>
@@ -125,7 +107,16 @@ const TourInner = () => {
           </div>
         </div>
       </div>
+      <div className="Tourintro">
+        <div className="TourInner_image">
+          <img src={tourDetails.imageUrl} />
+        </div>
 
+        <div className="TourName">
+          <h2>{tourDetails.tourName}</h2>
+          <h6>{tourDetails.ratings} / 5 Stars</h6>
+        </div>
+      </div>
       <div className="Informations_Container">
         <div className="Informations">
           <h1>
@@ -135,37 +126,37 @@ const TourInner = () => {
           <div className="labels">
             <h6
               onClick={() => {
+                setToggleInfo("Tips");
+              }}
+              className={toggleInfo === "Tips" ? "Selectedlabels" : ""}
+            >
+              Extras
+            </h6>
+            <h6
+              onClick={() => {
                 setToggleInfo("Inclusion");
               }}
               className={toggleInfo === "Inclusion" ? "Selectedlabels" : ""}
             >
               Inclusion
             </h6>
-            <h6
-              onClick={() => {
-                setToggleInfo("Tips");
-              }}
-              className={toggleInfo === "Tips" ? "Selectedlabels" : ""}
-            >
-              Tips
-            </h6>
           </div>
-          {toggleInfo === "Inclusion" ? (
-            <h2>{tourDetails.inclusion}</h2>
-          ) : (
-            <h2>{tourDetails.additionalInformation}</h2>
-          )}
-          {/* {toggleInfo ? <h2>{tourDetails.inclusion}</h2> : null} */}
+          <div className="labels_details">
+            {toggleInfo === "Inclusion" ? (
+              <p>{tourDetails.inclusion}</p>
+            ) : (
+              <p>{tourDetails.additionalInformation}</p>
+            )}
+          </div>
         </div>
-      </div>
-      <div className="Informations_Container">
-        <div className="Informations">
-          <h1>Similar Tours in {tourDetails.countryName}</h1>
-          <div className="similartours">
-            {similarTours.map((t) => {
-              return <p>{t.tourName}</p>;
-            })}
+        <div className="question_block">
+          <div className="question_block-title">Get a Question?</div>
+          <div className="question_block-text">
+            Do not hesitage to give us a call. We are an expert team and we are
+            happy to talk to you.
           </div>
+          <div className="question_block-tel">+1 1235 6789 10</div>
+          <div className="question_block-mail">info@hellodigi.ru</div>
         </div>
       </div>
     </div>
