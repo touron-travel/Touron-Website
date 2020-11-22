@@ -9,8 +9,16 @@ import article_img from "../assests/sidebar7.jpg";
 import { ApiContext } from "../Context/ApiContext";
 import Popular_tourTile from "./Popular_tourTile";
 import Slider from "react-slick";
+// import ContentLoader, { Facebook } from "react-content-loader";
+import {
+  SemipolarLoading,
+  RectGraduallyShowLoading,
+  CircleLoading,
+} from "react-loadingg";
 
-export default function Popular_tour() {
+export default function Popular_tour(props) {
+  // const MyLoader = () => <ContentLoader />;
+  // const MyFacebookLoader = () => <Facebook />;
   const { countries } = useContext(ApiContext);
   const [tour, setTour] = useState([]);
   const location = useLocation();
@@ -21,28 +29,36 @@ export default function Popular_tour() {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(4);
   const [tourShown, setTourShown] = useState(4);
+  const [contentLoaded, setContentLoaded] = useState(false);
+
   // console.log(page, tourShown, tourLength, "page");
   const getCityTours = async (name) => {
+    setContentLoaded(true);
     console.log(page, "inside");
     const cityTourResponse = await axios.get(
       `${API}/tour/cityname/${name}?page=${page}&pageSize=${pageSize}`
     );
+    setTour(cityTourResponse.data);
+    setContentLoaded(false);
     const cityTourLength = await axios.get(`${API}/tour/cityname/${name}`);
     setTourLength(cityTourLength.data.length);
     // console.log(cityTourResponse.data.length, "citytour");
-    setTour(cityTourResponse.data);
   };
 
   const categoryTours = async (category, idealtype, tourtype) => {
+    setContentLoaded(true);
     const tourResponse = await axios.get(
       `${API}/filtertour?tourCategory=${category}&idealType=${idealtype}&tourType=${tourtype}`
     );
     setTour(tourResponse.data);
+    setContentLoaded(false);
   };
 
   const getCityNames = async (name) => {
+    // setContentLoaded(true);
     const cityName = await axios.get(`${API}/city/countryname/${name}`);
     setCityNames(cityName.data);
+    // setContentLoaded(false);
   };
   useEffect(() => {
     if (location.cityName !== undefined) {
@@ -58,6 +74,23 @@ export default function Popular_tour() {
 
   return (
     <>
+      {/* <ContentLoader
+        speed={-1}
+        width={1000}
+        height={1000}
+        viewBox="0 0 400 160"
+        backgroundColor="#f3f3f3"
+        foregroundColor="#ecebeb"
+        {...props}
+      >
+        <rect x="48" y="8" rx="3" ry="3" width="88" height="6" />
+        <rect x="48" y="26" rx="3" ry="3" width="52" height="6" />
+        <rect x="0" y="56" rx="3" ry="3" width="410" height="6" />
+        <rect x="0" y="72" rx="3" ry="3" width="380" height="6" />
+        <rect x="0" y="88" rx="3" ry="3" width="178" height="6" />
+        <circle cx="20" cy="20" r="20" />
+      </ContentLoader> */}
+
       <div className="Popular_tours">
         {/* <div className="pophome">
           <Link to="/" className="pophome1">
@@ -171,22 +204,60 @@ export default function Popular_tour() {
       <div className="poptour_section">
         <div>
           <div className="poptour-api">
-            {tour.length == 0 && page == 1 && cityName == "" ? (
-              <h1>Tours not Found </h1>
+            {contentLoaded ? (
+              <div className="loader">
+                <SemipolarLoading
+                  style={{
+                    top: "230px",
+                    // alignItems: "center",
+                    left: "400px",
+                  }}
+                  // color="#4834d4"
+                  size="large"
+                />
+                {/* <RectGraduallyShowLoading
+         style={{
+           top: "150px",
+           alignItems: "center",
+           left: "48%",
+         }}
+         color="#4834d4"
+       />
+       <CircleLoading
+         style={{
+           top: "150px",
+           alignItems: "center",
+           left: "48%",
+         }}
+         color="#4834d4"
+       /> */}
+              </div>
             ) : (
               <>
-                {tour.map((t, index) => {
-                  return (
-                    <Link
-                      className="plink"
-                      to={{
-                        pathname: `/tourdetails/${t.countryName}/${t.tourName}/${t._id}`,
-                      }}
-                    >
-                      <Popular_tourTile t={t} key={index} />
-                    </Link>
-                  );
-                })}
+                {tour.length == 0 && page == 1 && cityName !== "" ? (
+                  <>
+                    <h1>Tours not Found </h1>
+                    <img
+                      src="https://image.freepik.com/free-vector/404-error-with-cute-animal-concept-illustration_114360-1919.jpg"
+                      alt=""
+                    />
+                  </>
+                ) : (
+                  <>
+                    {tour.map((t, index) => {
+                      return (
+                        <Link
+                          className="plink"
+                          to={{
+                            pathname: `/tourdetails/${t.countryName}/${t.tourName}/${t._id}`,
+                          }}
+                        >
+                          <Popular_tourTile t={t} key={index} />
+                        </Link>
+                      );
+                    })}
+                  </>
+                )}
               </>
             )}
           </div>
