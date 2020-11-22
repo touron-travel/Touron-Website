@@ -30,11 +30,10 @@ export default function Popular_tour(props) {
   const [pageSize, setPageSize] = useState(4);
   const [tourShown, setTourShown] = useState(4);
   const [contentLoaded, setContentLoaded] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  // console.log(page, tourShown, tourLength, "page");
   const getCityTours = async (name) => {
     setContentLoaded(true);
-    console.log(page, "inside");
     const cityTourResponse = await axios.get(
       `${API}/tour/cityname/${name}?page=${page}&pageSize=${pageSize}`
     );
@@ -42,7 +41,6 @@ export default function Popular_tour(props) {
     setContentLoaded(false);
     const cityTourLength = await axios.get(`${API}/tour/cityname/${name}`);
     setTourLength(cityTourLength.data.length);
-    // console.log(cityTourResponse.data.length, "citytour");
   };
 
   const categoryTours = async (category, idealtype, tourtype) => {
@@ -247,6 +245,7 @@ export default function Popular_tour(props) {
                     {tour.map((t, index) => {
                       return (
                         <Link
+                          key={index}
                           className="plink"
                           to={{
                             pathname: `/tourdetails/${t.countryName}/${t.tourName}/${t._id}`,
@@ -295,35 +294,115 @@ export default function Popular_tour(props) {
             <div className="tour_category-title">Tour Category</div>
             <div className="tour_category-list">
               <ul>
-                <li onClick={() => categoryTours("Activities", "", "")}>
+                <li
+                  onClick={() => {
+                    categoryTours("Activities", "", "");
+                    setSelectedCategory("Activities");
+                  }}
+                  className={selectedCategory == "Activities" ? "selected" : ""}
+                >
                   Outdoor Activities
                 </li>
-                <li onClick={() => categoryTours("Hop On and Off", "", "")}>
+                <li
+                  onClick={() => {
+                    categoryTours("Hop On and Off", "", "");
+                    setSelectedCategory("Hop On and Off");
+                  }}
+                  className={
+                    selectedCategory == "Hop On and Off" ? "selected" : ""
+                  }
+                >
                   Hop On and Off
                 </li>
-                <li onClick={() => categoryTours("Attraction", "", "")}>
+                <li
+                  onClick={() => {
+                    categoryTours("Attraction", "", "");
+                    setSelectedCategory("Attraction");
+                  }}
+                  className={selectedCategory == "Attraction" ? "selected" : ""}
+                >
                   Attraction
                 </li>
-                <li onClick={() => categoryTours("Learning", "", "")}>
+                <li
+                  onClick={() => {
+                    categoryTours("Learning", "", "");
+                    setSelectedCategory("Learning");
+                  }}
+                  className={selectedCategory == "Learning" ? "selected" : ""}
+                >
                   Learning
                 </li>
-                <li onClick={() => categoryTours("", "Family and kids", "")}>
+                <li
+                  onClick={() => {
+                    categoryTours("", "Family and kids", "");
+                    setSelectedCategory("Family and kids");
+                  }}
+                  className={
+                    selectedCategory == "Family and kids" ? "selected" : ""
+                  }
+                >
                   Family and kids
                 </li>
-                <li onClick={() => categoryTours("", "Young Couple", "")}>
+                <li
+                  onClick={() => {
+                    categoryTours("", "Young Couple", "");
+                    setSelectedCategory("Young Couple");
+                  }}
+                  className={
+                    selectedCategory == "Young Couple" ? "selected" : ""
+                  }
+                >
                   Young Couple
                 </li>
-                <li onClick={() => categoryTours("", "Solo", "")}>Solo</li>
-                <li onClick={() => categoryTours("", "Mature Couple", "")}>
+                <li
+                  onClick={() => {
+                    categoryTours("", "Solo", "");
+                    setSelectedCategory("Solo");
+                  }}
+                  className={selectedCategory == "Solo" ? "selected" : ""}
+                >
+                  Solo
+                </li>
+                <li
+                  onClick={() => {
+                    categoryTours("", "Mature Couple", "");
+                    setSelectedCategory("Mature Couple");
+                  }}
+                  className={
+                    selectedCategory == "Mature Couple" ? "selected" : ""
+                  }
+                >
                   Mature Couple
                 </li>
-                <li onClick={() => categoryTours("", "", "Full Day Tour")}>
+                <li
+                  onClick={() => {
+                    categoryTours("", "", "Full Day Tour");
+                    setSelectedCategory("Full Day Tour");
+                  }}
+                  className={
+                    selectedCategory == "Full Day Tour" ? "selected" : ""
+                  }
+                >
                   Full Day Tour
                 </li>
-                <li onClick={() => categoryTours("", "", "Half Day Tour")}>
+                <li
+                  onClick={() => {
+                    categoryTours("", "", "Half Day Tour");
+                    setSelectedCategory("Half Day Tour");
+                  }}
+                  className={
+                    selectedCategory == "Half Day Tour" ? "selected" : ""
+                  }
+                >
                   Half Day Tour
                 </li>
-                <li onClick={() => categoryTours("", "", "Night Tour")}>
+                <li
+                  onClick={() => {
+                    categoryTours("", "", "Night Tour");
+                    setSelectedCategory("Night Tour");
+                  }}
+                  className={selectedCategory == "Night Tour" ? "selected" : ""}
+                >
                   Night Tour
                 </li>
               </ul>

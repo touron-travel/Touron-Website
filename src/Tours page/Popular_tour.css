@@ -375,3 +375,12 @@
   background-color: white;
   color: #db6500;
 }
+
+.tour_category-list li:hover {
+  cursor: pointer;
+  color: #db6500;
+}
+
+.tour_category-list .selected {
+  color: #db6500;
+}
