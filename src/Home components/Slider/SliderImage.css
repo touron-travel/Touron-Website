@@ -1,92 +1,45 @@
-.slider1,
-.slider2,
-.slider3,
-.slider4 {
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+@font-face {
+  font-family: "playscript";
+  src: url("../../Fonts/PlaylistScript.otf");
+  font-size: normal;
+  font-weight: 200;
+}
+
+.slide {
   height: 100vh;
   width: 100%;
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
-h1 {
-  color: white;
-}
-
-.slider1 {
-  background-image: url("../../assests/slide1.jpg");
-}
-
-.slider2 {
-  background-image: url("../../assests/slide2.jpg");
-}
-
-.slider3 {
-  background-image: url("../../assests/slide3.jpg");
-}
-.slider4 {
-  background-image: url("../../assests/slide4.jpg");
-}
-.slide::before {
-  height: 8%;
-  bottom: 0;
+.slide::after {
+  opacity: 0.48;
+  position: absolute;
+  content: "";
+  top: 0;
   left: 0;
   right: 0;
-  content: "";
-  position: absolute;
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #0005 100%);
-  /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #0005 100%);
-  /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #0005 100%);
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0);
-  z-index: 2;
+  bottom: 0;
+  background: #000;
 }
 
-.button {
-  display: flex;
+.slide0 {
+  background-image: url(https://images.pexels.com/photos/724960/pexels-photo-724960.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940);
 }
-.trending {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: center;
-  align-items: flex-start;
-  width: 100%;
-  margin-left: 30px;
+.slide1 {
+  background-image: url(https://images.pexels.com/photos/4094981/pexels-photo-4094981.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
 }
-.countryName {
-  /* font-size: 5vw;
-  font-weight: 500;
-  /* font-family: "Roboto", sans-serif; */
-  margin-bottom: 20px;
-  font-size: 50px;
-  font-weight: 900;
-  font-family: "Polar", Helvetica, Arial, sans-serif;
-  color: #fff;
+.slide2 {
+  background-image: url(https://images.pexels.com/photos/1802183/pexels-photo-1802183.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
 }
-.desc {
-  font-size: 18px;
-  color: #fff;
-  font-family: "Open Sans", Helvetica, Arial, sans-serif;
-  margin-bottom: 24px;
-}
-.button .tour h4 {
-  background-color: #ff7f00;
-  border-radius: 30px;
-  color: white;
-  font-size: 16px;
-  padding: 15px 48px;
-  font-family: "Roboto", sans-serif;
-}
-.button .ctour h4 {
-  background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.36);
-  border-radius: 30px;
-  color: white;
-  font-size: 16px;
-  padding: 14px 48px;
-  margin-left: 18px;
-  font-family: "Roboto", sans-serif;
+.slider_title h1 {
+  /* font-family: "Dancing Script", cursive; */
+  font-family: "playscript";
+  font-size: 150px;
+  color: #ffffff;
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  z-index: 1;
 }
