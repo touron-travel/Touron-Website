@@ -113,11 +113,15 @@ const CountryInner = () => {
           size="large"
         />
       ) : (
-        <SimilarTour
-          tour={tourDetails}
-          selectedTour={selectedTour}
-          setSelectedTour={setSelectedTour}
-        />
+        <>
+          {tourDetails.length === 0 ? null : (
+            <SimilarTour
+              tour={tourDetails}
+              selectedTour={selectedTour}
+              setSelectedTour={setSelectedTour}
+            />
+          )}
+        </>
       )}
     </div>
   );

@@ -223,11 +223,15 @@ const TourInner = () => {
             /> */}
           </div>
         ) : (
-          <SimilarTour
-            tour={similarTours}
-            selectedTour={selectedTour}
-            setSelectedTour={setSelectedTour}
-          />
+          <>
+            {similarTours.length === 0 ? null : (
+              <SimilarTour
+                tour={similarTours}
+                selectedTour={selectedTour}
+                setSelectedTour={setSelectedTour}
+              />
+            )}
+          </>
         )}
       </div>
     </div>
