@@ -2,6 +2,22 @@
   background-color: black;
   height: 1050px;
   padding: 40px 0px;
+  position: relative;
+}
+.tours::before {
+  height: 8%;
+  top: -80px;
+  left: 0;
+  right: 0;
+  content: "";
+  position: absolute;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#000000', GradientType=0);
 }
 .tours .tour-slider-header .tour-slider-title p {
   color: rgb(255, 127, 0);

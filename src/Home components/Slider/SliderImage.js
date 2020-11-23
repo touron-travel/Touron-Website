@@ -6,17 +6,33 @@ export default function SliderImage() {
   var settings = {
     infinite: true,
     autoplay: true,
-    speed: 1000,
+    speed: 3000,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: true,
     dots: true,
+    fade: true,
   };
 
   return (
     <>
       <Slider {...settings} arrows accessibility pauseOnHover={false}>
-        <div className="slider1 slide">
+        <div className="slide0 slide">
+          <div className="slider_title">
+            <h1>tour On</h1>
+          </div>
+        </div>
+        <div className="slide1 slide">
+          <div className="slider_title">
+            <h1>tour On</h1>
+          </div>
+        </div>
+        <div className="slide2 slide">
+          <div className="slider_title">
+            <h1>tour On</h1>
+          </div>
+        </div>
+        {/* <div className="slider1 slide">
           <div className="trending">
             <h2 className="countryName">America</h2>
             <h3 className="desc">
@@ -83,7 +99,7 @@ export default function SliderImage() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </Slider>
     </>
   );
