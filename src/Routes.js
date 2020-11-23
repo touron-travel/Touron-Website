@@ -77,7 +77,6 @@ export default function Routes() {
             <Route path="/signup" component={signup} />
             <Route path="/popular_tour" component={Popular_tour} />
             <Route path="/popular_countries" component={Popular_countries} />
-
             <Route
               path="/countrydetails/:countryname/:countryid"
               component={CountryInner}

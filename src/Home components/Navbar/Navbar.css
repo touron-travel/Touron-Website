@@ -25,7 +25,8 @@
   font-size: 15px;
   font-family: "Roboto", sans-serif;
 }
-.nav-links:hover {
+.nav-links:hover,
+.selected {
   color: #ff7f00;
   text-decoration: none;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
@@ -17,34 +17,59 @@ export default function Footer() {
           <div className="navigation">
             <ul className="footnav-area">
               <li className="footnav-items">
-                <Link to="/" className="footnav-links">
+                <NavLink
+                  exact
+                  to="/"
+                  className="footnav-links"
+                  activeClassName="selected"
+                >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li className="footnav-items">
-                <Link to="/" className="footnav-links">
+                <NavLink
+                  to="/about"
+                  className="footnav-links"
+                  activeClassName="selected"
+                >
                   About
-                </Link>
+                </NavLink>
               </li>
               <li className="footnav-items">
-                <Link to="/" className="footnav-links">
+                <NavLink
+                  to="/how-it-works"
+                  className="footnav-links"
+                  activeClassName="selected"
+                >
                   How it Works
-                </Link>
+                </NavLink>
               </li>
               <li className="footnav-items">
-                <Link to="/" className="footnav-links">
+                <NavLink
+                  to="/contact"
+                  className="footnav-links"
+                  activeClassName="selected"
+                >
                   Contact
-                </Link>
+                </NavLink>
               </li>
               <li className="footnav-items">
-                <Link to="/" className="footnav-links">
+                <NavLink
+                  to="/destination"
+                  className="footnav-links"
+                  activeClassName="selected"
+                >
                   Destination Guide
-                </Link>
+                </NavLink>
               </li>
               <li className="footnav-items">
-                <Link to="/" className="footnav-links">
+                <NavLink
+                  to="/login"
+                  className="footnav-links"
+                  activeClassName="selected"
+                >
                   Login/Register
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>

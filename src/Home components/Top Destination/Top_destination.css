@@ -2,11 +2,12 @@
   padding: 50px 40px;
   background: #fff;
   height: 550px;
+  width: 100%;
 }
-.description {
+.descriptions {
   display: flex;
 }
-.description .text {
+.descriptions .text {
   font-size: 18px;
   color: #818693;
   line-height: 1.45;

@@ -5,6 +5,11 @@ import axios from "axios";
 import { API } from "../backend";
 import SimilarTour from "./SimilarTour";
 import CountryInnerDetails from "./CountyInnerDetails";
+import {
+  SemipolarLoading,
+  RectGraduallyShowLoading,
+  CircleLoading,
+} from "react-loadingg";
 
 const CountryInner = () => {
   const { countryid, countryname } = useParams();
@@ -16,15 +21,20 @@ const CountryInner = () => {
   const [cityDetails, setCityDetails] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedTour, setSelectedTour] = useState("");
+  const [countryLoaded, setCountryLoaded] = useState(false);
+  // const [cityLoaded, setCityLoaded] = useState(false);
+  const [tourLoaded, setTourLoaded] = useState(false);
+
   console.log(selectedCity, "name");
 
   const getCountries = async () => {
+    setCountryLoaded(true);
     try {
       const countryResponse = await axios.get(
         `${API}/country/edit/${countryid}`
       );
       setCountryDetails(countryResponse.data);
-      console.log(countryResponse.data, "sd");
+      setCountryLoaded(false);
     } catch (err) {
       console.log(err, "err");
     }
@@ -35,18 +45,18 @@ const CountryInner = () => {
         `${API}/city/countryname/${countryname}`
       );
       setCityDetails(cityResponse.data);
-      console.log(cityResponse.data, "jh");
     } catch (err) {
       console.log(err, "err");
     }
   };
   const getTours = async () => {
+    setTourLoaded(true);
     try {
       const tourResponse = await axios.get(
         `${API}/tour/countryname/${countryname}`
       );
       setTourDetails(tourResponse.data);
-      console.log(tourResponse.data, "jhjh");
+      setTourLoaded(false);
     } catch (err) {
       console.log(err, "err");
     }
@@ -74,17 +84,41 @@ const CountryInner = () => {
 
   return (
     <div className="countryInner_Details">
-      <CountryInnerDetails
-        countryDetails={countryDetails}
-        cityDetails={cityDetails}
-        selectedCity={selectedCity}
-        setSelectedCity={setSelectedCity}
-      />
-      <SimilarTour
-        tour={tourDetails}
-        selectedTour={selectedTour}
-        setSelectedTour={setSelectedTour}
-      />
+      {countryLoaded ? (
+        <SemipolarLoading
+          style={{
+            top: "150px",
+            alignItems: "center",
+            left: "48%",
+          }}
+          // color="#4834d4"
+          size="large"
+        />
+      ) : (
+        <CountryInnerDetails
+          countryDetails={countryDetails}
+          cityDetails={cityDetails}
+          selectedCity={selectedCity}
+          setSelectedCity={setSelectedCity}
+        />
+      )}
+      {tourLoaded ? (
+        <SemipolarLoading
+          style={{
+            top: "150px",
+            alignItems: "center",
+            left: "48%",
+          }}
+          // color="#4834d4"
+          size="large"
+        />
+      ) : (
+        <SimilarTour
+          tour={tourDetails}
+          selectedTour={selectedTour}
+          setSelectedTour={setSelectedTour}
+        />
+      )}
     </div>
   );
 };
