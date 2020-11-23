@@ -229,7 +229,7 @@ export default function Top_destination() {
         <div className="section_titles">
           <h2>Touron - Operator</h2>
         </div>
-        <div className="description">
+        <div className="descriptions">
           <div className="left">
             <p className="text">
               Etiam porta sem malesuada magna mollis euismod. Maecenas sed diam

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import Image from "../../assests/logo.jpeg";
 
@@ -12,34 +12,59 @@ export default function Navbar() {
       <div className="navi">
         <ul className="nav-area">
           <li className="nav-items">
-            <Link to="/" className="nav-links">
+            <NavLink
+              exact
+              to="/"
+              className="nav-links"
+              activeClassName="selected"
+            >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-items">
-            <Link to="/about" className="nav-links">
+            <NavLink
+              to="/about"
+              className="nav-links"
+              activeClassName="selected"
+            >
               About
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-items">
-            <Link to="/how-it-works" className="nav-links">
+            <NavLink
+              to="/how-it-works"
+              className="nav-links"
+              activeClassName="selected"
+            >
               How it Works
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-items">
-            <Link to="/contact" className="nav-links">
+            <NavLink
+              to="/contact"
+              className="nav-links"
+              activeClassName="selected"
+            >
               Contact
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-items">
-            <Link to="/destination" className="nav-links">
+            <NavLink
+              to="/destination"
+              className="nav-links"
+              activeClassName="selected"
+            >
               Destination Guide
-            </Link>
+            </NavLink>
           </li>
           <li className="nav-items">
-            <Link to="/login" className="nav-links">
+            <NavLink
+              to="/login"
+              className="nav-links"
+              activeClassName="selected"
+            >
               Login/Register
-            </Link>
+            </NavLink>
           </li>
         </ul>
       </div>

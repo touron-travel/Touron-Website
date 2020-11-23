@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "./PopularTours.css";
+import axios from "axios";
+import { API } from "../../backend";
 import PopularTourTile from "./PopularTourTile";
 import home1 from "../../assests/home1.jpg";
 import home2 from "../../assests/home2.jpg";
 import home3 from "../../assests/home3.jpg";
 import { Link } from "react-router-dom";
-import SimilarTour from "../../Country Page/SimilarTour";
 
 export default function PopularTours() {
   const tours = [
@@ -369,28 +370,40 @@ export default function PopularTours() {
   ];
   const [tour, setTour] = useState(tours);
 
+  // useEffect(() => {
+  //   const getTours = async () => {
+  //     await axios
+  //       .get(`${API}/tour?page=1&pageSize=10`)
+  //       .then((res) => {
+  //         setTour(res.data);
+  //       })
+  //       .catch((err) => console.log(err, "File missing"));
+  //   };
+
+  //   getTours();
+  // }, []);
+
   var settings = {
     infinite: true,
     autoplay: true,
     speed: 1000,
-    centerMode: true,
-    centerPadding: "100px",
     arrows: false,
     slidesToShow: 2,
     slidesToScroll: 1,
+    centerMode: true,
+    centerPadding: "60px",
   };
   return (
     <div className="tours">
       <div className="tour-slider-header">
         <div className="tour-slider-title">
           <p>popularly</p>
-          <h2>Most popular holiday tours</h2>
+          <h2>
+            Most popular <br /> holiday tours
+          </h2>
         </div>
         <div>
-          <Link
-            to={{ pathname: "/popular_tour", cityName: "Singapore" }}
-            className="popular_link"
-          >
+          <Link to="/popular_tour" className="plink">
             <div className="ptour">
               <h4>View all tours</h4>
             </div>
@@ -401,17 +414,7 @@ export default function PopularTours() {
         <div className="tour-slider">
           <Slider {...settings} accessibility pauseOnHover={false}>
             {tour.map((t, index) => {
-              return (
-                <Link
-                  className="plink"
-                  key={index}
-                  to={{
-                    pathname: `/tourdetails/${t.countryName}/${t.tourName}/${t._id}`,
-                  }}
-                >
-                  <PopularTourTile t={t} />
-                </Link>
-              );
+              return <PopularTourTile t={t} key={index} />;
             })}
           </Slider>
         </div>

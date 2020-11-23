@@ -21,7 +21,8 @@
   font-weight: 500;
   color: #fff;
 }
-.footnav-links:hover {
+.footnav-links:hover,
+.selected {
   color: #ff7f00;
   text-decoration: none;
 }
