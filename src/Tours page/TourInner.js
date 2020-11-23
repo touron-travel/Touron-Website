@@ -10,31 +10,35 @@ import {
   CircleLoading,
 } from "react-loadingg";
 
+import SimilarTour from "../Country Page/SimilarTour";
 const TourInner = () => {
   const { tourname, countryname, tourid } = useParams();
   const [toggleInfo, setToggleInfo] = useState("Tips");
   const [tourDetails, setTourDetails] = useState({});
   const [similarTours, setSimilarTours] = useState([]);
   const [contentLoaded, setContentLoaded] = useState(false);
+  const [tourLoaded, setTourLoaded] = useState(false);
+  const [selectedTour, setSelectedTour] = useState("");
 
   const getTours = async () => {
     setContentLoaded(true);
     try {
       const tourResponse = await axios.get(`${API}/tour/${tourid}`);
       setTourDetails(tourResponse.data);
-      console.log(tourResponse.data, "ddds");
       setContentLoaded(false);
     } catch (err) {
       console.log(err, "errbcbbdcb");
     }
   };
   const getSimilarTours = async () => {
+    setTourLoaded(true);
+
     try {
       const tourResponse = await axios.get(
         `${API}/tour/countryname/${countryname}`
       );
       setSimilarTours(tourResponse.data);
-      console.log(tourResponse.data, "ddsssssssssds");
+      setTourLoaded(false);
     } catch (err) {
       console.log(err, "errbcbbdcb");
     }
@@ -42,7 +46,7 @@ const TourInner = () => {
 
   useEffect(() => {
     getTours();
-  }, []);
+  }, [tourid]);
   useEffect(() => {
     getSimilarTours();
   }, [tourDetails]);
@@ -188,6 +192,44 @@ const TourInner = () => {
           </div>
         </>
       )}
+
+      <div className="similar">
+        {tourLoaded ? (
+          <div className="loader">
+            {/* <SemipolarLoading
+              style={{
+                top: "150px",
+                alignItems: "center",
+                left: "48%",
+              }}
+              // color="#4834d4"
+              size="large"
+            /> */}
+            <RectGraduallyShowLoading
+              style={{
+                top: "150px",
+                alignItems: "center",
+                left: "48%",
+              }}
+              color="#4834d4"
+            />
+            {/* <CircleLoading
+              style={{
+                top: "150px",
+                alignItems: "center",
+                left: "48%",
+              }}
+              color="#4834d4"
+            /> */}
+          </div>
+        ) : (
+          <SimilarTour
+            tour={similarTours}
+            selectedTour={selectedTour}
+            setSelectedTour={setSelectedTour}
+          />
+        )}
+      </div>
     </div>
   );
 };

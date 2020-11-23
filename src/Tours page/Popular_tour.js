@@ -213,6 +213,15 @@ export default function Popular_tour(props) {
                   // color="#4834d4"
                   size="large"
                 />
+                <h4
+                  style={{
+                    top: "230px",
+                    // alignItems: "center",
+                    left: "400px",
+                  }}
+                >
+                  Loading ...
+                </h4>
                 {/* <RectGraduallyShowLoading
          style={{
            top: "150px",

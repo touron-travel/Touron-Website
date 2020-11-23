@@ -26,10 +26,10 @@ const SimilarTour = ({ tour, selectedTour, setSelectedTour }) => {
                 }}
               >
                 <img src={tour.imageUrl} alt="" />
+                <div className="countryInner_tour_image-subtitle">
+                  {tour.tourName}
+                </div>
               </Link>
-              <div className="countryInner_tour_image-subtitle">
-                {tour.tourName}
-              </div>
             </div>
           );
         })}
