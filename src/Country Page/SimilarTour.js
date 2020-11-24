@@ -5,12 +5,15 @@ const SimilarTour = ({
   tour,
   selectedTour,
   setSelectedTour,
-  countryDetails,
+  countryname,
+  heading,
 }) => {
   return (
     <div className="countryInner_tour">
       <div className="countryInner_tour-title">
-        <h2>Tours in {countryDetails.countryName}</h2>
+        <h2>
+          {heading} {countryname}
+        </h2>
       </div>
       <div className="countryInner_tour_image-flex">
         {tour.map((tour, index) => {

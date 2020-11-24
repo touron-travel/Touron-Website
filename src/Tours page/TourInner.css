@@ -100,7 +100,7 @@
 .Highlights ul {
   padding: 20px 0px 20px 40px;
   text-decoration: brown;
-  list-style: lower-roman;
+  /* list-style-type: desc; */
 }
 .AboutTour p,
 .Informations p {

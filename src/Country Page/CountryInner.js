@@ -15,15 +15,12 @@ const CountryInner = () => {
   const { countryid, countryname } = useParams();
 
   const [countryDetails, setCountryDetails] = useState({});
-  console.log(countryDetails, "cd");
 
   const [tourDetails, setTourDetails] = useState([]);
   const [cityDetails, setCityDetails] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedTour, setSelectedTour] = useState("");
   const [countryLoaded, setCountryLoaded] = useState(false);
-  // const [cityLoaded, setCityLoaded] = useState(false);
-  const [tourLoaded, setTourLoaded] = useState(false);
 
   console.log(selectedCity, "name");
 
@@ -50,13 +47,11 @@ const CountryInner = () => {
     }
   };
   const getTours = async () => {
-    setTourLoaded(true);
     try {
       const tourResponse = await axios.get(
         `${API}/tour/countryname/${countryname}`
       );
       setTourDetails(tourResponse.data);
-      setTourLoaded(false);
     } catch (err) {
       console.log(err, "err");
     }
@@ -95,31 +90,20 @@ const CountryInner = () => {
           size="large"
         />
       ) : (
-        <CountryInnerDetails
-          countryDetails={countryDetails}
-          cityDetails={cityDetails}
-          selectedCity={selectedCity}
-          setSelectedCity={setSelectedCity}
-        />
-      )}
-      {tourLoaded ? (
-        <SemipolarLoading
-          style={{
-            top: "150px",
-            alignItems: "center",
-            left: "48%",
-          }}
-          // color="#4834d4"
-          size="large"
-        />
-      ) : (
         <>
+          <CountryInnerDetails
+            countryDetails={countryDetails}
+            cityDetails={cityDetails}
+            selectedCity={selectedCity}
+            setSelectedCity={setSelectedCity}
+          />
           {tourDetails.length === 0 ? null : (
             <SimilarTour
               tour={tourDetails}
               selectedTour={selectedTour}
               setSelectedTour={setSelectedTour}
-              countryDetails={countryDetails}
+              countryname={countryname}
+              heading={"Tours in"}
             />
           )}
         </>

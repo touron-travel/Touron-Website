@@ -39,8 +39,9 @@
   font-size: 150px;
   color: #ffffff;
   position: absolute;
-  top: 30%;
-  left: 35%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
 }
 .slider_titl h1 {
@@ -49,7 +50,8 @@
   font-size: 150px;
   color: #ffffff;
   position: absolute;
-  top: 30%;
-  left: 35%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
 }
