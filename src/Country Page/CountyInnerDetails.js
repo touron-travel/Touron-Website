@@ -68,8 +68,8 @@ const CountryInnerDetails = ({
           </div>
           <div className="main_about">
             <div className="inner_name">
-              About
-              <i className="fa fa-chevron-right"></i>
+              About <span> </span>:<span> </span>
+              {/* <i className="fa fa-chevron-right"></i> */}
               {countryDetails.countryName}
             </div>
             <div className="inner_desc">{countryDetails.aboutCountry}</div>

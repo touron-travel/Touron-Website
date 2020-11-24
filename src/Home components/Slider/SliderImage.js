@@ -10,8 +10,8 @@ export default function SliderImage() {
     speed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,
-    dots: true,
+    arrows: false,
+    dots: false,
     fade: true,
   };
 
@@ -20,7 +20,7 @@ export default function SliderImage() {
       <Slider {...settings} arrows accessibility pauseOnHover={false}>
         <div className="slide0 slide">
           <div className="slider_titl">
-            <Typing speed={50} loop={false} hideCursor={true}>
+            <Typing speed={500} loop={false} hideCursor={true}>
               <h1>tour On</h1>
             </Typing>
           </div>

@@ -119,6 +119,7 @@ const CountryInner = () => {
               tour={tourDetails}
               selectedTour={selectedTour}
               setSelectedTour={setSelectedTour}
+              countryDetails={countryDetails}
             />
           )}
         </>
