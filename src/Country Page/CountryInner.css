@@ -89,6 +89,7 @@
   font-size: 12px;
   color: #666666;
 }
+
 .inner_name i {
   padding: 0px 8px;
   font-size: 20px;
@@ -113,10 +114,11 @@
   border-radius: 5px;
 }
 .inner_name {
-  font-size: 34px;
+  font-size: 40px;
   color: #000000;
-  font-family: "Roboto", sans-serif;
-  padding-bottom: 12px;
+  padding: 20px 20px 20px 0;
+  font-weight: bolder;
+  font-family: "Kaushan Script";
 }
 .available {
   display: flex;
@@ -156,8 +158,8 @@
 .highlights_title h2 {
   font-size: 40px;
   font-weight: 900;
-  color: #3e4559;
-  font-family: "Roboto", sans-serif;
+  color: #000000;
+  font-family: "Kaushan Script";
   padding: 72px 72px 20px;
 }
 
@@ -234,18 +236,23 @@
   display: none;
 }
 .highlights_about {
-  width: 70%;
-  /* background-color: #dff9fb; */
-  /* background-color: #db6500; */
-  border-radius: 20px;
-  margin: 30px 72px;
-  padding: 40px 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 80px;
+  color: #000;
 }
+.highlights_about h2 {
+  font-family: "Kaushan Script";
+  font-weight: bold;
+}
+
 .countryInner_tour-title h2 {
   font-size: 40px;
   font-weight: 900;
-  color: #3e4559;
-  font-family: "Roboto", sans-serif;
+  color: #000000;
+  font-family: "Kaushan Script";
   padding: 12px 72px 20px;
 }
 .countryInner_tour_image-flex {

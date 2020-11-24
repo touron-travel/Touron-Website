@@ -1,11 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const SimilarTour = ({ tour, selectedTour, setSelectedTour }) => {
+const SimilarTour = ({
+  tour,
+  selectedTour,
+  setSelectedTour,
+  countryDetails,
+}) => {
   return (
     <div className="countryInner_tour">
       <div className="countryInner_tour-title">
-        <h2>Tours</h2>
+        <h2>Tours in {countryDetails.countryName}</h2>
       </div>
       <div className="countryInner_tour_image-flex">
         {tour.map((tour, index) => {

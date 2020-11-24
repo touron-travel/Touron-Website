@@ -10,8 +10,8 @@ export default function SliderImage() {
     speed: 4000,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows: true,
-    dots: true,
+    arrows: false,
+    dots: false,
     fade: true,
   };
 
