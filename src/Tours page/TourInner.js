@@ -9,8 +9,8 @@ import {
   RectGraduallyShowLoading,
   CircleLoading,
 } from "react-loadingg";
-
 import SimilarTour from "../Country Page/SimilarTour";
+
 const TourInner = () => {
   const { tourname, countryname, tourid } = useParams();
   const [toggleInfo, setToggleInfo] = useState("Tips");
@@ -31,14 +31,11 @@ const TourInner = () => {
     }
   };
   const getSimilarTours = async () => {
-    setTourLoaded(true);
-
     try {
       const tourResponse = await axios.get(
         `${API}/tour/countryname/${countryname}`
       );
       setSimilarTours(tourResponse.data);
-      setTourLoaded(false);
     } catch (err) {
       console.log(err, "errbcbbdcb");
     }
@@ -64,22 +61,6 @@ const TourInner = () => {
             // color="#4834d4"
             size="large"
           />
-          {/* <RectGraduallyShowLoading
-            style={{
-              top: "150px",
-              alignItems: "center",
-              left: "48%",
-            }}
-            color="#4834d4"
-          />
-          <CircleLoading
-            style={{
-              top: "150px",
-              alignItems: "center",
-              left: "48%",
-            }}
-            color="#4834d4"
-          /> */}
         </div>
       ) : (
         <>
@@ -112,8 +93,8 @@ const TourInner = () => {
             </div>
 
             <div className="TourName">
-              <h2>{tourDetails.tourName}</h2>
-              <h6>{tourDetails.ratings} / 5 Stars</h6>
+              {/* <h2>{tourDetails.tourName}</h2>
+              <h6>{tourDetails.ratings} / 5 Stars</h6> */}
             </div>
           </div>
 
@@ -190,50 +171,19 @@ const TourInner = () => {
               <div className="question_block-mail">info@hellodigi.ru</div>
             </div>
           </div>
-        </>
-      )}
-
-      <div className="similar">
-        {tourLoaded ? (
-          <div className="loader">
-            {/* <SemipolarLoading
-              style={{
-                top: "150px",
-                alignItems: "center",
-                left: "48%",
-              }}
-              // color="#4834d4"
-              size="large"
-            /> */}
-            <RectGraduallyShowLoading
-              style={{
-                top: "150px",
-                alignItems: "center",
-                left: "48%",
-              }}
-              color="#4834d4"
-            />
-            {/* <CircleLoading
-              style={{
-                top: "150px",
-                alignItems: "center",
-                left: "48%",
-              }}
-              color="#4834d4"
-            /> */}
-          </div>
-        ) : (
-          <>
+          <div className="similar">
             {similarTours.length === 0 ? null : (
               <SimilarTour
                 tour={similarTours}
                 selectedTour={selectedTour}
                 setSelectedTour={setSelectedTour}
+                countryname={countryname}
+                heading={"Similar tours in"}
               />
             )}
-          </>
-        )}
-      </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

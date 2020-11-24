@@ -9,8 +9,11 @@
 }
 .footnav-area {
   display: flex;
-  list-style: none;
+  /* list-style: none; */
   color: #ffffff;
+}
+.footnav-items {
+  list-style: none;
 }
 .footnav-links {
   text-decoration: none;
@@ -48,7 +51,7 @@
   margin-left: 20px;
   margin-right: 10px;
 }
-ul {
+.navigations ul {
   list-style: none;
 }
 .link {

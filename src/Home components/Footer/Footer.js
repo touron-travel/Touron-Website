@@ -14,7 +14,7 @@ export default function Footer() {
     <>
       <div className="footer">
         <div className="footnav">
-          <div className="navigation">
+          <div className="navigations">
             <ul className="footnav-area">
               <li className="footnav-items">
                 <NavLink

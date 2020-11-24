@@ -235,19 +235,27 @@
 .highlights_image-flex::-webkit-scrollbar {
   display: none;
 }
-.highlights_about {
+/* .highlights_about {
+  padding: 50px 120px;
+} */
+.highlights_about-desc {
+  width: 100%;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 40px 80px;
-  color: #000;
+  flex-direction: column;
+  padding: 50px 150px;
 }
-.highlights_about h2 {
+.highlights_about-desc h2 {
+  color: #000;
   font-family: "Kaushan Script";
   font-weight: bold;
 }
-
+.highlights_about-desc p {
+  text-align: justify;
+  height: 66px;
+}
 .countryInner_tour-title h2 {
   font-size: 40px;
   font-weight: 900;

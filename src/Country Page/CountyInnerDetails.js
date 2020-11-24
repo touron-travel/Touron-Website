@@ -69,7 +69,6 @@ const CountryInnerDetails = ({
           <div className="main_about">
             <div className="inner_name">
               About <span> </span>:<span> </span>
-              {/* <i className="fa fa-chevron-right"></i> */}
               {countryDetails.countryName}
             </div>
             <div className="inner_desc">{countryDetails.aboutCountry}</div>
@@ -181,7 +180,6 @@ const CountryInnerDetails = ({
             );
           })}
         </div>
-
         <div className="highlights_about">
           {cityDetails.map((city, index) => {
             if (city.cityName === selectedCity)
