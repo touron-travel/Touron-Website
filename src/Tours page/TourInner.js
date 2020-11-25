@@ -13,7 +13,7 @@ import SimilarTour from "../Country Page/SimilarTour";
 
 const TourInner = () => {
   const { tourname, countryname, tourid } = useParams();
-  const [toggleInfo, setToggleInfo] = useState("Tips");
+  const [toggleInfo, setToggleInfo] = useState("Inclusion");
   const [tourDetails, setTourDetails] = useState({});
   const [similarTours, setSimilarTours] = useState([]);
   const [contentLoaded, setContentLoaded] = useState(false);
@@ -87,16 +87,6 @@ const TourInner = () => {
               </div>
             </div>
           </div>
-          <div className="Tourintro">
-            <div className="TourInner_image">
-              <img src={tourDetails.imageUrl} />
-            </div>
-
-            <div className="TourName">
-              {/* <h2>{tourDetails.tourName}</h2>
-              <h6>{tourDetails.ratings} / 5 Stars</h6> */}
-            </div>
-          </div>
 
           <div className="TourFeatures">
             <div className="travel">
@@ -129,6 +119,17 @@ const TourInner = () => {
             </div>
           </div>
 
+          <div className="Tourintro">
+            <div className="TourInner_image">
+              <img src={tourDetails.imageUrl} />
+            </div>
+
+            <div className="TourName">
+              {/* <h2>{tourDetails.tourName}</h2>
+              <h6>{tourDetails.ratings} / 5 Stars</h6> */}
+            </div>
+          </div>
+
           <div className="Informations_Container">
             <div className="Informations">
               <h1>
@@ -138,26 +139,26 @@ const TourInner = () => {
               <div className="labels">
                 <h6
                   onClick={() => {
-                    setToggleInfo("Tips");
-                  }}
-                  className={toggleInfo === "Tips" ? "Selectedlabels" : ""}
-                >
-                  Extras
-                </h6>
-                <h6
-                  onClick={() => {
                     setToggleInfo("Inclusion");
                   }}
                   className={toggleInfo === "Inclusion" ? "Selectedlabels" : ""}
                 >
                   Inclusion
                 </h6>
+                <h6
+                  onClick={() => {
+                    setToggleInfo("Tips");
+                  }}
+                  className={toggleInfo === "Tips" ? "Selectedlabels" : ""}
+                >
+                  Extras
+                </h6>
               </div>
               <div className="labels_details">
                 {toggleInfo === "Inclusion" ? (
-                  <p>{tourDetails.inclusion}</p>
-                ) : (
                   <p>{tourDetails.additionalInformation}</p>
+                ) : (
+                  <p>{tourDetails.inclusion}</p>
                 )}
               </div>
             </div>

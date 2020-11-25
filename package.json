@@ -26,6 +26,7 @@
     "react-scripts": "3.4.3",
     "react-scroll": "^1.8.1",
     "react-slick": "^0.27.13",
+    "react-svg": "^11.1.2",
     "react-typing-animation": "^1.6.2",
     "slick-carousel": "^1.8.1",
     "tawkto-react": "^1.0.11"

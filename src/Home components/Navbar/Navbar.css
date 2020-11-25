@@ -7,16 +7,16 @@
   padding-left: 15px;
 }
 .nav-area {
-  list-style: none;
   display: flex;
 }
 .nav-area li {
   padding: 0px 20px;
+  list-style: none;
 }
 .logo img {
-  width: 60px;
-  border-radius: 50%;
-  height: 60px;
+  width: 160px;
+  /* border-radius: 50%; */
+  /* height: 60px; */
 }
 .nav-links {
   text-decoration: none;

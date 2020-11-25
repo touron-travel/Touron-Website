@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
-import Image from "../../assests/logo.jpeg";
+import Image from "../../assests/touron.png";
 
 export default function Navbar() {
   return (
