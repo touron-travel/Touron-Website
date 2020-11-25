@@ -4,6 +4,10 @@
 /* .countryInner_Details {
   background-color: black;
 } */
+
+.active {
+  color: #db6500;
+}
 .countryInner_image {
   width: 100%;
   height: 100vh;

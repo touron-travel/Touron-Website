@@ -17,6 +17,11 @@ import { ApiContext } from "./Context/ApiContext";
 import CountryInner from "./Country Page/CountryInner";
 import TourInner from "./Tours page/TourInner";
 import ScrollToTop from "./ScrollToTop";
+import PlannedTour from "./Tour Categories/Planned Tour/PlannedTour";
+import HoneymoonTour from "./Tour Categories/Honeymoon Tour/HoneymoonTour";
+import LuxuryTour from "./Tour Categories/Luxury Tour/LuxuryTour";
+import RoadtripTour from "./Tour Categories/Roadtrip Tour/RoadtripTour";
+import SurpriseTour from "./Tour Categories/Surprise Tour/SurpriseTour";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
@@ -27,7 +32,6 @@ export default function Routes() {
     try {
       const tourResponse = await axios.get(`${API}/tour`);
       setTour(tourResponse.data);
-      // console.log(tourResponse.data);
     } catch (err) {
       console.log(err, "err");
     }
@@ -70,6 +74,11 @@ export default function Routes() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
+            <Route path="/planned-tour" component={PlannedTour} />
+            <Route path="/surprise-tour" component={SurpriseTour} />
+            <Route path="/roadtrip-tour" component={RoadtripTour} />
+            <Route path="/luxury-tour" component={LuxuryTour} />
+            <Route path="/honeymoon-tour" component={HoneymoonTour} />
             <Route path="/how-it-works" component={HowItWorks} />
             <Route path="/contact" component={Contact} />
             <Route path="/destination" component={Destination} />

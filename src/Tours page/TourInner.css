@@ -132,8 +132,8 @@
   flex-direction: row;
   /* height: 100px; */
   background-color: white;
-  box-shadow: 2px 2px 20px 0 #7ed6df;
-  border-radius: 15px;
+  box-shadow: 2px 2px 20px 10px #dae0e2;
+  border-radius: 10px;
 }
 
 .TourFeatures .travel i {
@@ -148,13 +148,13 @@
 }
 
 .TourFeatures .idealfor {
-  background-color: #70a1ff;
+  background-color: #e74292;
 }
 .TourFeatures .tourtype {
-  background-color: #ff7979;
+  background-color: #67e6dc;
 }
 .TourFeatures .duration {
-  background-color: #7ed6df;
+  background-color: #7cec9f;
 }
 
 .TourFeatures .Idealfor {
@@ -194,19 +194,21 @@
   font-weight: bold;
   font-family: monospace;
   padding: 10px;
-  background-color: #dff9fb;
+  background-color: #fff;
   margin-left: 20px;
   border-radius: 50px;
+  /* box-shadow: 2px 2px 10px 0 #7ed6df; */
 }
 .Selectedlabels {
   font-size: 15px;
   font-weight: bold;
   font-family: monospace;
   padding: 10px;
-  box-shadow: 0px 1px 10px 2px #7ed6df;
+  box-shadow: 2px 2px 10px 0 #7ed6df;
 
   margin-left: 20px;
   border-radius: 50px;
+  transform: scale(1.1);
 }
 
 .Informations h2 {
