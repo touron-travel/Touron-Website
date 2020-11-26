@@ -319,6 +319,10 @@ export default function Popular_tour(props) {
                   }}
                   className={selectedCategory == "Activities" ? "selected" : ""}
                 >
+                  <input
+                    type="checkbox"
+                    className="tour_category-list-checkbox"
+                  />
                   Outdoor Activities
                 </li>
                 <li
@@ -330,6 +334,10 @@ export default function Popular_tour(props) {
                     selectedCategory == "Hop On and Off" ? "selected" : ""
                   }
                 >
+                  <input
+                    type="checkbox"
+                    className="tour_category-list-checkbox"
+                  />
                   Hop On and Off
                 </li>
                 <li
@@ -339,6 +347,10 @@ export default function Popular_tour(props) {
                   }}
                   className={selectedCategory == "Attraction" ? "selected" : ""}
                 >
+                  <input
+                    type="checkbox"
+                    className="tour_category-list-checkbox"
+                  />
                   Attraction
                 </li>
                 <li
@@ -348,6 +360,10 @@ export default function Popular_tour(props) {
                   }}
                   className={selectedCategory == "Learning" ? "selected" : ""}
                 >
+                  <input
+                    type="checkbox"
+                    className="tour_category-list-checkbox"
+                  />
                   Learning
                 </li>
                 <li
@@ -359,6 +375,10 @@ export default function Popular_tour(props) {
                     selectedCategory == "Family and kids" ? "selected" : ""
                   }
                 >
+                  <input
+                    type="checkbox"
+                    className="tour_category-list-checkbox"
+                  />
                   Family and kids
                 </li>
                 <li
@@ -370,6 +390,10 @@ export default function Popular_tour(props) {
                     selectedCategory == "Young Couple" ? "selected" : ""
                   }
                 >
+                  <input
+                    type="checkbox"
+                    className="tour_category-list-checkbox"
+                  />
                   Young Couple
                 </li>
                 <li
@@ -379,6 +403,10 @@ export default function Popular_tour(props) {
                   }}
                   className={selectedCategory == "Solo" ? "selected" : ""}
                 >
+                  <input
+                    type="checkbox"
+                    className="tour_category-list-checkbox"
+                  />
                   Solo
                 </li>
                 <li
@@ -390,6 +418,10 @@ export default function Popular_tour(props) {
                     selectedCategory == "Mature Couple" ? "selected" : ""
                   }
                 >
+                  <input
+                    type="checkbox"
+                    className="tour_category-list-checkbox"
+                  />
                   Mature Couple
                 </li>
                 <li
@@ -401,6 +433,10 @@ export default function Popular_tour(props) {
                     selectedCategory == "Full Day Tour" ? "selected" : ""
                   }
                 >
+                  <input
+                    type="checkbox"
+                    className="tour_category-list-checkbox"
+                  />
                   Full Day Tour
                 </li>
                 <li
@@ -412,6 +448,10 @@ export default function Popular_tour(props) {
                     selectedCategory == "Half Day Tour" ? "selected" : ""
                   }
                 >
+                  <input
+                    type="checkbox"
+                    className="tour_category-list-checkbox"
+                  />
                   Half Day Tour
                 </li>
                 <li
@@ -421,6 +461,10 @@ export default function Popular_tour(props) {
                   }}
                   className={selectedCategory == "Night Tour" ? "selected" : ""}
                 >
+                  <input
+                    type="checkbox"
+                    className="tour_category-list-checkbox"
+                  />{" "}
                   Night Tour
                 </li>
               </ul>
