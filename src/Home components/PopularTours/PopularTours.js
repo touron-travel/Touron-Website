@@ -382,7 +382,7 @@ export default function PopularTours() {
 
   var settings = {
     infinite: true,
-    autoplay: true,
+    autoplay: false,
     speed: 1000,
     arrows: true,
     slidesToShow: 2,

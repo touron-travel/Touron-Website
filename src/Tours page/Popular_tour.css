@@ -425,7 +425,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  padding: 8px 10px;
+  padding: 15px 10px;
 }
 
 .country-slider .slick-next {
@@ -436,17 +436,19 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  padding: 8px 10px;
+  padding: 15px 10px;
 }
-.slick-next:before {
+.country-slider .slick-next:before {
   font-size: 30px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  content: "→";
+  font-family: fantasy;
+  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
+  /* content: "→"; */
 }
-.slick-prev::before {
+.country-slider .slick-prev::before {
   font-size: 30px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  content: "←";
+  font-family: fantasy;
+  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
+  /* content: "←"; */
 }
