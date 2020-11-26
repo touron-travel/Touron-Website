@@ -164,10 +164,8 @@ export default function Popular_tour(props) {
                   getCityNames(country.countryName);
                 }}
               >
-                <div>
+                <div className="countrydetails">
                   <img src={country.imageUrl} alt="" />
-                </div>
-                <div>
                   <p
                     className="country-name"
                     style={{
