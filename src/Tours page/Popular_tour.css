@@ -392,8 +392,13 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
+  transition: 0.5s;
 }
-
+.co:hover {
+  z-index: 1;
+  transform: scale(1.1);
+  cursor: pointer;
+}
 .co img {
   width: 130px;
   height: 130px;
@@ -412,9 +417,12 @@
 .country-name {
   top: -60px;
   position: relative;
-  font-size: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  /* font-size: 15px; */
   text-align: center;
-  padding-right: 40px;
+  /* padding-right: 40px; */
+  font-family: "Roboto", sans-serif;
 }
 
 .country-slider .slick-prev {
@@ -451,4 +459,12 @@
   /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
   /* content: "←"; */
+}
+
+.tour_category-list li {
+  list-style: none;
+  width: 45%;
+}
+.tour_category-list-checkbox {
+  margin-right: 10px;
 }
