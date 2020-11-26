@@ -74,7 +74,6 @@
 }
 .poptour1 {
   margin: 20px;
-  /* width: 600px; */
 }
 
 .trends img {
@@ -137,7 +136,7 @@
   font-size: 16px;
   padding: 15px 48px;
   font-family: "Roboto", sans-serif;
-  margin: 0;
+  margin: 0 150px;
 }
 .plink {
   text-decoration: none;
@@ -180,4 +179,42 @@
   font-style: italic;
   line-height: 1.6;
   width: 174px;
+}
+
+.tour-slider .slick-prev {
+  left: 90%;
+  top: -9%;
+  z-index: 2;
+  border: 2px solid rgba(255, 255, 255, 0.36);
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 15px 10px;
+}
+
+.tour-slider .slick-next {
+  left: 95%;
+  top: -9%;
+  z-index: 2;
+  border: 2px solid rgba(255, 255, 255, 0.36);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 15px 10px;
+}
+.tour-slider .slick-next:before {
+  font-size: 30px;
+  font-family: fantasy;
+  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
+  /* content: "→"; */
+}
+.tour-slider .slick-prev::before {
+  font-size: 30px;
+  font-family: fantasy;
+
+  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
+  /* content: "←"; */
 }

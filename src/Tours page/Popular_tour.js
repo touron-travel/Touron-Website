@@ -8,8 +8,9 @@ import latest_tour1 from "../assests/sidebar7.jpg";
 import article_img from "../assests/sidebar7.jpg";
 import { ApiContext } from "../Context/ApiContext";
 import Popular_tourTile from "./Popular_tourTile";
-import Slider from "react-slick";
 // import ContentLoader, { Facebook } from "react-content-loader";
+import Slider from "react-slick";
+
 import {
   SemipolarLoading,
   RectGraduallyShowLoading,
@@ -70,35 +71,38 @@ export default function Popular_tour(props) {
     if (cityName !== "") getCityTours(cityName);
   }, [page]);
 
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div className={className} onClick={onClick}>
+        <h1>hbhjbhjbhjb</h1>
+      </div>
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    console.log(props, "prev");
+    return (
+      <div className={className} onClick={onClick}>
+        ;<h1>hbhjbhjbhjb</h1>
+      </div>
+    );
+  }
+
+  var settings = {
+    infinite: true,
+    autoplay: true,
+    speed: 1000,
+    arrows: true,
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+  };
   return (
     <>
-      {/* <ContentLoader
-        speed={-1}
-        width={1000}
-        height={1000}
-        viewBox="0 0 400 160"
-        backgroundColor="#f3f3f3"
-        foregroundColor="#ecebeb"
-        {...props}
-      >
-        <rect x="48" y="8" rx="3" ry="3" width="88" height="6" />
-        <rect x="48" y="26" rx="3" ry="3" width="52" height="6" />
-        <rect x="0" y="56" rx="3" ry="3" width="410" height="6" />
-        <rect x="0" y="72" rx="3" ry="3" width="380" height="6" />
-        <rect x="0" y="88" rx="3" ry="3" width="178" height="6" />
-        <circle cx="20" cy="20" r="20" />
-      </ContentLoader> */}
-
       <div className="Popular_tours">
-        {/* <div className="pophome">
-          <Link to="/" className="pophome1">
-            Home
-          </Link>
-          <span className="seperator">/</span>
-          <Link to="#" className="defaulthome">
-            Most popular holiday tours
-          </Link>
-        </div> */}
         <div className="pop_title_search">
           <div className="poptitle">Search Tours</div>
           <div className="popsearch">
@@ -139,28 +143,33 @@ export default function Popular_tour(props) {
             </form>
           </div>
         </div>
-        <div className="poptour_item">
+      </div>
+      <div className="country-slider">
+        <Slider {...settings}>
           {countries.map((country, index) => {
-            if (index > 8 && index < 17)
-              return (
-                <div
-                  className={
-                    country.countryName == countryName
-                      ? "popscity_select"
-                      : "popscity"
-                  }
-                  key={index}
-                  onClick={() => {
-                    setPage(1);
-                    setPageSize(4);
-                    setTourShown(4);
-                    setCountryName(country.countryName);
-                    getCityNames(country.countryName);
-                  }}
-                >
-                  <img className="poptour-img" src={country.imageUrl} alt="" />
+            return (
+              <div
+                // className={
+                //   country.countryName == countryName
+                //     ? "popscity_select"
+                //     : "popscity"
+                // }
+                className="co"
+                key={index}
+                onClick={() => {
+                  setPage(1);
+                  setPageSize(4);
+                  setTourShown(4);
+                  setCountryName(country.countryName);
+                  getCityNames(country.countryName);
+                }}
+              >
+                <div>
+                  <img src={country.imageUrl} alt="" />
+                </div>
+                <div>
                   <p
-                    className="popcity"
+                    className="country-name"
                     style={{
                       color:
                         countryName == country.countryName ? "#db6500" : "#fff",
@@ -169,12 +178,11 @@ export default function Popular_tour(props) {
                     {country.countryName}
                   </p>
                 </div>
-              );
+              </div>
+            );
           })}
-          {/* </Slider> */}
-        </div>
+        </Slider>
       </div>
-
       {cityNames.length == 0 ? null : (
         <div className="cityname_container ">
           {cityNames.map((c, index) => {
@@ -199,6 +207,7 @@ export default function Popular_tour(props) {
           })}
         </div>
       )}
+
       <div className="poptour_section">
         <div>
           <div className="poptour-api">

@@ -370,37 +370,34 @@ export default function PopularTours() {
   ];
   const [tour, setTour] = useState(tours);
 
-  // useEffect(() => {
-  //   const getTours = async () => {
-  //     await axios
-  //       .get(`${API}/tour?page=1&pageSize=10`)
-  //       .then((res) => {
-  //         setTour(res.data);
-  //       })
-  //       .catch((err) => console.log(err, "File missing"));
-  //   };
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return <div className={className} onClick={onClick}></div>;
+  }
 
-  //   getTours();
-  // }, []);
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return <div className={className} onClick={onClick} />;
+  }
 
   var settings = {
     infinite: true,
-    autoplay: true,
+    autoplay: false,
     speed: 1000,
-    arrows: false,
+    arrows: true,
     slidesToShow: 2,
     slidesToScroll: 1,
     centerMode: true,
     centerPadding: "60px",
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
   return (
     <div className="tours">
       <div className="tour-slider-header">
         <div className="tour-slider-title">
           <p>popularly</p>
-          <h2>
-            Most popular <br /> holiday tours
-          </h2>
+          <h2>Most popular holiday tours</h2>
         </div>
         <div>
           <Link to="/popular_tour" className="plink">

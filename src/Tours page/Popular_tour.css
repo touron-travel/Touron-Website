@@ -384,3 +384,71 @@
 .tour_category-list .selected {
   color: #db6500;
 }
+
+.co {
+  width: 100px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.co img {
+  width: 130px;
+  height: 130px;
+  /* margin: 20px; */
+  border-radius: 10px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
+  object-fit: cover;
+  object-position: top left;
+}
+
+.country-slider {
+  padding: 10px 100px 0px 100px;
+  background-color: black;
+}
+
+.country-name {
+  top: -60px;
+  position: relative;
+  font-size: 15px;
+  text-align: center;
+  padding-right: 40px;
+}
+
+.country-slider .slick-prev {
+  left: -5%;
+  top: 38%;
+  z-index: 2;
+  border: 2px solid rgba(255, 255, 255, 0.36);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 15px 10px;
+}
+
+.country-slider .slick-next {
+  left: 100%;
+  top: 38%;
+  z-index: 2;
+  border: 2px solid rgba(255, 255, 255, 0.36);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 15px 10px;
+}
+.country-slider .slick-next:before {
+  font-size: 30px;
+  font-family: fantasy;
+  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
+  /* content: "→"; */
+}
+.country-slider .slick-prev::before {
+  font-size: 30px;
+  font-family: fantasy;
+  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
+  /* content: "←"; */
+}

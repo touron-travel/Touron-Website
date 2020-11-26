@@ -145,9 +145,10 @@
   border-radius: 50px;
   position: relative;
   left: -20px;
+  background-color: #5a8ec1;
 }
 
-.TourFeatures .idealfor {
+/* .TourFeatures .idealfor {
   background-color: #e74292;
 }
 .TourFeatures .tourtype {
@@ -155,7 +156,7 @@
 }
 .TourFeatures .duration {
   background-color: #7cec9f;
-}
+} */
 
 .TourFeatures .Idealfor {
   padding: 10px 20px 10px 0px;
