@@ -8,29 +8,15 @@ const SimilarTour = ({
   setSelectedTour,
   countryname,
   heading,
+  tourname,
 }) => {
-  // function SampleNextArrow(props) {
-  //   const { className, style, onClick } = props;
-  //   return <div className={className} onClick={onClick}></div>;
-  // }
-
-  // function SamplePrevArrow(props) {
-  //   const { className, style, onClick } = props;
-  //   console.log(props, "prev");
-  //   return <div className={className} onClick={onClick}></div>;
-  // }
-
   var settings = {
     infinite: true,
     autoplay: false,
     speed: 1000,
     arrows: true,
     slidesToShow: 2,
-    // centerMode: true,
     slidesToScroll: 1,
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />,
-    // className: "slider",
   };
   return (
     <div className="countryInner_tour">
@@ -42,35 +28,36 @@ const SimilarTour = ({
       <div className="similartour_slide">
         <Slider {...settings}>
           {tour.map((tour, index) => {
-            return (
-              <div
-                className={
-                  selectedTour === tour.tourName
-                    ? "similartour_container_selected"
-                    : "similartour_container"
-                }
-                key={index}
-                onMouseOver={() => setSelectedTour(tour.tourName)}
-              >
-                <Link
-                  className="plink"
-                  to={{
-                    pathname: `/tourdetails/${tour.countryName}/${tour.tourName}/${tour._id}`,
-                  }}
+            if (tour.tourName !== tourname)
+              return (
+                <div
+                  className={
+                    selectedTour === tour.tourName
+                      ? "similartour_container_selected"
+                      : "similartour_container"
+                  }
+                  key={index}
+                  onMouseOver={() => setSelectedTour(tour.tourName)}
                 >
-                  <img src={tour.imageUrl} alt="" />
-                  <div
-                    className="similartour-image-subtitle"
-                    style={{
-                      color:
-                        selectedTour === tour.tourName ? "#db6500" : "#fff",
+                  <Link
+                    className="plink"
+                    to={{
+                      pathname: `/tourdetails/${tour.countryName}/${tour.tourName}/${tour._id}`,
                     }}
                   >
-                    {tour.tourName}
-                  </div>
-                </Link>
-              </div>
-            );
+                    <img src={tour.imageUrl} alt="" />
+                    <div
+                      className="similartour-image-subtitle"
+                      style={{
+                        color:
+                          selectedTour === tour.tourName ? "#db6500" : "#fff",
+                      }}
+                    >
+                      {tour.tourName}
+                    </div>
+                  </Link>
+                </div>
+              );
           })}
         </Slider>
       </div>

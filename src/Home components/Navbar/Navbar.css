@@ -24,6 +24,13 @@
 }
 
 */
+
+.logo img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  position: absolute;
+}
 * {
   margin: 0;
   padding: 0;
@@ -33,7 +40,8 @@
 .nav-links li .nav-links_items:hover,
 .nav-links li .nav-links_items.selected {
   /* font-size: 110px; */
-  color: tomato;
+  color: #ff7f00;
+  font-family: "Roboto", sans-serif;
 }
 nav {
   height: 10vh;
@@ -102,11 +110,12 @@ nav {
     position: fixed;
     background: black;
     margin: 0;
-    /* height: 100vh; */
+    height: 100vh;
     left: 0;
     top: 0;
     width: 100%;
     flex-direction: column;
+    align-items: center;
     clip-path: circle(100px at 90% -20%);
     -webkit-clip-path: circle(100px at 90% -20%);
     transition: all 1s ease-out;
@@ -131,7 +140,8 @@ nav {
   .nav-links li .nav-links_items:hover,
   .nav-links li .nav-links_items.selected {
     font-size: 20px;
-    color: tomato;
+    color: #ff7f00;
+    font-family: "Roboto", sans-serif;
   }
   /* .nav-links li .nav-links_items .selected {
     font-size: 20px;

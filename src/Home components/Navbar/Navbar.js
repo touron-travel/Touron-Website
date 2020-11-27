@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 // import "./script.js";
-import Image from "../../assests/touron.png";
+import Image from "../../assests/logo.jpeg";
 
 export default function Navbar() {
   const [navOpen, setNavOpen] = useState(false);
   console.log(navOpen, "l");
   return (
     <nav>
-      {/* <div className="logo">
+      <div className="logo">
         <img src={Image} alt="" />
-      </div> */}
+      </div>
       <div className="hamburger" onClick={() => setNavOpen(!navOpen)}>
         <div className="line"></div>
         <div className="line"></div>
@@ -81,7 +81,7 @@ export default function Navbar() {
             activeClassName="selected"
             onClick={() => setNavOpen(false)}
           >
-            <h6> Login/Register</h6>
+            Login/Register
           </NavLink>
         </li>
       </ul>

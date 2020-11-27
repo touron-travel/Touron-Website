@@ -7,7 +7,7 @@ export default function Popular_tourTile({ t }) {
       <img className="poptour_img" src={t.imageUrl} alt="" />
       <div className="poptour_details">
         <h3 className="poptour_title">{t.tourName}</h3>
-        <p className="poptour_description">{t.aboutTour.slice(0, 100)}</p>
+        <p className="poptour_description">{t.aboutTour}</p>
         <div className="poptour_days">
           <i className="far fa-clock"></i>
           <span>{t.tourDuration}</span>

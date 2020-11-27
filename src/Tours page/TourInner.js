@@ -58,7 +58,6 @@ const TourInner = () => {
               alignItems: "center",
               left: "48%",
             }}
-            // color="#4834d4"
             size="large"
           />
         </div>
@@ -122,6 +121,14 @@ const TourInner = () => {
           <div className="Tourintro">
             <div className="TourInner_image">
               <img src={tourDetails.imageUrl} />
+              {/* <iframe
+                width="100%"
+                height="515"
+                src={tourDetails.imageUrl}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe> */}
             </div>
 
             <div className="TourName">
@@ -180,6 +187,7 @@ const TourInner = () => {
                 setSelectedTour={setSelectedTour}
                 countryname={countryname}
                 heading={"Similar tours in"}
+                tourname={tourname}
               />
             )}
           </div>

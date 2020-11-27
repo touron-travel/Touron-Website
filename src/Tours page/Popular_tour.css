@@ -416,7 +416,6 @@
 
 .country-name {
   top: -70px;
-  /* transform: translate((-60%, 60%)); */
   position: relative;
   font-size: 20px;
   font-weight: 700;

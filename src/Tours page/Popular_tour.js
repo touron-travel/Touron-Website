@@ -8,18 +8,10 @@ import latest_tour1 from "../assests/sidebar7.jpg";
 import article_img from "../assests/sidebar7.jpg";
 import { ApiContext } from "../Context/ApiContext";
 import Popular_tourTile from "./Popular_tourTile";
-// import ContentLoader, { Facebook } from "react-content-loader";
 import Slider from "react-slick";
-
-import {
-  SemipolarLoading,
-  RectGraduallyShowLoading,
-  CircleLoading,
-} from "react-loadingg";
+import { SemipolarLoading } from "react-loadingg";
 
 export default function Popular_tour(props) {
-  // const MyLoader = () => <ContentLoader />;
-  // const MyFacebookLoader = () => <Facebook />;
   const { countries } = useContext(ApiContext);
   const [tour, setTour] = useState([]);
   const location = useLocation();
@@ -31,7 +23,8 @@ export default function Popular_tour(props) {
   const [pageSize, setPageSize] = useState(4);
   const [tourShown, setTourShown] = useState(4);
   const [contentLoaded, setContentLoaded] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState([]);
+  console.log("tour :>> ", tour.length);
 
   const getCityTours = async (name) => {
     setContentLoaded(true);
@@ -44,20 +37,22 @@ export default function Popular_tour(props) {
     setTourLength(cityTourLength.data.length);
   };
 
-  const categoryTours = async (category, idealtype, tourtype) => {
+  const categoryTours = () => {
     setContentLoaded(true);
-    const tourResponse = await axios.get(
-      `${API}/filtertour?tourCategory=${category}&idealType=${idealtype}&tourType=${tourtype}`
-    );
-    setTour(tourResponse.data);
+    selectedCategory.forEach(async (c) => {
+      const tourResponse = await axios.get(
+        `${API}/filtertour?tourCategory=${c}&idealType=${c}&tourType=${c}`
+      );
+      console.log(c, "c");
+      console.log(tourResponse.data.length, "length");
+      setTour(...tour, tourResponse.data);
+    });
     setContentLoaded(false);
   };
 
   const getCityNames = async (name) => {
-    // setContentLoaded(true);
     const cityName = await axios.get(`${API}/city/countryname/${name}`);
     setCityNames(cityName.data);
-    // setContentLoaded(false);
   };
   useEffect(() => {
     if (location.cityName !== undefined) {
@@ -73,21 +68,12 @@ export default function Popular_tour(props) {
 
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
-    return (
-      <div className={className} onClick={onClick}>
-        <h1>hbhjbhjbhjb</h1>
-      </div>
-    );
+    return <div className={className} onClick={onClick}></div>;
   }
 
   function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
-    console.log(props, "prev");
-    return (
-      <div className={className} onClick={onClick}>
-        ;<h1>hbhjbhjbhjb</h1>
-      </div>
-    );
+    return <div className={className} onClick={onClick}></div>;
   }
 
   var settings = {
@@ -149,11 +135,6 @@ export default function Popular_tour(props) {
           {countries.map((country, index) => {
             return (
               <div
-                // className={
-                //   country.countryName == countryName
-                //     ? "popscity_select"
-                //     : "popscity"
-                // }
                 className="co"
                 key={index}
                 onClick={() => {
@@ -311,158 +292,287 @@ export default function Popular_tour(props) {
             <div className="tour_category-list">
               <ul>
                 <li
-                  onClick={() => {
-                    categoryTours("Activities", "", "");
-                    setSelectedCategory("Activities");
-                  }}
-                  className={selectedCategory == "Activities" ? "selected" : ""}
-                >
-                  <input
-                    type="checkbox"
-                    className="tour_category-list-checkbox"
-                  />
-                  Outdoor Activities
-                </li>
-                <li
-                  onClick={() => {
-                    categoryTours("Hop On and Off", "", "");
-                    setSelectedCategory("Hop On and Off");
-                  }}
                   className={
-                    selectedCategory == "Hop On and Off" ? "selected" : ""
+                    selectedCategory.includes("Activities") ? "selected" : ""
                   }
                 >
                   <input
                     type="checkbox"
                     className="tour_category-list-checkbox"
+                    name="activities"
+                    onClick={() => {
+                      if (selectedCategory.includes("Activities")) {
+                        const filter = selectedCategory.filter((category) => {
+                          return category !== "Activities";
+                        });
+                        console.log(filter, "filter");
+                        setSelectedCategory(filter);
+                      } else {
+                        setSelectedCategory([
+                          ...selectedCategory,
+                          "Activities",
+                        ]);
+                      }
+                    }}
+                  />
+                  Outdoor Activities
+                </li>
+                <li
+                  className={
+                    selectedCategory.includes("Hop On and Off")
+                      ? "selected"
+                      : ""
+                  }
+                >
+                  <input
+                    type="checkbox"
+                    onClick={() => {
+                      if (selectedCategory.includes("Hop On and Off")) {
+                        const filter = selectedCategory.filter((category) => {
+                          return category !== "Hop On and Off";
+                        });
+                        console.log(filter, "filter");
+                        setSelectedCategory(filter);
+                      } else {
+                        setSelectedCategory([
+                          ...selectedCategory,
+                          "Hop On and Off",
+                        ]);
+                      }
+                    }}
+                    className="tour_category-list-checkbox"
                   />
                   Hop On and Off
                 </li>
                 <li
-                  onClick={() => {
-                    categoryTours("Attraction", "", "");
-                    setSelectedCategory("Attraction");
-                  }}
-                  className={selectedCategory == "Attraction" ? "selected" : ""}
+                  className={
+                    selectedCategory.includes("Attraction") ? "selected" : ""
+                  }
                 >
                   <input
+                    onClick={() => {
+                      if (selectedCategory.includes("Attraction")) {
+                        const filter = selectedCategory.filter((category) => {
+                          return category !== "Attraction";
+                        });
+                        console.log(filter, "filter");
+                        setSelectedCategory(filter);
+                      } else {
+                        setSelectedCategory([
+                          ...selectedCategory,
+                          "Attraction",
+                        ]);
+                      }
+                    }}
                     type="checkbox"
                     className="tour_category-list-checkbox"
                   />
                   Attraction
                 </li>
                 <li
-                  onClick={() => {
-                    categoryTours("Learning", "", "");
-                    setSelectedCategory("Learning");
-                  }}
-                  className={selectedCategory == "Learning" ? "selected" : ""}
+                  className={
+                    selectedCategory.includes("Learning") ? "selected" : ""
+                  }
                 >
                   <input
+                    onClick={() => {
+                      if (selectedCategory.includes("Learning")) {
+                        const filter = selectedCategory.filter((category) => {
+                          return category !== "Learning";
+                        });
+                        console.log(filter, "filter");
+                        setSelectedCategory(filter);
+                      } else {
+                        setSelectedCategory([...selectedCategory, "Learning"]);
+                      }
+                    }}
                     type="checkbox"
                     className="tour_category-list-checkbox"
                   />
                   Learning
                 </li>
                 <li
-                  onClick={() => {
-                    categoryTours("", "Family and kids", "");
-                    setSelectedCategory("Family and kids");
-                  }}
                   className={
-                    selectedCategory == "Family and kids" ? "selected" : ""
+                    selectedCategory.includes("Family and kids")
+                      ? "selected"
+                      : ""
                   }
                 >
                   <input
+                    onClick={() => {
+                      if (selectedCategory.includes("Family and kids")) {
+                        const filter = selectedCategory.filter((category) => {
+                          return category !== "Family and kids";
+                        });
+                        console.log(filter, "filter");
+                        setSelectedCategory(filter);
+                      } else {
+                        setSelectedCategory([
+                          ...selectedCategory,
+                          "Family and kids",
+                        ]);
+                      }
+                    }}
                     type="checkbox"
                     className="tour_category-list-checkbox"
                   />
                   Family and kids
                 </li>
                 <li
-                  onClick={() => {
-                    categoryTours("", "Young Couple", "");
-                    setSelectedCategory("Young Couple");
-                  }}
                   className={
-                    selectedCategory == "Young Couple" ? "selected" : ""
+                    selectedCategory.includes("Young Couple") ? "selected" : ""
                   }
                 >
                   <input
+                    onClick={() => {
+                      if (selectedCategory.includes("Young Couple")) {
+                        const filter = selectedCategory.filter((category) => {
+                          return category !== "Young Couple";
+                        });
+                        console.log(filter, "filter");
+                        setSelectedCategory(filter);
+                      } else {
+                        setSelectedCategory([
+                          ...selectedCategory,
+                          "Young Couple",
+                        ]);
+                      }
+                    }}
                     type="checkbox"
                     className="tour_category-list-checkbox"
                   />
                   Young Couple
                 </li>
                 <li
-                  onClick={() => {
-                    categoryTours("", "Solo", "");
-                    setSelectedCategory("Solo");
-                  }}
-                  className={selectedCategory == "Solo" ? "selected" : ""}
+                  className={
+                    selectedCategory.includes("Solo") ? "selected" : ""
+                  }
                 >
                   <input
+                    onClick={() => {
+                      if (selectedCategory.includes("Solo")) {
+                        const filter = selectedCategory.filter((category) => {
+                          return category !== "Solo";
+                        });
+                        console.log(filter, "filter");
+                        setSelectedCategory(filter);
+                      } else {
+                        setSelectedCategory([...selectedCategory, "Solo"]);
+                      }
+                    }}
                     type="checkbox"
                     className="tour_category-list-checkbox"
                   />
                   Solo
                 </li>
                 <li
-                  onClick={() => {
-                    categoryTours("", "Mature Couple", "");
-                    setSelectedCategory("Mature Couple");
-                  }}
                   className={
-                    selectedCategory == "Mature Couple" ? "selected" : ""
+                    selectedCategory.includes("Mature Couple") ? "selected" : ""
                   }
                 >
                   <input
+                    onClick={() => {
+                      if (selectedCategory.includes("Mature Couple")) {
+                        const filter = selectedCategory.filter((category) => {
+                          return category !== "Mature Couple";
+                        });
+                        console.log(filter, "filter");
+                        setSelectedCategory(filter);
+                      } else {
+                        setSelectedCategory([
+                          ...selectedCategory,
+                          "Mature Couple",
+                        ]);
+                      }
+                    }}
                     type="checkbox"
                     className="tour_category-list-checkbox"
                   />
                   Mature Couple
                 </li>
                 <li
-                  onClick={() => {
-                    categoryTours("", "", "Full Day Tour");
-                    setSelectedCategory("Full Day Tour");
-                  }}
                   className={
-                    selectedCategory == "Full Day Tour" ? "selected" : ""
+                    selectedCategory.includes("Full Day Tour") ? "selected" : ""
                   }
                 >
                   <input
+                    onClick={() => {
+                      if (selectedCategory.includes("Full Day Tour")) {
+                        const filter = selectedCategory.filter((category) => {
+                          return category !== "Full Day Tour";
+                        });
+                        console.log(filter, "filter");
+                        setSelectedCategory(filter);
+                      } else {
+                        setSelectedCategory([
+                          ...selectedCategory,
+                          "Full Day Tour",
+                        ]);
+                      }
+                    }}
                     type="checkbox"
                     className="tour_category-list-checkbox"
                   />
                   Full Day Tour
                 </li>
                 <li
-                  onClick={() => {
-                    categoryTours("", "", "Half Day Tour");
-                    setSelectedCategory("Half Day Tour");
-                  }}
                   className={
-                    selectedCategory == "Half Day Tour" ? "selected" : ""
+                    selectedCategory.includes("Half Day Tour") ? "selected" : ""
                   }
                 >
                   <input
+                    onClick={() => {
+                      if (selectedCategory.includes("Half Day Tour")) {
+                        const filter = selectedCategory.filter((category) => {
+                          return category !== "Half Day Tour";
+                        });
+                        console.log(filter, "filter");
+                        setSelectedCategory(filter);
+                      } else {
+                        setSelectedCategory([
+                          ...selectedCategory,
+                          "Half Day Tour",
+                        ]);
+                      }
+                    }}
                     type="checkbox"
                     className="tour_category-list-checkbox"
                   />
                   Half Day Tour
                 </li>
                 <li
-                  onClick={() => {
-                    categoryTours("", "", "Night Tour");
-                    setSelectedCategory("Night Tour");
-                  }}
-                  className={selectedCategory == "Night Tour" ? "selected" : ""}
+                  className={
+                    selectedCategory.includes("Night Tour") ? "selected" : ""
+                  }
                 >
                   <input
                     type="checkbox"
+                    onClick={() => {
+                      if (selectedCategory.includes("Night Tour")) {
+                        const filter = selectedCategory.filter((category) => {
+                          return category !== "Night Tour";
+                        });
+                        console.log(filter, "filter");
+                        setSelectedCategory(filter);
+                      } else {
+                        setSelectedCategory([
+                          ...selectedCategory,
+                          "Night Tour",
+                        ]);
+                      }
+                    }}
                     className="tour_category-list-checkbox"
-                  />{" "}
+                  />
+                  Night Tour
+                </li>
+                <li
+                  onClick={() => {
+                    categoryTours();
+                  }}
+                  className={
+                    selectedCategory.includes("Night Tour") ? "selected" : ""
+                  }
+                >
                   Night Tour
                 </li>
               </ul>

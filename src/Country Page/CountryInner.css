@@ -10,7 +10,7 @@
 }
 .countryInner_image {
   width: 100%;
-  height: 100vh;
+  height: 110vh;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -25,7 +25,7 @@
   color: #db6500;
 }
 .countryInner_image::after {
-  height: 100vh;
+  height: 110vh;
   opacity: 0.3;
   position: absolute;
   content: "";
@@ -75,10 +75,10 @@
   padding: 75px 75px 0;
 }
 .countryInner_aboutLeft {
-  flex-basis: 60%;
+  flex-basis: 50%;
 }
 .countryInner_aboutRight {
-  flex-basis: 40%;
+  flex-basis: 50%;
 }
 .inner_home {
   display: flex;
@@ -109,12 +109,12 @@
   padding-top: 75px;
 }
 .having {
-  font-size: 12px;
+  font-size: 16px;
   color: #ffffff;
   /* background-color: #5a8ec1; */
   background-color: #db6500;
   margin-right: 4px;
-  padding: 2px 8px;
+  padding: 4px 8px;
   border-radius: 5px;
 }
 .inner_name {
@@ -129,7 +129,7 @@
   padding-top: 32px;
 }
 .available-left {
-  flex-basis: 80%;
+  flex-basis: 60%;
 }
 .available-right {
   flex-basis: 20%;
@@ -187,7 +187,8 @@
   transition: 0.5s;
 }
 .highlights_image img,
-.highlights_image_selected img {
+.highlights_image_selected img,
+.countries-container img {
   object-fit: cover;
   border-radius: 16px;
   width: 200px;
@@ -204,6 +205,10 @@
   /* transform: scale(1.05); */
   position: relative;
   transition: 0.5s;
+}
+.inner_desc {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
 }
 .highlights_image-subtitle {
   text-align: center;
@@ -241,22 +246,28 @@
 }
 
 .highlights_about-desc {
-  width: 100%;
+  width: 70%;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 50px 150px;
+  padding: 30px;
+  margin: auto;
 }
 .highlights_about-desc h2 {
   color: #000;
   font-family: "Kaushan Script";
   font-weight: bold;
+  font-size: 45px;
+  margin-bottom: 30px;
 }
 .highlights_about-desc p {
-  text-align: justify;
-  height: 66px;
+  /* text-align: justify; */
+  height: 86px;
+  font-size: 23px;
+  margin-bottom: 100px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 .countryInner_tour-title h2 {
   font-size: 40px;
@@ -267,10 +278,8 @@
 }
 
 .similartour_slide {
-  /* display: flex;  */
   margin: 20px;
-  /* padding: 10px 0px; */
-  padding: 0 10px 0 70px;
+  padding: 0 10px 0 35px;
 }
 
 .similartour_container {
@@ -346,23 +355,90 @@
 .similartour_slide .slick-next:before {
   font-size: 30px;
   font-family: fantasy;
-  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
-  /* content: "→"; */
   color: #000;
 }
 
 .similartour_slide .slick-prev::before {
   font-size: 30px;
   font-family: fantasy;
-  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; */
-  /* content: "←"; */
   color: #000;
 }
 
 .similartour_container .slick-track .slick-slide {
   margin: 20px;
+}
+
+.similar-countries-slider {
+  display: flex;
+  margin: 0;
+  padding: 10px 72px;
+  overflow: auto;
+}
+
+.similar-countries h2 {
+  font-size: 40px;
+  font-weight: 900;
+  color: #000000;
+  font-family: "Kaushan Script";
+  padding: 72px 72px 20px;
+}
+
+.countries-container {
+  border-radius: 16px;
+  width: 200px;
+  height: 300px;
+  margin: 10px;
+  position: relative;
+  transition: 0.5s;
+}
+
+.similar-country-name {
+  text-align: center;
+  white-space: normal;
+  font-size: 28px;
+  font-weight: normal;
+  line-height: 20px;
+  color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  font-family: "Caveat", cursive;
+}
+
+.countries-container:hover {
+  cursor: pointer;
+}
+
+.similarcountries .slick-prev {
+  left: 88%;
+  top: -15%;
+  z-index: 2;
+  border: 2px solid black;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 15px 10px;
+}
+
+.similarcountries .slick-next {
+  left: 93%;
+  top: -15%;
+  z-index: 2;
+  border: 2px solid black;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 15px 10px;
+}
+
+.similarcountries .slick-next:before {
+  font-size: 30px;
+  font-family: fantasy;
+  color: #000;
+}
+
+.similarcountries .slick-prev::before {
+  font-size: 30px;
+  font-family: fantasy;
+  color: #000;
 }
