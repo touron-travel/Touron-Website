@@ -171,7 +171,7 @@
 .highlights_image_selected::before {
   content: "";
   position: absolute;
-  width: 200px;
+  width: 190px;
   height: 300px;
   top: 0px;
   left: 0px;
@@ -180,7 +180,7 @@
 }
 .highlights_image {
   border-radius: 16px;
-  width: 200px;
+  width: 190px;
   height: 300px;
   margin: 10px;
   position: relative;
@@ -191,14 +191,14 @@
 .countries-container img {
   object-fit: cover;
   border-radius: 16px;
-  width: 200px;
+  width: 190px;
   height: 100%;
   margin: 0;
 }
 .highlights_image_selected {
   cursor: pointer;
   border-radius: 16px;
-  width: 200px;
+  width: 190px;
   height: 300px;
   margin: 10px;
   box-shadow: 2px 2px 10px 10px #a8a2a2;
@@ -235,11 +235,18 @@
   padding: 20px;
   font-family: "Caveat", sans-serif;
 }
-.highlights_image-flex {
+.highlights_image-flex1 {
   display: flex;
-  margin: 0;
+  justify-content: space-evenly;
+  padding: 10px 0px;
+  /* margin: 0; */
+  /* overflow: auto; */
+  /* flex-wrap: wrap; */
+  /* width: 75%; */
+}
+.highlights_image-flex2 {
+  display: flex;
   padding: 10px 72px;
-  overflow: auto;
 }
 .highlights_image-flex::-webkit-scrollbar {
   display: none;
@@ -263,7 +270,7 @@
   margin-bottom: 30px;
 }
 .highlights_about-desc p {
-  /* text-align: justify; */
+  text-align: justify;
   height: 86px;
   font-size: 23px;
   margin-bottom: 100px;
