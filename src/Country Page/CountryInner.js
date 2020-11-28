@@ -73,7 +73,7 @@ const CountryInner = () => {
   }, [countryname]);
   useEffect(() => {
     getCities();
-  }, []);
+  }, [countryname]);
   useEffect(() => {
     getTours();
   }, []);
@@ -136,7 +136,9 @@ const CountryInner = () => {
             <div className="countryInner_aboutLeft">
               <div className="inner_home">
                 <div className="icon_home">
-                  <i className="far fa-home-alt"></i>
+                  <NavLink to="/popular_tour">
+                    <i className="far fa-home-alt"></i>
+                  </NavLink>
                 </div>
                 <div className="icon_right">
                   <i className="fa fa-chevron-right"></i>
@@ -240,7 +242,13 @@ const CountryInner = () => {
               <h2>Cities</h2>
             </div>
 
-            <div className="highlights_image-flex">
+            <div
+              className={
+                cityDetails.length >= 6
+                  ? "highlights_image-flex1"
+                  : "highlights_image-flex2"
+              }
+            >
               {cityDetails.map((city, index) => {
                 return (
                   <div

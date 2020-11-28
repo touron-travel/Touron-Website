@@ -36,7 +36,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+.nav-links li .nav-links_items {
+  color: #fff;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
 .nav-links li .nav-links_items:hover,
 .nav-links li .nav-links_items.selected {
   /* font-size: 110px; */
