@@ -1,6 +1,7 @@
 import React from "react";
 import "./Top_destination.css";
 import TopdestinationTile from "./Top_destinationTile";
+import Slider from "react-slick";
 
 export default function Top_destination() {
   const cities = [
@@ -222,6 +223,18 @@ export default function Top_destination() {
     },
   ];
 
+  var settings = {
+    infinite: true,
+    autoplay: true,
+    speed: 1000,
+    arrows: true,
+    slidesToShow: 7,
+    slidesToScroll: 1,
+    // centerMode: true,
+    // centerPadding: "100px",
+    // nextArrow: <SampleNextArrow />,
+    // prevArrow: <SamplePrevArrow />,
+  };
   return (
     <div className="top_destination">
       <div className="section_heading">
@@ -248,9 +261,11 @@ export default function Top_destination() {
       </div>
       <div className="section_content popular_destination__content">
         <div className="section_item">
-          {cities.map((t, index) => {
-            if (index < 7) return <TopdestinationTile t={t} key={index} />;
-          })}
+          <Slider {...settings}>
+            {cities.map((t, index) => {
+              if (index < 7) return <TopdestinationTile t={t} key={index} />;
+            })}
+          </Slider>
         </div>
       </div>
     </div>

@@ -136,7 +136,7 @@ const CountryInner = () => {
             <div className="countryInner_aboutLeft">
               <div className="inner_home">
                 <div className="icon_home">
-                  <NavLink to="/popular_tour">
+                  <NavLink to="/popular_countries">
                     <i className="far fa-home-alt"></i>
                   </NavLink>
                 </div>

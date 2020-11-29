@@ -342,15 +342,24 @@
   background: #000;
 }
 
+.cities_container {
+  padding: 0px 0px 0px 100px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+
+.cities_container h1 {
+  /* width: 20%; */
+  font-size: 26px;
+  color: #db6500;
+}
 .cityname_container {
-  /* border: 1px solid red; */
   background-color: black;
   display: flex;
   width: auto;
   justify-content: space-evenly;
-  /* margin: 50px; */
-  align-items: center;
-  /* height: 100px; */
+  /* align-items: center; */
   padding-bottom: 15px;
 }
 
@@ -362,6 +371,7 @@
   color: #fff;
   font-size: 18px;
   padding: 10px 20px;
+  margin: 0px 10px;
 }
 
 .cityname_container h4:hover {
@@ -387,11 +397,11 @@
 
 .co {
   width: 100px;
-  height: 200px;
+  height: 160px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 0px 10px;
   transition: 0.5s;
 }
 .co:hover {
@@ -402,7 +412,6 @@
 .co img {
   width: 130px;
   height: 130px;
-  /* margin: 20px; */
   border-radius: 10px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
   object-fit: cover;
@@ -415,12 +424,15 @@
 }
 
 .country-name {
-  top: -70px;
-  position: relative;
+  top: 60px;
+  position: absolute;
   font-size: 20px;
   font-weight: 700;
+  /* right: 30px; */
+  /* z-index: 1; */
   text-align: center;
   font-family: "Roboto", sans-serif;
+  /* transform: translate(50%); */
 }
 
 .countrydetails {
@@ -429,6 +441,7 @@
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+  position: relative;
 }
 .country-slider .slick-prev {
   left: -5%;

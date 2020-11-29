@@ -13,16 +13,17 @@ export default function Navbar() {
         <img src={Image} alt="" />
       </div>
       <div className="hamburger" onClick={() => setNavOpen(!navOpen)}>
+        {/* <div className="line"></div>
         <div className="line"></div>
-        <div className="line"></div>
-        <div className="line"></div>
+        <div className="line"></div> */}
+        <i className={navOpen ? "fas fa-times" : "fas fa-bars"}></i>
       </div>
       <ul className={navOpen ? "nav-links open" : "nav-links"}>
         <li>
           <NavLink
             exact
             to="/"
-            className="nav-links_items"
+            className={navOpen ? "nav-links_items fade" : "nav-links_items"}
             onClick={() => setNavOpen(false)}
             activeClassName="selected"
           >
@@ -33,7 +34,7 @@ export default function Navbar() {
           <NavLink
             to="/about"
             //  className="nav-links"
-            className="nav-links_items"
+            className={navOpen ? "nav-links_items fade" : "nav-links_items"}
             activeClassName="selected"
             onClick={() => setNavOpen(false)}
           >
