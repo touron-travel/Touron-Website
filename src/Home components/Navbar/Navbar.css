@@ -1,35 +1,11 @@
-/* .header {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 15px;
-}
-.nav-area {
-  display: flex;
-}
-.nav-area li {
-  padding: 0px 20px;
-  list-style: none;
-}
-.logo img {
-  width: 160px;
-}
-.nav-links {
-  text-decoration: none;
-  color: #fff;
-  font-weight: 500;
-  font-size: 15px;
-  font-family: "Roboto", sans-serif;
-}
-
-*/
-
 .logo img {
   width: 70px;
   height: 70px;
   border-radius: 50px;
   position: absolute;
+}
+.hamburger i {
+  font-size: 0px;
 }
 * {
   margin: 0;
@@ -87,12 +63,10 @@ nav {
   color: #ae5fce;
 }
 
-@media screen and (max-width: 768px) {
-  .line {
-    width: 30px;
-    height: 3px;
-    background: white;
-    margin: 5px;
+@media screen and (max-width: 960px) {
+  .hamburger i {
+    font-size: 30px;
+    /* transition: 2s; */
   }
   nav {
     height: 10vh;
@@ -105,7 +79,7 @@ nav {
   .hamburger {
     position: absolute;
     cursor: pointer;
-    right: -5%;
+    right: -1%;
     top: 50%;
     transform: translate(-5%, -50%);
     z-index: 2;
@@ -121,14 +95,14 @@ nav {
     width: 100%;
     flex-direction: column;
     align-items: center;
-    clip-path: circle(100px at 90% -20%);
-    -webkit-clip-path: circle(100px at 90% -20%);
+    clip-path: circle(100px at 100% -50%);
+    -webkit-clip-path: circle(100px at 100% -50%);
     transition: all 1s ease-out;
     pointer-events: none;
   }
   .nav-links.open {
-    clip-path: circle(1000px at 90% -10%);
-    -webkit-clip-path: circle(1000px at 90% -10%);
+    clip-path: circle(1000px at 100% -10%);
+    -webkit-clip-path: circle(1500px at 100% -10%);
     pointer-events: all;
   }
 
@@ -136,8 +110,8 @@ nav {
     color: tomato;
   } */
 
-  .nav-links li {
-    /* opacity: 0; */
+  .na li {
+    opacity: 0;
   }
   .nav-links li .nav-links_items {
     font-size: 20px;
@@ -148,12 +122,12 @@ nav {
     color: #ff7f00;
     font-family: "Roboto", sans-serif;
   }
-  /* .nav-links li .nav-links_items .selected {
+  .nav-links li .nav-links_items .selected {
     font-size: 20px;
     color: tomato;
-  } */
+  }
 
-  /* .nav-links li:nth-child(1) {
+  .nav-links li:nth-child(1) {
     transition: all 0.5s ease 0.2s;
   }
   .nav-links li:nth-child(2) {
@@ -170,5 +144,9 @@ nav {
   }
   .nav-links li:nth-child(6) {
     transition: all 0.5s ease 0.9s;
-  }  */
+  }
+
+  .nav-links li .fade {
+    opacity: 1;
+  }
 }

@@ -193,6 +193,8 @@
   position: relative;
   border-radius: 50%;
   overflow: hidden;
+  object-fit: cover;
   top: -28px;
   left: 36px;
+  /* object-position: bottom; */
 }

@@ -64,7 +64,7 @@ export default function Popular_countries() {
                     <img src={c.imageUrl} alt="" />
                   </div>
                   <div className="countryflag">
-                    <img src={c.imageUrl} alt="" />
+                    <img src={c.countryFlagImage} alt="" />
                   </div>
                   <div className="countryk">
                     <div className="countryname">{c.countryName}</div>

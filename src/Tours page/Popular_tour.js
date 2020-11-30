@@ -37,19 +37,27 @@ export default function Popular_tour(props) {
     setTourLength(cityTourLength.data.length);
   };
 
-  const categoryTours = () => {
+  // const categoryTours = () => {
+  //   setContentLoaded(true);
+  //   selectedCategory.forEach(async (c) => {
+  //     const tourResponse = await axios.get(
+  //       `${API}/filtertour?tourCategory=${c}&idealType=${c}&tourType=${c}`
+  //     );
+  //     console.log(c, "c");
+  //     console.log(tourResponse.data.length, "length");
+  //     setTour(...tour, tourResponse.data);
+  //   });
+  //   setContentLoaded(false);
+  // };
+
+  const categoryTours = async (category, idealtype, tourtype) => {
     setContentLoaded(true);
-    selectedCategory.forEach(async (c) => {
-      const tourResponse = await axios.get(
-        `${API}/filtertour?tourCategory=${c}&idealType=${c}&tourType=${c}`
-      );
-      console.log(c, "c");
-      console.log(tourResponse.data.length, "length");
-      setTour(...tour, tourResponse.data);
-    });
+    const tourResponse = await axios.get(
+      `${API}/filtertour?tourCategory=${category}&idealType=${idealtype}&tourType=${tourtype}`
+    );
+    setTour(tourResponse.data);
     setContentLoaded(false);
   };
-
   const getCityNames = async (name) => {
     const cityName = await axios.get(`${API}/city/countryname/${name}`);
     setCityNames(cityName.data);
@@ -61,6 +69,15 @@ export default function Popular_tour(props) {
       getCityTours("Singapore");
     }
   }, []);
+
+  const filterCategory = (category) => {
+    const filteredTour = tour.filter((t) => {
+      console.log(t.tourCategory.includes(category));
+      return t.tourCategory.includes(category) === false;
+    });
+
+    console.log("filteredTour :>> ", filteredTour);
+  };
 
   useEffect(() => {
     if (cityName !== "") getCityTours(cityName);
@@ -162,30 +179,33 @@ export default function Popular_tour(props) {
           })}
         </Slider>
       </div>
-      {cityNames.length == 0 ? null : (
-        <div className="cityname_container ">
-          {cityNames.map((c, index) => {
-            return (
-              <h4
-                className={
-                  cityName == c.cityName || cityNames.length == 1
-                    ? "active"
-                    : ""
-                }
-                key={index}
-                onClick={() => {
-                  setPage(1);
-                  setPageSize(4);
-                  getCityTours(c.cityName);
-                  setCityName(c.cityName);
-                }}
-              >
-                {c.cityName}
-              </h4>
-            );
-          })}
-        </div>
-      )}
+      <div className="cities_container">
+        {countryName == "" ? null : <h1>Cities in {countryName} : </h1>}
+        {cityNames.length == 0 ? null : (
+          <div className="cityname_container">
+            {cityNames.map((c, index) => {
+              return (
+                <h4
+                  className={
+                    cityName == c.cityName || cityNames.length == 1
+                      ? "active"
+                      : ""
+                  }
+                  key={index}
+                  onClick={() => {
+                    setPage(1);
+                    setPageSize(4);
+                    getCityTours(c.cityName);
+                    setCityName(c.cityName);
+                  }}
+                >
+                  {c.cityName}
+                </h4>
+              );
+            })}
+          </div>
+        )}
+      </div>
 
       <div className="poptour_section">
         <div>
@@ -307,7 +327,10 @@ export default function Popular_tour(props) {
                         });
                         console.log(filter, "filter");
                         setSelectedCategory(filter);
+                        filterCategory("Activities");
                       } else {
+                        categoryTours("Activities", "", "");
+
                         setSelectedCategory([
                           ...selectedCategory,
                           "Activities",
@@ -332,8 +355,12 @@ export default function Popular_tour(props) {
                           return category !== "Hop On and Off";
                         });
                         console.log(filter, "filter");
+                        filterCategory("Hop On and Off");
+
                         setSelectedCategory(filter);
                       } else {
+                        categoryTours("Hop On and Off", "", "");
+
                         setSelectedCategory([
                           ...selectedCategory,
                           "Hop On and Off",
@@ -356,8 +383,12 @@ export default function Popular_tour(props) {
                           return category !== "Attraction";
                         });
                         console.log(filter, "filter");
+                        filterCategory("Attraction");
+
                         setSelectedCategory(filter);
                       } else {
+                        categoryTours("Attraction", "", "");
+
                         setSelectedCategory([
                           ...selectedCategory,
                           "Attraction",
@@ -382,7 +413,10 @@ export default function Popular_tour(props) {
                         });
                         console.log(filter, "filter");
                         setSelectedCategory(filter);
+                        filterCategory("Learning");
                       } else {
+                        categoryTours("Learning", "", "");
+
                         setSelectedCategory([...selectedCategory, "Learning"]);
                       }
                     }}
@@ -405,8 +439,11 @@ export default function Popular_tour(props) {
                           return category !== "Family and kids";
                         });
                         console.log(filter, "filter");
+
                         setSelectedCategory(filter);
                       } else {
+                        categoryTours("", "Family and kids", "");
+
                         setSelectedCategory([
                           ...selectedCategory,
                           "Family and kids",
@@ -432,6 +469,8 @@ export default function Popular_tour(props) {
                         console.log(filter, "filter");
                         setSelectedCategory(filter);
                       } else {
+                        categoryTours("", "Young Couple", "");
+
                         setSelectedCategory([
                           ...selectedCategory,
                           "Young Couple",
@@ -457,6 +496,8 @@ export default function Popular_tour(props) {
                         console.log(filter, "filter");
                         setSelectedCategory(filter);
                       } else {
+                        categoryTours("", "Solo", "");
+
                         setSelectedCategory([...selectedCategory, "Solo"]);
                       }
                     }}
@@ -479,6 +520,8 @@ export default function Popular_tour(props) {
                         console.log(filter, "filter");
                         setSelectedCategory(filter);
                       } else {
+                        categoryTours("", "Mature Couple", "");
+
                         setSelectedCategory([
                           ...selectedCategory,
                           "Mature Couple",
@@ -504,6 +547,8 @@ export default function Popular_tour(props) {
                         console.log(filter, "filter");
                         setSelectedCategory(filter);
                       } else {
+                        categoryTours("", "", "Full Day Tour");
+
                         setSelectedCategory([
                           ...selectedCategory,
                           "Full Day Tour",
@@ -529,6 +574,8 @@ export default function Popular_tour(props) {
                         console.log(filter, "filter");
                         setSelectedCategory(filter);
                       } else {
+                        categoryTours("", "", "Half Day Tour");
+
                         setSelectedCategory([
                           ...selectedCategory,
                           "Half Day Tour",
@@ -555,6 +602,8 @@ export default function Popular_tour(props) {
                         console.log(filter, "filter");
                         setSelectedCategory(filter);
                       } else {
+                        categoryTours("", "", "Night Tour");
+
                         setSelectedCategory([
                           ...selectedCategory,
                           "Night Tour",

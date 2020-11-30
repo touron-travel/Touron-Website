@@ -64,24 +64,32 @@ const TourInner = () => {
       ) : (
         <>
           <div className="TourFeatures_Container">
-            <div className="TourName_Navigation">
-              <div className="AboutTour">
-                <h1>{tourDetails.tourName}</h1>
-                <p>{tourDetails.aboutTour}</p>
-              </div>
+            <div className="countryname_container">
+              <h1>
+                {tourDetails.countryName} : {tourDetails.cityName}
+              </h1>
             </div>
 
-            <div className="TourFeatures_Details">
-              <div className="TourHighlights">
-                <div className="Highlights">
-                  <h1>Highlights</h1>
+            <div style={{ display: "flex" }}>
+              <div className="TourName_Navigation">
+                <div className="AboutTour">
+                  <h1>{tourDetails.tourName}</h1>
+                  <p>{tourDetails.aboutTour}</p>
+                </div>
+              </div>
 
-                  {tourDetails.pickUpPoint !== undefined ? (
-                    <ul>
-                      <li>Pick Up : {tourDetails.pickUpPoint.join(",")}</li>
-                      <li>Tour Type : {tourDetails.tourPreferance} </li>
-                    </ul>
-                  ) : null}
+              <div className="TourFeatures_Details">
+                <div className="TourHighlights">
+                  <div className="Highlights">
+                    <h1>Highlights</h1>
+
+                    {tourDetails.pickUpPoint !== undefined ? (
+                      <ul>
+                        <li>Pick Up : {tourDetails.pickUpPoint.join(",")}</li>
+                        <li>Tour Type : {tourDetails.tourPreferance} </li>
+                      </ul>
+                    ) : null}
+                  </div>
                 </div>
               </div>
             </div>
