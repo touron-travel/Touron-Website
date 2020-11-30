@@ -1,4 +1,6 @@
 import React, { Component, useState } from "react";
+import TourHeader from "../Reusable components/TourHeader";
+import Surprise from "../../assests/Surprise.jpg";
 
 const SurpriseTour = (params) => {
   const [tourType, setTourType] = React.useState("");
@@ -37,8 +39,29 @@ const SurpriseTour = (params) => {
   //   });
 
   return (
-    <div>
-      <h1>Surprise tour</h1>
+    <div className="Surprise_tour-container">
+      <TourHeader
+        image={Surprise}
+        title={"Surprise Tour"}
+        description={"asghadfhadh"}
+        className={"Surprise_tour"}
+      />
+      <div className="Surprise_tour">
+        <h1>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
+          sapiente praesentium, reiciendis ipsam placeat blanditiis dolores,
+          saepe facere ex minima consectetur harum. Quia incidunt adipisci sit
+          assumenda numquam accusamus molestiae dignissimos labore nemo odit,
+          aliquam voluptatem expedita autem, laborum temporibus sunt culpa nisi
+          facere. Laboriosam molestias quisquam, nisi adipisci ipsum maxime
+          labore velit dolor doloribus obcaecati? Eaque nulla ducimus ad id ab,
+          minus assumenda, iste impedit nesciunt officia quam culpa fugiat
+          deserunt? Hic quibusdam, in nulla aliquam harum libero, reiciendis ea
+          quod beatae, eum blanditiis. Possimus reprehenderit, enim iste quidem
+          pariatur facilis velit architecto nobis est reiciendis laborum
+          explicabo tempora!
+        </h1>
+      </div>
     </div>
   );
 };

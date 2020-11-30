@@ -13,6 +13,8 @@ export default function Home() {
   // useEffect(() => {
   //   tawkTo(tawkToPropertyId);
   // }, []);
+  console.log("window.innerWidth", window.innerWidth);
+  console.log("window.innerWidth", window.innerHeight);
   return (
     <div className="home">
       <div className="home_top">

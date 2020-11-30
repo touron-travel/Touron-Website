@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import TourHeader from "../Reusable components/TourHeader";
+import Planned from "../../assests/Plannedtour.jpg";
 
 const PlannedTour = (params) => {
   const [tourType, setTourType] = useState("");
@@ -33,10 +35,37 @@ const PlannedTour = (params) => {
   //   setYear(currentYear.toString().slice(2, 5));
   //   formatedMonth = month < 10 ? "0" + month : month;
   // });
+  const nextStep = () => setStep(step + 1);
+  const prevStep = () => setStep(step - 1);
+  const renderForm = (step) => {
+    switch (step) {
+      case 1:
+        return (
+          <TourHeader
+            image={Planned}
+            title={"Planned Tour"}
+            description={desc}
+            className={"Planned_tour"}
+          />
+        );
+    }
+  };
+
+  const desc = `This tour is perfect for all busy-bee travel enthusiasts! Our itinerary completely depends on you and your preferences and we personalize the whole tour accordingly.
+   We offer you a complete list of things to do, places to visit, etc. and further prepare an appropriate itinerary for you within your budget and according to your travel preferences, making the experience worth every penny!`;
 
   return (
-    <div>
-      <h1>Planned tour</h1>
+    <div className="Planned_tour-container">
+      <TourHeader
+        image={Planned}
+        title={"Planned Tour"}
+        description={desc}
+        className={"Planned_tour"}
+      />
+      <div className="Planned-form-container">
+        <div className="plenned_tour-form">{renderForm(step)}</div>
+        <div className="planned_tour-details"></div>
+      </div>
     </div>
   );
 };

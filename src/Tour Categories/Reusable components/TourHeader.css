@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.tour_Header-container {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+.tour_Header-container::before {
+  content: "";
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  opacity: 0.48;
+}
+.tour_Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-basis: 75%;
+  position: relative;
+}
+
+.tour_Header h1 {
+  font-size: 80px;
+  font-family: "Dancing Script", sans-serif;
+  color: beige;
+}
+
+.tour_Header p {
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.downarrow {
+  display: flex;
+  background-color: transparent;
+  border: 1px solid bisque;
+  padding: 15px 15px;
+  border-radius: 30px;
+  transition: 0.5s;
+  align-items: center;
+  position: relative;
+}
+
+.downarrow h4 {
+  color: #fff;
+  font-size: 17px;
+  margin-bottom: 5px;
+  padding-right: 5px;
+}
+
+.downarrow:hover {
+  background-color: darkgray;
+  cursor: pointer;
+  color: #000;
+}
+.downarrow h4:hover {
+  color: #000;
+}

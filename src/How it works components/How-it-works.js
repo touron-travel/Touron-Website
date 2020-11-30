@@ -31,9 +31,7 @@ export default function HowItWorks() {
           resources and activities to keep you busy.
         </p>
       </div>
-      <div>
-        <Tourplan />
-      </div>
+      <div>{/* <Tourplan /> */}</div>
     </div>
   );
 }
