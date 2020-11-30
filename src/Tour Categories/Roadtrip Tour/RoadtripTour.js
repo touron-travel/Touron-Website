@@ -39,29 +39,61 @@ const RoadtripTour = (params) => {
   //     setYear(currentYear.toString().slice(2, 5));
   //     formatedMonth = month < 10 ? "0" + month : month;
   //   });
+
+  const nextStep = () => setStep(step + 1);
+  const prevStep = () => {
+    if (step !== 1) setStep(step - 1);
+  };
+  const renderForm = (step) => {
+    switch (step) {
+      case 1:
+        return <h1>1</h1>;
+      case 2:
+        return <h1>2</h1>;
+      case 3:
+        return <h1>3</h1>;
+      case 4:
+        return <h1>4</h1>;
+      case 5:
+        return <h1>5</h1>;
+      case 6:
+        return <h1>6</h1>;
+    }
+  };
+
+  const desc = `“It is all about the journey and not the destination.” If this is your mantra, a road trip is the best option for you! A road trip lets you experience the scenic beauty of the places you go by unlike taking a train or a flight. We provide you with appropriate route plans and recommendations of restaurants, fuel stations, etc. We do plan it all out for you, but the decision of what to explore and what not still remains with you.`;
   return (
     <div className="Roadtrip_tour-container">
       <TourHeader
         image={Road}
-        title={"Roadtrip Tour"}
-        description={"asghadfhadh"}
-        className={"Roadtrip_tour"}
+        title={"Road Trip"}
+        description={desc}
+        className={"Planned-form-container"}
       />
-      <div className="Roadtrip_tour">
-        <h1>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-          sapiente praesentium, reiciendis ipsam placeat blanditiis dolores,
-          saepe facere ex minima consectetur harum. Quia incidunt adipisci sit
-          assumenda numquam accusamus molestiae dignissimos labore nemo odit,
-          aliquam voluptatem expedita autem, laborum temporibus sunt culpa nisi
-          facere. Laboriosam molestias quisquam, nisi adipisci ipsum maxime
-          labore velit dolor doloribus obcaecati? Eaque nulla ducimus ad id ab,
-          minus assumenda, iste impedit nesciunt officia quam culpa fugiat
-          deserunt? Hic quibusdam, in nulla aliquam harum libero, reiciendis ea
-          quod beatae, eum blanditiis. Possimus reprehenderit, enim iste quidem
-          pariatur facilis velit architecto nobis est reiciendis laborum
-          explicabo tempora!
-        </h1>
+      <div className="Planned-form-container">
+        <div
+          className={
+            step == 1 ? "planned_tour-form-selected" : "planned_tour-form"
+          }
+        >
+          <h1>Road Trip</h1>
+          <div className="planned_form">{renderForm(step)}</div>
+          <div className="navigation_btn">
+            <div className="previous-button" onClick={() => prevStep()}>
+              Previous
+            </div>
+            <div className="next-button" onClick={() => nextStep()}>
+              Next
+            </div>
+          </div>
+        </div>
+        <div
+          className={
+            step == 1 ? "planned_tour-details-selected" : "planned_tour-details"
+          }
+        >
+          bbxb
+        </div>
       </div>
     </div>
   );
