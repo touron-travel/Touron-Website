@@ -6,26 +6,23 @@
 
 .planned_tour-form {
   flex-basis: 50%;
-  /* padding: 20px; */
   margin: 30px 40px;
   background-color: #fff;
   box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   height: 700px;
   border-radius: 20px;
 }
 .planned_tour-form-selected {
   flex-basis: 50%;
-  /* padding: 20px; */
-  /* margin: 30px 40px; */
   margin: auto;
   background-color: #fff;
   box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   height: 700px;
   border-radius: 20px;
 }
@@ -33,10 +30,13 @@
 .planned_tour-form-selected h1 {
   padding-top: 20px;
   font-family: "Times New Roman", Times, serif;
+  text-align: center;
   font-weight: 700;
 }
 .planned_tour-details {
   flex-basis: 40%;
+  background-color: tomato;
+  margin: 0px 40px 0px 0px;
 }
 
 .planned_tour-details-selected {
@@ -55,9 +55,7 @@
 
 .navigation_btn .previous-button,
 .navigation_btn .next-button {
-  /* background-color: red; */
-  padding: 10px 20px;
-
+  padding: 10px 60px;
   border-radius: 20px;
   font-size: 18px;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",

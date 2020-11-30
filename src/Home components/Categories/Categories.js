@@ -14,7 +14,7 @@ export default function Categories() {
         <div className="cat-body">
           <img className="image" src={Luxury} alt="" />
           <div className="title">
-            <p>Luxury</p>
+            <p>Luxury Tour</p>
           </div>
         </div>
       </Link>

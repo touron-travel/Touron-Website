@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import TourHeader from "../Reusable components/TourHeader";
 import Planned from "../../assests/Plannedtour.jpg";
 import "./Plannedtour.css";
+import Tourtype from "../Reusable components/Tourtype";
+import { Animate } from "react-rebound";
+
 const PlannedTour = (params) => {
   const [tourType, setTourType] = useState("");
   const [travellerType, setTravellerType] = useState("");
@@ -23,8 +26,10 @@ const PlannedTour = (params) => {
   const [dates, setDates] = useState("");
   const [years, setYears] = useState("");
   const [months, setMonths] = useState("");
+  const [clicked, setClicked] = useState(false);
   let random;
   let formatedMonth;
+  console.log("tourType :>> ", tourType);
   // const [userInfo, setUserInfo] = useState({});
   // useEffect(() => {
   //   random = Math.floor((Math.random() + 4) * 345334 * Math.random());
@@ -42,17 +47,18 @@ const PlannedTour = (params) => {
   const renderForm = (step) => {
     switch (step) {
       case 1:
-        return <h1>1</h1>;
+        return <Tourtype tourType={tourType} setTourType={setTourType} />;
       case 2:
-        return <h1>2</h1>;
+        return <h1>jgg</h1>;
+
       case 3:
-        return <h1>3</h1>;
+        return <Tourtype tourType={tourType} setTourType={setTourType} />;
+
       case 4:
-        return <h1>4</h1>;
+        return <Tourtype tourType={tourType} setTourType={setTourType} />;
+
       case 5:
-        return <h1>5</h1>;
-      case 6:
-        return <h1>6</h1>;
+        return <Tourtype tourType={tourType} setTourType={setTourType} />;
     }
   };
 
@@ -67,30 +73,56 @@ const PlannedTour = (params) => {
         description={desc}
         className={"Planned-form-container"}
       />
+
       <div className="Planned-form-container">
-        <div
-          className={
-            step == 1 ? "planned_tour-form-selected" : "planned_tour-form"
-          }
+        <Animate
+          translateX={clicked ? -10 : 0}
+          // tension={100}
+          friction={800}
         >
-          <h1>Planned Tour</h1>
-          <div className="planned_form">{renderForm(step)}</div>
-          <div className="navigation_btn">
-            <div className="previous-button" onClick={() => prevStep()}>
-              Previous
-            </div>
-            <div className="next-button" onClick={() => nextStep()}>
-              Next
+          <div
+            // className={
+            //   step == 1 && tourType === ""
+            //     ? "planned_tour-form-selected"
+            //     : "planned_tour-form"
+            // }
+            className="planned_tour-form-selected"
+          >
+            <h1>Planned Tour</h1>
+            <div className="planned_form">{renderForm(step)}</div>
+            <div className="navigation_btn">
+              <div className="previous-button" onClick={() => prevStep()}>
+                Previous
+              </div>
+              <div
+                className="next-button"
+                onClick={() => {
+                  if (step == 1) {
+                    setClicked(true);
+                  }
+                  nextStep();
+                }}
+              >
+                Next
+              </div>
             </div>
           </div>
-        </div>
-        <div
-          className={
-            step == 1 ? "planned_tour-details-selected" : "planned_tour-details"
-          }
+        </Animate>
+        <Animate
+          translateX={clicked ? 10 : 0}
+          // tension={100}
+          friction={80}
         >
-          bbxb
-        </div>
+          <div
+            className={
+              !clicked
+                ? "planned_tour-details-selected"
+                : "planned_tour-details"
+            }
+          >
+            bbxb
+          </div>
+        </Animate>
       </div>
     </div>
   );
