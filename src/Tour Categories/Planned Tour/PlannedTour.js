@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TourHeader from "../Reusable components/TourHeader";
 import Planned from "../../assests/Plannedtour.jpg";
-
+import "./Plannedtour.css";
 const PlannedTour = (params) => {
   const [tourType, setTourType] = useState("");
   const [travellerType, setTravellerType] = useState("");
@@ -36,18 +36,23 @@ const PlannedTour = (params) => {
   //   formatedMonth = month < 10 ? "0" + month : month;
   // });
   const nextStep = () => setStep(step + 1);
-  const prevStep = () => setStep(step - 1);
+  const prevStep = () => {
+    if (step !== 1) setStep(step - 1);
+  };
   const renderForm = (step) => {
     switch (step) {
       case 1:
-        return (
-          <TourHeader
-            image={Planned}
-            title={"Planned Tour"}
-            description={desc}
-            className={"Planned_tour"}
-          />
-        );
+        return <h1>1</h1>;
+      case 2:
+        return <h1>2</h1>;
+      case 3:
+        return <h1>3</h1>;
+      case 4:
+        return <h1>4</h1>;
+      case 5:
+        return <h1>5</h1>;
+      case 6:
+        return <h1>6</h1>;
     }
   };
 
@@ -60,11 +65,32 @@ const PlannedTour = (params) => {
         image={Planned}
         title={"Planned Tour"}
         description={desc}
-        className={"Planned_tour"}
+        className={"Planned-form-container"}
       />
       <div className="Planned-form-container">
-        <div className="plenned_tour-form">{renderForm(step)}</div>
-        <div className="planned_tour-details"></div>
+        <div
+          className={
+            step == 1 ? "planned_tour-form-selected" : "planned_tour-form"
+          }
+        >
+          <h1>Planned Tour</h1>
+          <div className="planned_form">{renderForm(step)}</div>
+          <div className="navigation_btn">
+            <div className="previous-button" onClick={() => prevStep()}>
+              Previous
+            </div>
+            <div className="next-button" onClick={() => nextStep()}>
+              Next
+            </div>
+          </div>
+        </div>
+        <div
+          className={
+            step == 1 ? "planned_tour-details-selected" : "planned_tour-details"
+          }
+        >
+          bbxb
+        </div>
       </div>
     </div>
   );

@@ -37,12 +37,17 @@
 .tour_Header h1 {
   font-size: 80px;
   font-family: "Dancing Script", sans-serif;
-  color: beige;
+  color: #33d9b2;
 }
 
 .tour_Header p {
-  font-size: 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 28px;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+  width: 60%;
+  color: #d2dae2;
+  text-align: justify;
+  margin: 20px;
+  font-family: "Dancing Script", sans-serif;
 }
 
 .downarrow {
@@ -59,7 +64,7 @@
 .downarrow h4 {
   color: #fff;
   font-size: 17px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   padding-right: 5px;
 }
 

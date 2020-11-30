@@ -12,7 +12,13 @@ const TourHeader = ({ image, title, description, className }) => {
         <h1>{title}</h1>
         <p>{description}</p>
       </div>
-      <Link activeClass="active" to={className} smooth={true} duration={500}>
+      <Link
+        activeClass="active"
+        to={className}
+        smooth={true}
+        duration={500}
+        offset={50}
+      >
         <div className="downarrow">
           <h4>Start planning</h4>
           <i class="fas fa-angle-down"></i>
