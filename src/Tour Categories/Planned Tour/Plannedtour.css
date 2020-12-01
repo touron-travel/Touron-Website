@@ -6,7 +6,8 @@
 
 .planned_tour-form {
   flex-basis: 50%;
-  margin: 30px 40px;
+  margin: auto;
+  position: relative;
   background-color: #fff;
   box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
   display: flex;
@@ -16,15 +17,7 @@
   border-radius: 20px;
 }
 .planned_tour-form-selected {
-  flex-basis: 50%;
-  margin: auto;
-  background-color: #fff;
-  box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  height: 700px;
-  border-radius: 20px;
+  margin-left: -70px;
 }
 .planned_tour-form h1,
 .planned_tour-form-selected h1 {
@@ -73,7 +66,6 @@
 .navigation_btn .next-button:hover {
   cursor: pointer;
 }
-
 @media (max-height: 578px) {
   .Planned-form-container {
     display: flex;
@@ -83,17 +75,6 @@
 
   .planned_tour-form {
     flex-basis: 50%;
-    margin: 30px 40px;
-    background-color: #fff;
-    box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    height: 550px;
-    border-radius: 20px;
-  }
-  .planned_tour-form-selected {
-    flex-basis: 50%;
     margin: auto;
     background-color: #fff;
     box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
@@ -102,6 +83,10 @@
     /* align-items: center; */
     height: 550px;
     border-radius: 20px;
+    position: relative;
+  }
+  .planned_tour-form-selected {
+    margin-left: 50px;
   }
   .planned_tour-form h1,
   .planned_tour-form-selected h1 {
@@ -112,7 +97,7 @@
     font-size: 28px;
   }
   .planned_tour-details {
-    flex-basis: 40%;
+    /* flex-basis: 40%; */
     background-color: tomato;
     margin: 0px 40px 0px 0px;
   }

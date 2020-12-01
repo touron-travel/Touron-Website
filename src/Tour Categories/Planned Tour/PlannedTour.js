@@ -8,11 +8,14 @@ import Travellertype from "../Reusable components/Travellertype";
 import Travelmode from "../Reusable components/Travelmode";
 import Destination from "../Reusable components/Destination";
 import Checkout from "../Reusable components/Checkout";
+import Touristnumber from "../Reusable components/Touristnumber";
+import TouristDate from "../Reusable components/TouristDate";
+
 const PlannedTour = (params) => {
   const [tourType, setTourType] = useState("");
   const [travellerType, setTravellerType] = useState("");
-  const [adult, setAdult] = React.useState(0);
-  const [children, setChildren] = React.useState(0);
+  const [adult, setAdult] = useState(0);
+  const [children, setChildren] = useState(0);
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [travelMode, setTravelMode] = React.useState("");
@@ -98,7 +101,14 @@ const PlannedTour = (params) => {
         );
 
       case 3:
-        return <div>Tourist Number</div>;
+        return (
+          <Touristnumber
+            adult={adult}
+            setAdult={setAdult}
+            children={children}
+            setChildren={setChildren}
+          />
+        );
 
       case 4:
         return (
@@ -119,7 +129,7 @@ const PlannedTour = (params) => {
           />
         );
       case 5:
-        return <div>Date component</div>;
+        return <TouristDate />;
 
       case 6:
         return (
@@ -167,54 +177,52 @@ const PlannedTour = (params) => {
       />
 
       <div className="Planned-form-container">
-        <Animate
+        {/* <Animate
           translateX={clicked ? -10 : 0}
           // tension={100}
           friction={800}
+        > */}
+        <div
+          className={
+            step == 1 && tourType === ""
+              ? "planned_tour-form"
+              : "planned_tour-form-selected planned_tour-form"
+          }
+          // className="planned_tour-form"
         >
-          <div
-            // className={
-            //   step == 1 && tourType === ""
-            //     ? "planned_tour-form-selected"
-            //     : "planned_tour-form"
-            // }
-            className="planned_tour-form-selected"
-          >
-            <h1>Planned Tour</h1>
-            <div className="planned_form">{renderForm(step)}</div>
-            <div className="navigation_btn">
-              <div className="previous-button" onClick={() => prevStep()}>
-                Previous
-              </div>
-              <div
-                className="next-button"
-                onClick={() => {
-                  if (step == 1) {
-                    setClicked(true);
-                  }
-                  nextStep();
-                }}
-              >
-                Next
-              </div>
+          <h1>Planned Tour</h1>
+          <div className="planned_form">{renderForm(step)}</div>
+          <div className="navigation_btn">
+            <div className="previous-button" onClick={() => prevStep()}>
+              Previous
+            </div>
+            <div
+              className="next-button"
+              onClick={() => {
+                if (step == 1) {
+                  setClicked(true);
+                }
+                nextStep();
+              }}
+            >
+              Next
             </div>
           </div>
-        </Animate>
+        </div>
+        {/* </Animate>
         <Animate
           translateX={clicked ? 10 : 0}
           // tension={100}
           friction={80}
+        > */}
+        <div
+          className={
+            !clicked ? "planned_tour-details-selected" : "planned_tour-details"
+          }
         >
-          <div
-            className={
-              !clicked
-                ? "planned_tour-details-selected"
-                : "planned_tour-details"
-            }
-          >
-            bbxb
-          </div>
-        </Animate>
+          bbxb
+        </div>
+        {/* </Animate> */}
       </div>
     </div>
   );
