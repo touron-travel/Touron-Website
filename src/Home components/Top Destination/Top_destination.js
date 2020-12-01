@@ -261,11 +261,9 @@ export default function Top_destination() {
       </div>
       <div className="section_content popular_destination__content">
         <div className="section_item">
-          <Slider {...settings}>
-            {cities.map((t, index) => {
-              if (index < 7) return <TopdestinationTile t={t} key={index} />;
-            })}
-          </Slider>
+          {cities.map((t, index) => {
+            if (index < 7) return <TopdestinationTile t={t} key={index} />;
+          })}
         </div>
       </div>
     </div>

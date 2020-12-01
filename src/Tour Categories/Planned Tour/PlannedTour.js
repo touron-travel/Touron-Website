@@ -4,7 +4,10 @@ import Planned from "../../assests/Plannedtour.jpg";
 import "./Plannedtour.css";
 import Tourtype from "../Reusable components/Tourtype";
 import { Animate } from "react-rebound";
-
+import Travellertype from "../Reusable components/Travellertype";
+import Travelmode from "../Reusable components/Travelmode";
+import Destination from "../Reusable components/Destination";
+import Checkout from "../Reusable components/Checkout";
 const PlannedTour = (params) => {
   const [tourType, setTourType] = useState("");
   const [travellerType, setTravellerType] = useState("");
@@ -30,6 +33,22 @@ const PlannedTour = (params) => {
   let random;
   let formatedMonth;
   console.log("tourType :>> ", tourType);
+  console.log(
+    tourType,
+    travellerType,
+    adult,
+    children,
+    fromDate,
+    toDate,
+    travelMode,
+    preferanece,
+    destination,
+    startPoint,
+    name,
+    number,
+    budget
+  );
+
   // const [userInfo, setUserInfo] = useState({});
   // useEffect(() => {
   //   random = Math.floor((Math.random() + 4) * 345334 * Math.random());
@@ -40,7 +59,9 @@ const PlannedTour = (params) => {
   //   setYear(currentYear.toString().slice(2, 5));
   //   formatedMonth = month < 10 ? "0" + month : month;
   // });
-  const nextStep = () => setStep(step + 1);
+  const nextStep = () => {
+    if (step !== 7) setStep(step + 1);
+  };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
   };
@@ -49,16 +70,86 @@ const PlannedTour = (params) => {
       case 1:
         return <Tourtype tourType={tourType} setTourType={setTourType} />;
       case 2:
-        return <h1>jgg</h1>;
+        return (
+          <Travellertype
+            imgSrc1={
+              "https://image.freepik.com/free-vector/local-tourism-concept_23-2148606915.jpg"
+            }
+            imgSrc2={
+              "https://image.freepik.com/free-vector/big-happy-family-with-flat-design_23-2147834774.jpg"
+            }
+            imgSrc3={
+              "https://image.freepik.com/free-vector/group-happy-students-with-backpacks-books-stand-together_131590-216.jpg"
+            }
+            imgSrc4={
+              "https://image.freepik.com/free-vector/newlywed-couple-is-driving-car-their-honeymoon_3446-291.jpg"
+            }
+            travellerType={travellerType}
+            nextStep={() => nextStep()}
+            setSolo={() => {
+              setTravellerType("Solo");
+              setStep(5);
+            }}
+            setFamily={() => setTravellerType("Family")}
+            setFriends={() => setTravellerType("Friends")}
+            setHoneymoon={() => setTravellerType("Honeymoon")}
+          />
+        );
 
       case 3:
-        return <Tourtype tourType={tourType} setTourType={setTourType} />;
+        return <div>Tourist Number</div>;
 
       case 4:
-        return <Tourtype tourType={tourType} setTourType={setTourType} />;
-
+        return (
+          <Travelmode
+            imgSrc1={
+              "https://image.freepik.com/free-vector/train-ride-railroad_1308-11154.jpg"
+            }
+            imgSrc2={
+              "https://image.freepik.com/free-vector/airplane-sky_1308-31202.jpg"
+            }
+            nextStep={() => nextStep()}
+            name1={"Train"}
+            name2={"Flight"}
+            travelMode={travelMode}
+            // setTrain={() => setTravelMode("Train")}
+            // setFlight={() => setTravelMode("Flight")}
+            setTravelMode={setTravelMode}
+          />
+        );
       case 5:
-        return <Tourtype tourType={tourType} setTourType={setTourType} />;
+        return <div>Date component</div>;
+
+      case 6:
+        return (
+          <Destination
+            imgSrc={
+              "https://image.freepik.com/free-vector/destination-concept-illustration_114360-453.jpg"
+            }
+            destination={destination}
+            preferanece={preferanece}
+            startPoint={startPoint}
+            setDestination={(value) => setDestination(value)}
+            setStartPoint={(value) => setStartPoint(value)}
+            setPreferanece={(value) => setPreferanece(value)}
+          />
+        );
+
+      case 7:
+        return (
+          <Checkout
+            imgSrc={
+              "https://image.freepik.com/free-vector/business-background-design_1270-63.jpg"
+            }
+            setName={(value) => setName(value)}
+            setNumber={(value) => setNumber(value)}
+            setBudget={(value) => setBudget(value)}
+            // submitData={() => submitData()}
+            name={name}
+            number={number}
+            budget={budget}
+          />
+        );
     }
   };
 

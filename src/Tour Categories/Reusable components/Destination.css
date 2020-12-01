@@ -1,0 +1,35 @@
+.destination-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.destination-questions {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px;
+}
+.que1,
+.que2,
+.que3 {
+  display: flex;
+  padding: 20px 0px;
+  align-items: center;
+  height: 25%;
+}
+.que1 h6,
+.que2 h6,
+.que3 h6 {
+  flex-basis: 50%;
+  justify-content: space-evenly;
+  padding: 0px 30px;
+  margin: 0px 30px;
+}
+
+.destination-container input {
+  outline: none;
+  border: 1px solid blue;
+  border-radius: 20px;
+  padding: 10px;
+  flex-basis: 30%;
+}

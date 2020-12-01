@@ -1,0 +1,49 @@
+.travellertype-row1,
+.travellertype-row2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.traveltype {
+  width: 40%;
+  height: 200px;
+  background-color: #fff;
+  box-shadow: 0 2px 20px 0 rgba(4, 32, 66, 0.2);
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+  transition: 0.2s ease-in;
+  position: relative;
+}
+
+.traveltype img {
+  width: 100px;
+  height: 100px;
+}
+
+.traveltype-details {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.traveltype-details h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 20px;
+  font-family: "Times New Roman", Times, serif;
+}
+.traveltype:hover {
+  cursor: pointer;
+}
+
+.solo,
+.family,
+.friends,
+.honeymoon {
+  border: 2px solid red;
+}
