@@ -103,10 +103,17 @@ const PlannedTour = (params) => {
       case 3:
         return (
           <Touristnumber
+            imgSrc1={
+              "https://image.freepik.com/free-vector/illustration-with-young-people-concept_23-2148467324.jpg"
+            }
+            imgSrc2={
+              "https://image.freepik.com/free-vector/smiling-boy-girl-kids-holding-hands-childhood-friendship-concept-love-romance-children-cartoon-characters-flat-vector-illustration-isolated-white-background_71593-450.jpg"
+            }
+            nextStep={() => nextStep()}
             adult={adult}
-            setAdult={setAdult}
             children={children}
-            setChildren={setChildren}
+            setChildren={(value) => setChildren(value)}
+            setAdult={(value) => setAdult(value)}
           />
         );
 
