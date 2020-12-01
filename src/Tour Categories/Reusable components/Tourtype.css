@@ -16,7 +16,7 @@
 }
 .domestic-selected,
 .international-selected {
-  border: 5px solid red;
+  border: 2px solid red;
 }
 
 .tour-type {

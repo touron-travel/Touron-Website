@@ -1,7 +1,7 @@
 .top_destination {
   padding: 50px 40px;
   background: #fff;
-  height: 550px;
+  /* height: 550px; */
   width: 100%;
 }
 .descriptions {
@@ -32,15 +32,15 @@
   display: flex;
   justify-content: space-evenly;
   margin: 50px;
+  flex-wrap: wrap;
 }
-.section_item .section_image {
-  /* width: 140px; */
+.citypop img {
+  width: 140px;
   height: 120px;
   opacity: 0.9;
   border-radius: 8px;
   transition: 0.5s;
   position: relative;
-  width: 90%;
 }
 .section_item .city {
   font-size: 20px;
@@ -51,22 +51,10 @@
   top: -80px;
   z-index: 1;
 }
-/* .section_item p {
-  font-size: 20px;
-  font-weight: 900;
-  color: #fff;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  position: relative;
-  top: -80px;
-} */
 
-.city {
-  /* margin: 10px; */
-}
 .section_item .section_image:hover {
   z-index: 1;
-  transform: scale(1.2);
+  transform: scale(1.1);
   box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   margin: 10px;
@@ -84,4 +72,5 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* flex-wrap: wrap; */
 }
