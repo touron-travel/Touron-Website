@@ -22,6 +22,7 @@ import HoneymoonTour from "./Tour Categories/Honeymoon Tour/HoneymoonTour";
 import LuxuryTour from "./Tour Categories/Luxury Tour/LuxuryTour";
 import RoadtripTour from "./Tour Categories/Roadtrip Tour/RoadtripTour";
 import SurpriseTour from "./Tour Categories/Surprise Tour/SurpriseTour";
+import Visa from "./Visa Page/Visa";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
@@ -80,6 +81,7 @@ export default function Routes() {
             <Route path="/luxury-tour" component={LuxuryTour} />
             <Route path="/honeymoon-tour" component={HoneymoonTour} />
             <Route path="/how-it-works" component={HowItWorks} />
+            <Route path="/visa" component={Visa} />
             <Route path="/contact" component={Contact} />
             <Route path="/destination" component={Destination} />
             <Route path="/login" component={Login} />

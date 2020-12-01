@@ -76,6 +76,17 @@ export default function Navbar() {
         </li>
         <li>
           <NavLink
+            to="/visa"
+            // className="nav-links"
+            className="nav-links_items"
+            activeClassName="selected"
+            onClick={() => setNavOpen(false)}
+          >
+            Visa Request
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="/login"
             // className="nav-links"
             className="nav-links_items"

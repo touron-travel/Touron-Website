@@ -1,0 +1,97 @@
+.visa-container {
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  object-fit: cover;
+  object-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.visa-container h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 70px;
+  margin-bottom: 30px;
+}
+
+select {
+  width: 400px;
+  height: 50px;
+  border-radius: 3px;
+  padding: 0px 20px;
+  outline: skyblue;
+}
+
+select option {
+  background-color: blue;
+}
+
+.visa-container button {
+  margin: 20px;
+  background-color: transparent;
+  padding: 10px 20px;
+
+  border: 1px solid black;
+  outline: none;
+  font-size: 20px;
+  border-radius: 5px;
+  transition: 0.5s ease-in-out;
+}
+
+.visa-container button:hover {
+  background-color: white;
+}
+
+.person-type {
+  width: 400px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.person-type i {
+  font-size: 50px;
+  padding: 40px;
+  border-radius: 100px;
+  background-color: black;
+  opacity: 0.3;
+  margin: 0px 10px;
+  border: 1px solid black;
+  transition: 0.5s ease-in-out;
+}
+
+.person-type .salaried-selected,
+.person-type .selfemployed-selected,
+.person-type i:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+.person-type h6 {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.visa-details-container {
+  height: 100vh;
+  background-color: #ecf0f1;
+}
+
+.visa-details {
+  flex-basis: 60%;
+  background-color: brown;
+  display: flex;
+  justify-content: center;
+}
+
+.visa-form {
+  flex-basis: 40%;
+}
+
+.visa-details h1 {
+  font-family: "Dancing Script";
+  padding: 40px 0px;
+}
