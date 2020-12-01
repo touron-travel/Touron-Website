@@ -30,6 +30,9 @@ const PlannedTour = (params) => {
   let random;
   let formatedMonth;
   console.log("tourType :>> ", tourType);
+  console.log("window.innerHeight", window.innerHeight);
+  console.log("window.innerWidth", window.innerWidth);
+
   // const [userInfo, setUserInfo] = useState({});
   // useEffect(() => {
   //   random = Math.floor((Math.random() + 4) * 345334 * Math.random());
