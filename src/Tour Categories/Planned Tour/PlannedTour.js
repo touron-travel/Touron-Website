@@ -129,7 +129,14 @@ const PlannedTour = (params) => {
           />
         );
       case 5:
-        return <TouristDate />;
+        return (
+          <TouristDate
+            fromDate={fromDate}
+            toDate={toDate}
+            setFromDate={setFromDate}
+            setToDate={setToDate}
+          />
+        );
 
       case 6:
         return (

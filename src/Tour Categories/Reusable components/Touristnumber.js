@@ -2,14 +2,6 @@ import React from "react";
 import "./Touristnumber.css";
 
 const Touristnumber = ({ adult, setAdult, children, setChildren }) => {
-  const inc = () => {
-    setAdult(adult + 1);
-    setChildren(children + 1);
-  };
-  const dec = () => {
-    setAdult(adult - 1);
-    setChildren(children - 1);
-  };
   return (
     <div className="tourist-container">
       <div className="adult">
@@ -17,11 +9,11 @@ const Touristnumber = ({ adult, setAdult, children, setChildren }) => {
           <label>Adult</label>
         </div>
         <div className="tourist-func">
-          <button className="decrement" onClick={() => dec()}>
+          <button className="decrement" onClick={() => setAdult(adult - 1)}>
             -
           </button>
-          <input type="text" />
-          <button className="increment" onClick={() => inc()}>
+          <input type="text" value={adult} />
+          <button className="increment" onClick={() => setAdult(adult + 1)}>
             +
           </button>
         </div>
@@ -31,11 +23,17 @@ const Touristnumber = ({ adult, setAdult, children, setChildren }) => {
           <label>Child</label>
         </div>
         <div className="tourist-func">
-          <button className="decrement" onClick={() => dec()}>
+          <button
+            className="decrement"
+            onClick={() => setChildren(children - 1)}
+          >
             -
           </button>
-          <input type="text" />
-          <button className="increment" onClick={() => inc()}>
+          <input type="text" value={children} />
+          <button
+            className="increment"
+            onClick={() => setChildren(children + 1)}
+          >
             +
           </button>
         </div>
