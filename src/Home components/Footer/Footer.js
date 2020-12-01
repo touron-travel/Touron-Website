@@ -64,6 +64,15 @@ export default function Footer() {
               </li>
               <li className="footnav-items">
                 <NavLink
+                  to="/visa"
+                  className="footnav-links"
+                  activeClassName="selected"
+                >
+                  Visa Request
+                </NavLink>
+              </li>
+              <li className="footnav-items">
+                <NavLink
                   to="/login"
                   className="footnav-links"
                   activeClassName="selected"
