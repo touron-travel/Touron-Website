@@ -1,7 +1,7 @@
 import React from "react";
 import "./TouristDate.css";
 
-const TouristDate = () => {
+const TouristDate = ({ fromDate, toDate, setFromDate, setToDate }) => {
   return (
     <div className="tourist-Date">
       <div className="from-category">
