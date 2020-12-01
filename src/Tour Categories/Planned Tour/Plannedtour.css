@@ -62,7 +62,6 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   box-shadow: inset 0 2px 15px 0px rgba(4, 32, 66, 0.2);
 }
-/* .navigation_btn  */
 .navigation_btn .next-button {
   background-color: #badc58;
 }
@@ -73,4 +72,83 @@
 .navigation_btn .previous-button:hover,
 .navigation_btn .next-button:hover {
   cursor: pointer;
+}
+
+@media (max-height: 578px) {
+  .Planned-form-container {
+    display: flex;
+    background-color: #ecf0f1;
+    padding: 60px 0;
+  }
+
+  .planned_tour-form {
+    flex-basis: 50%;
+    margin: 30px 40px;
+    background-color: #fff;
+    box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    height: 550px;
+    border-radius: 20px;
+  }
+  .planned_tour-form-selected {
+    flex-basis: 50%;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    height: 550px;
+    border-radius: 20px;
+  }
+  .planned_tour-form h1,
+  .planned_tour-form-selected h1 {
+    padding-top: 20px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
+  }
+  .planned_tour-details {
+    flex-basis: 40%;
+    background-color: tomato;
+    margin: 0px 40px 0px 0px;
+  }
+
+  .planned_tour-details-selected {
+    display: none;
+  }
+  .planned_form {
+    flex-basis: 55%;
+  }
+  .planned_tour-form .navigation_btn,
+  .planned_tour-form-selected .navigation_btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .navigation_btn .previous-button,
+  .navigation_btn .next-button {
+    padding: 10px 60px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    box-shadow: inset 0 2px 15px 0px rgba(4, 32, 66, 0.2);
+  }
+  .navigation_btn .next-button {
+    background-color: #badc58;
+  }
+
+  .navigation_btn .previous-button {
+    background-color: burlywood;
+  }
+  .navigation_btn .previous-button:hover,
+  .navigation_btn .next-button:hover {
+    cursor: pointer;
+  }
 }

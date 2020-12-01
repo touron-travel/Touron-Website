@@ -33,6 +33,7 @@ const PlannedTour = (params) => {
   let random;
   let formatedMonth;
   console.log("tourType :>> ", tourType);
+
   console.log(
     tourType,
     travellerType,

@@ -21,7 +21,7 @@ const TourHeader = ({ image, title, description, className }) => {
       >
         <div className="downarrow">
           <h4>Start planning</h4>
-          <i class="fas fa-angle-down"></i>
+          <i className="fas fa-angle-down"></i>
         </div>
       </Link>
     </div>
