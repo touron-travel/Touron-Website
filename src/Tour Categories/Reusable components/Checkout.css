@@ -1,0 +1,12 @@
+.destination-container {
+  height: "35%";
+  width: "35%";
+  border: "none";
+}
+@media (max-height: 578px) {
+  .destination-container {
+    height: "30%";
+    width: "30%";
+    border: "none";
+  }
+}

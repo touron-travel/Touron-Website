@@ -1,22 +1,24 @@
 .Planned-form-container {
   display: flex;
   background-color: #ecf0f1;
-  padding: 60px 0;
+  padding: 60px 30px;
+  position: relative;
 }
 
 .planned_tour-form {
   flex-basis: 50%;
   margin: auto;
-  position: relative;
   background-color: #fff;
   box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
   display: flex;
   flex-direction: column;
   height: 700px;
   border-radius: 20px;
+  z-index: 1;
 }
 .planned_tour-form-selected {
-  margin-left: 70px;
+  transform: translateX(-250px);
+  transition: 0.5s;
 }
 .planned_tour-form h1,
 .planned_tour-form-selected h1 {
@@ -26,8 +28,11 @@
   font-weight: 700;
 }
 .planned_tour-details {
-  flex-basis: 40%;
+  position: absolute;
+  top: 0;
+  right: 30px;
   background-color: tomato;
+  width: 40%;
   margin: 0px 40px 0px 0px;
 }
 
@@ -80,13 +85,13 @@
     box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
-    height: 550px;
+    height: 700px;
     border-radius: 20px;
-    position: relative;
+    z-index: 1;
   }
   .planned_tour-form-selected {
-    margin-left: 50px;
+    transform: translateX(-250px);
+    transition: 0.5s;
   }
   .planned_tour-form h1,
   .planned_tour-form-selected h1 {
@@ -97,8 +102,12 @@
     font-size: 28px;
   }
   .planned_tour-details {
-    /* flex-basis: 40%; */
+    position: absolute;
+    top: 10%;
+    left: 58%;
     background-color: tomato;
+    width: 40%;
+    height: 200px;
     margin: 0px 40px 0px 0px;
   }
 

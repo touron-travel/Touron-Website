@@ -7,6 +7,8 @@ import Touristnumber from "../Reusable components/Touristnumber";
 import Travelmode from "../Reusable components/Travelmode";
 import TouristDate from "../Reusable components/TouristDate";
 import Checkout from "../Reusable components/Checkout";
+import Tourpreferance from "../Reusable components/Tourpreferance";
+import Expediture from "../Reusable components/Expediture";
 
 const SurpriseTour = (params) => {
   const [tourType, setTourType] = React.useState("");
@@ -33,6 +35,22 @@ const SurpriseTour = (params) => {
   const [months, setMonths] = useState("");
   let random;
   let formatedMonth;
+  console.log("tourType", tourType);
+  console.log("travellerType", travellerType);
+  console.log("adult", adult);
+  console.log("children", children);
+  console.log("fromDate", fromDate);
+  console.log("toDate", toDate);
+  console.log("travelMode", travelMode);
+  console.log("expediture1", expediture1);
+  console.log("expediture2", expediture2);
+  console.log("expediture3", expediture3);
+  console.log("tourPreferance", tourPreferance);
+  console.log("startPoint", startPoint);
+  console.log("name", name);
+  console.log("budget", budget);
+  console.log("number", number);
+  console.log("step", step);
 
   //   useEffect(() => {
   //     random = Math.floor((Math.random() + 4) * 345334 * Math.random());
@@ -44,7 +62,10 @@ const SurpriseTour = (params) => {
   //     formatedMonth = month < 10 ? "0" + month : month;
   //   });
 
-  const nextStep = () => setStep(step + 1);
+  const nextStep = () => {
+    if (step !== 8) setStep(step + 1);
+  };
+
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
   };
@@ -95,7 +116,28 @@ const SurpriseTour = (params) => {
           />
         );
       case 4:
-        return <h1>tourPreferance</h1>;
+        return (
+          <Tourpreferance
+            imgSrc1={
+              "https://image.freepik.com/free-vector/skydiving-vector-sport-illustration-extreme-sport-background-skydiving-wing-suit_87946-304.jpg"
+            }
+            imgSrc2={
+              "https://image.freepik.com/free-vector/relaxing-concept-illustration_114360-289.jpg"
+            }
+            imgSrc3={
+              "https://image.freepik.com/free-vector/illustration-kathakali-dancer-performing-white-mandala-pattern-background_1302-19495.jpg"
+            }
+            imgSrc4={
+              "https://image.freepik.com/free-vector/backpacker-with-map-search-directions-wilderness_80802-300.jpg"
+            }
+            tourPreferance={tourPreferance}
+            setAdventure={() => setTourPreferance("Adventure")}
+            setRelaxation={() => setTourPreferance("Relaxation")}
+            setCultural={() => setTourPreferance("Cultural")}
+            setExplore={() => setTourPreferance("Explore")}
+            nextStep={() => nextStep()}
+          />
+        );
       case 5:
         return (
           <Travelmode
@@ -127,7 +169,21 @@ const SurpriseTour = (params) => {
           />
         );
       case 7:
-        return <h1>expediture</h1>;
+        return (
+          <Expediture
+            imgSrc={
+              "https://image.freepik.com/free-vector/romantic-car-illustration_166742-180.jpg"
+            }
+            expediture3={expediture3}
+            expediture2={expediture2}
+            expediture1={expediture1}
+            startPoint={startPoint}
+            setStartPoint={(value) => setStartPoint(value)}
+            setExpediture3={(value) => setExpediture3(value)}
+            setExpediture2={(value) => setExpediture2(value)}
+            setExpediture1={(value) => setExpediture1(value)}
+          />
+        );
       case 8:
         return (
           <Checkout

@@ -201,7 +201,7 @@ const PlannedTour = (params) => {
         > */}
         <div
           className={
-            step == 1 && tourType === ""
+            step == 1
               ? "planned_tour-form"
               : "planned_tour-form-selected planned_tour-form"
           }
