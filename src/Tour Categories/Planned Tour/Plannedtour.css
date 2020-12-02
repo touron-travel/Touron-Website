@@ -17,7 +17,7 @@
   z-index: 1;
 }
 .planned_tour-form-selected {
-  transform: translateX(-250px);
+  transform: translateX(-290px);
   transition: 0.5s;
 }
 .planned_tour-form h1,
@@ -29,11 +29,12 @@
 }
 .planned_tour-details {
   position: absolute;
-  top: 0;
-  right: 30px;
+  top: 10%;
+  left: 58%;
   background-color: tomato;
   width: 40%;
   margin: 0px 40px 0px 0px;
+  height: 400px;
 }
 
 .planned_tour-details-selected {
@@ -42,6 +43,7 @@
 .planned_form {
   flex-basis: 75%;
 }
+
 .planned_tour-form .navigation_btn,
 .planned_tour-form-selected .navigation_btn {
   width: 100%;

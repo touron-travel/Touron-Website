@@ -5,6 +5,9 @@ import Travellertype from "../Reusable components/Travellertype";
 import Touristnumber from "../Reusable components/Touristnumber";
 import TouristDate from "../Reusable components/TouristDate";
 import Checkout from "../Reusable components/Checkout";
+import Travelmode from "../Reusable components/Travelmode";
+import Roadtripques1 from "../Reusable components/Roadtripques1";
+import Drivetype from "../Reusable components/Drivetype";
 
 const RoadtripTour = (params) => {
   const [travelMode, setTravelMode] = React.useState("");
@@ -17,8 +20,8 @@ const RoadtripTour = (params) => {
   const [driveDuration, setDriveDuration] = useState("");
   const [driveRestriction, setDriveRestriction] = useState("");
   const [stops, setStops] = useState("");
-  const [carRent, setCarRent] = useState(false);
-  const [additionalInfo, setAdditionalInfo] = useState(false);
+  const [carRent, setCarRent] = useState("");
+  const [additionalInfo, setAdditionalInfo] = useState("");
   const [name, setName] = useState("");
   const [driveType, setDriveType] = useState("");
   const [driverType, setDriverType] = useState("");
@@ -51,7 +54,22 @@ const RoadtripTour = (params) => {
   const renderForm = (step) => {
     switch (step) {
       case 1:
-        return <h1>Travel mode</h1>;
+        return (
+          <Travelmode
+            imgSrc2={
+              "https://image.freepik.com/free-vector/couple-love-scooter_89224-2535.jpg"
+            }
+            imgSrc1={
+              "https://image.freepik.com/free-vector/happy-traveler-man-woman-dog-red-trunk-car-back-with-check-point-travel-around-world_48049-454.jpg"
+            }
+            nextStep={() => nextStep()}
+            name1={"Bike"}
+            name2={"Car"}
+            travelMode={travelMode}
+            setTrain={() => setTravelMode("Bike")}
+            setFlight={() => setTravelMode("Car")}
+          />
+        );
       case 2:
         return (
           <Travellertype
@@ -107,11 +125,71 @@ const RoadtripTour = (params) => {
           />
         );
       case 5:
-        return <h1>Roadtripques1</h1>;
+        return (
+          <Roadtripques1
+            imgSrc={
+              "https://image.freepik.com/free-vector/car-towing-caravan-trailer-camper-against-mountains-spruce-trees-background-summer-travel-lettering-vehicle-wild-nature-adventure-trip-seasonal-camping-illustration_198278-1324.jpg"
+            }
+            attr3={startPoint}
+            attr1={driveDuration}
+            attr2={driveRestriction}
+            placeholder1={"Ex.6 hours"}
+            placeholder2={" Ex.Veg food only"}
+            placeholder3={"Ex.Chennai"}
+            que3={"Where will be your starting point ?"}
+            que1={"How long would you like to drive? (Optional)"}
+            que2={"Any travel or dietary restrictions? (Optional)"}
+            func3={(value) => setStartPoint(value)}
+            func1={(value) => setDriveDuration(value)}
+            func2={(value) => setDriveRestriction(value)}
+          />
+        );
       case 6:
-        return <h1>Roadtripques2</h1>;
+        return (
+          <Roadtripques1
+            imgSrc={
+              "https://image.freepik.com/free-vector/traveling-car-illustration_126895-243.jpg"
+            }
+            attr3={stops}
+            attr1={additionalInfo}
+            attr2={carRent}
+            placeholder1={""}
+            placeholder2={""}
+            placeholder3={"Ex.Food joints"}
+            que3={"What kind of stops do you prefer on your drive? (Optional)"}
+            que1={
+              "Would you like to add extra beds or additional room if travelling as 3/5/7?"
+            }
+            que2={"Do you need any help in renting a car?"}
+            func3={(value) => setStops(value)}
+            func1={(value) => setAdditionalInfo(value)}
+            func2={(value) => setCarRent(value)}
+          />
+        );
       case 7:
-        return <h1>Drive type</h1>;
+        return (
+          <Drivetype
+            driveType={driveType}
+            driverType={driverType}
+            imgSrc1={
+              "https://image.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg"
+            }
+            imgSrc2={
+              "https://image.freepik.com/free-photo/black-urban-sport-two-seater-motorcycle_101266-599.jpg"
+            }
+            imgSrc3={
+              "https://image.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg"
+            }
+            imgSrc4={
+              "https://image.freepik.com/free-photo/black-urban-sport-two-seater-motorcycle_101266-599.jpg"
+            }
+            setRent={() => setDriveType("Rented Bike/Car")}
+            setOwned={() => setDriveType("Own Bike/Car")}
+            setSelf={() => setDriverType("Self Drive")}
+            setDriver={() => setDriverType("Car Driver needed")}
+            nextStep={() => nextStep()}
+          />
+        );
       case 8:
         return (
           <Checkout

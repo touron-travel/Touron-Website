@@ -130,9 +130,9 @@ const PlannedTour = (params) => {
             name1={"Train"}
             name2={"Flight"}
             travelMode={travelMode}
-            // setTrain={() => setTravelMode("Train")}
-            // setFlight={() => setTravelMode("Flight")}
-            setTravelMode={setTravelMode}
+            setTrain={() => setTravelMode("Train")}
+            setFlight={() => setTravelMode("Flight")}
+            // setTravelMode={setTravelMode}
           />
         );
       case 5:

@@ -4,7 +4,15 @@ import "./Tourtype.css";
 import Domestic from "../../assests/planned-tour/india.png";
 import International from "../../assests/planned-tour/International.png";
 
-const Travelmode = ({ travelMode, setTravelMode, imgSrc1, imgSrc2 }) => {
+const Travelmode = ({
+  travelMode,
+  imgSrc1,
+  imgSrc2,
+  name1,
+  setTrain,
+  setFlight,
+  name2,
+}) => {
   console.log(travelMode, "mode");
   return (
     <div>
@@ -14,29 +22,29 @@ const Travelmode = ({ travelMode, setTravelMode, imgSrc1, imgSrc2 }) => {
       <div className="tour-type">
         <div
           className={
-            travelMode == "Flight" ? "domestic-selected domestic" : "domestic"
+            travelMode == name1 ? "domestic-selected domestic" : "domestic"
           }
-          onClick={() => setTravelMode("Flight")}
+          onClick={() => setTrain()}
         >
           <div style={{ position: "absolute", top: "10px", right: "10px" }}>
-            {travelMode == "Flight" ? <Checked /> : null}
+            {travelMode == name1 ? <Checked /> : null}
           </div>
           <img src={imgSrc2} alt="" />
-          <h6>Flight</h6>
+          <h6>{name1}</h6>
         </div>
         <div
           className={
-            travelMode == "Train"
+            travelMode == name2
               ? "international-selected international"
               : "international"
           }
-          onClick={() => setTravelMode("Train")}
+          onClick={() => setFlight()}
         >
           <div style={{ position: "absolute", top: "10px", right: "10px" }}>
-            {travelMode == "Train" ? <Checked /> : null}
+            {travelMode == name2 ? <Checked /> : null}
           </div>
           <img src={imgSrc1} alt="" />
-          <h6>Train</h6>
+          <h6>{name2}</h6>
         </div>
       </div>
     </div>
