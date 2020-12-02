@@ -32,7 +32,7 @@ const PlannedTour = (params) => {
   const [dates, setDates] = useState("");
   const [years, setYears] = useState("");
   const [months, setMonths] = useState("");
-  const [clicked, setClicked] = useState(false);
+  // const [clicked, setClicked] = useState(false);
   let random;
   let formatedMonth;
   console.log("tourType :>> ", tourType);
@@ -201,7 +201,7 @@ const PlannedTour = (params) => {
         > */}
         <div
           className={
-            step == 1
+            step == 1 && tourType == ""
               ? "planned_tour-form"
               : "planned_tour-form-selected planned_tour-form"
           }
@@ -213,15 +213,7 @@ const PlannedTour = (params) => {
             <div className="previous-button" onClick={() => prevStep()}>
               Previous
             </div>
-            <div
-              className="next-button"
-              onClick={() => {
-                if (step == 1) {
-                  setClicked(true);
-                }
-                nextStep();
-              }}
-            >
+            <div className="next-button" onClick={() => nextStep()}>
               Next
             </div>
           </div>
@@ -234,7 +226,9 @@ const PlannedTour = (params) => {
         > */}
         <div
           className={
-            !clicked ? "planned_tour-details-selected" : "planned_tour-details"
+            step === 1 && tourType === ""
+              ? "planned_tour-details-selected"
+              : "planned_tour-details"
           }
         >
           bbxb
