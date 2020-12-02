@@ -57,7 +57,7 @@ select option {
 } */
 /* ss */
 
-s .person-type i {
+.person-type i {
   font-size: 50px;
   padding: 40px;
   border-radius: 100px;
