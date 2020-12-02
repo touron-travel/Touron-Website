@@ -1,5 +1,4 @@
 import React from "react";
-
 import Checked from "./Checked";
 import "./Travellertype.css";
 const Travellertype = ({
@@ -16,10 +15,10 @@ const Travellertype = ({
 }) => {
   return (
     <div className="travellertype_container">
-      <h6 style={{ textAlign: "center", fontSize: "20px", padding: "10px" }}>
+      <h5 className="travellertype-sub">
         Are you the Solo traveller kind or the more the merrier kind? Select
         your tour companions.
-      </h6>
+      </h5>
       <div className="travellertype-row1">
         <div
           className={

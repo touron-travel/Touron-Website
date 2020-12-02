@@ -34,3 +34,11 @@
 .tourist-container input {
   text-align: center;
 }
+
+@media (max-height: 578px) {
+  .adult img,
+  .child img {
+    width: 20%;
+    height: 17%;
+  }
+}

@@ -13,11 +13,7 @@ const Checkout = ({
 }) => {
   return (
     <div className="destination-container">
-      <img
-        src={imgSrc}
-        alt=""
-        style={{ height: "35%", width: "35%", border: "none" }}
-      />
+      <img src={imgSrc} alt="" />
       <div className="destination-questions">
         <div className="que1">
           <h6>Enter your Name</h6>

@@ -5,7 +5,12 @@
   align-items: center;
   justify-content: center;
 }
-
+.travellertype_container h5 {
+  display: flex;
+  align-items: "center";
+  text-align: center;
+  margin: "10px 20px";
+}
 .traveltype {
   width: 40%;
   height: 200px;
@@ -46,4 +51,31 @@
 .friends,
 .honeymoon {
   border: 2px solid red;
+}
+
+@media (max-height: 578px) {
+  .traveltype img {
+    width: 80px;
+    height: 80px;
+  }
+  .traveltype {
+    width: 30%;
+    height: 150px;
+    background-color: #fff;
+    box-shadow: 0 2px 20px 0 rgba(4, 32, 66, 0.2);
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    transition: 0.2s ease-in;
+    position: relative;
+  }
+  .traveltype-details h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 20px;
+    font-family: "Times New Roman", Times, serif;
+  }
 }

@@ -3,7 +3,10 @@
   align-items: center;
   flex-direction: column;
 }
-
+.destination-container img {
+  height: "40%";
+  width: "50%";
+}
 .destination-questions {
   display: flex;
   flex-direction: column;
@@ -32,4 +35,11 @@
   border-radius: 20px;
   padding: 10px;
   flex-basis: 30%;
+}
+
+@media (max-height: 578px) {
+  .destination-container img {
+    height: 140px;
+    width: 200px;
+  }
 }
