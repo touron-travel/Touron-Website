@@ -50,8 +50,14 @@ select option {
   display: flex;
   justify-content: space-around;
 }
+/* .person-type {
+  width: 400px;
+  display: flex;
+  justify-content: space-around;
+} */
+/* ss */
 
-.person-type i {
+s .person-type i {
   font-size: 50px;
   padding: 40px;
   border-radius: 100px;
