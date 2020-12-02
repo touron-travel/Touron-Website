@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import visa from "../assests/visa.jpg";
-import "./visa.css";
+import "./Visa.css";
 import { ApiContext } from "../Context/ApiContext";
 import axios from "axios";
 import { API } from "../backend";

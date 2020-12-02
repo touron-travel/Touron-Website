@@ -23,6 +23,8 @@
   /* font-size: 110px; */
   color: #ff7f00;
   font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
 }
 nav {
   height: 10vh;
@@ -37,7 +39,7 @@ nav {
 .nav-links {
   display: flex;
   list-style: none;
-  width: 50%;
+  width: 60%;
   height: 100%;
   justify-content: space-around;
   align-items: center;

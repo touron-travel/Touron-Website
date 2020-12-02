@@ -138,6 +138,9 @@ const PlannedTour = (params) => {
       case 5:
         return (
           <TouristDate
+            imgSrc={
+              "https://image.freepik.com/free-vector/build-your-program-appointment-booking_23-2148552954.jpg"
+            }
             fromDate={fromDate}
             toDate={toDate}
             setFromDate={setFromDate}
