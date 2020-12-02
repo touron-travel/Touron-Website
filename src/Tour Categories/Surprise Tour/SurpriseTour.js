@@ -1,6 +1,12 @@
 import React, { Component, useState } from "react";
 import TourHeader from "../Reusable components/TourHeader";
 import Surprise from "../../assests/Surprise.jpg";
+import Tourtype from "../Reusable components/Tourtype";
+import Travellertype from "../Reusable components/Travellertype";
+import Touristnumber from "../Reusable components/Touristnumber";
+import Travelmode from "../Reusable components/Travelmode";
+import TouristDate from "../Reusable components/TouristDate";
+import Checkout from "../Reusable components/Checkout";
 
 const SurpriseTour = (params) => {
   const [tourType, setTourType] = React.useState("");
@@ -45,17 +51,98 @@ const SurpriseTour = (params) => {
   const renderForm = (step) => {
     switch (step) {
       case 1:
-        return <h1>1</h1>;
+        return <Tourtype tourType={tourType} setTourType={setTourType} />;
       case 2:
-        return <h1>2</h1>;
+        return (
+          <Travellertype
+            imgSrc1={
+              "https://image.freepik.com/free-vector/local-tourism-concept_23-2148606915.jpg"
+            }
+            imgSrc2={
+              "https://image.freepik.com/free-vector/big-happy-family-with-flat-design_23-2147834774.jpg"
+            }
+            imgSrc3={
+              "https://image.freepik.com/free-vector/group-happy-students-with-backpacks-books-stand-together_131590-216.jpg"
+            }
+            imgSrc4={
+              "https://image.freepik.com/free-vector/newlywed-couple-is-driving-car-their-honeymoon_3446-291.jpg"
+            }
+            travellerType={travellerType}
+            nextStep={() => nextStep()}
+            setSolo={() => {
+              setTravellerType("Solo");
+              setStep(5);
+            }}
+            setFamily={() => setTravellerType("Family")}
+            setFriends={() => setTravellerType("Friends")}
+            setHoneymoon={() => setTravellerType("Honeymoon")}
+          />
+        );
       case 3:
-        return <h1>3</h1>;
+        return (
+          <Touristnumber
+            imgSrc1={
+              "https://image.freepik.com/free-vector/illustration-with-young-people-concept_23-2148467324.jpg"
+            }
+            imgSrc2={
+              "https://image.freepik.com/free-vector/smiling-boy-girl-kids-holding-hands-childhood-friendship-concept-love-romance-children-cartoon-characters-flat-vector-illustration-isolated-white-background_71593-450.jpg"
+            }
+            nextStep={() => nextStep()}
+            adult={adult}
+            children={children}
+            setChildren={(value) => setChildren(value)}
+            setAdult={(value) => setAdult(value)}
+          />
+        );
       case 4:
-        return <h1>4</h1>;
+        return <h1>tourPreferance</h1>;
       case 5:
-        return <h1>5</h1>;
+        return (
+          <Travelmode
+            imgSrc1={
+              "https://image.freepik.com/free-vector/train-ride-railroad_1308-11154.jpg"
+            }
+            imgSrc2={
+              "https://image.freepik.com/free-vector/airplane-sky_1308-31202.jpg"
+            }
+            nextStep={() => nextStep()}
+            name1={"Train"}
+            name2={"Flight"}
+            travelMode={travelMode}
+            // setTrain={() => setTravelMode("Train")}
+            // setFlight={() => setTravelMode("Flight")}
+            setTravelMode={setTravelMode}
+          />
+        );
       case 6:
-        return <h1>6</h1>;
+        return (
+          <TouristDate
+            imgSrc={
+              "https://image.freepik.com/free-vector/build-your-program-appointment-booking_23-2148552954.jpg"
+            }
+            fromDate={fromDate}
+            toDate={toDate}
+            setFromDate={setFromDate}
+            setToDate={setToDate}
+          />
+        );
+      case 7:
+        return <h1>expediture</h1>;
+      case 8:
+        return (
+          <Checkout
+            imgSrc={
+              "https://image.freepik.com/free-vector/business-background-design_1270-63.jpg"
+            }
+            setName={(value) => setName(value)}
+            setNumber={(value) => setNumber(value)}
+            setBudget={(value) => setBudget(value)}
+            // submitData={() => submitData()}
+            name={name}
+            number={number}
+            budget={budget}
+          />
+        );
     }
   };
 
@@ -72,7 +159,9 @@ const SurpriseTour = (params) => {
       <div className="Planned-form-container">
         <div
           className={
-            step == 1 ? "planned_tour-form-selected" : "planned_tour-form"
+            step === 1 && tourType === ""
+              ? "planned_tour-form"
+              : "planned_tour-form-selected planned_tour-form"
           }
         >
           <h1>Surprise Tour</h1>
