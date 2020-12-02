@@ -37,6 +37,7 @@
 .planned_form {
   flex-basis: 75%;
 }
+
 .planned_tour-form .navigation_btn,
 .planned_tour-form-selected .navigation_btn {
   width: 100%;
