@@ -25,14 +25,13 @@ const PlannedTour = (params) => {
   const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
   const [number, setNumber] = useState("");
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(5);
   const [date, setDate] = useState();
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
   const [dates, setDates] = useState("");
   const [years, setYears] = useState("");
   const [months, setMonths] = useState("");
-  // const [clicked, setClicked] = useState(false);
   let random;
   let formatedMonth;
   console.log("tourType :>> ", tourType);

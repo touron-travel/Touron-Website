@@ -1,4 +1,4 @@
-.tourist-Date {
+/* .tourist-Date {
   width: 100%;
   height: 400px;
   display: flex;
@@ -22,4 +22,46 @@
 .to-category img {
   width: 50%;
   height: 47%;
+} */
+
+.nice-dates-day:before {
+  background-color: turquoise;
+  color: aqua;
+  z-index: 1;
+}
+
+.nice-dates-navigation {
+  color: #111;
+}
+.nice-dates-day {
+  color: turquoise;
+}
+.nice-dates-popover {
+  box-shadow: none;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  max-width: 380px;
+  transition: none;
+  position: relative;
+  top: 40px;
+}
+
+.date-range img {
+  width: 50%;
+  height: 40%;
+  margin-bottom: 50px;
+}
+
+.date-range {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.date-range input {
+  margin: 0 20px;
+  padding: 10px 20px;
+  border-radius: 4px;
 }
