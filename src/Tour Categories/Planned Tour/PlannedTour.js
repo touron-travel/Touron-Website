@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TourHeader from "../Reusable components/TourHeader";
 import Planned from "../../assests/Plannedtour.jpg";
 import "./Plannedtour.css";
@@ -36,34 +36,38 @@ const PlannedTour = (params) => {
   let formatedMonth;
   console.log("tourType :>> ", tourType);
 
-  console.log(
-    tourType,
-    travellerType,
-    adult,
-    children,
-    fromDate,
-    toDate,
-    travelMode,
-    preferanece,
-    destination,
-    startPoint,
-    name,
-    number,
-    budget
-  );
+  const submitData = () => {
+    console.log(
+      tourType,
+      travellerType,
+      adult,
+      children,
+      fromDate,
+      toDate,
+      travelMode,
+      preferanece,
+      destination,
+      startPoint,
+      name,
+      number,
+      budget
+    );
+    const requestID = `T0-${date}${formatedMonth}${year}-${random}`;
+    console.log("requestID :>> ", requestID);
+  };
 
-  // const [userInfo, setUserInfo] = useState({});
-  // useEffect(() => {
-  //   random = Math.floor((Math.random() + 4) * 345334 * Math.random());
-  //   const requestDate = new Date();
-  //   let currentYear = requestDate.getFullYear();
-  //   setDate(requestDate.getDate());
-  //   setMonth(requestDate.getMonth() + 1);
-  //   setYear(currentYear.toString().slice(2, 5));
-  //   formatedMonth = month < 10 ? "0" + month : month;
-  // });
+  const [userInfo, setUserInfo] = useState({});
+  useEffect(() => {
+    random = Math.floor((Math.random() + 4) * 345334 * Math.random());
+    const requestDate = new Date();
+    let currentYear = requestDate.getFullYear();
+    setDate(requestDate.getDate());
+    setMonth(requestDate.getMonth() + 1);
+    setYear(currentYear.toString().slice(2, 5));
+    formatedMonth = month < 10 ? "0" + month : month;
+  });
   const nextStep = () => {
-    if (step !== 7 && tourType !== "") setStep(step + 1);
+    if (step !== 7 || tourType !== "") setStep(step + 1);
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
@@ -95,7 +99,7 @@ const PlannedTour = (params) => {
             }}
             setFamily={() => setTravellerType("Family")}
             setFriends={() => setTravellerType("Friends")}
-            setHoneymoon={() => setTravellerType("Honeymoon")}
+            setGroup={() => setTravellerType("Group")}
           />
         );
 
@@ -209,12 +213,20 @@ const PlannedTour = (params) => {
           <h1>Planned Tour</h1>
           <div className="planned_form">{renderForm(step)}</div>
           <div className="navigation_btn">
-            <div className="previous-button" onClick={() => prevStep()}>
-              Previous
-            </div>
-            <div className="next-button" onClick={() => nextStep()}>
-              Next
-            </div>
+            {step == 7 ? (
+              <div className="submit-button" onClick={() => submitData()}>
+                Submit
+              </div>
+            ) : (
+              <>
+                <div className="previous-button" onClick={() => prevStep()}>
+                  Previous
+                </div>
+                <div className="next-button" onClick={() => nextStep()}>
+                  Next
+                </div>
+              </>
+            )}
           </div>
         </div>
         {/* </Animate>

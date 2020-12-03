@@ -1,6 +1,15 @@
 .expediture-img {
-  height: 40%;
-  width: 50%;
+  height: 30%;
+  width: 40%;
+}
+
+.destination-questionss {
+  display: flex;
+  flex-wrap: wrap;
+}
+.destination-questionss h6 {
+  margin-right: 5px;
+  padding: 0;
 }
 
 @media (max-height: 578px) {

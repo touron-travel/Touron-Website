@@ -25,7 +25,6 @@
 } */
 
 .nice-dates-day:before {
-  background-color: turquoise;
   color: aqua;
   z-index: 1;
 }
@@ -42,13 +41,11 @@
   border-radius: 2px;
   max-width: 380px;
   transition: none;
-  position: relative;
-  top: 40px;
 }
 
 .date-range img {
-  width: 50%;
-  height: 40%;
+  width: 40%;
+  height: 45%;
   margin-bottom: 50px;
 }
 
@@ -64,4 +61,28 @@
   margin: 0 20px;
   padding: 10px 20px;
   border-radius: 4px;
+}
+
+.date-container span {
+  font-size: 30px;
+  margin-top: 200px;
+}
+
+.from-date,
+.to-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.from-date label,
+.to-date label {
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+  margin-left: 20px;
 }

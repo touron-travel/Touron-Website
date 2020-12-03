@@ -11,7 +11,7 @@ const Travellertype = ({
   setSolo,
   setFamily,
   setFriends,
-  setHoneymoon,
+  setGroup,
 }) => {
   return (
     <div className="travellertype_container">
@@ -75,21 +75,19 @@ const Travellertype = ({
         </div>
         <div
           className={
-            travellerType == "Honeymoon"
-              ? " honeymoon traveltype"
-              : "traveltype"
+            travellerType == "Group" ? " honeymoon traveltype" : "traveltype"
           }
           onClick={() => {
-            setHoneymoon();
+            setGroup();
             // nextStep();
           }}
         >
           <div className="traveltype-details">
             <div style={{ position: "absolute", top: 5, right: 5 }}>
-              {travellerType == "Honeymoon" ? <Checked /> : null}
+              {travellerType == "Group" ? <Checked /> : null}
             </div>
             <img src={imgSrc4} />
-            <h2>Honeymoon</h2>
+            <h2>Group</h2>
           </div>
         </div>
         {/* <div

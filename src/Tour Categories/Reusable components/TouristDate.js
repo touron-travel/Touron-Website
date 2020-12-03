@@ -24,17 +24,26 @@ const TouristDate = ({ imgSrc, fromDate, toDate, setFromDate, setToDate }) => {
             <img src={imgSrc} alt="" />
 
             <div className="date-container">
-              <input
-                className={"input" + (focus === START_DATE ? " -focused" : "")}
-                {...startDateInputProps}
-                placeholder="Start date"
-              />
-              <span className="date-range_arrow" />
-              <input
-                className={"input" + (focus === END_DATE ? " -focused" : "")}
-                {...endDateInputProps}
-                placeholder="End date"
-              />
+              <div className="from-date">
+                <label>From Date :</label>
+                <input
+                  className={
+                    "input" + (focus === START_DATE ? " -focused" : "")
+                  }
+                  {...startDateInputProps}
+                  placeholder="DD/MM/YYYY"
+                />
+              </div>
+
+              <div className="to-date">
+                <label>To Date :</label>
+
+                <input
+                  className={"input" + (focus === END_DATE ? " -focused" : "")}
+                  {...endDateInputProps}
+                  placeholder="DD/MM/YYYY"
+                />
+              </div>
             </div>
           </div>
         </>

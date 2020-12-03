@@ -96,7 +96,7 @@ const SurpriseTour = (params) => {
             }}
             setFamily={() => setTravellerType("Family")}
             setFriends={() => setTravellerType("Friends")}
-            setHoneymoon={() => setTravellerType("Honeymoon")}
+            setGroup={() => setTravellerType("Group")}
           />
         );
       case 3:
@@ -223,12 +223,20 @@ const SurpriseTour = (params) => {
           <h1>Surprise Tour</h1>
           <div className="planned_form">{renderForm(step)}</div>
           <div className="navigation_btn">
-            <div className="previous-button" onClick={() => prevStep()}>
-              Previous
-            </div>
-            <div className="next-button" onClick={() => nextStep()}>
-              Next
-            </div>
+            {step == 8 ? (
+              <div className="submit-button" onClick={() => nextStep()}>
+                Submit
+              </div>
+            ) : (
+              <>
+                <div className="previous-button" onClick={() => prevStep()}>
+                  Previous
+                </div>
+                <div className="next-button" onClick={() => nextStep()}>
+                  Next
+                </div>
+              </>
+            )}
           </div>
         </div>
         <div
