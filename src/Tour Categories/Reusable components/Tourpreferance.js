@@ -1,5 +1,6 @@
 import React from "react";
 import Checked from "./Checked";
+import "./Tourpreferance.css";
 
 const Tourpreference = ({
   imgSrc1,
@@ -15,10 +16,10 @@ const Tourpreference = ({
 }) => {
   return (
     <div className="traveltype_container">
-      <h6 style={{ textAlign: "center", fontSize: "20px", padding: "10px" }}>
+      <h5 className="travellertype-sub">
         Are you the Solo traveller kind or the more the merrier kind? Select
         your tour companions.
-      </h6>
+      </h5>
       <div className="travellertype-row1">
         <div
           className={
@@ -30,7 +31,7 @@ const Tourpreference = ({
           }}
         >
           <div className="traveltype-details">
-            <div style={{ position: "absolute", top: 5, right: 5 }}>
+            <div className="traveltype-details-category">
               {tourPreferance == "Adventure" ? <Checked /> : null}
             </div>
             <img src={imgSrc1} />
@@ -47,7 +48,7 @@ const Tourpreference = ({
           }}
         >
           <div className="traveltype-details">
-            <div style={{ position: "absolute", top: 5, right: 5 }}>
+            <div className="traveltype-details-category">
               {tourPreferance == "Relaxation" ? <Checked /> : null}
             </div>
             <img src={imgSrc2} />
@@ -66,7 +67,7 @@ const Tourpreference = ({
           }}
         >
           <div className="traveltype-details">
-            <div style={{ position: "absolute", top: 5, right: 5 }}>
+            <div className="traveltype-details-category">
               {tourPreferance == "Cultural" ? <Checked /> : null}
             </div>
             <img src={imgSrc3} />
@@ -83,7 +84,7 @@ const Tourpreference = ({
           }}
         >
           <div className="traveltype-details">
-            <div style={{ position: "absolute", top: 5, right: 5 }}>
+            <div className="traveltype-details-category">
               {tourPreferance == "Explore" ? <Checked /> : null}
             </div>
             <img src={imgSrc4} />

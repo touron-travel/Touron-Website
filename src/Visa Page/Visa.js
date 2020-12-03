@@ -15,7 +15,7 @@ const Visa = () => {
     console.log("countryName", countryName);
     try {
       const visaResponse = await axios.get(`${API}/visa/${countryName}`);
-      console.log("visaResponse", visaResponse);
+      console.log("visaResponse", visaResponse.data);
       setVisaDetails(...visaResponse.data);
     } catch (err) {
       console.log(err, "err");

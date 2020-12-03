@@ -63,7 +63,7 @@ const SurpriseTour = (params) => {
   //   });
 
   const nextStep = () => {
-    if (step !== 8) setStep(step + 1);
+    if (step !== 8 && tourType !== "") setStep(step + 1);
   };
 
   const prevStep = () => {
@@ -92,7 +92,7 @@ const SurpriseTour = (params) => {
             nextStep={() => nextStep()}
             setSolo={() => {
               setTravellerType("Solo");
-              setStep(5);
+              setStep(4);
             }}
             setFamily={() => setTravellerType("Family")}
             setFriends={() => setTravellerType("Friends")}
@@ -233,7 +233,9 @@ const SurpriseTour = (params) => {
         </div>
         <div
           className={
-            step == 1 ? "planned_tour-details-selected" : "planned_tour-details"
+            step === 1 && tourType === ""
+              ? "planned_tour-details-selected"
+              : "planned_tour-details"
           }
         >
           bbxb

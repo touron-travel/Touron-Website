@@ -3,9 +3,9 @@
   align-items: center;
   flex-direction: column;
 }
-.destination-container img {
-  height: "40%";
-  width: "50%";
+.destination-img {
+  height: 40%;
+  width: 50%;
 }
 .destination-questions {
   display: flex;
@@ -38,8 +38,17 @@
 }
 
 @media (max-height: 578px) {
-  .destination-container img {
-    height: 140px;
-    width: 200px;
+  .destination-img {
+    height: 20%;
+    width: 30%;
+  }
+  .que1 h6,
+  .que2 h6,
+  .que3 h6 {
+    flex-basis: 50%;
+    justify-content: space-evenly;
+    padding: 0px 30px;
+    margin: 0px 30px;
+    font-size: 14px;
   }
 }

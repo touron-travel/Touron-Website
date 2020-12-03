@@ -25,7 +25,7 @@ const PlannedTour = (params) => {
   const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
   const [number, setNumber] = useState("");
-  const [step, setStep] = useState(5);
+  const [step, setStep] = useState(1);
   const [date, setDate] = useState();
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
@@ -63,7 +63,7 @@ const PlannedTour = (params) => {
   //   formatedMonth = month < 10 ? "0" + month : month;
   // });
   const nextStep = () => {
-    if (step !== 7) setStep(step + 1);
+    if (step !== 7 && tourType !== "") setStep(step + 1);
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
@@ -91,7 +91,7 @@ const PlannedTour = (params) => {
             nextStep={() => nextStep()}
             setSolo={() => {
               setTravellerType("Solo");
-              setStep(5);
+              setStep(4);
             }}
             setFamily={() => setTravellerType("Family")}
             setFriends={() => setTravellerType("Friends")}

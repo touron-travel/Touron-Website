@@ -26,7 +26,12 @@ const Touristnumber = ({
         </div>
         <img src={imgSrc1} alt="" />
         <div className="tourist-func">
-          <button className="decrement" onClick={() => setAdult(adult - 1)}>
+          <button
+            className="decrement"
+            onClick={() => {
+              if (adult !== 0) setAdult(adult - 1);
+            }}
+          >
             -
           </button>
           <input type="text" value={adult} />
@@ -44,7 +49,9 @@ const Touristnumber = ({
         <div className="tourist-func">
           <button
             className="decrement"
-            onClick={() => setChildren(children - 1)}
+            onClick={() => {
+              if (children !== 0) setChildren(children - 1);
+            }}
           >
             -
           </button>

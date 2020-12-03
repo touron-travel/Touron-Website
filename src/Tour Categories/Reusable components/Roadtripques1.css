@@ -1,0 +1,19 @@
+.roadtripques-img1 {
+  height: 40%;
+  width: 50%;
+}
+.roadtripques-img2 {
+  height: 40%;
+  width: 50%;
+}
+
+@media (max-height: 578px) {
+  .roadtripques-img1 {
+    height: 20%;
+    width: 30%;
+  }
+  .roadtripques-img2 {
+    height: 10%;
+    width: 20%;
+  }
+}

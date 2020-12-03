@@ -47,7 +47,9 @@ const RoadtripTour = (params) => {
   //     formatedMonth = month < 10 ? "0" + month : month;
   //   });
 
-  const nextStep = () => setStep(step + 1);
+  const nextStep = () => {
+    if (step !== 8 && travelMode !== "") setStep(step + 1);
+  };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
   };
@@ -142,6 +144,7 @@ const RoadtripTour = (params) => {
             func3={(value) => setStartPoint(value)}
             func1={(value) => setDriveDuration(value)}
             func2={(value) => setDriveRestriction(value)}
+            className={"roadtripques-img1"}
           />
         );
       case 6:
@@ -164,6 +167,7 @@ const RoadtripTour = (params) => {
             func3={(value) => setStops(value)}
             func1={(value) => setAdditionalInfo(value)}
             func2={(value) => setCarRent(value)}
+            className={"roadtripques-img2"}
           />
         );
       case 7:
@@ -238,7 +242,9 @@ const RoadtripTour = (params) => {
         </div>
         <div
           className={
-            step == 1 ? "planned_tour-details-selected" : "planned_tour-details"
+            step === 1 && travelMode === ""
+              ? "planned_tour-details-selected"
+              : "planned_tour-details"
           }
         >
           bbxb
