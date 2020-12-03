@@ -11,7 +11,7 @@ const Destination = ({
 }) => {
   return (
     <div className="destination-container">
-      <img src={imgSrc} alt="" />
+      <img className="destination-img" src={imgSrc} alt="" />
       <div className="destination-questions">
         <div className="que1">
           <h6>Enter the holiday destination you want to travel</h6>

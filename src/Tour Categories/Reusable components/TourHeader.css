@@ -76,3 +76,20 @@
 .downarrow h4:hover {
   color: #000;
 }
+@media (max-height: 578px) {
+  .tour_Header h1 {
+    font-size: 55px;
+    font-family: "Dancing Script", sans-serif;
+    color: #ffffff;
+  }
+
+  .tour_Header p {
+    font-size: 22px;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    width: 60%;
+    color: #d2dae2;
+    text-align: justify;
+    margin: 10px;
+    font-family: "Dancing Script", sans-serif;
+  }
+}

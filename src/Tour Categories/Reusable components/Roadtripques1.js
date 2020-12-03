@@ -1,4 +1,5 @@
 import React from "react";
+import "./Roadtripques1.css";
 
 const Roadtripques1 = ({
   imgSrc,
@@ -14,10 +15,11 @@ const Roadtripques1 = ({
   placeholder1,
   placeholder2,
   placeholder3,
+  className,
 }) => {
   return (
     <div className="destination-container">
-      <img src={imgSrc} alt="" style={{ height: "40%", width: "50%" }} />
+      <img className={className} src={imgSrc} alt="" />
       <div className="destination-questions">
         <div className="que1">
           <h6>{que1}</h6>

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Expediture.css";
 
 const Expediture = ({
   imgSrc,
@@ -13,12 +14,8 @@ const Expediture = ({
 }) => {
   return (
     <div className="destination-container">
-      <img
-        src={imgSrc}
-        alt=""
-        style={{ height: "35%", width: "35%", border: "none" }}
-      />
-      <div className="destination-questions">
+      <img className="expediture-img" src={imgSrc} alt="" />
+      <div className="destination-questionss">
         <div className="que1">
           <h6>Expediture 1</h6>
           <input

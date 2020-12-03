@@ -1,4 +1,5 @@
 import React from "react";
+import "./Checkout.css";
 import "./Destination.css";
 
 const Checkout = ({
@@ -13,7 +14,7 @@ const Checkout = ({
 }) => {
   return (
     <div className="destination-container">
-      <img src={imgSrc} alt="" />
+      <img className="checkout-image" src={imgSrc} alt="" />
       <div className="destination-questions">
         <div className="que1">
           <h6>Enter your Name</h6>
