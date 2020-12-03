@@ -24,16 +24,11 @@
   height: 47%;
 } */
 
-.nice-dates-day:before {
-  color: aqua;
-  z-index: 1;
-}
-
 .nice-dates-navigation {
-  color: #111;
+  color: turquoise;
 }
 .nice-dates-day {
-  color: turquoise;
+  color: #111;
 }
 .nice-dates-popover {
   box-shadow: none;
