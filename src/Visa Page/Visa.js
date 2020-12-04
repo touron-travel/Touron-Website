@@ -120,16 +120,21 @@ const Visa = () => {
       <div className="visa-container" style={backgroundImage}>
         {renderPage(step)}
       </div>
-      <div
-        className="visa-details-container"
-        style={{ display: show ? "flex" : "none" }}
-      >
+      <div className="visa-details-container">
         <div className="visa-details">
           <h1>
             Visa Details for {countryName} : {personType}
           </h1>
+          <div className="visa-details-desc">
+            <h3>Appoinment</h3>
+            <h3>Required</h3>
+            <h3>Duration</h3>
+            <h3>Financials</h3>
+            <h3>Honeymooners</h3>
+            <h3>Photography</h3>
+            <h3>Submission</h3>
+          </div>
         </div>
-        <div className="visa-form"></div>
       </div>
     </div>
   );
