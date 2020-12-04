@@ -23,6 +23,14 @@ import LuxuryTour from "./Tour Categories/Luxury Tour/LuxuryTour";
 import RoadtripTour from "./Tour Categories/Roadtrip Tour/RoadtripTour";
 import SurpriseTour from "./Tour Categories/Surprise Tour/SurpriseTour";
 import Visa from "./Visa Page/Visa";
+import Admin from "./Admin components/Admin";
+import Management from "./Admin components/Admin pages/Management";
+import Packages from "./Admin components/Admin pages/Packages";
+import Pages from "./Admin components/Admin pages/Pages";
+import CategoriesTags from "./Admin components/Admin pages/Categories-Tags";
+import Advertisement from "./Admin components/Admin pages/Advertisement";
+import TrendingPlaces from "./Admin components/Admin pages/TrendingPlaces";
+import Coupons from "./Admin components/Admin pages/Coupons";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
@@ -96,6 +104,14 @@ export default function Routes() {
               path="/tourdetails/:countryname/:tourname/:tourid"
               component={TourInner}
             />
+            <Route path="/admin" component={Admin} />
+            <Route path="/management" component={Management} />
+            <Route path="/packages" component={Packages} />
+            <Route path="/pages" component={Pages} />
+            <Route path="/categories" component={CategoriesTags} />
+            <Route path="/advertisement" component={Advertisement} />
+            <Route path="/trendingplaces" component={TrendingPlaces} />
+            <Route path="/coupons" component={Coupons} />
           </Switch>
           <div className="footer">
             <Footer />
