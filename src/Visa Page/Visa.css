@@ -5,19 +5,32 @@
   background-size: cover;
   object-fit: cover;
   object-position: center;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+}
+.visa-container::after {
+  position: absolute;
+  content: "";
+  background: #000000;
+  opacity: 0.3;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .visa-container h1 {
   font-family: "Times New Roman", Times, serif;
   font-size: 70px;
   margin-bottom: 30px;
+  color: #fff;
+  position: relative;
+  z-index: 1;
 }
-
 .visa-country-search select {
   width: 400px;
   height: 50px;
@@ -25,78 +38,120 @@
   padding: 0px 60px;
   background-color: transparent;
   outline: skyblue;
+  position: relative;
+  z-index: 2;
 }
-
+.visa-option {
+  color: #fff;
+  background-color: #000000;
+}
 .visa-container button {
   margin: 20px;
-  background-color: transparent;
+  background-color: white;
   padding: 10px 20px;
-
   border: 1px solid black;
   outline: none;
   font-size: 20px;
   border-radius: 5px;
   transition: 0.5s ease-in-out;
+  position: relative;
+  z-index: 2;
+  /* border-radius: 30px; */
 }
 
 .visa-container button:hover {
   background-color: white;
 }
-
-.person-type {
-  width: 400px;
-  display: flex;
-  justify-content: space-around;
-}
-/* .person-type {
-  width: 400px;
-  display: flex;
-  justify-content: space-around;
-} */
-/* ss */
-
-.person-type i {
-  font-size: 50px;
-  padding: 40px;
-  border-radius: 100px;
-  background-color: black;
-  opacity: 0.3;
-  margin: 0px 10px;
-  border: 1px solid black;
-  transition: 0.5s ease-in-out;
-}
-
-.person-type .salaried-selected,
-.person-type .selfemployed-selected,
-.person-type i:hover {
-  cursor: pointer;
-  background-color: white;
-  color: black;
-}
-
-.person-type h6 {
-  margin-top: 20px;
-  font-size: 20px;
-}
-
-.visa-details-container {
-  height: 100vh;
-  background-color: #ecf0f1;
-  padding: 40px;
-}
-
 .visa-details {
-  background-color: grey;
-  border-radius: 20px;
+  background-color: #000000;
+  padding: 40px;
+}
+.visa-details-categories {
   display: flex;
   justify-content: center;
+  height: 60px;
 }
-
-.visa-details h1 {
-  font-family: "Dancing Script";
-  padding: 40px 0px;
+.salaried {
+  /* background-color: #a6c5cd; */
+  background-color: #db6500;
+  padding: 12px;
+  border-radius: 30px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 20px;
 }
-.visa-details h1 {
-  font-family: "Dancing Script";
-  padding: 40px 0px;
+.selfEmployed {
+  /* background-color: #a6c5cd; */
+  background-color: #db6500;
+  padding: 12px;
+  border-radius: 30px;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.none {
+  border-radius: 30px;
+  padding: 12px;
+  cursor: pointer;
+  transition: 0.5s;
+  /* border: 1.5px solid #a6c5cd; */
+  border: 1.5px solid gainsboro;
+  color: gray;
+  font-size: 20px;
+}
+.none:hover {
+  background-color: gainsboro;
+  border-radius: 30px;
+  padding: 12px;
+  cursor: pointer;
+  color: #000000;
+}
+.salaried-details,
+.selfEmployed-details {
+  padding-top: 70px;
+}
+.salaried-details h1,
+.selfEmployed-details h1 {
+  font-family: "Kaushan Script", cursive;
+  font-weight: 700;
+  color: #fff;
+  padding-bottom: 10px;
+}
+.salaried-details p,
+.selfEmployed-details p {
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+  width: 90%;
+  text-align: justify;
+  color: gray;
+  padding-bottom: 30px;
+}
+.visa-country {
+  display: flex;
+  align-items: center;
+  padding-top: 30px;
+  padding-left: 30px;
+}
+.visa-country-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.visa-country i {
+  font-size: 15px;
+  color: gray;
+}
+.visa-countryName {
+  color: #fff;
+  padding: 0px 10px;
+  font-family: "Kaushan Script";
+  font-size: 28px;
+}
+.visa-name {
+  color: #db6500;
+  padding: 0px 10px;
+  /* font-family: "Kaushan Script"; */
+  font-family: "Caveat", cursive;
+  font-size: 28px;
 }

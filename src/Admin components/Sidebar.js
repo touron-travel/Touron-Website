@@ -6,10 +6,10 @@ import "./Sidebar.css";
 import { IconContext } from "react-icons";
 
 const Sidebar = () => {
-  const [sidebar, setSidebar] = useState(false);
-  console.log("sidebar", sidebar);
+  // const [sidebar, setSidebar] = useState(false);
+  // console.log("sidebar", sidebar);
 
-  const showSidebar = () => setSidebar(!sidebar);
+  // const showSidebar = () => setSidebar(!sidebar);
 
   return (
     <>
@@ -19,7 +19,7 @@ const Sidebar = () => {
               <FaIcons.FaBars onClick={showSidebar} />
             </Link>
           </div> */}
-        <div className={sidebar ? "sidebar-menu active" : "sidebar-menu"}>
+        <div className={"sidebar-menu"}>
           <ul className="sidebar-menu-items">
             {/* <li className="sidebar-toggle">
                 <Link to="#" className="menu-bars">
