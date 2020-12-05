@@ -4,6 +4,7 @@ import TopdestinationTile from "./Top_destinationTile";
 import Slider from "react-slick";
 
 export default function Top_destination() {
+  const width = window.innerWidth;
   const cities = [
     {
       coordinates: {
@@ -262,7 +263,8 @@ export default function Top_destination() {
       <div className="section_content popular_destination__content">
         <div className="section_item">
           {cities.map((t, index) => {
-            if (index < 7) return <TopdestinationTile t={t} key={index} />;
+            if (width < 1300 ? index < 6 : index < 7)
+              return <TopdestinationTile t={t} key={index} />;
           })}
         </div>
       </div>

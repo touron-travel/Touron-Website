@@ -5,4 +5,7 @@
 }
 .dashboard-flex {
   display: flex;
+  background-color: teal;
+  max-height: 100vh;
+  overflow: hidden;
 }

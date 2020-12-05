@@ -36,6 +36,7 @@ export default function Routes() {
   const [tours, setTour] = useState([]);
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
+  const [adminRoutes, setAdminRoutes] = useState(false);
 
   const getTours = async () => {
     try {
@@ -74,12 +75,16 @@ export default function Routes() {
   }, []);
 
   return (
-    <ApiContext.Provider value={{ tours, countries, cities }}>
+    <ApiContext.Provider
+      value={{ tours, countries, cities, adminRoutes, setAdminRoutes }}
+    >
       <Router>
         <ScrollToTop>
-          <div className="nav">
-            <Navbar />
-          </div>
+          {adminRoutes ? null : (
+            <div className="nav">
+              <Navbar />
+            </div>
+          )}
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
@@ -104,18 +109,20 @@ export default function Routes() {
               path="/tourdetails/:countryname/:tourname/:tourid"
               component={TourInner}
             />
-            <Route path="/admin" component={Admin} />
-            <Route path="/management" component={Management} />
-            <Route path="/packages" component={Packages} />
-            <Route path="/pages" component={Pages} />
-            <Route path="/categories" component={CategoriesTags} />
-            <Route path="/advertisement" component={Advertisement} />
-            <Route path="/trendingplaces" component={TrendingPlaces} />
-            <Route path="/coupons" component={Coupons} />
+            <Route path="/admin" exact component={Admin} />
+            <Route path="/admin/management" component={Management} />
+            <Route path="/admin/packages" component={Packages} />
+            <Route path="/admin/pages" component={Pages} />
+            <Route path="/admin/categories" component={CategoriesTags} />
+            <Route path="/admin/advertisement" component={Advertisement} />
+            <Route path="/admin/trendingplaces" component={TrendingPlaces} />
+            <Route path="/admin/coupons" component={Coupons} />
           </Switch>
-          <div className="footer">
-            <Footer />
-          </div>
+          {adminRoutes ? null : (
+            <div className="footer">
+              <Footer />
+            </div>
+          )}
         </ScrollToTop>
       </Router>
     </ApiContext.Provider>

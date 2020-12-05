@@ -5,6 +5,7 @@
   background-size: cover;
   object-fit: cover;
   object-position: center;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +23,7 @@
   height: 50px;
   border-radius: 3px;
   padding: 0px 60px;
+  background-color: transparent;
   outline: skyblue;
 }
 
