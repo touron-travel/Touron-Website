@@ -5,11 +5,20 @@ import { ApiContext } from "../Context/ApiContext";
 import axios from "axios";
 import { API } from "../backend";
 import { Link } from "react-scroll";
+
 const Visa = () => {
   const { countries } = useContext(ApiContext);
   const backgroundImage = {
     backgroundImage: `url('https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1081&q=80')`,
   };
+
+  const [countryName, setCountryName] = useState("");
+  const [visaDetails, setVisaDetails] = useState({});
+  console.log(visaDetails.selfEmployedDocs, "de");
+  const [personType, setPersonType] = useState("");
+  const [show, setshow] = useState(false);
+  const [step, setStep] = useState(0);
+  console.log("step", step);
 
   const getVisaDetails = async (countryName) => {
     console.log("countryName", countryName);
@@ -17,126 +26,121 @@ const Visa = () => {
       const visaResponse = await axios.get(`${API}/visa/${countryName}`);
       console.log("visaResponse", visaResponse.data);
       setVisaDetails(...visaResponse.data);
+      setshow(true);
     } catch (err) {
       console.log(err, "err");
     }
   };
 
-  const [countryName, setCountryName] = useState("");
-  const [visaDetails, setVisaDetails] = useState({});
-  console.log(visaDetails.selfEmployedDocs, "de");
-  const [personType, setPersonType] = useState("");
-  const [step, setStep] = useState(1);
-  const [show, setShow] = useState(true);
+  const nextStep = () => {
+    if (step === 0) setStep(step + 1);
+  };
+  const prevStep = () => {
+    if (step === 1) setStep(step - 1);
+  };
 
-  const renderPage = (step) => {
+  const renderItem = () => {
     switch (step) {
+      case 0:
+        return (
+          <div className="salaried-details">
+            <h1>Document Required</h1>
+            <p>{visaDetails.salaryDocs.salaryDocsRequired}</p>
+            <h1>Financials</h1>
+            <p>{visaDetails.salaryDocs.salaryFinancials}</p>
+            <h1>Submission</h1>
+            <p>{visaDetails.salaryDocs.salarySubmission}</p>
+            <h1>Appointment</h1>
+            <p>{visaDetails.salaryDocs.salaryAppointment}</p>
+            <h1>Honeymooners</h1>
+            <p>{visaDetails.salaryDocs.salaryHoneymooners}</p>
+            <h1>Duration</h1>
+            <p>{visaDetails.salaryDocs.salaryDuration}</p>
+            <h1>Photograph</h1>
+            <p>{visaDetails.salaryDocs.salaryPhotography}</p>
+          </div>
+        );
       case 1:
         return (
-          <>
-            <h1>Choose the country</h1>
-            <div className="visa-country-search">
-              <select
-                placeholder="Select the country"
-                onChange={(e) => {
-                  setCountryName(e.target.value);
-                  getVisaDetails(e.target.value);
-                }}
-              >
-                {countries.map((c, index) => {
-                  return (
-                    <option key={index} value={c.countryName}>
-                      {c.countryName}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
-            <button onClick={() => setStep(step + 1)}>Next</button>
-          </>
-        );
-
-      case 2:
-        return (
-          <>
-            <h1>Choose the Type</h1>
-            <div className="visa-country-search"></div>
-            <div className="person-type">
-              <div
-                onClick={() => {
-                  setShow(true);
-                  setPersonType("Salaried");
-                }}
-                className="salaried"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <i
-                  className={
-                    personType == "Salaried"
-                      ? "salaried-selected fas fa-id-card"
-                      : "fas fa-id-card"
-                  }
-                ></i>
-                <h6>salaried</h6>
-              </div>
-              <div
-                onClick={() => {
-                  setShow(true);
-                  setPersonType("SelfEmployed");
-                }}
-                className="selfemployed"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <i
-                  className={
-                    personType == "SelfEmployed"
-                      ? " selfemployed-selected fas fa-user-tie"
-                      : "fas fa-user-tie"
-                  }
-                ></i>
-                <h6>Self Employed</h6>
-              </div>
-            </div>
-            <div className="buttons">
-              <button onClick={() => setStep(step - 1)}>Back</button>
-              <Link to="visa-details" duration={500} smooth={true}>
-                <button>Fetch details</button>
-              </Link>
-            </div>
-          </>
+          <div className="selfEmployed-details">
+            <h1>Document Required</h1>
+            <p>{visaDetails.selfEmployedDocs.selfEmployedDocsRequired}</p>
+            <h1>Financials</h1>
+            <p>{visaDetails.selfEmployedDocs.selfEmployedFinancials}</p>
+            <h1>Submission</h1>
+            <p>{visaDetails.selfEmployedDocs.selfEmployedSubmission}</p>
+            <h1>Appointment</h1>
+            <p>{visaDetails.selfEmployedDocs.selfEmployedAppointment}</p>
+            <h1>Honeymooners</h1>
+            <p>{visaDetails.selfEmployedDocs.selfEmployedHoneymooners}</p>
+            <h1>Duration</h1>
+            <p>{visaDetails.selfEmployedDocs.selfEmployedDuration}</p>
+            <h1>Photograph</h1>
+            <p>{visaDetails.selfEmployedDocs.selfEmployedPhotography}</p>
+          </div>
         );
     }
   };
+
   return (
-    <div>
+    <>
       <div className="visa-container" style={backgroundImage}>
-        {renderPage(step)}
-      </div>
-      <div className="visa-details-container">
-        <div className="visa-details">
-          <h1>
-            Visa Details for {countryName} : {personType}
-          </h1>
-          <div className="visa-details-desc">
-            <h3>Appoinment</h3>
-            <h3>Required</h3>
-            <h3>Duration</h3>
-            <h3>Financials</h3>
-            <h3>Honeymooners</h3>
-            <h3>Photography</h3>
-            <h3>Submission</h3>
-          </div>
+        <h1>Choose the country</h1>
+        <div className="visa-country-search">
+          <select
+            placeholder="Select the country"
+            onChange={(e) => {
+              setCountryName(e.target.value);
+              getVisaDetails(e.target.value);
+            }}
+          >
+            {countries.map((c, index) => {
+              return (
+                <option
+                  key={index}
+                  value={c.countryName}
+                  className="visa-option"
+                >
+                  {c.countryName}
+                </option>
+              );
+            })}
+          </select>
         </div>
+        <Link to="visa-details" duration={500} smooth={true}>
+          <button>Next</button>
+        </Link>
       </div>
-    </div>
+      {show ? (
+        <div className="visa-details">
+          <div className="visa-details-categories">
+            <h4
+              className={step === 0 ? "salaried" : "none"}
+              onClick={() => prevStep()}
+            >
+              Salaried
+            </h4>
+            <h4
+              className={step === 1 ? "selfEmployed" : "none"}
+              onClick={() => nextStep()}
+            >
+              Self Employed
+            </h4>
+          </div>
+          <div className="visa-country">
+            <img
+              className="visa-country-image"
+              src={visaDetails.imageUrl}
+              alt=""
+            />
+            <h4 className="visa-name">Visa</h4>
+            <i className="fa fa-chevron-right"></i>
+            <h4 className="visa-countryName"> {visaDetails.countryName}</h4>
+          </div>
+          {renderItem()}
+        </div>
+      ) : null}
+    </>
   );
 };
 

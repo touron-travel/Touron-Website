@@ -75,9 +75,7 @@ export default function Routes() {
   }, []);
 
   return (
-    <ApiContext.Provider
-      value={{ tours, countries, cities, adminRoutes, setAdminRoutes }}
-    >
+    <ApiContext.Provider value={{ tours, countries, cities, setAdminRoutes }}>
       <Router>
         <ScrollToTop>
           {adminRoutes ? null : (
