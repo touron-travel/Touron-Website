@@ -126,13 +126,14 @@
     border-bottom: none;
     padding-bottom: 0px;
   }
-  .navigation {
+  .footnav .navigations {
     display: none;
+    padding: 0;
+    margin: 0;
   }
   .footer-section {
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
   }
   .icons {
     position: relative;

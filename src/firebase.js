@@ -1,8 +1,3 @@
-import React from "react";
-import Routes from "./Routes";
-import ReactDOM from "react-dom";
-import "./index.css";
-import Admin from "./Admin components/Admin";
 import firebase from "firebase";
 
 const firebaseConfig = {
@@ -18,8 +13,7 @@ const firebaseConfig = {
 
 // if (!firebase.apps.length) {
 
-firebase.initializeApp(firebaseConfig);
+const firedb = firebase.initializeApp(firebaseConfig);
 
+export default firedb;
 // }
-
-ReactDOM.render(<Routes />, document.getElementById("root"));

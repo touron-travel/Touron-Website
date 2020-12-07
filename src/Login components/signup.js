@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./signup.css";
 import { Link } from "react-router-dom";
+import firebase from "firebase";
 
-export default function signup() {
+const signup = () => {
+  // const [number, setNumber] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [name, setName] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [step, setStep] = useState(0);
+  // const [code, setCode] = useState(0);
+  // const [sessionID, setSessionID] = useState("");
+  // const [loaded, setLoaded] = useState(false);
+
+  const sendOtp = () => {
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword("mani@gmail.com", "123456789")
+      .then((user) => console.log("user :>> ", user))
+      .catch((err) => console.log("err :>> ", err));
+  };
+  // const { isLoggedIn, setIsLoggedIn, user, setUser } = useContext(AuthContext);
   return (
     <>
       <div className="signup_form">
@@ -40,7 +58,12 @@ export default function signup() {
                 />
               </div>
               <div className="buttonfix">
-                <input type="submit" className="signbutton" value="Register" />
+                <input
+                  type="submit"
+                  className="signbutton"
+                  value="Register"
+                  onClick={sendOtp}
+                />
               </div>
             </form>
           </div>
@@ -48,4 +71,6 @@ export default function signup() {
       </div>
     </>
   );
-}
+};
+
+export default signup;

@@ -14,14 +14,11 @@ const Visa = () => {
 
   const [countryName, setCountryName] = useState("");
   const [visaDetails, setVisaDetails] = useState({});
-  console.log(visaDetails.selfEmployedDocs, "de");
   const [personType, setPersonType] = useState("");
   const [show, setshow] = useState(false);
   const [step, setStep] = useState(0);
-  console.log("step", step);
 
-  const getVisaDetails = async (countryName) => {
-    console.log("countryName", countryName);
+  const getVisaDetails = async () => {
     try {
       const visaResponse = await axios.get(`${API}/visa/${countryName}`);
       console.log("visaResponse", visaResponse.data);
@@ -87,19 +84,14 @@ const Visa = () => {
       <div className="visa-container" style={backgroundImage}>
         <h1>Choose the country</h1>
         <div className="visa-country-search">
-          <select
-            placeholder="Select the country"
-            onChange={(e) => {
-              setCountryName(e.target.value);
-              getVisaDetails(e.target.value);
-            }}
-          >
+          <select placeholder="Select the country">
             {countries.map((c, index) => {
               return (
                 <option
                   key={index}
                   value={c.countryName}
                   className="visa-option"
+                  onChange={() => setCountryName(e.target.value)}
                 >
                   {c.countryName}
                 </option>
@@ -108,7 +100,13 @@ const Visa = () => {
           </select>
         </div>
         <Link to="visa-details" duration={500} smooth={true}>
-          <button>Next</button>
+          <button
+            onClick={(e) => {
+              getVisaDetails();
+            }}
+          >
+            Next
+          </button>
         </Link>
       </div>
       {show ? (

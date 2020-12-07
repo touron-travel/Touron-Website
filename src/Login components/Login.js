@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 
 export default function Login() {
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [loaded, setLoaded] = useState(false);
+  // const { isLoggedIn, setIsLoggedIn, user, setUser } = useContext(AuthContext);
+  const [step, setStep] = useState(0);
   return (
     <>
       <div className="login_form">
