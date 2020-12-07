@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Link, Redirect } from "react-router-dom";
 import { auth, firedb } from "../firebase";
-import { isAuthenticated } from "./auth";
+import { isAdmin, isAuthenticated, storeadmintoken } from "./auth";
 
 export default function Login() {
   const [password, setPassword] = useState("123456789");
@@ -37,6 +37,7 @@ export default function Login() {
         setPassword("");
         authenticate(user);
 
+        getUserData(user.user.uid);
         // setIsLoggedIn(true);
         // navigation.navigate("Main");
         // <Redirect to="/" />;
@@ -46,6 +47,20 @@ export default function Login() {
         console.log(err.message, "po");
       });
   };
+
+  const getUserData = (uid) => {
+    firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
+      if (data.val() !== null) {
+        let val = data.val();
+        console.log("val :>> ", val);
+        if (val.admin == true) {
+          storeadmintoken(val.admin);
+        }
+        console.log(val.admin, "admin");
+      }
+    });
+  };
+
   return (
     <>
       <div className="login_form">

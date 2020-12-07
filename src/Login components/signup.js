@@ -3,6 +3,7 @@ import "./signup.css";
 import { Link } from "react-router-dom";
 import { auth, firedb } from "../firebase";
 import axios from "axios";
+import { isAdmin } from "./auth";
 
 const Signup = () => {
   const [number, setNumber] = useState("");
@@ -183,7 +184,7 @@ const Signup = () => {
                   type="submit"
                   className="signbutton"
                   value="Verify"
-                  onClick={verifyOtp}
+                  onClick={isAdmin}
                 />
               </div>
               <div className="buttonfix">

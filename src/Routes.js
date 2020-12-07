@@ -33,6 +33,7 @@ import TrendingPlaces from "./Admin components/Admin pages/TrendingPlaces";
 import Coupons from "./Admin components/Admin pages/Coupons";
 import Profilepage from "./Account details components/Profilepage";
 import PrivateRoute from "./Login components/Privateroutes";
+import AdminRoute from "./Login components/AdminRoute";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
@@ -88,11 +89,11 @@ export default function Routes() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
-            <PrivateRoute path="/planned-tour" component={PlannedTour} />
-            <PrivateRoute path="/surprise-tour" component={SurpriseTour} />
-            <PrivateRoute path="/roadtrip-tour" component={RoadtripTour} />
-            <PrivateRoute path="/luxury-tour" component={LuxuryTour} />
-            <PrivateRoute path="/honeymoon-tour" component={HoneymoonTour} />
+            <Route path="/planned-tour" component={PlannedTour} />
+            <Route path="/surprise-tour" component={SurpriseTour} />
+            <Route path="/roadtrip-tour" component={RoadtripTour} />
+            <Route path="/luxury-tour" component={LuxuryTour} />
+            <Route path="/honeymoon-tour" component={HoneymoonTour} />
             <Route path="/how-it-works" component={HowItWorks} />
             <Route path="/visa" component={Visa} />
             <Route path="/contact" component={Contact} />
@@ -110,14 +111,17 @@ export default function Routes() {
               path="/tourdetails/:countryname/:tourname/:tourid"
               component={TourInner}
             />
-            <Route path="/admin" exact component={Admin} />
-            <Route path="/admin/management" component={Management} />
-            <Route path="/admin/packages" component={Packages} />
-            <Route path="/admin/pages" component={Pages} />
-            <Route path="/admin/categories" component={CategoriesTags} />
-            <Route path="/admin/advertisement" component={Advertisement} />
-            <Route path="/admin/trendingplaces" component={TrendingPlaces} />
-            <Route path="/admin/coupons" component={Coupons} />
+            <AdminRoute path="/admin" exact component={Admin} />
+            <AdminRoute path="/admin/management" component={Management} />
+            <AdminRoute path="/admin/packages" component={Packages} />
+            <AdminRoute path="/admin/pages" component={Pages} />
+            <AdminRoute path="/admin/categories" component={CategoriesTags} />
+            <AdminRoute path="/admin/advertisement" component={Advertisement} />
+            <AdminRoute
+              path="/admin/trendingplaces"
+              component={TrendingPlaces}
+            />
+            <AdminRoute path="/admin/coupons" component={Coupons} />
           </Switch>
           {adminRoutes ? null : (
             <div className="footer">
