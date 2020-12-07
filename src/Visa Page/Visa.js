@@ -18,12 +18,13 @@ const Visa = () => {
   const [show, setshow] = useState(false);
   const [step, setStep] = useState(0);
 
-  const getVisaDetails = async () => {
+  const getVisaDetails = async (countryname) => {
     try {
-      const visaResponse = await axios.get(`${API}/visa/${countryName}`);
+      const visaResponse = await axios.get(`${API}/visa/${countryname}`);
       console.log("visaResponse", visaResponse.data);
       setVisaDetails(...visaResponse.data);
       setshow(true);
+      setCountryName("");
     } catch (err) {
       console.log(err, "err");
     }
@@ -91,7 +92,10 @@ const Visa = () => {
                   key={index}
                   value={c.countryName}
                   className="visa-option"
-                  onChange={() => setCountryName(e.target.value)}
+                  onChange={(e) => {
+                    setCountryName(e.target.value);
+                    getVisaDetails(e.target.value);
+                  }}
                 >
                   {c.countryName}
                 </option>
@@ -100,13 +104,7 @@ const Visa = () => {
           </select>
         </div>
         <Link to="visa-details" duration={500} smooth={true}>
-          <button
-            onClick={(e) => {
-              getVisaDetails();
-            }}
-          >
-            Next
-          </button>
+          <button>Next</button>
         </Link>
       </div>
       {show ? (

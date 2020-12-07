@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import "./Navbar.css";
 // import "./script.js";
 import Image from "../../assests/logo.jpeg";
+import { BiUserCircle } from "react-icons/bi";
+import { isAuthenticated, signout } from "../../Login components/auth";
 
-export default function Navbar() {
+const Navbar = ({ history }) => {
   const [navOpen, setNavOpen] = useState(false);
-  console.log(navOpen, "l");
+
   return (
     <nav>
       <div className="logo">
@@ -85,82 +87,51 @@ export default function Navbar() {
             Visa Request
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to="/login"
-            // className="nav-links"
-            className="nav-links_items"
-            activeClassName="selected"
-            onClick={() => setNavOpen(false)}
-          >
-            Login/Register
-          </NavLink>
-        </li>
+        {!isAuthenticated() && (
+          <li>
+            <NavLink
+              to="/login"
+              // className="nav-links"
+              className="nav-links_items"
+              activeClassName="selected"
+              onClick={() => setNavOpen(false)}
+            >
+              Login/Register
+            </NavLink>
+          </li>
+        )}
+
+        {isAuthenticated() && (
+          <li>
+            <span
+              onClick={() => {
+                signout(() => {
+                  history.push("/");
+                });
+                setNavOpen(false);
+              }}
+            >
+              Signout
+            </span>
+          </li>
+        )}
+
+        {isAuthenticated() && (
+          <li>
+            <NavLink
+              to="/profilepage"
+              // className="nav-links"
+              className="nav-links_items"
+              activeClassName="selected"
+              onClick={() => setNavOpen(false)}
+            >
+              <BiUserCircle />
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
-    // <div className="header">
-    //   <div className="logo">
-    //     <img src={Image} alt="" />
-    //   </div>
-    //   <div className="navi">
-    //     <ul className="nav-area">
-    //       <li className="nav-items">
-    //         <NavLink
-    //           exact
-    //           to="/"
-    //           className="nav-links"
-    //           activeClassName="selected"
-    //         >
-    //           Home
-    //         </NavLink>
-    //       </li>
-    //       <li className="nav-items">
-    //         <NavLink
-    //           to="/about"
-    //           className="nav-links"
-    //           activeClassName="selected"
-    //         >
-    //           About
-    //         </NavLink>
-    //       </li>
-    //       <li className="nav-items">
-    //         <NavLink
-    //           to="/how-it-works"
-    //           className="nav-links"
-    //           activeClassName="selected"
-    //         >
-    //           How it Works
-    //         </NavLink>
-    //       </li>
-    //       <li className="nav-items">
-    //         <NavLink
-    //           to="/contact"
-    //           className="nav-links"
-    //           activeClassName="selected"
-    //         >
-    //           Contact
-    //         </NavLink>
-    //       </li>
-    //       <li className="nav-items">
-    //         <NavLink
-    //           to="/destination"
-    //           className="nav-links"
-    //           activeClassName="selected"
-    //         >
-    //           Destination Guide
-    //         </NavLink>
-    //       </li>
-    //       <li className="nav-items">
-    //         <NavLink
-    //           to="/login"
-    //           className="nav-links"
-    //           activeClassName="selected"
-    //         >
-    //           Login/Register
-    //         </NavLink>
-    //       </li>
-    //     </ul>
-    //   </div>
-    // </div>
   );
-}
+};
+
+export default withRouter(Navbar);

@@ -6,7 +6,7 @@ import HowItWorks from "./How it works components/How-it-works";
 import Contact from "./Contact components/Contact";
 import Destination from "./Destination components/Destination";
 import Login from "./Login components/Login";
-import signup from "./Login components/signup";
+import Signup from "./Login components/Signup";
 import Popular_tour from "./Tours page/Popular_tour";
 import Popular_countries from "./Country Page/Popular_countries";
 import Navbar from "./Home components/Navbar/Navbar";
@@ -31,6 +31,8 @@ import CategoriesTags from "./Admin components/Admin pages/Categories-Tags";
 import Advertisement from "./Admin components/Admin pages/Advertisement";
 import TrendingPlaces from "./Admin components/Admin pages/TrendingPlaces";
 import Coupons from "./Admin components/Admin pages/Coupons";
+import Profilepage from "./Account details components/Profilepage";
+import PrivateRoute from "./Login components/Privateroutes";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
@@ -86,17 +88,18 @@ export default function Routes() {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
-            <Route path="/planned-tour" component={PlannedTour} />
-            <Route path="/surprise-tour" component={SurpriseTour} />
-            <Route path="/roadtrip-tour" component={RoadtripTour} />
-            <Route path="/luxury-tour" component={LuxuryTour} />
-            <Route path="/honeymoon-tour" component={HoneymoonTour} />
+            <PrivateRoute path="/planned-tour" component={PlannedTour} />
+            <PrivateRoute path="/surprise-tour" component={SurpriseTour} />
+            <PrivateRoute path="/roadtrip-tour" component={RoadtripTour} />
+            <PrivateRoute path="/luxury-tour" component={LuxuryTour} />
+            <PrivateRoute path="/honeymoon-tour" component={HoneymoonTour} />
             <Route path="/how-it-works" component={HowItWorks} />
             <Route path="/visa" component={Visa} />
             <Route path="/contact" component={Contact} />
             <Route path="/destination" component={Destination} />
             <Route path="/login" component={Login} />
-            <Route path="/signup" component={signup} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/profilepage" component={Profilepage} />
             <Route path="/popular_tour" component={Popular_tour} />
             <Route path="/popular_countries" component={Popular_countries} />
             <Route

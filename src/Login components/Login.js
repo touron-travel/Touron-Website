@@ -1,13 +1,51 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import { auth, firedb } from "../firebase";
+import { isAuthenticated } from "./auth";
 
 export default function Login() {
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("123456789");
+  const [email, setEmail] = useState("dins@gmail.com");
   const [loaded, setLoaded] = useState(false);
   // const { isLoggedIn, setIsLoggedIn, user, setUser } = useContext(AuthContext);
   const [step, setStep] = useState(0);
+
+  const authenticate = (authToken) => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("authToken", JSON.stringify(authToken));
+    }
+  };
+
+  const performRedirect = () => {
+    if (isAuthenticated) {
+      return <Redirect to="/" />;
+    }
+  };
+  const signIn = (e) => {
+    e.preventDefault();
+    setLoaded(true);
+
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        // setUser(user);
+        // setLoaded(false);
+        // updateUserToken(user.user);
+        console.log("user :>> ", user);
+        setEmail("");
+        setPassword("");
+        authenticate(user);
+
+        // setIsLoggedIn(true);
+        // navigation.navigate("Main");
+        // <Redirect to="/" />;
+      })
+      .catch((err) => {
+        setLoaded(false);
+        console.log(err.message, "po");
+      });
+  };
   return (
     <>
       <div className="login_form">
@@ -25,7 +63,14 @@ export default function Login() {
             <form className="loginForm">
               <div className="email">
                 <i className="fa fa-envelope"></i>
-                <input type="email" placeholder="Email" size="35" required />
+                <input
+                  type="email"
+                  placeholder="Email"
+                  size="35"
+                  required
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                />
               </div>
               <div className="password">
                 <i className="fal fa-key"></i>
@@ -33,11 +78,18 @@ export default function Login() {
                   type="password"
                   placeholder="Passowrd"
                   size="35"
+                  value={password}
                   required
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="buttonfix">
-                <input type="submit" className="logbutton" value="Login" />
+                <input
+                  type="submit"
+                  className="logbutton"
+                  value="Login"
+                  onClick={signIn}
+                />
               </div>
             </form>
           </div>
