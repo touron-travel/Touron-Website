@@ -8,6 +8,7 @@ export const setAdminRoute = (pathname) => {
     "/admin/advertisement",
     "/admin/trendingplaces",
     "/admin/coupons",
+    "/profilepage",
   ];
 
   let isAdminRoute = adminRoutes.includes(pathname);

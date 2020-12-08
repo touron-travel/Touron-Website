@@ -34,6 +34,9 @@ import Coupons from "./Admin components/Admin pages/Coupons";
 import Profilepage from "./Account details components/Profilepage";
 import PrivateRoute from "./Login components/Privateroutes";
 import AdminRoute from "./Login components/AdminRoute";
+import { UserDetails } from "./Account details components/UserDetails";
+import MyRequest from "./Account details components/MyRequest";
+import SavedTours from "./Account details components/SavedTours";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
@@ -77,6 +80,8 @@ export default function Routes() {
     getTours();
   }, []);
 
+  console.log("adminRoutes :>> ", adminRoutes);
+
   return (
     <ApiContext.Provider value={{ tours, countries, cities, setAdminRoutes }}>
       <Router>
@@ -103,6 +108,13 @@ export default function Routes() {
             <Route path="/profilepage" component={Profilepage} />
             <Route path="/popular_tour" component={Popular_tour} />
             <Route path="/popular_countries" component={Popular_countries} />
+            <Route path="/user-details" component={Profilepage} />
+            <Route path="/my-requests" component={Profilepage} />
+            <Route path="/myvisa-requests" component={Profilepage} />
+            <Route path="/my-plans" component={Profilepage} />
+            <Route path="/saved-tours" component={Profilepage} />
+            <Route path="/faq" component={Profilepage} />
+            <Route path="/support" component={Profilepage} />
             <Route
               path="/countrydetails/:countryname/:countryid"
               component={CountryInner}

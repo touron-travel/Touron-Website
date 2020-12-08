@@ -37,26 +37,26 @@ const Signup = () => {
         });
 
         authenticate(user);
-        // user.user
-        //   .updateProfile({
-        //     displayName: name,
-        //   })
-        //   .then((displayName) => console.log(displayName))
-        //   .catch((err) => console.log(err));
-        // axios
-        //   .get(
-        //     `https://2factor.in/API/V1/c9170ed3-3854-11eb-83d4-0200cd936042/SMS/+91${number}/AUTOGEN/touron`
-        //   )
-        //   .then((response) => {
-        //     let session = response.data.Details;
-        //     console.log(session, "RESPONSE DATA");
-        //     setLoaded(false);
-        //     setSessionID(session);
-        //     // nextStep();
-        //   })
-        //   .catch((err) => {
-        //     console.log(err, "kjhk");
-        //   });
+        user.user
+          .updateProfile({
+            displayName: name,
+          })
+          .then((displayName) => console.log(displayName))
+          .catch((err) => console.log(err));
+        axios
+          .get(
+            `https://2factor.in/API/V1/c9170ed3-3854-11eb-83d4-0200cd936042/SMS/+91${number}/AUTOGEN/touron`
+          )
+          .then((response) => {
+            let session = response.data.Details;
+            console.log(session, "RESPONSE DATA");
+            setLoaded(false);
+            setSessionID(session);
+            // nextStep();
+          })
+          .catch((err) => {
+            console.log(err, "kjhk");
+          });
       })
       .catch((err) => {
         console.log("err", err);
@@ -89,10 +89,7 @@ const Signup = () => {
           setNumber("");
           setPassword("");
           setEmail("");
-          // setUser(user);
-          // setIsLoggedIn(true);
-          // setLoaded(false);
-          // prevStep();
+          setCode("");
         }
       })
       .catch((err) => {
