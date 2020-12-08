@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TourHeader from "../Reusable components/TourHeader";
 import Road from "../../assests/Roadtrip.jpg";
 import Travellertype from "../Reusable components/Travellertype";
@@ -8,6 +8,8 @@ import Checkout from "../Reusable components/Checkout";
 import Travelmode from "../Reusable components/Travelmode";
 import Roadtripques1 from "../Reusable components/Roadtripques1";
 import Drivetype from "../Reusable components/Drivetype";
+import { isAuthenticated } from "../../Login components/auth";
+import Modals from "../Modal";
 
 const RoadtripTour = (params) => {
   const [travelMode, setTravelMode] = React.useState("");
@@ -34,9 +36,23 @@ const RoadtripTour = (params) => {
   const [dates, setDates] = useState("");
   const [years, setYears] = useState("");
   const [months, setMonths] = useState("");
+  const [isLoggedin, setIsLoggedin] = useState(false);
+
   let random;
   let formatedMonth;
 
+  useEffect(() => {
+    if (isAuthenticated()) return setIsLoggedin(true);
+  });
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   // useEffect(() => {
   //     random = Math.floor((Math.random() + 4) * 345334 * Math.random());
   //     const requestDate = new Date();
@@ -48,6 +64,10 @@ const RoadtripTour = (params) => {
   //   });
 
   const nextStep = () => {
+    if (step == 2 && !isLoggedin) {
+      openModal();
+      return;
+    }
     if (step !== 8 && travelMode !== "") setStep(step + 1);
   };
   const prevStep = () => {
@@ -215,6 +235,8 @@ const RoadtripTour = (params) => {
   const desc = `“It is all about the journey and not the destination.” If this is your mantra, a road trip is the best option for you! A road trip lets you experience the scenic beauty of the places you go by unlike taking a train or a flight. We provide you with appropriate route plans and recommendations of restaurants, fuel stations, etc. We do plan it all out for you, but the decision of what to explore and what not still remains with you.`;
   return (
     <div className="Roadtrip_tour-container">
+      <Modals modalIsOpen={modalIsOpen} closeModal={closeModal} />
+
       <TourHeader
         image={Road}
         title={"Road Trip"}

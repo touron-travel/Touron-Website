@@ -159,7 +159,7 @@ const Signup = () => {
                 <div className="password">
                   <i className="fas fa-lock"></i>
                   <input
-                    type="number"
+                    type="text"
                     placeholder="Enter otp"
                     size="35"
                     required

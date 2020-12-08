@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState, useEffect } from "react";
 import TourHeader from "../Reusable components/TourHeader";
 import Surprise from "../../assests/Surprise.jpg";
 import Tourtype from "../Reusable components/Tourtype";
@@ -9,6 +9,8 @@ import TouristDate from "../Reusable components/TouristDate";
 import Checkout from "../Reusable components/Checkout";
 import Tourpreferance from "../Reusable components/Tourpreferance";
 import Expediture from "../Reusable components/Expediture";
+import Modals from "../Modal";
+import { isAuthenticated } from "../../Login components/auth";
 
 const SurpriseTour = (params) => {
   const [tourType, setTourType] = React.useState("");
@@ -33,24 +35,22 @@ const SurpriseTour = (params) => {
   const [dates, setDates] = useState("");
   const [years, setYears] = useState("");
   const [months, setMonths] = useState("");
+  const [isLoggedin, setIsLoggedin] = useState(false);
   let random;
   let formatedMonth;
-  console.log("tourType", tourType);
-  console.log("travellerType", travellerType);
-  console.log("adult", adult);
-  console.log("children", children);
-  console.log("fromDate", fromDate);
-  console.log("toDate", toDate);
-  console.log("travelMode", travelMode);
-  console.log("expediture1", expediture1);
-  console.log("expediture2", expediture2);
-  console.log("expediture3", expediture3);
-  console.log("tourPreferance", tourPreferance);
-  console.log("startPoint", startPoint);
-  console.log("name", name);
-  console.log("budget", budget);
-  console.log("number", number);
-  console.log("step", step);
+
+  useEffect(() => {
+    if (isAuthenticated()) return setIsLoggedin(true);
+  });
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   //   useEffect(() => {
   //     random = Math.floor((Math.random() + 4) * 345334 * Math.random());
@@ -63,6 +63,10 @@ const SurpriseTour = (params) => {
   //   });
 
   const nextStep = () => {
+    if (step == 2 && !isLoggedin) {
+      openModal();
+      return;
+    }
     if (step !== 8 && tourType !== "") setStep(step + 1);
   };
 
@@ -206,6 +210,8 @@ const SurpriseTour = (params) => {
 
   return (
     <div className="Surprise_tour-container">
+      <Modals modalIsOpen={modalIsOpen} closeModal={closeModal} />
+
       <TourHeader
         image={Surprise}
         title={"Surprise Tour"}
