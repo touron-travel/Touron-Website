@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Link, Redirect } from "react-router-dom";
-import { auth, firedb } from "../firebase";
-import { isAdmin, isAuthenticated, storeadmintoken } from "./auth";
+import { Link } from "react-router-dom";
+import { auth } from "../firebase";
+import { storeAuthToken } from "./auth";
 
 export default function Login() {
   const [password, setPassword] = useState("123456789");
@@ -11,17 +11,6 @@ export default function Login() {
   // const { isLoggedIn, setIsLoggedIn, user, setUser } = useContext(AuthContext);
   const [step, setStep] = useState(0);
 
-  const authenticate = (authToken) => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("authToken", JSON.stringify(authToken));
-    }
-  };
-
-  const performRedirect = () => {
-    if (isAuthenticated) {
-      return <Redirect to="/" />;
-    }
-  };
   const signIn = (e) => {
     e.preventDefault();
     setLoaded(true);
@@ -35,9 +24,8 @@ export default function Login() {
         console.log("user :>> ", user);
         setEmail("");
         setPassword("");
-        authenticate(user);
+        storeAuthToken(user);
 
-        getUserData(user.user.uid);
         // setIsLoggedIn(true);
         // navigation.navigate("Main");
         // <Redirect to="/" />;
@@ -46,19 +34,6 @@ export default function Login() {
         setLoaded(false);
         console.log(err.message, "po");
       });
-  };
-
-  const getUserData = (uid) => {
-    firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
-      if (data.val() !== null) {
-        let val = data.val();
-        console.log("val :>> ", val);
-        if (val.admin == true) {
-          storeadmintoken(val.admin);
-        }
-        console.log(val.admin, "admin");
-      }
-    });
   };
 
   return (

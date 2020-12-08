@@ -34,9 +34,13 @@ import Coupons from "./Admin components/Admin pages/Coupons";
 import Profilepage from "./Account details components/Profilepage";
 import PrivateRoute from "./Login components/Privateroutes";
 import AdminRoute from "./Login components/AdminRoute";
+<<<<<<< HEAD
 import { UserDetails } from "./Account details components/UserDetails";
 import MyRequest from "./Account details components/MyRequest";
 import SavedTours from "./Account details components/SavedTours";
+=======
+import AdminLogin from "./Admin components/AdminLogin";
+>>>>>>> 6bdc8094763faa2ffe2e2015b28ce9ffc316eece
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
@@ -123,6 +127,7 @@ export default function Routes() {
               path="/tourdetails/:countryname/:tourname/:tourid"
               component={TourInner}
             />
+            <Route path="/admindashboard" component={AdminLogin} />
             <AdminRoute path="/admin" exact component={Admin} />
             <AdminRoute path="/admin/management" component={Management} />
             <AdminRoute path="/admin/packages" component={Packages} />
