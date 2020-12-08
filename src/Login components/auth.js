@@ -1,4 +1,11 @@
-import { auth } from "../firebase";
+import { auth, firedb } from "../firebase";
+
+export const storeAuthToken = (user) => {
+  if (typeof window !== "undefined") {
+    localStorage.setItem("authToken", JSON.stringify(user));
+  }
+};
+
 export const isAuthenticated = () => {
   if (typeof window == "undefined") {
     return false;
@@ -7,6 +14,11 @@ export const isAuthenticated = () => {
     return JSON.parse(localStorage.getItem("authToken"));
   } else {
     return false;
+  }
+};
+export const storeadmintoken = (adminToken) => {
+  if (typeof window !== "undefined") {
+    localStorage.setItem("adminToken", JSON.stringify(adminToken));
   }
 };
 export const isAdmin = () => {
@@ -29,8 +41,15 @@ export const signout = (next) => {
   next();
 };
 
-export const storeadmintoken = (adminToken) => {
-  if (typeof window !== "undefined") {
-    localStorage.setItem("adminToken", JSON.stringify(adminToken));
-  }
+export const getUserData = (uid) => {
+  firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
+    if (data.val() !== null) {
+      let val = data.val();
+      console.log("val :>> ", val);
+      if (val.admin == true) {
+        storeadmintoken(val.admin);
+      }
+      console.log(val.admin, "admin");
+    }
+  });
 };

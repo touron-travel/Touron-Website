@@ -104,6 +104,7 @@ const Navbar = ({ history }) => {
         {isAuthenticated() && (
           <li>
             <span
+              className="signoutSpan"
               onClick={() => {
                 signout(() => {
                   history.push("/");

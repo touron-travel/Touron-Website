@@ -34,6 +34,7 @@ import Coupons from "./Admin components/Admin pages/Coupons";
 import Profilepage from "./Account details components/Profilepage";
 import PrivateRoute from "./Login components/Privateroutes";
 import AdminRoute from "./Login components/AdminRoute";
+import AdminLogin from "./Admin components/AdminLogin";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
@@ -111,6 +112,7 @@ export default function Routes() {
               path="/tourdetails/:countryname/:tourname/:tourid"
               component={TourInner}
             />
+            <Route path="/admindashboard" component={AdminLogin} />
             <AdminRoute path="/admin" exact component={Admin} />
             <AdminRoute path="/admin/management" component={Management} />
             <AdminRoute path="/admin/packages" component={Packages} />

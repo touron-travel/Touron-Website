@@ -3,17 +3,21 @@ import "./signup.css";
 import { Link } from "react-router-dom";
 import { auth, firedb } from "../firebase";
 import axios from "axios";
-import { isAdmin } from "./auth";
+import { isAdmin, storeAuthToken } from "./auth";
 
 const Signup = () => {
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [step, setStep] = useState(0);
-  const [code, setCode] = useState(0);
+  const [step, setStep] = useState(2);
+  const [code, setCode] = useState("");
   const [sessionID, setSessionID] = useState("");
   const [loaded, setLoaded] = useState(false);
+
+  const nextStep = () => {
+    setStep(step + 1);
+  };
 
   // const { isLoggedIn, setIsLoggedIn, user, setUser } = useContext(AuthContext);
   const sendOtp = (e) => {
@@ -36,38 +40,32 @@ const Signup = () => {
           photoURL: "",
         });
 
-        authenticate(user);
+        storeAuthToken(user);
         // user.user
         //   .updateProfile({
         //     displayName: name,
         //   })
         //   .then((displayName) => console.log(displayName))
         //   .catch((err) => console.log(err));
-        // axios
-        //   .get(
-        //     `https://2factor.in/API/V1/c9170ed3-3854-11eb-83d4-0200cd936042/SMS/+91${number}/AUTOGEN/touron`
-        //   )
-        //   .then((response) => {
-        //     let session = response.data.Details;
-        //     console.log(session, "RESPONSE DATA");
-        //     setLoaded(false);
-        //     setSessionID(session);
-        //     // nextStep();
-        //   })
-        //   .catch((err) => {
-        //     console.log(err, "kjhk");
-        //   });
+        axios
+          .get(
+            `https://2factor.in/API/V1/c9170ed3-3854-11eb-83d4-0200cd936042/SMS/+91${number}/AUTOGEN/touron`
+          )
+          .then((response) => {
+            let session = response.data.Details;
+            console.log(session, "RESPONSE DATA");
+            setLoaded(false);
+            setSessionID(session);
+            nextStep();
+          })
+          .catch((err) => {
+            console.log(err, "kjhk");
+          });
       })
       .catch((err) => {
         console.log("err", err);
         setLoaded(false);
       });
-  };
-
-  const authenticate = (authToken) => {
-    if (typeof window !== "undefined") {
-      localStorage.setItem("authToken", JSON.stringify(authToken));
-    }
   };
 
   const verifyOtp = (e) => {
@@ -89,10 +87,7 @@ const Signup = () => {
           setNumber("");
           setPassword("");
           setEmail("");
-          // setUser(user);
-          // setIsLoggedIn(true);
-          // setLoaded(false);
-          // prevStep();
+          setCode("");
         }
       })
       .catch((err) => {
@@ -100,6 +95,97 @@ const Signup = () => {
         console.log(err, "err");
       });
   };
+  const renderform = () => {
+    switch (step) {
+      case 1:
+        return (
+          <div className="signup_box">
+            <div className="signbox">
+              <form className="signForm">
+                <div className="names">
+                  <i className="fas fa-user"></i>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    size="35"
+                    required
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div className="email">
+                  <i className="fa fa-envelope"></i>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    size="35"
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="mobile">
+                  <i className="fas fa-phone"></i>
+                  <input
+                    type="text"
+                    placeholder="Mobile no"
+                    size="35"
+                    required
+                    onChange={(e) => setNumber(e.target.value)}
+                  />
+                </div>
+                <div className="password">
+                  <i className="fal fa-key"></i>
+                  <input
+                    type="password"
+                    placeholder="Passowrd"
+                    size="35"
+                    required
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+                <div className="buttonfix">
+                  <input
+                    type="submit"
+                    className="signbutton"
+                    value="Send otp"
+                    onClick={sendOtp}
+                    // onClick={nextStep}
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="signup_box">
+            <div className="signbox">
+              <form className="signForm">
+                <div className="password">
+                  <i className="fas fa-lock"></i>
+                  <input
+                    type="number"
+                    placeholder="Enter otp"
+                    size="35"
+                    required
+                    value={code}
+                    onChange={(e) => setCode(e.target.value)}
+                  />
+                </div>
+                <div className="buttonfix">
+                  <input
+                    type="submit"
+                    className="signbutton"
+                    value="Verify"
+                    onClick={verifyOtp}
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        );
+    }
+  };
+
   return (
     <>
       <div className="signup_form">
@@ -112,87 +198,7 @@ const Signup = () => {
             </Link>
           </p>
         </div>
-        <div className="signup_box">
-          <div className="signbox">
-            <form className="signForm">
-              <div className="names">
-                <i className="fas fa-user"></i>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  size="35"
-                  required
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-              <div className="email">
-                <i className="fa fa-envelope"></i>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  size="35"
-                  required
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="mobile">
-                <i className="fas fa-phone"></i>
-                <input
-                  type="text"
-                  placeholder="Mobile no"
-                  size="35"
-                  required
-                  onChange={(e) => setNumber(e.target.value)}
-                />
-              </div>
-              <div className="password">
-                <i className="fal fa-key"></i>
-                <input
-                  type="password"
-                  placeholder="Passowrd"
-                  size="35"
-                  required
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              <div className="buttonfix">
-                <input
-                  type="submit"
-                  className="signbutton"
-                  value="Send otp"
-                  onClick={sendOtp}
-                />
-              </div>
-            </form>
-          </div>
-        </div>
-        <div className="signup_box">
-          <div className="signbox">
-            <form className="signForm">
-              <div className="password">
-                <i className="fal fa-key"></i>
-                <input
-                  type="password"
-                  placeholder="Enter otp"
-                  size="35"
-                  required
-                  onChange={(e) => setCode(e.target.value)}
-                />
-              </div>
-              <div className="buttonfix">
-                <input
-                  type="submit"
-                  className="signbutton"
-                  value="Verify"
-                  onClick={isAdmin}
-                />
-              </div>
-              <div className="buttonfix">
-                <input type="submit" className="signbutton" value="Verify" />
-              </div>
-            </form>
-          </div>
-        </div>
+        {renderform(step)}
       </div>
     </>
   );

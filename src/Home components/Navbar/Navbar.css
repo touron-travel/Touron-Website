@@ -64,6 +64,13 @@ nav {
   font-size: 50px;
   color: #ae5fce;
 }
+.signoutSpan {
+  cursor: pointer;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  font-weight: 700;
+}
 
 @media screen and (max-width: 960px) {
   .hamburger i {

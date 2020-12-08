@@ -1,15 +1,17 @@
 import React from "react";
 import "./Footer.css";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, withRouter } from "react-router-dom";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import MailIcon from "@material-ui/icons/Mail";
+// import { isAuthenticated, signout } from "../../Login components/auth";
+
 // import { FaCcVisa, FaCcAmex, FaCcMastercard } from "react-icons/fa";
 // import NEFT from "../../assests/NEFT.png"
 // import Zest from "../../assests/Zest.png"
 
-export default function Footer() {
+const Footer = () => {
   return (
     <>
       <div className="footer">
@@ -71,6 +73,7 @@ export default function Footer() {
                   Visa Request
                 </NavLink>
               </li>
+              {/* {!isAuthenticated && ( */}
               <li className="footnav-items">
                 <NavLink
                   to="/login"
@@ -80,6 +83,21 @@ export default function Footer() {
                   Login/Register
                 </NavLink>
               </li>
+              {/* )} */}
+              {/* {isAuthenticated && (
+                <li className="footnav-items">
+                  <span
+                    className="signoutSpan"
+                    onClick={() => {
+                      signout(() => {
+                        history.push("/");
+                      });
+                    }}
+                  >
+                    Signout
+                  </span>
+                </li>
+              )} */}
             </ul>
           </div>
           <div className="social-icons">
@@ -265,4 +283,6 @@ export default function Footer() {
       </div>
     </>
   );
-}
+};
+
+export default Footer;
