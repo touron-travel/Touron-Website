@@ -40,23 +40,8 @@ const Signup = () => {
           photoURL: "",
         });
 
-<<<<<<< HEAD
-        authenticate(user);
-        user.user
-          .updateProfile({
-            displayName: name,
-          })
-          .then((displayName) => console.log(displayName))
-          .catch((err) => console.log(err));
-=======
         storeAuthToken(user);
-        // user.user
-        //   .updateProfile({
-        //     displayName: name,
-        //   })
-        //   .then((displayName) => console.log(displayName))
-        //   .catch((err) => console.log(err));
->>>>>>> 6bdc8094763faa2ffe2e2015b28ce9ffc316eece
+
         axios
           .get(
             `https://2factor.in/API/V1/c9170ed3-3854-11eb-83d4-0200cd936042/SMS/+91${number}/AUTOGEN/touron`
@@ -66,11 +51,8 @@ const Signup = () => {
             console.log(session, "RESPONSE DATA");
             setLoaded(false);
             setSessionID(session);
-<<<<<<< HEAD
-            // nextStep();
-=======
+
             nextStep();
->>>>>>> 6bdc8094763faa2ffe2e2015b28ce9ffc316eece
           })
           .catch((err) => {
             console.log(err, "kjhk");
