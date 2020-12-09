@@ -1,61 +1,52 @@
 import React, { useState } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import "./Navbar.css";
-// import "./script.js";
-import Image from "../../assests/logo.jpeg";
-import { BiUserCircle } from "react-icons/bi";
-import { isAuthenticated, signout } from "../../Login components/auth";
-import Dropdown from "./Dropdown";
+import Logo from "../../assests/logo2.png";
+// import { BiUserCircle } from "react-icons/bi";
+// import { isAuthenticated, signout } from "../../Login components/auth";
+// import Dropdown from "./Dropdown";
 
-const Navbar = ({ history }) => {
-  const [navOpen, setNavOpen] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
-  console.log("dropdown", dropdown);
+const Navbar = () => {
+  // const [navOpen, setNavOpen] = useState(false);
+  // const [dropdown, setDropdown] = useState(false);
+  // console.log("dropdown", dropdown);
 
-  const onMouseEnter = () => setDropdown(true);
-  const onMouseLeave = () => setDropdown(false);
+  // const onMouseEnter = () => setDropdown(true);
+  // const onMouseLeave = () => setDropdown(false);
+
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => setClicked(!clicked);
 
   return (
-    <nav>
-      <div className="logo">
-        <img src={Image} alt="" />
+    <nav className="NavbarItems">
+      <div className="navbar-logo">
+        <img src={Logo} alt="" />
       </div>
-      <div className="hamburger" onClick={() => setNavOpen(!navOpen)}>
-        {/* <div className="line"></div>
-        <div className="line"></div>
-        <div className="line"></div> */}
-        <i className={navOpen ? "fas fa-times" : "fas fa-bars"}></i>
-      </div>
-      <ul className={navOpen ? "nav-links open" : "nav-links"}>
+      {/* <div className="menu-icon" onClick={handleClick}>
+        <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
+      </div> */}
+      <ul className={clicked ? "nav-menus active" : "nav-menus"}>
         <li>
           <NavLink
             exact
             to="/"
-            className={navOpen ? "nav-links_items fade" : "nav-links_items"}
-            onClick={() => setNavOpen(false)}
+            className="nav-links"
             activeClassName="selected"
           >
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/about"
-            //  className="nav-links"
-            className={navOpen ? "nav-links_items fade" : "nav-links_items"}
-            activeClassName="selected"
-            onClick={() => setNavOpen(false)}
-          >
+          <NavLink to="/about" className="nav-links" activeClassName="selected">
             About
           </NavLink>
         </li>
         <li>
           <NavLink
             to="/how-it-works"
-            // className="nav-links"
-            className="nav-links_items"
+            className="nav-links"
             activeClassName="selected"
-            onClick={() => setNavOpen(false)}
           >
             How it Works
           </NavLink>
@@ -63,10 +54,8 @@ const Navbar = ({ history }) => {
         <li>
           <NavLink
             to="/contact"
-            // className="nav-links"
-            className="nav-links_items"
+            className="nav-links"
             activeClassName="selected"
-            onClick={() => setNavOpen(false)}
           >
             Contact
           </NavLink>
@@ -74,72 +63,140 @@ const Navbar = ({ history }) => {
         <li>
           <NavLink
             to="/destination"
-            // className="nav-links"
-            className="nav-links_items"
+            className="nav-links"
             activeClassName="selected"
-            onClick={() => setNavOpen(false)}
           >
             Destination Guide
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="/visa"
-            // className="nav-links"
-            className="nav-links_items"
-            activeClassName="selected"
-            onClick={() => setNavOpen(false)}
-          >
+          <NavLink to="/visa" className="nav-links" activeClassName="selected">
             Visa Request
           </NavLink>
         </li>
-        {!isAuthenticated() && (
-          <li>
-            <NavLink
-              to="/login"
-              // className="nav-links"
-              className="nav-links_items"
-              activeClassName="selected"
-              onClick={() => setNavOpen(false)}
-            >
-              Login/Register
-            </NavLink>
-          </li>
-        )}
-
-        {isAuthenticated() && (
-          <li>
-            <span
-              className="signoutSpan"
-              onClick={() => {
-                signout(() => {
-                  history.push("/");
-                });
-                setNavOpen(false);
-              }}
-            >
-              Signout
-            </span>
-          </li>
-        )}
-
-        {isAuthenticated() && (
-          <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-            <NavLink
-              to="/profilepage"
-              // className="nav-links"
-              className="nav-links_items"
-              activeClassName="selected"
-              onClick={() => setNavOpen(false)}
-            >
-              <BiUserCircle />
-            </NavLink>
-            {dropdown && <Dropdown />}
-          </li>
-        )}
+        <li>
+          <NavLink to="/login" className="nav-links" activeClassName="selected">
+            Login/SignUp
+          </NavLink>
+        </li>
       </ul>
     </nav>
+    // <nav>
+    //   <div className="logo">
+    //     <img src={Image} alt="" />
+    //   </div>
+    //   <div className="hamburger" onClick={() => setNavOpen(!navOpen)}>
+    //     <i className={navOpen ? "fas fa-times" : "fas fa-bars"}></i>
+    //   </div>
+    //   <ul className={navOpen ? "nav-links open" : "nav-links"}>
+    //     <li>
+    //       <NavLink
+    //         exact
+    //         to="/"
+    //         className={navOpen ? "nav-links_items fade" : "nav-links_items"}
+    //         onClick={() => setNavOpen(false)}
+    //         activeClassName="selected"
+    //       >
+    //         Home
+    //       </NavLink>
+    //     </li>
+    //     <li>
+    //       <NavLink
+    //         to="/about"
+    //         className={navOpen ? "nav-links_items fade" : "nav-links_items"}
+    //         activeClassName="selected"
+    //         onClick={() => setNavOpen(false)}
+    //       >
+    //         About
+    //       </NavLink>
+    //     </li>
+    //     <li>
+    //       <NavLink
+    //         to="/how-it-works"
+    //         className="nav-links_items"
+    //         activeClassName="selected"
+    //         onClick={() => setNavOpen(false)}
+    //       >
+    //         How it Works
+    //       </NavLink>
+    //     </li>
+    //     <li>
+    //       <NavLink
+    //         to="/contact"
+    //         className="nav-links_items"
+    //         activeClassName="selected"
+    //         onClick={() => setNavOpen(false)}
+    //       >
+    //         Contact
+    //       </NavLink>
+    //     </li>
+    //     <li>
+    //       <NavLink
+    //         to="/destination"
+    //         className="nav-links_items"
+    //         activeClassName="selected"
+    //         onClick={() => setNavOpen(false)}
+    //       >
+    //         Destination Guide
+    //       </NavLink>
+    //     </li>
+    //     <li>
+    //       <NavLink
+    //         to="/visa"
+    //         className="nav-links_items"
+    //         activeClassName="selected"
+    //         onClick={() => setNavOpen(false)}
+    //       >
+    //         Visa Request
+    //       </NavLink>
+    //     </li>
+    //     {!isAuthenticated() && (
+    //       <li>
+    //         <NavLink
+    //           to="/login"
+    //           className="nav-links_items"
+    //           activeClassName="selected"
+    //           onClick={() => setNavOpen(false)}
+    //         >
+    //           Login/Register
+    //         </NavLink>
+    //       </li>
+    //     )}
+
+    //     {isAuthenticated() && (
+    //       <li>
+    //         <span
+    //           className="signoutSpan"
+    //           onClick={() => {
+    //             signout(() => {
+    //               history.push("/");
+    //             });
+    //             setNavOpen(false);
+    //           }}
+    //         >
+    //           Signout
+    //         </span>
+    //       </li>
+    //     )}
+
+    //     {isAuthenticated() && (
+    //       <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+    //         <NavLink
+    //           to="/profilepage"
+    //           className="nav-links_items"
+    //           activeClassName="selected"
+    //           onClick={() => setNavOpen(false)}
+    //         >
+    //           <BiUserCircle />
+    //         </NavLink>
+    //         {dropdown && <Dropdown />}
+    //       </li>
+    //     )}
+    //   </ul>
+    // </nav>
   );
 };
 
-export default withRouter(Navbar);
+export default Navbar;
+
+// export default withRouter(Navbar);

@@ -80,7 +80,7 @@ const Footer = () => {
                   className="footnav-links"
                   activeClassName="selected"
                 >
-                  Login/Register
+                  Login/SignUp
                 </NavLink>
               </li>
               {/* )} */}

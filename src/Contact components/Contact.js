@@ -19,7 +19,7 @@ export default function Contact() {
               Contact us <i className="fa fa-chevron-right"></i>
             </span>
           </p>
-          <h1 className="mb-0 bread">Contact Us</h1>
+          <h1 className="bread">Contact Us</h1>
         </div>
       </div>
 

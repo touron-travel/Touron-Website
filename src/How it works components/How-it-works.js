@@ -19,7 +19,7 @@ export default function HowItWorks() {
               How it Works <i className="fa fa-chevron-right"></i>
             </span>
           </p>
-          <h1 className="mb-0 bread">How it works</h1>
+          <h1 className="bread">How it works</h1>
         </div>
       </div>
       <div className="work_overview">
