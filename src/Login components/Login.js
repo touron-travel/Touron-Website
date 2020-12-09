@@ -3,13 +3,13 @@ import "./Login.css";
 import { Link, Redirect } from "react-router-dom";
 import { auth } from "../firebase";
 import { storeAuthToken } from "./auth";
+import { Ripple } from "react-spinners-css";
 
 export default function Login({ history }) {
   console.log("history :>> ", history);
   const [password, setPassword] = useState("123456789");
   const [email, setEmail] = useState("dins@gmail.com");
   const [loaded, setLoaded] = useState(false);
-  // const { isLoggedIn, setIsLoggedIn, user, setUser } = useContext(AuthContext);
   const [step, setStep] = useState(0);
 
   const signIn = (e, next) => {
@@ -19,18 +19,11 @@ export default function Login({ history }) {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
-        // setUser(user);
-        // setLoaded(false);
-        // updateUserToken(user.user);
         console.log("user :>> ", user);
         setEmail("");
         setPassword("");
         storeAuthToken(user);
         return history.goBack();
-
-        // setIsLoggedIn(true);
-        // navigation.navigate("Main");
-        // <Redirect to="/" />;
       })
       .catch((err) => {
         setLoaded(false);
@@ -76,12 +69,15 @@ export default function Login({ history }) {
                 />
               </div>
               <div className="buttonfix">
-                <input
-                  type="submit"
-                  className="logbutton"
-                  value="Login"
-                  onClick={signIn}
-                />
+                {loaded ? (
+                  <div className="buttonfix loading">
+                    <Ripple color="white" size={40} />
+                  </div>
+                ) : (
+                  <button className="logbutton" onClick={signIn}>
+                    Login
+                  </button>
+                )}
               </div>
             </form>
           </div>

@@ -21,9 +21,6 @@ const Navbar = ({ history }) => {
         <img src={Image} alt="" />
       </div>
       <div className="hamburger" onClick={() => setNavOpen(!navOpen)}>
-        {/* <div className="line"></div>
-        <div className="line"></div>
-        <div className="line"></div> */}
         <i className={navOpen ? "fas fa-times" : "fas fa-bars"}></i>
       </div>
       <ul className={navOpen ? "nav-links open" : "nav-links"}>
