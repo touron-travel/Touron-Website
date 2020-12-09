@@ -24,6 +24,7 @@
     "react-google-maps": "^9.4.5",
     "react-icons": "^3.11.0",
     "react-loadingg": "^1.7.2",
+    "react-modal": "^3.12.1",
     "react-nice-dates": "^3.0.7",
     "react-rebound": "^0.8.3",
     "react-router-dom": "^5.2.0",

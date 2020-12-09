@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { auth } from "../firebase";
 import { storeAuthToken } from "./auth";
 
-export default function Login() {
+export default function Login({ history }) {
+  console.log("history :>> ", history);
   const [password, setPassword] = useState("123456789");
   const [email, setEmail] = useState("dins@gmail.com");
   const [loaded, setLoaded] = useState(false);
   // const { isLoggedIn, setIsLoggedIn, user, setUser } = useContext(AuthContext);
   const [step, setStep] = useState(0);
 
-  const signIn = (e) => {
+  const signIn = (e, next) => {
     e.preventDefault();
     setLoaded(true);
 
@@ -25,6 +26,7 @@ export default function Login() {
         setEmail("");
         setPassword("");
         storeAuthToken(user);
+        return history.goBack();
 
         // setIsLoggedIn(true);
         // navigation.navigate("Main");

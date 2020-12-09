@@ -10,6 +10,8 @@ import Destination from "../Reusable components/Destination";
 import Checkout from "../Reusable components/Checkout";
 import Touristnumber from "../Reusable components/Touristnumber";
 import TouristDate from "../Reusable components/TouristDate";
+import { isAuthenticated } from "../../Login components/auth";
+import Modals from "../Modal";
 
 const PlannedTour = (params) => {
   const [tourType, setTourType] = useState("");
@@ -32,9 +34,22 @@ const PlannedTour = (params) => {
   const [dates, setDates] = useState("");
   const [years, setYears] = useState("");
   const [months, setMonths] = useState("");
+  const [isLoggedin, setIsLoggedin] = useState(false);
   let random;
   let formatedMonth;
-  console.log("tourType :>> ", tourType);
+
+  useEffect(() => {
+    if (isAuthenticated()) return setIsLoggedin(true);
+  });
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   const submitData = () => {
     console.log(
@@ -52,8 +67,6 @@ const PlannedTour = (params) => {
       number,
       budget
     );
-    const requestID = `T0-${date}${formatedMonth}${year}-${random}`;
-    console.log("requestID :>> ", requestID);
   };
 
   const [userInfo, setUserInfo] = useState({});
@@ -67,6 +80,10 @@ const PlannedTour = (params) => {
     formatedMonth = month < 10 ? "0" + month : month;
   });
   const nextStep = () => {
+    if (step == 2 && !isLoggedin) {
+      openModal();
+      return;
+    }
     if (step !== 7 || tourType !== "") setStep(step + 1);
   };
   const prevStep = () => {
@@ -189,6 +206,8 @@ const PlannedTour = (params) => {
 
   return (
     <div className="Planned_tour-container">
+      <Modals modalIsOpen={modalIsOpen} closeModal={closeModal} />
+
       <TourHeader
         image={Planned}
         title={"Planned Tour"}
