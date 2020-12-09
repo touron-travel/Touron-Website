@@ -6,7 +6,7 @@ import * as RiIcons from "react-icons/ri";
 import * as VscIcons from "react-icons/vsc";
 import * as MdIcons from "react-icons/md";
 
-export const SidebarData = [
+export const AdminSidebarData = [
   {
     title: "Dashboard",
     path: "/admin",
@@ -15,43 +15,43 @@ export const SidebarData = [
   },
   {
     title: "Management",
-    path: "/admin/management",
+    path: "/management",
     icon: <SiIcons.SiGoogletagmanager />,
     className: "sidebar-text",
   },
   {
     title: "Packages/Ideas",
-    path: "/admin/packages",
+    path: "/packages",
     icon: <VscIcons.VscPackage />,
     className: "sidebar-text",
   },
   {
     title: "Pages/Blogs",
-    path: "/admin/pages",
+    path: "/pages",
     icon: <FaIcons.FaBlogger />,
     className: "sidebar-text",
   },
   {
     title: "Categories/Tags",
-    path: "/admin/categories",
+    path: "/categories",
     icon: <AiIcons.AiOutlineTag />,
     className: "sidebar-text",
   },
   {
     title: "Advertisement",
-    path: "/admin/advertisement",
+    path: "/advertisement",
     icon: <RiIcons.RiAdvertisementFill />,
     className: "sidebar-text",
   },
   {
     title: "Trending Places",
-    path: "/admin/trendingplaces",
+    path: "/trendingplaces",
     icon: <MdIcons.MdPlace />,
     className: "sidebar-text",
   },
   {
     title: "Coupons",
-    path: "/admin/coupons",
+    path: "/coupons",
     icon: <RiIcons.RiCoupon2Line />,
     className: "sidebar-text",
   },

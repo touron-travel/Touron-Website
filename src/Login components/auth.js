@@ -16,6 +16,7 @@ export const isAuthenticated = () => {
     return false;
   }
 };
+
 export const storeadmintoken = (adminToken) => {
   if (typeof window !== "undefined") {
     localStorage.setItem("adminToken", JSON.stringify(adminToken));

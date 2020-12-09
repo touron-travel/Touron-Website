@@ -7,58 +7,64 @@ import {
   useLocation,
 } from "react-router-dom";
 import { IconContext } from "react-icons";
-import { ProfileSidebarData } from "./ProfileSidebarData";
+import { AdminSidebarData } from "./AdminSidebarData";
 import "../Admin components/Sidebar.css";
 import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
 import { ApiContext } from "../Context/ApiContext";
-import UserDetails from "./UserDetails";
-import MyRequest from "./MyRequest";
-import SavedTours from "./SavedTours";
-import MyPlans from "./MyPlans";
-import MyVisaRequests from "./MyVisaRequests";
-import Support from "./Support";
-import Faq from "./Faq";
+import Admin from "./Admin";
+import Management from "./Management";
+import Packages from "./Packages";
+import Pages from "./Pages";
+import CategoriesTags from "./Categories-Tags";
+import Advertisement from "./Advertisement";
+import TrendingPlaces from "./TrendingPlaces";
+import Coupons from "./Coupons";
 
 const routes = [
   {
-    path: "/user-details",
+    path: "/admin",
     exact: true,
     // sidebar: () => <Sidebar />,
-    main: () => <UserDetails />,
+    main: () => <Admin />,
   },
   {
-    path: "/my-requests",
+    path: "/management",
     // sidebar: () => <Sidebar />,
-    main: () => <MyRequest />,
+    main: () => <Management />,
   },
   {
-    path: "/saved-tours",
+    path: "/packages",
     // sidebar: () => <Sidebar />,
-    main: () => <SavedTours />,
+    main: () => <Packages />,
   },
   {
-    path: "/my-plans",
+    path: "/pages",
     // sidebar: () => <Sidebar />,
-    main: () => <MyPlans />,
+    main: () => <Pages />,
   },
   {
-    path: "/myvisa-requests",
+    path: "/categories",
     // sidebar: () => <Sidebar />,
-    main: () => <MyVisaRequests />,
+    main: () => <CategoriesTags />,
   },
   {
-    path: "/faq",
+    path: "/advertisement",
     // sidebar: () => <Sidebar />,
-    main: () => <Faq />,
+    main: () => <Advertisement />,
   },
   {
-    path: "/support",
+    path: "/trendingplaces",
     // sidebar: () => <Sidebar />,
-    main: () => <Support />,
+    main: () => <TrendingPlaces />,
+  },
+  {
+    path: "/coupons",
+    // sidebar: () => <Sidebar />,
+    main: () => <Coupons />,
   },
 ];
 
-const Profilepage = () => {
+const Adminpage = () => {
   const location = useLocation();
   const { setAdminRoutes } = useContext(ApiContext);
 
@@ -75,7 +81,7 @@ const Profilepage = () => {
           <IconContext.Provider value={{ color: "gray" }}>
             <div className={"sidebar-menu"}>
               <ul className="sidebar-menu-items">
-                {ProfileSidebarData.map((item, index) => {
+                {AdminSidebarData.map((item, index) => {
                   return (
                     <li key={index} className={item.className}>
                       <Link to={item.path}>
@@ -109,4 +115,4 @@ const Profilepage = () => {
   );
 };
 
-export default Profilepage;
+export default Adminpage;

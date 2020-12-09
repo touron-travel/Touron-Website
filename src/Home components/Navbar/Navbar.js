@@ -5,9 +5,15 @@ import "./Navbar.css";
 import Image from "../../assests/logo.jpeg";
 import { BiUserCircle } from "react-icons/bi";
 import { isAuthenticated, signout } from "../../Login components/auth";
+import Dropdown from "./Dropdown";
 
 const Navbar = ({ history }) => {
   const [navOpen, setNavOpen] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
+  console.log("dropdown", dropdown);
+
+  const onMouseEnter = () => setDropdown(true);
+  const onMouseLeave = () => setDropdown(false);
 
   return (
     <nav>
@@ -118,7 +124,7 @@ const Navbar = ({ history }) => {
         )}
 
         {isAuthenticated() && (
-          <li>
+          <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
             <NavLink
               to="/profilepage"
               // className="nav-links"
@@ -128,6 +134,7 @@ const Navbar = ({ history }) => {
             >
               <BiUserCircle />
             </NavLink>
+            {dropdown && <Dropdown />}
           </li>
         )}
       </ul>
