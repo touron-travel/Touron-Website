@@ -14,7 +14,10 @@ const Navbar = ({ history }) => {
   const [navHide, setNavHide] = useState(true);
 
   const handleNavHide = () => setNavHide(!navHide);
-  const onDropdownClick = () => setDropdown(!dropdown);
+  const onDropdownClick = () => {
+    setNavHide(false);
+    setDropdown(!dropdown);
+  };
   return (
     <>
       <div className="menu-icon">
