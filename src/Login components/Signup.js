@@ -3,14 +3,15 @@ import "./signup.css";
 import { Link } from "react-router-dom";
 import { auth, firedb } from "../firebase";
 import axios from "axios";
-import { isAdmin, storeAuthToken } from "./auth";
+import { storeAuthToken } from "./auth";
+import { Ripple } from "react-spinners-css";
 
-const Signup = () => {
+const Signup = ({ history }) => {
   const [number, setNumber] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [step, setStep] = useState(2);
+  const [step, setStep] = useState(1);
   const [code, setCode] = useState("");
   const [sessionID, setSessionID] = useState("");
   const [loaded, setLoaded] = useState(false);
@@ -21,6 +22,7 @@ const Signup = () => {
 
   // const { isLoggedIn, setIsLoggedIn, user, setUser } = useContext(AuthContext);
   const sendOtp = (e) => {
+    setLoaded(true);
     e.preventDefault();
     auth
       .createUserWithEmailAndPassword(email, password)
@@ -65,8 +67,6 @@ const Signup = () => {
   };
 
   const verifyOtp = (e) => {
-    console.log("sessionID :>> ", sessionID);
-    console.log("code :>> ", code);
     e.preventDefault();
 
     setLoaded(true);
@@ -75,15 +75,15 @@ const Signup = () => {
         `https://2factor.in/API/V1/c9170ed3-3854-11eb-83d4-0200cd936042/SMS/VERIFY/${sessionID}/${code}`
       )
       .then((response) => {
-        console.log(response, "RESPONSE");
         const status = response.data.Details;
-        console.log(status, "STATUS");
         if (status == "OTP Matched") {
           setName("");
           setNumber("");
           setPassword("");
           setEmail("");
           setCode("");
+          setLoaded(false);
+          return history.push("/");
         }
       })
       .catch((err) => {
@@ -138,14 +138,17 @@ const Signup = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
+
                 <div className="buttonfix">
-                  <input
-                    type="submit"
-                    className="signbutton"
-                    value="Send otp"
-                    onClick={sendOtp}
-                    // onClick={nextStep}
-                  />
+                  {loaded ? (
+                    <div className="buttonfix loading">
+                      <Ripple color="white" size={40} />
+                    </div>
+                  ) : (
+                    <button className="signbutton" onClick={sendOtp}>
+                      Send Otp
+                    </button>
+                  )}
                 </div>
               </form>
             </div>
@@ -168,12 +171,15 @@ const Signup = () => {
                   />
                 </div>
                 <div className="buttonfix">
-                  <input
-                    type="submit"
-                    className="signbutton"
-                    value="Verify"
-                    onClick={verifyOtp}
-                  />
+                  {loaded ? (
+                    <div className="buttonfix loading">
+                      <Ripple color="white" size={40} />
+                    </div>
+                  ) : (
+                    <button className="signbutton" onClick={verifyOtp}>
+                      Verify Otp
+                    </button>
+                  )}
                 </div>
               </form>
             </div>

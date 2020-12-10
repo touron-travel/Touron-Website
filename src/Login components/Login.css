@@ -114,3 +114,17 @@
   color: #fff;
   font-weight: 800;
 }
+
+.loading {
+  background: transparent;
+  border: 1.5px solid #fff;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 500;
+  width: 50%;
+  border-radius: 30px;
+  padding: 8px 0px;
+  margin-top: 10px;
+  font-family: "Roboto", sans-serif;
+  transition: ease 0.5s;
+}
