@@ -1,15 +1,20 @@
 .dropdowns-menu {
   background-color: #fff;
-  width: auto;
+  width: 150px;
   position: absolute;
-  top: 50px;
+  top: 66px;
   list-style: none;
   text-align: start;
   right: -50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border-radius: 5px;
 }
 .dropdowns-menu li {
   cursor: pointer;
+  text-align: center;
+
   padding: 5px 0px;
 }
 .dropdowns-menu li:hover {
