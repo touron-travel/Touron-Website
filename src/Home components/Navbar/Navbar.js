@@ -2,26 +2,19 @@ import React, { useState } from "react";
 import { NavLink, withRouter, Link } from "react-router-dom";
 import "./Navbar.css";
 import Logo from "../../assests/logo2.png";
-import { BiUserCircle } from "react-icons/bi";
+// import { BiUserCircle } from "react-icons/bi";
 import { GrTextAlignCenter } from "react-icons/gr";
 import { RiAccountCircleFill } from "react-icons/ri";
 import { isAuthenticated, signout } from "../../Login components/auth";
-// import Dropdown from "./Dropdown";
+import Dropdown from "./Dropdown";
 
 const Navbar = ({ history }) => {
-  // const [navOpen, setNavOpen] = useState(false);
-  // const [dropdown, setDropdown] = useState(false);
-  // console.log("dropdown", dropdown);
+  const [dropdown, setDropdown] = useState(false);
 
-  // const onMouseEnter = () => setDropdown(true);
-  // const onMouseLeave = () => setDropdown(false);
-
-  const [clicked, setClicked] = useState(false);
   const [navHide, setNavHide] = useState(true);
 
-  const handleClick = () => setClicked(!clicked);
   const handleNavHide = () => setNavHide(!navHide);
-
+  const onDropdownClick = () => setDropdown(!dropdown);
   return (
     <>
       <div className="menu-icon">
@@ -30,16 +23,21 @@ const Navbar = ({ history }) => {
           color="#ff7f00"
           style={{ fontSize: "45px", paddingRight: "20px" }}
         />
-        <Link to="/login">
-          <RiAccountCircleFill color="#ff7f00" style={{ fontSize: "25px" }} />
-        </Link>
+        {isAuthenticated() && (
+          <RiAccountCircleFill
+            color="#ff7f00"
+            style={{ fontSize: "25px" }}
+            onClick={onDropdownClick}
+          />
+        )}
+        {dropdown && <Dropdown />}
       </div>
       <nav className={navHide ? "NavbarItems hide" : "NavbarItems"}>
         <div className="navbar-logo">
           <img src={Logo} alt="" />
         </div>
 
-        <ul className={clicked ? "nav-menus active" : "nav-menus"}>
+        <ul className="nav-menus">
           <li>
             <NavLink
               exact
@@ -105,31 +103,6 @@ const Navbar = ({ history }) => {
                 Login/SignUp
               </NavLink>
             </li>
-          )}
-
-          {isAuthenticated() && (
-            <>
-              <li>
-                <NavLink
-                  to="/login"
-                  className="nav-links"
-                  activeClassName="selected"
-                >
-                  <BiUserCircle />
-                </NavLink>
-              </li>
-              <li>
-                <span
-                  onClick={() =>
-                    signout(() => {
-                      history.push("/");
-                    })
-                  }
-                >
-                  Signout
-                </span>
-              </li>
-            </>
           )}
         </ul>
       </nav>

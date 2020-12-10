@@ -15,15 +15,11 @@ export const MenuItems = [
     className: "dropdown-link",
   },
   {
-    title: "My Visa Requests",
+    title: "Visa Request",
     path: "/myvisa-requests",
     className: "dropdown-link",
   },
-  {
-    title: "Self Planned Tours",
-    path: "/my-plans",
-    className: "dropdown-link",
-  },
+
   {
     title: "Faq",
     path: "/faq",
