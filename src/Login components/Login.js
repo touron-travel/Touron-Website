@@ -23,6 +23,7 @@ export default function Login({ history }) {
         setEmail("");
         setPassword("");
         storeAuthToken(user);
+        setLoaded(false);
         return history.goBack();
       })
       .catch((err) => {

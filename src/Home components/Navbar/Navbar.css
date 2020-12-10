@@ -1,48 +1,114 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .NavbarItems {
   position: absolute;
   z-index: 2;
   background-color: #ffffff;
   width: 100%;
-  height: 80px;
+  height: 12vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  font-size: 16px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
+  transition: 0.5s ease-in-out;
 }
-.navbar-logo img {
-  width: 200px;
+.NavbarItems.hide {
+  position: absolute;
+  z-index: 2;
+  background-color: white;
+  width: 100%;
+  height: 12vh;
+  display: flex;
+  margin-top: -12vh;
+  transition: 0.5s ease-in-out;
+}
+
+.navbar-logo {
   margin-left: 20px;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 .nav-menus {
   display: flex;
   list-style: none;
-  text-align: center;
-  justify-content: flex-end;
-  width: 80vw;
+  width: 80%;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-left: auto;
+  height: 100%;
+  padding-right: 100px;
 }
 .nav-links {
-  padding-right: 15px;
   color: #000000;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
   text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nav-links::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #f48fb1;
+  animation: slide-out 300ms ease-in-out forwards;
 }
 .nav-links:hover {
-  color: #ff7f00;
+  /* color: #ff7f00;
+  transition: all 0.2s ease-in-out; */
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
+  background: lighten(#eceff1, 5%);
+  color: #546e7a;
 }
+
+.nav-links:hover::after {
+  animation: slide-in 300ms;
+}
+
+@keyframes slide-out {
+  0% {
+    transform: none;
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+@keyframes slide-in {
+  0% {
+    transform: translate(-100%, 0);
+  }
+  100% {
+    transform: none;
+  }
+}
+
 .selected {
   color: #ff7f00;
   text-decoration: none;
 }
 .menu-icon .fa-bars {
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: #ff7f00;
+
+  font-size: large;
 }
 .menu-icon {
-  display: none;
+  position: absolute;
+  z-index: 10;
+  right: 5%;
+  top: 26px;
+  cursor: pointer;
 }
+/* .menu-icon:hover {
+  cursor: pointer;
+} */
 
 /* .logo img {
   position: absolute;

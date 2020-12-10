@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink, withRouter, Link } from "react-router-dom";
 import "./Navbar.css";
 import Logo from "../../assests/logo2.png";
-// import { BiUserCircle } from "react-icons/bi";
-// import { isAuthenticated, signout } from "../../Login components/auth";
+import { BiUserCircle } from "react-icons/bi";
+import { GrTextAlignCenter } from "react-icons/gr";
+import { RiAccountCircleFill } from "react-icons/ri";
+import { isAuthenticated, signout } from "../../Login components/auth";
 // import Dropdown from "./Dropdown";
 
-const Navbar = () => {
+const Navbar = ({ history }) => {
   // const [navOpen, setNavOpen] = useState(false);
   // const [dropdown, setDropdown] = useState(false);
   // console.log("dropdown", dropdown);
@@ -15,72 +17,126 @@ const Navbar = () => {
   // const onMouseLeave = () => setDropdown(false);
 
   const [clicked, setClicked] = useState(false);
+  const [navHide, setNavHide] = useState(true);
 
   const handleClick = () => setClicked(!clicked);
+  const handleNavHide = () => setNavHide(!navHide);
 
   return (
-    <nav className="NavbarItems">
-      <div className="navbar-logo">
-        <img src={Logo} alt="" />
+    <>
+      <div className="menu-icon">
+        <GrTextAlignCenter
+          onClick={handleNavHide}
+          color="#ff7f00"
+          style={{ fontSize: "45px", paddingRight: "20px" }}
+        />
+        <Link to="/login">
+          <RiAccountCircleFill color="#ff7f00" style={{ fontSize: "25px" }} />
+        </Link>
       </div>
+      <nav className={navHide ? "NavbarItems hide" : "NavbarItems"}>
+        <div className="navbar-logo">
+          <img src={Logo} alt="" />
+        </div>
+
+        <ul className={clicked ? "nav-menus active" : "nav-menus"}>
+          <li>
+            <NavLink
+              exact
+              to="/"
+              className="nav-links"
+              activeClassName="selected"
+            >
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/about"
+              className="nav-links"
+              activeClassName="selected"
+            >
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/how-it-works"
+              className="nav-links"
+              activeClassName="selected"
+            >
+              How it Works
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              className="nav-links"
+              activeClassName="selected"
+            >
+              Contact
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/destination"
+              className="nav-links"
+              activeClassName="selected"
+            >
+              Destination Guide
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/visa"
+              className="nav-links"
+              activeClassName="selected"
+            >
+              Visa Request
+            </NavLink>
+          </li>
+          {!isAuthenticated() && (
+            <li>
+              <NavLink
+                to="/login"
+                className="nav-links"
+                activeClassName="selected"
+              >
+                Login/SignUp
+              </NavLink>
+            </li>
+          )}
+
+          {isAuthenticated() && (
+            <>
+              <li>
+                <NavLink
+                  to="/login"
+                  className="nav-links"
+                  activeClassName="selected"
+                >
+                  <BiUserCircle />
+                </NavLink>
+              </li>
+              <li>
+                <span
+                  onClick={() =>
+                    signout(() => {
+                      history.push("/");
+                    })
+                  }
+                >
+                  Signout
+                </span>
+              </li>
+            </>
+          )}
+        </ul>
+      </nav>
       {/* <div className="menu-icon" onClick={handleClick}>
         <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
       </div> */}
-      <ul className={clicked ? "nav-menus active" : "nav-menus"}>
-        <li>
-          <NavLink
-            exact
-            to="/"
-            className="nav-links"
-            activeClassName="selected"
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/about" className="nav-links" activeClassName="selected">
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/how-it-works"
-            className="nav-links"
-            activeClassName="selected"
-          >
-            How it Works
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/contact"
-            className="nav-links"
-            activeClassName="selected"
-          >
-            Contact
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="/destination"
-            className="nav-links"
-            activeClassName="selected"
-          >
-            Destination Guide
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/visa" className="nav-links" activeClassName="selected">
-            Visa Request
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/login" className="nav-links" activeClassName="selected">
-            Login/SignUp
-          </NavLink>
-        </li>
-      </ul>
-    </nav>
+    </>
     // <nav>
     //   <div className="logo">
     //     <img src={Image} alt="" />
@@ -197,6 +253,6 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+// export default Navbar;
 
-// export default withRouter(Navbar);
+export default withRouter(Navbar);
