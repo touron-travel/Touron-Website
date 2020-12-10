@@ -6,13 +6,6 @@
 .home_top {
   height: 100vh;
 }
-.nav {
-  position: absolute;
-  left: 50px;
-  right: 50px;
-  padding-top: 10px;
-  z-index: 2;
-}
 .slider {
   position: relative;
   z-index: -1;
