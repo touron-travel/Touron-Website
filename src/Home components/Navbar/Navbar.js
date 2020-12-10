@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, withRouter, Link } from "react-router-dom";
 import "./Navbar.css";
 import Logo from "../../assests/logo2.png";
@@ -12,12 +12,28 @@ const Navbar = ({ history }) => {
   const [dropdown, setDropdown] = useState(false);
 
   const [navHide, setNavHide] = useState(true);
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => setClicked(!clicked);
 
   const handleNavHide = () => setNavHide(!navHide);
   const onDropdownClick = () => {
     setNavHide(false);
     setDropdown(!dropdown);
   };
+  const onNavHide = () => {
+    if (window.innerWidth > 970) {
+      setNavHide(true);
+      setDropdown(false);
+    }
+    setClicked(false);
+  };
+
+  useEffect(() => {
+    if (window.innerWidth < 970) {
+      setNavHide(false);
+    }
+  }, []);
   return (
     <>
       <div className="menu-icon">
@@ -36,17 +52,21 @@ const Navbar = ({ history }) => {
         {dropdown && <Dropdown />}
       </div>
       <nav className={navHide ? "NavbarItems hide" : "NavbarItems"}>
+        <div className="hamburger" onClick={handleClick}>
+          <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
+        </div>
         <div className="navbar-logo">
           <img src={Logo} alt="" />
         </div>
 
-        <ul className="nav-menus">
+        <ul className={clicked ? "nav-menus open" : "nav-menus"}>
           <li>
             <NavLink
               exact
               to="/"
               className="nav-links"
               activeClassName="selected"
+              onClick={onNavHide}
             >
               Home
             </NavLink>
@@ -56,6 +76,7 @@ const Navbar = ({ history }) => {
               to="/about"
               className="nav-links"
               activeClassName="selected"
+              onClick={onNavHide}
             >
               About
             </NavLink>
@@ -65,6 +86,7 @@ const Navbar = ({ history }) => {
               to="/how-it-works"
               className="nav-links"
               activeClassName="selected"
+              onClick={onNavHide}
             >
               How it Works
             </NavLink>
@@ -74,6 +96,7 @@ const Navbar = ({ history }) => {
               to="/contact"
               className="nav-links"
               activeClassName="selected"
+              onClick={onNavHide}
             >
               Contact
             </NavLink>
@@ -83,6 +106,7 @@ const Navbar = ({ history }) => {
               to="/destination"
               className="nav-links"
               activeClassName="selected"
+              onClick={onNavHide}
             >
               Destination Guide
             </NavLink>
@@ -92,6 +116,7 @@ const Navbar = ({ history }) => {
               to="/visa"
               className="nav-links"
               activeClassName="selected"
+              onClick={onNavHide}
             >
               Visa Request
             </NavLink>
@@ -102,6 +127,7 @@ const Navbar = ({ history }) => {
                 to="/login"
                 className="nav-links"
                 activeClassName="selected"
+                onClick={onNavHide}
               >
                 Login/SignUp
               </NavLink>
@@ -109,9 +135,6 @@ const Navbar = ({ history }) => {
           )}
         </ul>
       </nav>
-      {/* <div className="menu-icon" onClick={handleClick}>
-        <i className={clicked ? "fas fa-times" : "fas fa-bars"}></i>
-      </div> */}
     </>
     // <nav>
     //   <div className="logo">
