@@ -252,7 +252,84 @@ const SurpriseTour = (params) => {
               : "planned_tour-details"
           }
         >
-          bbxb
+          <h1>Selected Categories</h1>
+          <ul>
+            <li>
+              Tour type:
+              <span> </span>
+              {tourType}
+            </li>
+            <li>
+              Traveller type:
+              <span> </span>
+              {travellerType}
+            </li>
+            <li>
+              Adult:
+              <span> </span>
+              {adult}
+            </li>
+            <li>
+              Children:
+              <span> </span>
+              {children}
+            </li>
+            <li>
+              Tour preferance:
+              <span> </span>
+              {tourPreferance}
+            </li>
+            <li>
+              Travel mode:
+              <span> </span>
+              {travelMode}
+            </li>
+            <li>
+              From Date:
+              <span> </span>
+              {fromDate}
+            </li>
+            <li>
+              To Date:
+              <span> </span>
+              {toDate}
+            </li>
+            <li>
+              Expediture1:
+              <span> </span>
+              {expediture1}
+            </li>
+            <li>
+              Expediture2:
+              <span> </span>
+              {expediture2}
+            </li>
+            <li>
+              Expediture3:
+              <span> </span>
+              {expediture3}
+            </li>
+            <li>
+              Start point
+              <span> </span>
+              {startPoint}
+            </li>
+            <li>
+              Enter your Name:
+              <span> </span>
+              {name}
+            </li>
+            <li>
+              Your Budget:
+              <span> </span>
+              {budget}
+            </li>
+            <li>
+              Whatsapp Number:
+              <span> </span>
+              {number}
+            </li>
+          </ul>
         </div>
       </div>
     </div>

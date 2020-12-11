@@ -34,12 +34,29 @@
   position: absolute;
   top: 10%;
   left: 58%;
-  background-color: tomato;
+  background-color: #fff;
+  box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
   width: 40%;
   margin: 0px 40px 0px 0px;
-  height: 400px;
+  height: 700px;
 }
-
+.planned_tour-details h1 {
+  padding-top: 20px;
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  font-weight: 700;
+  font-size: 28px;
+}
+.planned_tour-details ul {
+  list-style: none;
+  padding-left: 20px;
+  padding-top: 20px;
+}
+.planned_tour-details ul li {
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-weight: 700;
+}
 .planned_tour-details-selected {
   display: none;
 }
@@ -120,10 +137,29 @@
     position: absolute;
     top: 10%;
     left: 58%;
-    background-color: tomato;
+    background-color: #fff;
+    box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
     width: 40%;
-    height: 200px;
+    height: 540px;
     margin: 0px 40px 0px 0px;
+    border-radius: 20px;
+  }
+  .planned_tour-details h1 {
+    padding-top: 20px;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
+  }
+  .planned_tour-details ul {
+    list-style: none;
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+  .planned_tour-details ul li {
+    padding-bottom: 10px;
+    font-size: 16px;
+    font-weight: 700;
   }
 
   .planned_tour-details-selected {

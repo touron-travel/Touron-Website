@@ -277,7 +277,90 @@ const RoadtripTour = (params) => {
               : "planned_tour-details"
           }
         >
-          bbxb
+          <h1>Selected Categories</h1>
+          <ul>
+            <li>
+              Travel mode:
+              <span> </span>
+              {travelMode}
+            </li>
+            <li>
+              Traveller type:
+              <span> </span>
+              {travellerType}
+            </li>
+            <li>
+              Adult:
+              <span> </span>
+              {adult}
+            </li>
+            <li>
+              Children:
+              <span> </span>
+              {children}
+            </li>
+            <li>
+              Travel mode:
+              <span> </span>
+              {travelMode}
+            </li>
+            <li>
+              From Date:
+              <span> </span>
+              {fromDate}
+            </li>
+            <li>
+              To Date:
+              <span> </span>
+              {toDate}
+            </li>
+            <li>
+              How long would you like to drive:
+              <span> </span>
+              {driveDuration}
+            </li>
+            <li>
+              Any travel or dietary restrictions:
+              <span> </span>
+              {driveRestriction}
+            </li>
+            <li>
+              Where will be your starting point:
+              <span> </span>
+              {startPoint}
+            </li>
+            <li>
+              Would you like to add extra beds or additional room if travelling
+              as 3/5/7:
+              <span> </span>
+              {additionalInfo}
+            </li>
+            <li>
+              Do you need any help in renting a car:
+              <span> </span>
+              {carRent}
+            </li>
+            <li>
+              What kind of stops do you prefer on your drive:
+              <span> </span>
+              {stops}
+            </li>
+            <li>
+              Enter your Name:
+              <span> </span>
+              {name}
+            </li>
+            <li>
+              Your Budget:
+              <span> </span>
+              {budget}
+            </li>
+            <li>
+              Whatsapp Number:
+              <span> </span>
+              {number}
+            </li>
+          </ul>
         </div>
       </div>
     </div>

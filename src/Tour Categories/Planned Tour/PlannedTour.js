@@ -3,7 +3,6 @@ import TourHeader from "../Reusable components/TourHeader";
 import Planned from "../../assests/Plannedtour.jpg";
 import "./Plannedtour.css";
 import Tourtype from "../Reusable components/Tourtype";
-import { Animate } from "react-rebound";
 import Travellertype from "../Reusable components/Travellertype";
 import Travelmode from "../Reusable components/Travelmode";
 import Destination from "../Reusable components/Destination";
@@ -84,7 +83,7 @@ const PlannedTour = (params) => {
       openModal();
       return;
     }
-    if (step !== 7 || tourType !== "") setStep(step + 1);
+    if (step !== 7 && tourType !== "") setStep(step + 1);
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
@@ -152,7 +151,6 @@ const PlannedTour = (params) => {
             travelMode={travelMode}
             setTrain={() => setTravelMode("Train")}
             setFlight={() => setTravelMode("Flight")}
-            // setTravelMode={setTravelMode}
           />
         );
       case 5:
@@ -216,18 +214,12 @@ const PlannedTour = (params) => {
       />
 
       <div className="Planned-form-container">
-        {/* <Animate
-          translateX={clicked ? -10 : 0}
-          // tension={100}
-          friction={800}
-        > */}
         <div
           className={
             step == 1 && tourType == ""
               ? "planned_tour-form"
               : "planned_tour-form-selected planned_tour-form"
           }
-          // className="planned_tour-form"
         >
           <h1>Planned Tour</h1>
           <div className="planned_form">{renderForm(step)}</div>
@@ -248,12 +240,6 @@ const PlannedTour = (params) => {
             )}
           </div>
         </div>
-        {/* </Animate>
-        <Animate
-          translateX={clicked ? 10 : 0}
-          // tension={100}
-          friction={80}
-        > */}
         <div
           className={
             step === 1 && tourType === ""
@@ -261,9 +247,75 @@ const PlannedTour = (params) => {
               : "planned_tour-details"
           }
         >
-          bbxb
+          <h1>Selected Categories</h1>
+          <ul>
+            <li>
+              Tour type:
+              <span> </span>
+              {tourType}
+            </li>
+            <li>
+              Traveller type:
+              <span> </span>
+              {travellerType}
+            </li>
+            <li>
+              Adult:
+              <span> </span>
+              {adult}
+            </li>
+            <li>
+              Children:
+              <span> </span>
+              {children}
+            </li>
+            <li>
+              Travel mode:
+              <span> </span>
+              {travelMode}
+            </li>
+            <li>
+              From Date:
+              <span> </span>
+              {fromDate}
+            </li>
+            <li>
+              To Date:
+              <span> </span>
+              {toDate}
+            </li>
+            <li>
+              Enter the holiday destination you want to travel:
+              <span> </span>
+              {destination}
+            </li>
+            <li>
+              From where would you like to start your journey:
+              <span> </span>
+              {startPoint}
+            </li>
+            <li>
+              Your preferences when you travel:
+              <span> </span>
+              {preferanece}
+            </li>
+            <li>
+              Enter your Name:
+              <span> </span>
+              {name}
+            </li>
+            <li>
+              Your Budget:
+              <span> </span>
+              {budget}
+            </li>
+            <li>
+              Whatsapp Number:
+              <span> </span>
+              {number}
+            </li>
+          </ul>
         </div>
-        {/* </Animate> */}
       </div>
     </div>
   );
