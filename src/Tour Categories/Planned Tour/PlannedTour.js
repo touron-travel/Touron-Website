@@ -11,6 +11,9 @@ import Touristnumber from "../Reusable components/Touristnumber";
 import TouristDate from "../Reusable components/TouristDate";
 import { isAuthenticated } from "../../Login components/auth";
 import Modals from "../Modal";
+import Modal from "react-modal";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { Link, Redirect } from "react-router-dom";
 
 const PlannedTour = (params) => {
   const [tourType, setTourType] = useState("");
@@ -42,10 +45,35 @@ const PlannedTour = (params) => {
   });
 
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [formModalIsOpen, setFormModalOpen] = useState(false);
+
+  const customFormModalStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      // marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      borderRadius: "20px",
+      boxShadow: "1px 3px 1px #9E9E9E",
+    },
+    overlay: { zIndex: 1000 },
+  };
+
+  Modal.setAppElement("#root");
+
+  const openFormModal = () => {
+    setFormModalOpen(true);
+  };
+  const closeFormModal = () => {
+    setFormModalOpen(false);
+    // return <Redirect to="/" />;
+  };
+
   function openModal() {
     setIsOpen(true);
   }
-
   function closeModal() {
     setIsOpen(false);
   }
@@ -68,7 +96,6 @@ const PlannedTour = (params) => {
     );
   };
 
-  const [userInfo, setUserInfo] = useState({});
   useEffect(() => {
     random = Math.floor((Math.random() + 4) * 345334 * Math.random());
     const requestDate = new Date();
@@ -205,76 +232,43 @@ const PlannedTour = (params) => {
   return (
     <div className="Planned_tour-container">
       <Modals modalIsOpen={modalIsOpen} closeModal={closeModal} />
-
-      <TourHeader
-        image={Planned}
-        title={"Planned Tour"}
-        description={desc}
-        className={"Planned-form-container"}
-      />
-
-      <div className="Planned-form-container">
-        <div
-          className={
-            step == 1 && tourType == ""
-              ? "planned_tour-form"
-              : "planned_tour-form-selected planned_tour-form"
-          }
+      <div className={"planned_tour-details"}>
+        <Modal
+          isOpen={formModalIsOpen}
+          onRequestClose={closeFormModal}
+          style={customFormModalStyles}
+          // shouldCloseOnOverlayClick={false}
         >
-          <h1>Planned Tour</h1>
-          <div className="planned_form">{renderForm(step)}</div>
-          <div className="navigation_btn">
-            {step == 7 ? (
-              <div className="submit-button" onClick={() => submitData()}>
-                Submit
-              </div>
-            ) : (
-              <>
-                <div className="previous-button" onClick={() => prevStep()}>
-                  Previous
-                </div>
-                <div className="next-button" onClick={() => nextStep()}>
-                  Next
-                </div>
-              </>
-            )}
+          <div className="modal-close">
+            <AiFillCloseCircle size={30} onClick={closeFormModal} />
           </div>
-        </div>
-        <div
-          className={
-            step === 1 && tourType === ""
-              ? "planned_tour-details-selected"
-              : "planned_tour-details"
-          }
-        >
-          <h1>Selected Categories</h1>
-          <ul>
-            <li>
-              Tour type:
-              <span> </span>
-              {tourType}
-            </li>
-            <li>
-              Traveller type:
-              <span> </span>
-              {travellerType}
-            </li>
-            <li>
-              Adult:
-              <span> </span>
-              {adult}
-            </li>
-            <li>
-              Children:
-              <span> </span>
-              {children}
-            </li>
-            <li>
-              Travel mode:
-              <span> </span>
-              {travelMode}
-            </li>
-            <li>
+
+          <div className="tour-info">
+            <h1>Tour Informations</h1>
+            <ul>
+              <li>Tour type:</li>
+              <li>{tourType}</li>
+              <li>
+                Traveller type:
+                <span> </span>
+                {travellerType}
+              </li>
+              <li>
+                Adult:
+                <span> </span>
+                {adult}
+              </li>
+              <li>
+                Children:
+                <span> </span>
+                {children}
+              </li>
+              <li>
+                Travel mode:
+                <span> </span>
+                {travelMode}
+              </li>
+              {/* <li>
               From Date:
               <span> </span>
               {fromDate}
@@ -283,38 +277,82 @@ const PlannedTour = (params) => {
               To Date:
               <span> </span>
               {toDate}
-            </li>
-            <li>
-              Enter the holiday destination you want to travel:
-              <span> </span>
-              {destination}
-            </li>
-            <li>
-              From where would you like to start your journey:
-              <span> </span>
-              {startPoint}
-            </li>
-            <li>
-              Your preferences when you travel:
-              <span> </span>
-              {preferanece}
-            </li>
-            <li>
-              Enter your Name:
-              <span> </span>
-              {name}
-            </li>
-            <li>
-              Your Budget:
-              <span> </span>
-              {budget}
-            </li>
-            <li>
-              Whatsapp Number:
-              <span> </span>
-              {number}
-            </li>
-          </ul>
+            </li> */}
+              <li>
+                Enter the holiday destination you want to travel:
+                <span> </span>
+                {destination}
+              </li>
+              <li>
+                From where would you like to start your journey:
+                <span> </span>
+                {startPoint}
+              </li>
+              <li>
+                Your preferences when you travel:
+                <span> </span>
+                {preferanece}
+              </li>
+              <li>
+                Enter your Name:
+                <span> </span>
+                {name}
+              </li>
+              <li>
+                Your Budget:
+                <span> </span>
+                {budget}
+              </li>
+              <li>
+                Whatsapp Number:
+                <span> </span>
+                {number}
+              </li>
+            </ul>
+          </div>
+          <div className="info-tour-buttons">
+            <Link to="/my-requests">
+              <button className="info-button">Go to My Dashboard</button>
+            </Link>
+            <Link to="/">
+              <button className="info-buttons">Go to Home</button>
+            </Link>
+          </div>
+        </Modal>
+      </div>
+      <TourHeader
+        image={Planned}
+        title={"Planned Tour"}
+        description={desc}
+        className={"Planned-form-container"}
+      />
+
+      <div className="Planned-form-container">
+        <div className={"planned_tour-form"}>
+          <h1>Planned Tour</h1>
+          <div className="planned_form">{renderForm(step)}</div>
+          <div className="navigation_btn">
+            <>
+              <div className="previous-button" onClick={() => prevStep()}>
+                Previous
+              </div>
+              {step == 7 ? (
+                <div
+                  className="submit-button"
+                  onClick={() => {
+                    submitData();
+                    openFormModal();
+                  }}
+                >
+                  Submit
+                </div>
+              ) : (
+                <div className="next-button" onClick={() => nextStep()}>
+                  Next
+                </div>
+              )}
+            </>
+          </div>
         </div>
       </div>
     </div>

@@ -10,6 +10,9 @@ import Checkout from "../Reusable components/Checkout";
 import Tourpreferance from "../Reusable components/Tourpreferance";
 import Expediture from "../Reusable components/Expediture";
 import Modals from "../Modal";
+import Modal from "react-modal";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { isAuthenticated } from "../../Login components/auth";
 
 const SurpriseTour = (params) => {
@@ -51,6 +54,32 @@ const SurpriseTour = (params) => {
   function closeModal() {
     setIsOpen(false);
   }
+
+  const [formModalIsOpen, setFormModalOpen] = useState(false);
+
+  const customFormModalStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      // marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      borderRadius: "20px",
+      boxShadow: "1px 3px 1px #9E9E9E",
+    },
+    overlay: { zIndex: 1000 },
+  };
+
+  Modal.setAppElement("#root");
+
+  const openFormModal = () => {
+    setFormModalOpen(true);
+  };
+  const closeFormModal = () => {
+    setFormModalOpen(false);
+    // return <Redirect to="/" />;
+  };
 
   //   useEffect(() => {
   //     random = Math.floor((Math.random() + 4) * 345334 * Math.random());
@@ -211,48 +240,18 @@ const SurpriseTour = (params) => {
   return (
     <div className="Surprise_tour-container">
       <Modals modalIsOpen={modalIsOpen} closeModal={closeModal} />
-
-      <TourHeader
-        image={Surprise}
-        title={"Surprise Tour"}
-        description={desc}
-        className={"Planned-form-container"}
-      />
-      <div className="Planned-form-container">
-        <div
-          className={
-            step === 1 && tourType === ""
-              ? "planned_tour-form"
-              : "planned_tour-form-selected planned_tour-form"
-          }
-        >
-          <h1>Surprise Tour</h1>
-          <div className="planned_form">{renderForm(step)}</div>
-          <div className="navigation_btn">
-            {step == 8 ? (
-              <div className="submit-button" onClick={() => nextStep()}>
-                Submit
-              </div>
-            ) : (
-              <>
-                <div className="previous-button" onClick={() => prevStep()}>
-                  Previous
-                </div>
-                <div className="next-button" onClick={() => nextStep()}>
-                  Next
-                </div>
-              </>
-            )}
-          </div>
+      <Modal
+        isOpen={formModalIsOpen}
+        onRequestClose={closeFormModal}
+        style={customFormModalStyles}
+        // shouldCloseOnOverlayClick={false}
+      >
+        <div className="modal-close">
+          <AiFillCloseCircle size={30} onClick={closeFormModal} />
         </div>
-        <div
-          className={
-            step === 1 && tourType === ""
-              ? "planned_tour-details-selected"
-              : "planned_tour-details"
-          }
-        >
-          <h1>Selected Categories</h1>
+
+        <div className="tour-info">
+          <h1>Tour Informations</h1>
           <ul>
             <li>
               Tour type:
@@ -284,7 +283,7 @@ const SurpriseTour = (params) => {
               <span> </span>
               {travelMode}
             </li>
-            <li>
+            {/* <li>
               From Date:
               <span> </span>
               {fromDate}
@@ -293,7 +292,8 @@ const SurpriseTour = (params) => {
               To Date:
               <span> </span>
               {toDate}
-            </li>
+            </li> */}
+
             <li>
               Expediture1:
               <span> </span>
@@ -330,6 +330,42 @@ const SurpriseTour = (params) => {
               {number}
             </li>
           </ul>
+        </div>
+        <div className="info-tour-buttons">
+          <Link to="/my-requests">
+            <button className="info-button">Go to My Dashboard</button>
+          </Link>
+          <Link to="/">
+            <button className="info-buttons">Go to Home</button>
+          </Link>
+        </div>
+      </Modal>
+      <TourHeader
+        image={Surprise}
+        title={"Surprise Tour"}
+        description={desc}
+        className={"Planned-form-container"}
+      />
+      <div className="Planned-form-container">
+        <div className={"planned_tour-form"}>
+          <h1>Surprise Tour</h1>
+          <div className="planned_form">{renderForm(step)}</div>
+          <div className="navigation_btn">
+            <>
+              <div className="previous-button" onClick={() => prevStep()}>
+                Previous
+              </div>
+              {step == 8 ? (
+                <div className="submit-button" onClick={() => nextStep()}>
+                  Submit
+                </div>
+              ) : (
+                <div className="next-button" onClick={() => nextStep()}>
+                  Next
+                </div>
+              )}
+            </>
+          </div>
         </div>
       </div>
     </div>

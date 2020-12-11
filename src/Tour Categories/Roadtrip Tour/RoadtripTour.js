@@ -10,6 +10,9 @@ import Roadtripques1 from "../Reusable components/Roadtripques1";
 import Drivetype from "../Reusable components/Drivetype";
 import { isAuthenticated } from "../../Login components/auth";
 import Modals from "../Modal";
+import Modal from "react-modal";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const RoadtripTour = (params) => {
   const [travelMode, setTravelMode] = React.useState("");
@@ -53,6 +56,32 @@ const RoadtripTour = (params) => {
   function closeModal() {
     setIsOpen(false);
   }
+
+  const [formModalIsOpen, setFormModalOpen] = useState(false);
+
+  const customFormModalStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      // marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      borderRadius: "20px",
+      boxShadow: "1px 3px 1px #9E9E9E",
+    },
+    overlay: { zIndex: 1000 },
+  };
+
+  Modal.setAppElement("#root");
+
+  const openFormModal = () => {
+    setFormModalOpen(true);
+  };
+  const closeFormModal = () => {
+    setFormModalOpen(false);
+    // return <Redirect to="/" />;
+  };
   // useEffect(() => {
   //     random = Math.floor((Math.random() + 4) * 345334 * Math.random());
   //     const requestDate = new Date();
@@ -236,75 +265,46 @@ const RoadtripTour = (params) => {
   return (
     <div className="Roadtrip_tour-container">
       <Modals modalIsOpen={modalIsOpen} closeModal={closeModal} />
-
-      <TourHeader
-        image={Road}
-        title={"Road Trip"}
-        description={desc}
-        className={"Planned-form-container"}
-      />
-      <div className="Planned-form-container">
-        <div
-          className={
-            step == 1 && travelMode === ""
-              ? "planned_tour-form"
-              : "planned_tour-form-selected planned_tour-form"
-          }
+      <div className={"planned_tour-details"}>
+        <Modal
+          isOpen={formModalIsOpen}
+          onRequestClose={closeFormModal}
+          style={customFormModalStyles}
+          // shouldCloseOnOverlayClick={false}
         >
-          <h1>Road Trip</h1>
-          <div className="planned_form">{renderForm(step)}</div>
-          <div className="navigation_btn">
-            {step == 8 ? (
-              <div className="submit-button" onClick={() => nextStep()}>
-                Submit
-              </div>
-            ) : (
-              <>
-                <div className="previous-button" onClick={() => prevStep()}>
-                  Previous
-                </div>
-                <div className="next-button" onClick={() => nextStep()}>
-                  Next
-                </div>
-              </>
-            )}
+          <div className="modal-close">
+            <AiFillCloseCircle size={30} onClick={closeFormModal} />
           </div>
-        </div>
-        <div
-          className={
-            step === 1 && travelMode === ""
-              ? "planned_tour-details-selected"
-              : "planned_tour-details"
-          }
-        >
-          <h1>Selected Categories</h1>
-          <ul>
-            <li>
-              Travel mode:
-              <span> </span>
-              {travelMode}
-            </li>
-            <li>
-              Traveller type:
-              <span> </span>
-              {travellerType}
-            </li>
-            <li>
-              Adult:
-              <span> </span>
-              {adult}
-            </li>
-            <li>
-              Children:
-              <span> </span>
-              {children}
-            </li>
-            <li>
-              Travel mode:
-              <span> </span>
-              {travelMode}
-            </li>
-            <li>
+
+          <div className="tour-info">
+            <h1>Tour Informations</h1>
+            <ul>
+              <li>
+                Travel mode:
+                <span> </span>
+                {travelMode}
+              </li>
+              <li>
+                Traveller type:
+                <span> </span>
+                {travellerType}
+              </li>
+              <li>
+                Adult:
+                <span> </span>
+                {adult}
+              </li>
+              <li>
+                Children:
+                <span> </span>
+                {children}
+              </li>
+              <li>
+                Travel mode:
+                <span> </span>
+                {travelMode}
+              </li>
+              {/* <li>
               From Date:
               <span> </span>
               {fromDate}
@@ -313,54 +313,91 @@ const RoadtripTour = (params) => {
               To Date:
               <span> </span>
               {toDate}
-            </li>
-            <li>
-              How long would you like to drive:
-              <span> </span>
-              {driveDuration}
-            </li>
-            <li>
-              Any travel or dietary restrictions:
-              <span> </span>
-              {driveRestriction}
-            </li>
-            <li>
-              Where will be your starting point:
-              <span> </span>
-              {startPoint}
-            </li>
-            <li>
-              Would you like to add extra beds or additional room if travelling
-              as 3/5/7:
-              <span> </span>
-              {additionalInfo}
-            </li>
-            <li>
-              Do you need any help in renting a car:
-              <span> </span>
-              {carRent}
-            </li>
-            <li>
-              What kind of stops do you prefer on your drive:
-              <span> </span>
-              {stops}
-            </li>
-            <li>
-              Enter your Name:
-              <span> </span>
-              {name}
-            </li>
-            <li>
-              Your Budget:
-              <span> </span>
-              {budget}
-            </li>
-            <li>
-              Whatsapp Number:
-              <span> </span>
-              {number}
-            </li>
-          </ul>
+            </li> */}
+              <li>
+                How long would you like to drive:
+                <span> </span>
+                {driveDuration}
+              </li>
+              <li>
+                Any travel or dietary restrictions:
+                <span> </span>
+                {driveRestriction}
+              </li>
+              <li>
+                Where will be your starting point:
+                <span> </span>
+                {startPoint}
+              </li>
+              <li>
+                Would you like to add extra beds or additional room if
+                travelling as 3/5/7:
+                <span> </span>
+                {additionalInfo}
+              </li>
+              <li>
+                Do you need any help in renting a car:
+                <span> </span>
+                {carRent}
+              </li>
+              <li>
+                What kind of stops do you prefer on your drive:
+                <span> </span>
+                {stops}
+              </li>
+              <li>
+                Enter your Name:
+                <span> </span>
+                {name}
+              </li>
+              <li>
+                Your Budget:
+                <span> </span>
+                {budget}
+              </li>
+              <li>
+                Whatsapp Number:
+                <span> </span>
+                {number}
+              </li>
+            </ul>
+          </div>
+          <div className="info-tour-buttons">
+            <Link to="/my-requests">
+              <button className="info-button">Go to My Dashboard</button>
+            </Link>
+            <Link to="/">
+              <button className="info-buttons">Go to Home</button>
+            </Link>
+          </div>
+        </Modal>
+      </div>
+      <TourHeader
+        image={Road}
+        title={"Road Trip"}
+        description={desc}
+        className={"Planned-form-container"}
+      />
+      <div className="Planned-form-container">
+        <div className={"planned_tour-form"}>
+          <h1>Road Trip</h1>
+          <div className="planned_form">{renderForm(step)}</div>
+          <div className="navigation_btn">
+            <>
+              <div className="previous-button" onClick={() => prevStep()}>
+                Previous
+              </div>
+              {step == 8 ? (
+                <div className="submit-button" onClick={() => nextStep()}>
+                  Submit
+                </div>
+              ) : (
+                <div className="next-button" onClick={() => nextStep()}>
+                  Next
+                </div>
+              )}
+            </>
+          </div>
         </div>
       </div>
     </div>

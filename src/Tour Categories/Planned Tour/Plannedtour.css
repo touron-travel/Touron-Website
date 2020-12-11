@@ -32,14 +32,18 @@
 }
 .planned_tour-details {
   position: absolute;
-  top: 10%;
+  padding: 30px;
+  top: 8%;
   left: 58%;
   background-color: #fff;
   box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
   width: 40%;
   margin: 0px 40px 0px 0px;
-  height: 700px;
+  height: auto;
+  border-radius: 10px;
+  /* border: 4px solid rgb(9, 47, 175); */
 }
+
 .planned_tour-details h1 {
   padding-top: 20px;
   font-family: "Times New Roman", Times, serif;
@@ -103,6 +107,52 @@
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   box-shadow: inset 0 2px 15px 0px rgba(4, 32, 66, 0.2);
 }
+
+.tour-info h1 {
+  font-size: 35px;
+  text-align: center;
+  font-family: "Dancing Script";
+  padding: 10px 0px;
+}
+
+.tour-info {
+  padding: 0px;
+}
+
+.tour-info ul li {
+  text-decoration: none;
+  list-style: none;
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+  margin: 10px 0px;
+}
+.info-tour-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.info-button {
+  outline: none;
+  border: none;
+  padding: 10px;
+  /* margin: 0 20px; */
+  background-color: turquoise;
+  border-radius: 5px;
+  /* font-family: monospace; */
+  font-size: 17px;
+  margin-right: 10px;
+}
+.info-buttons {
+  outline: none;
+  border: none;
+  padding: 10px;
+  /* margin: 0 20px; */
+  background-color: #e74292;
+  border-radius: 5px;
+  /* font-family: monospace; */
+  font-size: 17px;
+}
 @media (max-height: 578px) {
   .Planned-form-container {
     display: flex;
@@ -140,9 +190,9 @@
     background-color: #fff;
     box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
     width: 40%;
-    height: 540px;
+    height: auto;
     margin: 0px 40px 0px 0px;
-    border-radius: 20px;
+    border-radius: 50px;
   }
   .planned_tour-details h1 {
     padding-top: 20px;

@@ -5,8 +5,8 @@
 }
 .traveltype-details-category {
   position: "absolute";
-  top: 5;
-  right: 5;
+  top: 5%;
+  right: 1%;
 }
 .traveltype_container h5 {
   display: flex;
