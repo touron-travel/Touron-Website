@@ -10,14 +10,6 @@ const Touristnumber = ({
   setAdult,
   setChildren,
 }) => {
-  const inc = () => {
-    setAdult(adult + 1);
-    setChildren(children + 1);
-  };
-  const dec = () => {
-    setAdult(adult - 1);
-    setChildren(children - 1);
-  };
   return (
     <div className="tourist-container">
       <div className="adult">
