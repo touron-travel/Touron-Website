@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./UserDetails.css";
-import UserDropdown from "./UserDropdown";
+import { UserMenuItems } from "./UserMenuItems";
+import { Link } from "react-router-dom";
+
 import {
   FormGroup,
   Form,
@@ -11,27 +13,13 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import Profilenav from "./Profilenav";
 
 const UserDetails = () => {
-  const [userDropdown, setUserDropdown] = useState(false);
-
   return (
     <>
       <div className="account">
-        <div className="account-head">
-          <div className="account-title">
-            <h4>User profile</h4>
-          </div>
-          <div className="account-profile">
-            <img
-              src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
-              alt=""
-            />
-            <span onClick={() => setUserDropdown(!userDropdown)}>
-              Jessica Jones {userDropdown && <UserDropdown />}
-            </span>
-          </div>
-        </div>
+        <Profilenav title={"User Details"} />
         <div className="account-content">
           <h1>Hello Jesse</h1>
           <p>

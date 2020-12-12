@@ -3,7 +3,6 @@ export const setAdminRoute = (pathname) => {
     "/admindashboard",
     "/adminpage",
     "/profilepage",
-
     "/user-details",
     "/my-requests",
     "/saved-tours",
@@ -11,7 +10,7 @@ export const setAdminRoute = (pathname) => {
     "/myvisa-requests",
     "/faq",
     "/support",
-    
+
     // "/admin",
     // "/management",
     // "/packages",

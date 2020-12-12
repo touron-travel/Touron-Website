@@ -6,7 +6,6 @@ import {
   Link,
   useLocation,
 } from "react-router-dom";
-import { IconContext } from "react-icons";
 import { ProfileSidebarData } from "./ProfileSidebarData";
 import "./Profilepage.css";
 import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
@@ -69,12 +68,10 @@ const Profilepage = () => {
     setAdminRoutes(value);
   }, []);
 
-  const [clicked, setClicked] = useState("");
+  const [clicked, setClicked] = useState("/user-details");
   return (
     <Router>
-      <div
-        style={{ display: "flex", maxHeight: "100vh", paddingBottom: "30px" }}
-      >
+      <div style={{ display: "flex", maxHeight: "100vh" }}>
         <div className={"sidebar-menu"}>
           <div className="sidebar-image">
             <img src={Logo} alt="" />
@@ -84,9 +81,9 @@ const Profilepage = () => {
               return (
                 <li
                   key={index}
-                  onClick={() => setClicked(item.title)}
+                  onClick={() => setClicked(item.path)}
                   className={
-                    item.title == clicked
+                    item.path == clicked
                       ? `${item.className} clicked `
                       : `${item.className}`
                   }
@@ -100,8 +97,6 @@ const Profilepage = () => {
             })}
           </ul>
         </div>
-
-
 
         <div style={{ width: "100%", overflow: "scroll" }}>
           <Switch>

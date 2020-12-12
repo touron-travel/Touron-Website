@@ -5,7 +5,7 @@
   background-size: cover;
   background-position: center;
   height: 100vh;
-  width: 1030px;
+  width: auto;
   position: relative;
 }
 .account::after {
@@ -14,13 +14,14 @@
   top: 0;
   left: 0;
   height: 100vh;
-  width: 1030px;
+  width: 100%;
   background: linear-gradient(87deg, #172b4d, #1a174d) !important;
   opacity: 0.9;
 }
 .account-head {
   display: flex;
   justify-content: space-between;
+  width: 100%;
   position: relative;
   z-index: 1;
   padding: 30px 39px;
@@ -32,17 +33,36 @@
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
 }
+.account-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* position: relative; */
+}
+.account-profile:hover,
+.account-profile h6:hover {
+  cursor: pointer;
+  color: grey;
+}
+.account-profile h6 {
+  color: white;
+  font-size: 16px;
+  margin-left: 10px;
+}
 .account-profile img {
   width: 36px;
   height: 36px;
   border-radius: 50%;
 }
+
 .account-profile span {
-  margin-left: 8px;
   font-size: 14px;
   font-family: "Open Sans", sans-serif;
   color: #ffffff;
   font-weight: bold;
+  position: absolute;
+  z-index: 10;
+  right: 100px;
 }
 .account-profile span:hover {
   color: gray;
@@ -97,4 +117,31 @@
   border-color: #5e72e4;
   border-radius: 0.375rem;
   padding: 0.25rem 0.5rem;
+}
+
+.user-dropdowns-menu {
+  background-color: #fff;
+  top: 90px;
+  list-style: none;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+}
+.user-dropdowns-menu li {
+  cursor: pointer;
+  text-align: center;
+  padding: 5px 16px;
+  display: flex;
+  color: black;
+  text-decoration: none;
+}
+.user-dropdowns-menu li:hover {
+  background-color: #ff7f00;
+}
+
+.user-dropdown-link:hover {
+  text-decoration: none;
+  color: #000;
 }

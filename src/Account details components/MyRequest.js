@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./MyRequest.css";
-import { GiConqueror } from "react-icons/gi";
-import { GrTrain } from "react-icons/gr";
+import { GiConqueror, GiRocketFlight } from "react-icons/gi";
+import { FaTrain } from "react-icons/fa";
 import { RiFlightTakeoffFill } from "react-icons/ri";
 
 import {
@@ -12,6 +12,7 @@ import {
   PaginationLink,
   PaginationItem,
 } from "reactstrap";
+import Profilenav from "./Profilenav";
 const MyRequest = () => {
   const [domesticModal, setDomesticModal] = useState(false);
   const [internationalModal, setInternationalModal] = useState(false);
@@ -91,42 +92,45 @@ const MyRequest = () => {
   return (
     <div className="request-container">
       <div className="requests-info">
-        <div className="card-body">
-          <div className="card-title">
-            <h5>Submitted Request</h5>
-            <h1>04</h1>
+        <Profilenav title={"My Request"} />
+        <div className="requests-body-container ">
+          <div className="card-body">
+            <div className="card-title">
+              <h5>Submitted Request</h5>
+              <h1>04</h1>
+            </div>
+            <div className="card-logo logo1">
+              <GiConqueror size={28} color="white" />
+            </div>
           </div>
-          <div className="card-logo">
-            <GiConqueror size={30} />
+          <div className="card-body">
+            <div className="card-title">
+              <h5>Submitted Request</h5>
+              <h1>04</h1>
+            </div>
+            <div className="card-logo logo2">
+              <GiRocketFlight size={28} color="white" />
+            </div>
           </div>
-        </div>
-        <div className="card-body">
-          <div className="card-title">
-            <h5>Submitted Request</h5>
-            <h1>04</h1>
-          </div>
-          <div className="card-logo">
-            <GiConqueror size={30} />
-          </div>
-        </div>
 
-        <div className="card-body" onClick={openDomesticModal}>
-          <div className="card-title">
-            <h5>Places to visit in India</h5>
-            <h1>26</h1>
+          <div className="card-body" onClick={openDomesticModal}>
+            <div className="card-title">
+              <h5>Places to visit in India</h5>
+              <h1>26</h1>
+            </div>
+            <div className="card-logo logo3">
+              <FaTrain size={28} color="white" />
+            </div>
           </div>
-          <div className="card-logo">
-            <GrTrain size={25} />
-          </div>
-        </div>
 
-        <div className="card-body" onClick={openInternationalModal}>
-          <div className="card-title">
-            <h5>Places to visit in Abroad</h5>
-            <h1>30</h1>
-          </div>
-          <div className="card-logo">
-            <RiFlightTakeoffFill size={25} />
+          <div className="card-body" onClick={openInternationalModal}>
+            <div className="card-title">
+              <h5>Places to visit in Abroad</h5>
+              <h1>30</h1>
+            </div>
+            <div className="card-logo logo4">
+              <RiFlightTakeoffFill size={28} color="white" />
+            </div>
           </div>
         </div>
       </div>
