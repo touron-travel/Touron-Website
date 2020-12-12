@@ -10,6 +10,7 @@ import {
   InputGroup,
   Row,
   Col,
+  Label,
 } from "reactstrap";
 
 const UserDetails = () => {
@@ -47,75 +48,134 @@ const UserDetails = () => {
             <button className="btn btn-primary btn-sm">Settings</button>
           </div>
           <div className="account-column-info">
-            <Form>
+            <form>
               <h6>User Information</h6>
-
-              <Row>
-                <Col md="6">
-                  <FormGroup>
-                    <Input
-                      id="exampleFormControlInput1"
-                      placeholder="name@example.com"
-                      type="email"
-                    />
-                  </FormGroup>
-                </Col>
-                <Col md="6">
-                  <FormGroup>
-                    <Input disabled placeholder="Regular" type="text" />
-                  </FormGroup>
-                </Col>
-              </Row>
-              <Row>
-                <Col md="6">
-                  <FormGroup>
-                    <InputGroup className="mb-4">
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <i className="ni ni-zoom-split-in" />
-                        </InputGroupText>
-                      </InputGroupAddon>
-                      <Input placeholder="Search" type="text" />
-                    </InputGroup>
-                  </FormGroup>
-                </Col>
-                <Col md="6">
-                  <FormGroup>
-                    <InputGroup className="mb-4">
-                      <Input placeholder="Birthday" type="text" />
-                      <InputGroupAddon addonType="append">
-                        <InputGroupText>
-                          <i className="ni ni-zoom-split-in" />
-                        </InputGroupText>
-                      </InputGroupAddon>
-                    </InputGroup>
-                  </FormGroup>
-                </Col>
-              </Row>
-              <Row>
-                <Col md="6">
-                  <FormGroup className="has-success">
-                    <Input
-                      className="is-valid"
-                      placeholder="Success"
+              <div className="row">
+                <div className="col-mg-6">
+                  <div className="form-group">
+                    <label className="user-label">Name</label>
+                    <input
                       type="text"
+                      className="user-input-alter user-input"
                     />
-                  </FormGroup>
-                </Col>
-                <Col md="6">
-                  <FormGroup className="has-danger">
-                    <Input
-                      className="is-invalid"
-                      placeholder="Error Input"
-                      type="email"
+                  </div>
+                </div>
+                <div className="col-mg-6">
+                  <div className="form-group">
+                    <label className="user-label">Email address</label>
+                    <input
+                      type="text"
+                      className="user-input-alter user-input"
                     />
-                  </FormGroup>
-                </Col>
-              </Row>
-            </Form>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-mg-4">
+                  <div className="form-group">
+                    <label className="user-label">Age</label>
+                    <input
+                      type="text"
+                      className="user-input-alter user-input"
+                    />
+                  </div>
+                </div>
+                <div className="col-mg-4">
+                  <div className="form-group">
+                    <label className="user-label">Gender</label>
+                    <input
+                      type="text"
+                      className="user-input-alter user-input"
+                    />
+                  </div>
+                </div>
+                <div className="col-mg-4">
+                  <div className="form-group">
+                    <label className="user-label">Profession</label>
+                    <input
+                      type="text"
+                      className="user-input-alter user-input"
+                    />
+                  </div>
+                </div>
+              </div>
+              <hr className="my-4" />
+              <h6>Contact Information</h6>
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="form-group">
+                    <label className="user-label">Address</label>
+                    <input
+                      type="text"
+                      className="user-input-alter user-input"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label className="user-label">Mobile no</label>
+                    <input
+                      type="number"
+                      className="user-input-alter user-input"
+                    />
+                  </div>
+                </div>
+              </div>
+              <hr className="my-4" />
+              <h6>About me</h6>
+              <div className="row">
+                <div className="col-md-12">
+                  <div className="form-group">
+                    <label className="user-label">About me</label>
+                    <textarea
+                      rows="4"
+                      className="user-input-alter user-input"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="form-group">
+                    <label className="user-label">Mobile no</label>
+                    <input
+                      type="number"
+                      className="user-input-alter user-input"
+                    />
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-        <div className="account-profile-column2">pag2</div>
+        <div className="account-profile-column2">
+          <div className="profile-img">
+            <img
+              src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
+              alt=""
+            />
+            <div className="profile-center">
+              <div className="profile-name">
+                <h3>
+                  Jessica Jones
+                  <span className="profile-age">, 27</span>
+                </h3>
+              </div>
+              <div className="user-travel-type">Travel type</div>
+              <div className="user-profession">Profession</div>
+              <hr className="my-4" />
+              <div className="user-about">
+                <h3>About</h3>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Quasi debitis quo architecto ea impedit veniam?
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
