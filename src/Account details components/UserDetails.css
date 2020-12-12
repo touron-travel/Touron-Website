@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+.account {
+  background-image: url(https://images.unsplash.com/photo-1444525873963-75d329ef9e1b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8&auto=format&fit=crop&w=600&q=60);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 1030px;
+  position: relative;
+}
+.account::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 1030px;
+  background: linear-gradient(87deg, #172b4d, #1a174d) !important;
+  opacity: 0.9;
+}
+.account-head {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  padding: 30px 39px;
+}
+.account-title h4 {
+  text-transform: uppercase;
+  font-size: 15px;
+  color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+.account-profile img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+.account-profile span {
+  margin-left: 8px;
+  font-size: 14px;
+  font-family: "Open Sans", sans-serif;
+  color: #ffffff;
+  font-weight: bold;
+}
+.account-profile span:hover {
+  color: gray;
+  cursor: pointer;
+}
+.account-content {
+  position: relative;
+  z-index: 1;
+  padding: 130px 50px;
+}
+.account-content h1 {
+  color: #ffffff;
+  font-size: 44px;
+  font-family: "Open Sans", sans-serif;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.account-content p {
+  font-size: 17px;
+  color: #fff;
+  width: 55%;
+  font-weight: 300;
+  line-height: 1.7;
+}
+.account-profile-page {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 39px;
+}
+.account-profile-column1 {
+  width: 600px;
+  height: 700px;
+  box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15) !important;
+  background-color: #f7fafc !important;
+}
+.account-column1-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  background-color: #fff;
+}
+.account-column1-head h3 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #32325d;
+  font-size: 17px;
+}
+.account-column1-head button {
+  color: #fff;
+  background-color: #5e72e4;
+  border-color: #5e72e4;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
+}

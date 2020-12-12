@@ -90,7 +90,7 @@ const Profilepage = () => {
           </IconContext.Provider>
         </div>
 
-        <div style={{ padding: "10px" }}>
+        <div>
           <Switch>
             {routes.map((route, index) => {
               return (
