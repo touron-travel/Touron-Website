@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { IconContext } from "react-icons";
 import { ProfileSidebarData } from "./ProfileSidebarData";
-import "../Admin components/Sidebar.css";
+import "./Profilepage.css";
 import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
 import { ApiContext } from "../Context/ApiContext";
 import UserDetails from "./UserDetails";
@@ -18,6 +18,7 @@ import MyPlans from "./MyPlans";
 import MyVisaRequests from "./MyVisaRequests";
 import Support from "./Support";
 import Faq from "./Faq";
+import Logo from "../assests/logo2.png";
 
 const routes = [
   {
@@ -68,29 +69,39 @@ const Profilepage = () => {
     setAdminRoutes(value);
   }, []);
 
+  const [clicked, setClicked] = useState("");
   return (
     <Router>
-      <div style={{ display: "flex" }}>
-        <div>
-          <IconContext.Provider value={{ color: "gray" }}>
-            <div className={"sidebar-menu"}>
-              <ul className="sidebar-menu-items">
-                {ProfileSidebarData.map((item, index) => {
-                  return (
-                    <li key={index} className={item.className}>
-                      <Link to={item.path}>
-                        {item.icon}
-                        <span className="sidebar-title">{item.title}</span>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </IconContext.Provider>
+      <div
+        style={{ display: "flex", maxHeight: "100vh", paddingBottom: "30px" }}
+      >
+        <div className={"sidebar-menu"}>
+          <div className="sidebar-image">
+            <img src={Logo} alt="" />
+          </div>
+          <ul className="sidebar-menu-items">
+            {ProfileSidebarData.map((item, index) => {
+              return (
+                <li
+                  key={index}
+                  onClick={() => setClicked(item.title)}
+                  className={
+                    item.title == clicked
+                      ? `${item.className} clicked `
+                      : `${item.className}`
+                  }
+                >
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span className="sidebar-title">{item.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
         </div>
 
-        <div style={{ padding: "10px" }}>
+        <div style={{ width: "100%", overflow: "scroll" }}>
           <Switch>
             {routes.map((route, index) => {
               return (

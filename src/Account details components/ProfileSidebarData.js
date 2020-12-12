@@ -10,44 +10,44 @@ export const ProfileSidebarData = [
   {
     title: "User Profile",
     path: "/user-details",
-    icon: <AiIcons.AiFillDashboard />,
+    icon: <AiIcons.AiFillDashboard color="pink" size={15} />,
     className: "sidebar-text",
   },
   {
     title: "My Request",
     path: "/my-requests",
-    icon: <SiIcons.SiGoogletagmanager />,
+    icon: <SiIcons.SiGoogletagmanager color="yellow" size={15} />,
     className: "sidebar-text",
   },
   {
     title: "Saved Tours",
     path: "/saved-tours",
-    icon: <VscIcons.VscPackage />,
+    icon: <VscIcons.VscPackage color="grey" size={15} />,
     className: "sidebar-text",
   },
   {
     title: "My Visa Requests",
     path: "/myvisa-requests",
-    icon: <FaIcons.FaBlogger />,
+    icon: <FaIcons.FaBlogger color="blue" size={15} />,
     className: "sidebar-text",
   },
 
   {
     title: "Self Planned Tours",
     path: "/my-plans",
-    icon: <AiIcons.AiOutlineTag />,
+    icon: <AiIcons.AiOutlineTag color="red" size={15} />,
     className: "sidebar-text",
   },
   {
     title: "Faq",
     path: "/faq",
-    icon: <AiIcons.AiOutlineTag />,
+    icon: <AiIcons.AiOutlineTag color="green" size={15} />,
     className: "sidebar-text",
   },
   {
     title: "Support",
     path: "/support",
-    icon: <AiIcons.AiOutlineTag />,
+    icon: <AiIcons.AiOutlineTag color="black" size={15} />,
     className: "sidebar-text",
   },
 ];

@@ -2,7 +2,8 @@ export const setAdminRoute = (pathname) => {
   let adminRoutes = [
     "/admindashboard",
     "/adminpage",
-    // "/profilepage",
+    "/profilepage",
+    "/my-requests",
     // "/admin",
     // "/management",
     // "/packages",
