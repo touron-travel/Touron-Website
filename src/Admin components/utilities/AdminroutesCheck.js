@@ -10,6 +10,7 @@ export const setAdminRoute = (pathname) => {
     "/myvisa-requests",
     "/faq",
     "/support",
+
     // "/admin",
     // "/management",
     // "/packages",

@@ -17,15 +17,14 @@ const UserDropdown = () => {
       >
         {UserMenuItems.map((item, index) => {
           return (
-            <li key={index}>
-              <Link
-                to={item.path}
-                className={item.className}
-                onClick={() => setClick(false)}
-              >
-                {item.title}
-              </Link>
-            </li>
+            <Link
+              to={item.path}
+              target="_blank"
+              className={item.className}
+              onClick={() => setClick(false)}
+            >
+              <li key={index}>{item.title}</li>
+            </Link>
           );
         })}
       </ul>
