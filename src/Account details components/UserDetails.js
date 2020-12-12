@@ -33,7 +33,6 @@ const UserDetails = () => {
         <div className="account-profile-column1">
           <div className="account-column1-head">
             <h3>My account</h3>
-            <button className="btn btn-primary btn-sm">Settings</button>
           </div>
           <div className="account-column-info">
             <form>
@@ -57,9 +56,7 @@ const UserDetails = () => {
                     />
                   </div>
                 </div>
-              </div>
-              <div className="row">
-                <div className="col-mg-4">
+                <div className="col-mg-6">
                   <div className="form-group">
                     <label className="user-label">Age</label>
                     <input
@@ -68,7 +65,7 @@ const UserDetails = () => {
                     />
                   </div>
                 </div>
-                <div className="col-mg-4">
+                <div className="col-mg-6">
                   <div className="form-group">
                     <label className="user-label">Gender</label>
                     <input
@@ -77,9 +74,18 @@ const UserDetails = () => {
                     />
                   </div>
                 </div>
-                <div className="col-mg-4">
+                <div className="col-mg-6">
                   <div className="form-group">
                     <label className="user-label">Profession</label>
+                    <input
+                      type="text"
+                      className="user-input-alter user-input"
+                    />
+                  </div>
+                </div>
+                <div className="col-mg-6">
+                  <div className="form-group">
+                    <label className="user-label">Traveler Type</label>
                     <input
                       type="text"
                       className="user-input-alter user-input"
@@ -113,27 +119,17 @@ const UserDetails = () => {
               </div>
               <hr className="my-4" />
               <h6>About me</h6>
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="form-group">
-                    <label className="user-label">About me</label>
-                    <textarea
-                      rows="4"
-                      className="user-input-alter user-input"
-                    ></textarea>
-                  </div>
+              <div className="col-md-12">
+                <div className="form-group">
+                  <label className="user-label">About me</label>
+                  <textarea
+                    rows="4"
+                    className="user-input-alter user-input"
+                  ></textarea>
                 </div>
               </div>
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="form-group">
-                    <label className="user-label">Mobile no</label>
-                    <input
-                      type="number"
-                      className="user-input-alter user-input"
-                    />
-                  </div>
-                </div>
+              <div className="user-button">
+                <button className="btn btn-primary btn-sm">Submit</button>
               </div>
             </form>
           </div>
