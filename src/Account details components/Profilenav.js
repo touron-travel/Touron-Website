@@ -31,6 +31,7 @@ const Profilenav = ({ title }) => {
             {UserMenuItems.map((item, index) => {
               return (
                 <Link
+                  key={index}
                   to={item.path}
                   target="_blank"
                   className={item.className}
