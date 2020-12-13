@@ -78,7 +78,7 @@ const MyRequest = () => {
     },
   ];
 
-  let pageSize = 4;
+  let pageSize = 7;
   let pagesCount = Math.ceil(colors.length / pageSize);
 
   const handleClick = (e, index) => {
