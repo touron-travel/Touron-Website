@@ -1,0 +1,117 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.faq-container {
+  height: 100vh;
+  overflow: scroll;
+  background: #136a8a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #267871,
+    #136a8a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #267871,
+    #136a8a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.faq-title {
+  padding: 20px 30px;
+}
+
+.faq-title h1 {
+  color: azure;
+}
+.faq-types {
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.general,
+.booking,
+.support {
+  /* border: 0.5px solid #00000080; */
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.general:hover,
+.booking:hover,
+.support:hover {
+  cursor: pointer;
+}
+
+.general h6,
+.booking h6,
+.support h6 {
+  color: white;
+  padding: 10px 20px;
+  font-size: 23px;
+  font-family: monospace;
+}
+.general {
+  border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+.booking {
+  /* background-color: thistle; */
+}
+.support {
+  /* background-color: violet; */
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.questions-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.questions {
+  background-color: white;
+  width: 90%;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  /* box-shadow: 5px 0px 0px 5px #eaf0f1; */
+  /* box-shadow: 2px 2px 5px 2px #dae0e2; */
+}
+
+.questions h1 {
+  font-size: 20px;
+  color: #333945;
+  padding: 20px;
+  font-family: "Kaushan Script";
+}
+
+.questions p {
+  font-size: 18px;
+  margin-top: 5px;
+  color: #000;
+  padding: 0px 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: #00000080; */
+  border-radius: 10px;
+  align-items: center;
+}
+
+.que-icon {
+  margin-right: 20px;
+}
+
+.que-icon:hover {
+  cursor: pointer;
+}

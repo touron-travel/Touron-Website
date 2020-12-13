@@ -64,11 +64,12 @@ const Profilepage = () => {
 
   useEffect(() => {
     let value = setAdminRoute(location.pathname);
+    setClicked(location.pathname);
     console.log("value :>> ", value);
     setAdminRoutes(value);
   }, []);
 
-  const [clicked, setClicked] = useState("/user-details");
+  const [clicked, setClicked] = useState("");
   return (
     <Router>
       <div style={{ display: "flex", maxHeight: "100vh" }}>

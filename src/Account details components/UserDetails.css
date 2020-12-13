@@ -4,7 +4,7 @@
   background-image: url(https://images.unsplash.com/photo-1444525873963-75d329ef9e1b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8&auto=format&fit=crop&w=600&q=60);
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: 65vh;
   width: auto;
   position: relative;
 }
@@ -13,7 +13,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 65vh;
   width: 100%;
   background: linear-gradient(87deg, #172b4d, #1a174d) !important;
   opacity: 0.9;
@@ -94,7 +94,7 @@
 }
 .account-profile-column1 {
   position: relative;
-  top: -70px;
+  top: -100px;
   width: 611px;
   height: 960px;
   box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15) !important;
@@ -167,7 +167,7 @@
 }
 .account-profile-column2 {
   position: relative;
-  top: -70px;
+  top: -100px;
   width: 321px;
   height: 500px;
   background-color: #fff;
