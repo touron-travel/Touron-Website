@@ -47,6 +47,7 @@ const Faq = () => {
           onClick={() => setSelectedType("support")}
           style={{
             borderBottom: selectedType == "support" ? "5px solid #40E0D0" : "",
+
           }}
         >
           <h6>Support</h6>

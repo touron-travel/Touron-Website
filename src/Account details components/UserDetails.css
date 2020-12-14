@@ -96,7 +96,9 @@
   position: relative;
   top: -100px;
   width: 611px;
-  height: 920px;
+
+  height: 960px;
+
   /* box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15) !important; */
   box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
   background-color: #f7fafc !important;
