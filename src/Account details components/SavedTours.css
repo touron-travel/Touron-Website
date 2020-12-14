@@ -12,6 +12,8 @@
     #333399,
     #ff00cc
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  max-height: 100vh;
+  overflow: scroll;
 }
 .tours-container {
   display: flex;

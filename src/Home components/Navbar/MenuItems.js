@@ -1,33 +1,33 @@
 export const MenuItems = [
   {
     title: "User Profile",
-    path: "/user-details",
+    path: "/profile",
     className: "dropdown-link",
   },
   {
     title: "My Request",
-    path: "/my-requests",
+    path: "/profile/my-requests",
     className: "dropdown-link",
   },
   {
     title: "Saved Tours",
-    path: "/saved-tours",
+    path: "/profile/saved-tours",
     className: "dropdown-link",
   },
   {
     title: "Visa Request",
-    path: "/myvisa-requests",
+    path: "/profile/myvisa-requests",
     className: "dropdown-link",
   },
 
   {
     title: "Faq",
-    path: "/faq",
+    path: "/profile/faq",
     className: "dropdown-link",
   },
   {
     title: "Support",
-    path: "/support",
+    path: "/profile/support",
     className: "dropdown-link",
   },
 ];

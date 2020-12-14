@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import { Popover, PopoverBody } from "reactstrap";
-import "./UserDetails.css";
+import "./UserDropdown.css";
 
 import { UserMenuItems } from "./UserMenuItems";
-import { Link } from "react-router-dom";
-const Profilenav = ({ title }) => {
+import { Link, Redirect } from "react-router-dom";
+import { signout } from "../Login components/auth";
+const Profilenav = (props) => {
+  console.log("history :>> ", props);
   const [userDropdown, setUserDropdown] = useState(false);
   const toggle = () => setUserDropdown(!userDropdown);
 
   return (
     <div className="account-head">
       <div className="account-title">
-        <h4>{title}</h4>
+        <h4>{props.title}</h4>
       </div>
       <div className="account-profile" id="Popover1">
         <img
@@ -27,7 +29,7 @@ const Profilenav = ({ title }) => {
         toggle={toggle}
       >
         <PopoverBody>
-          <ul className={"user-dropdowns-menu"}>
+          <ul className="user-dropdowns-menu">
             {UserMenuItems.map((item, index) => {
               return (
                 <Link
@@ -35,7 +37,14 @@ const Profilenav = ({ title }) => {
                   to={item.path}
                   // target="_blank"
                   className={item.className}
-                  onClick={() => setUserDropdown(false)}
+                  onClick={() => {
+                    if (item.title == "Logout") {
+                      signout(() => {
+                        return <Redirect to="/" />;
+                      });
+                    }
+                    setUserDropdown(false);
+                  }}
                 >
                   <li key={index}>{item.title}</li>
                 </Link>
