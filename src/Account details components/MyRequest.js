@@ -163,6 +163,34 @@ const MyRequest = () => {
           </tbody>
         </Table>
       </div>
+      <div>
+        <Pagination
+          className="pagination justify-content-end"
+          listClassName="justify-content-end"
+        >
+          <PaginationItem disabled={currentPage <= 0}>
+            <PaginationLink
+              onClick={(e) => handleClick(e, currentPage - 1)}
+              previous
+              href="#"
+            />
+          </PaginationItem>
+          {[...Array(pagesCount)].map((page, i) => (
+            <PaginationItem active={i === currentPage} key={i}>
+              <PaginationLink onClick={(e) => handleClick(e, i)} href="#">
+                {i + 1}
+              </PaginationLink>
+            </PaginationItem>
+          ))}
+          <PaginationItem disabled={currentPage >= pagesCount - 1}>
+            <PaginationLink
+              onClick={(e) => handleClick(e, currentPage + 1)}
+              next
+              href="#"
+            />
+          </PaginationItem>
+        </Pagination>
+      </div>
 
       <Modal
         className="modal-dialog-centered modal-danger"
@@ -252,31 +280,6 @@ const MyRequest = () => {
           </Button>
         </div>
       </Modal>
-      <div>
-        <Pagination size="lg" aria-label="Page navigation example">
-          <PaginationItem disabled={currentPage <= 0}>
-            <PaginationLink
-              onClick={(e) => handleClick(e, currentPage - 1)}
-              previous
-              href="#"
-            />
-          </PaginationItem>
-          {[...Array(pagesCount)].map((page, i) => (
-            <PaginationItem active={i === currentPage} key={i}>
-              <PaginationLink onClick={(e) => handleClick(e, i)} href="#">
-                {i + 1}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
-          <PaginationItem disabled={currentPage >= pagesCount - 1}>
-            <PaginationLink
-              onClick={(e) => handleClick(e, currentPage + 1)}
-              next
-              href="#"
-            />
-          </PaginationItem>
-        </Pagination>
-      </div>
     </div>
   );
 };

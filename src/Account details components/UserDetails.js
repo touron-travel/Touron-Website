@@ -122,11 +122,14 @@ const UserDetails = () => {
               <div className="col-md-12">
                 <div className="form-group">
                   <label className="user-label">About me</label>
+
                   <Input
                     type="textarea"
                     rows="4"
                     className="user-input-alter user-input"
                   />
+
+
                 </div>
               </div>
               <div className="user-button">

@@ -10,9 +10,6 @@ const Faq = () => {
   const [isOpen, setIsOpen] = useState();
 
   const toggle = (index) => {
-    // let event = e.target.dataset.event;
-    // setIsOpen(isOpen === Number(event) ? 0 : Number(event));
-    setIsOpen(index);
     if (isOpen === index) {
       setIsOpen();
     } else {
@@ -22,16 +19,15 @@ const Faq = () => {
   const FaqQuestions = FaqQuestion();
   return (
     <div className="faq-container">
-      <Profilenav title="Faq" />
-      <div className="faq-title">
+      <Profilenav title="Frequently Asked Question" />
+      {/* <div className="faq-title">
         <h1>Frequently Asked Question</h1>
-      </div>
+      </div> */}
       <div className="faq-types">
         <div
           className="general"
           style={{
             borderBottom: selectedType == "general" ? "5px solid #40E0D0" : "",
-            borderTop: selectedType == "general" ? "5px solid tomato" : "",
           }}
           onClick={() => setSelectedType("general")}
         >
@@ -42,7 +38,6 @@ const Faq = () => {
           onClick={() => setSelectedType("booking")}
           style={{
             borderBottom: selectedType == "booking" ? "5px solid tomato" : "",
-            borderTop: selectedType == "booking" ? "5px solid #40E0D0" : "",
           }}
         >
           <h6>Booking</h6>
@@ -52,7 +47,7 @@ const Faq = () => {
           onClick={() => setSelectedType("support")}
           style={{
             borderBottom: selectedType == "support" ? "5px solid #40E0D0" : "",
-            borderTop: selectedType == "support" ? "5px solid tomato" : "",
+
           }}
         >
           <h6>Support</h6>
