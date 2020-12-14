@@ -51,8 +51,8 @@ const Faq = () => {
           className="support"
           onClick={() => setSelectedType("support")}
           style={{
-            borderBottom: selectedType == "support" ? "5px solid tomato" : "",
-            borderTop: selectedType == "support" ? "5px solid #40E0D0" : "",
+            borderBottom: selectedType == "support" ? "5px solid #40E0D0" : "",
+            borderTop: selectedType == "support" ? "5px solid tomato" : "",
           }}
         >
           <h6>Support</h6>

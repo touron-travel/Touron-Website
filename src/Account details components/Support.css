@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+.support-section {
+  background-image: url(https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500);
+  background-size: cover;
+  background-position: center;
+  height: 75vh;
+  width: auto;
+  position: relative;
+}
+.support-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 75vh;
+  width: 100%;
+  background-color: black;
+  opacity: 0.48;
+}
+.support-section-form {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 20px;
+}
+.support-section-form2 {
+  width: 611px;
+  height: 730px;
+  box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
+  background-color: #f7fafc !important;
+  border-radius: 10px;
+}
+.support-section-from2-head {
+  padding: 1.25rem 1.5rem;
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.support-section-form2-info {
+  padding: 0 80px;
+}
+.support-section-form {
+  position: relative;
+  top: -100px;
+}
+.support-section-form1 {
+  width: 321px;
+  height: 500px;
+  background-color: #fff;
+  box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
+}
+.reach-section {
+  background-color: #f7fafc;
+  text-align: center;
+  padding: 1.25rem 1.5rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.reach-section-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 30px;
+}
+.reach-section-img img {
+  width: 200px;
+  height: 200px;
+}
+.reach-section h1 {
+  font-size: 28px;
+}
+.reach-section-contact {
+  text-align: center;
+  padding: 0 30px;
+}
+.reach-section-contact h2 {
+  font-size: 15px;
+  font-family: "Open Sans", sans-serif;
+  padding: 15px 0;
+}

@@ -64,9 +64,8 @@ const Profilepage = () => {
 
   useEffect(() => {
     let value = setAdminRoute(location.pathname);
-    setClicked(location.pathname);
-    console.log("value :>> ", value);
     setAdminRoutes(value);
+    setClicked(location.pathname);
   }, []);
 
   const [clicked, setClicked] = useState("");

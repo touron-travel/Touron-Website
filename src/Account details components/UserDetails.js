@@ -35,7 +35,7 @@ const UserDetails = () => {
             <h3>My account</h3>
           </div>
           <div className="account-column-info">
-            <form>
+            <Form>
               <h6>User Information</h6>
               <div className="row">
                 <div className="col-mg-6">
@@ -122,16 +122,17 @@ const UserDetails = () => {
               <div className="col-md-12">
                 <div className="form-group">
                   <label className="user-label">About me</label>
-                  <textarea
+                  <Input
+                    type="textarea"
                     rows="4"
                     className="user-input-alter user-input"
-                  ></textarea>
+                  />
                 </div>
               </div>
               <div className="user-button">
                 <button className="btn btn-primary btn-sm">Submit</button>
               </div>
-            </form>
+            </Form>
           </div>
         </div>
         <div className="account-profile-column2">
