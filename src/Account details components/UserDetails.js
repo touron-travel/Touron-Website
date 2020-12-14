@@ -17,6 +17,9 @@ import {
 import Profilenav from "./Profilenav";
 
 const UserDetails = () => {
+  console.log("window.innerWidth", window.innerWidth);
+  console.log("window.innerHeight", window.innerHeight);
+
   return (
     <>
       <div className="account">
@@ -128,8 +131,6 @@ const UserDetails = () => {
                     rows="4"
                     className="user-input-alter user-input"
                   />
-
-
                 </div>
               </div>
               <div className="user-button">
@@ -144,23 +145,23 @@ const UserDetails = () => {
               src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
               alt=""
             />
-            <div className="profile-center">
-              <div className="profile-name">
-                <h3>
-                  Jessica Jones
-                  <span className="profile-age">, 27</span>
-                </h3>
-              </div>
-              <div className="user-travel-type">Travel type</div>
-              <div className="user-profession">Profession</div>
-              <hr className="my-4" />
-              <div className="user-about">
-                <h3>About</h3>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Quasi debitis quo architecto ea impedit veniam?
-                </p>
-              </div>
+          </div>
+          <div className="profile-center">
+            <div className="profile-name">
+              <h3>
+                Jessica Jones
+                <span className="profile-age">, 27</span>
+              </h3>
+            </div>
+            <div className="user-travel-type">Travel type</div>
+            <div className="user-profession">Profession</div>
+            <hr className="my-4" />
+            <div className="user-about">
+              <h3>About</h3>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
+                debitis quo architecto ea impedit veniam?
+              </p>
             </div>
           </div>
         </div>
