@@ -30,12 +30,12 @@ export const ProfileSidebarData = [
     className: "sidebar-text",
   },
 
-  {
-    title: "Self Planned Tours",
-    path: "/my-plans",
-    icon: <AiIcons.AiOutlineTag color="red" size={20} />,
-    className: "sidebar-text",
-  },
+  // {
+  //   title: "Self Planned Tours",
+  //   path: "/my-plans",
+  //   icon: <AiIcons.AiOutlineTag color="red" size={20} />,
+  //   className: "sidebar-text",
+  // },
   {
     title: "Faq",
     path: "/faq",

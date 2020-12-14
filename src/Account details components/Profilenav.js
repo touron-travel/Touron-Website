@@ -33,7 +33,7 @@ const Profilenav = ({ title }) => {
                 <Link
                   key={index}
                   to={item.path}
-                  target="_blank"
+                  // target="_blank"
                   className={item.className}
                   onClick={() => setUserDropdown(false)}
                 >

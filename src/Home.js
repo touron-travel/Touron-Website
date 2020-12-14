@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Categories from "./Home components/Categories/Categories";
 import Form from "./Home components/Form components/Form";
 import PopularCountries from "./Home components/PopularCountries/PopularCountries";
@@ -7,13 +7,14 @@ import SliderImage from "./Home components/Slider/SliderImage";
 import TopDestination from "./Home components/Top Destination/Top_destination";
 import "./Home.css";
 import OurPartners from "./Home components/Our Partners/OurPartners";
+import tawkTo from "tawkto-react";
 
 export default function Home() {
-  // const tawkToPropertyId = "5fb4d33d1535bf152a5721bb";
+  const tawkToPropertyId = "5fb4d33d1535bf152a5721bb";
 
-  // useEffect(() => {
-  //   tawkTo(tawkToPropertyId);
-  // }, []);
+  useEffect(() => {
+    tawkTo(tawkToPropertyId);
+  }, []);
   return (
     <div className="home">
       <div className="home_top">
