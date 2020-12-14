@@ -6,6 +6,7 @@
 .faq-container {
   height: 100vh;
   overflow: scroll;
+  width: 100%;
   background: #136a8a;
   background: -webkit-linear-gradient(to right, #267871, #136a8a);
   background: linear-gradient(to right, #267871, #136a8a);
@@ -45,8 +46,6 @@
 }
 .general {
   border-bottom-left-radius: 15px;
-
-  
 }
 .support {
   border-bottom-right-radius: 15px;

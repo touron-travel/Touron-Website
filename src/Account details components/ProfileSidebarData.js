@@ -7,25 +7,26 @@ import * as BsIcons from "react-icons/bs";
 export const ProfileSidebarData = [
   {
     title: "User Profile",
-    path: "/user-details",
+    path: "/profile",
     icon: <RiIcons.RiAccountCircleFill color="#EA7773" size={20} />,
     className: "sidebar-text",
   },
   {
     title: "My Request",
-    path: "/my-requests",
+    path: "/profile/my-requests",
+
     icon: <BsIcons.BsFillChatSquareQuoteFill color="#E74292" size={20} />,
     className: "sidebar-text",
   },
   {
     title: "Saved Tours",
-    path: "/saved-tours",
+    path: "/profile/saved-tours",
     icon: <AiIcons.AiFillHeart color="#FF3031" size={20} />,
     className: "sidebar-text",
   },
   {
     title: "My Visa Requests",
-    path: "/myvisa-requests",
+    path: "/profile/myvisa-requests",
     icon: <RiIcons.RiVisaFill color="blue" size={20} />,
     className: "sidebar-text",
   },
@@ -38,13 +39,13 @@ export const ProfileSidebarData = [
   // },
   {
     title: "Faq",
-    path: "/faq",
+    path: "/profile/faq",
     icon: <FcIcons.FcFaq color="green" size={20} />,
     className: "sidebar-text",
   },
   {
     title: "Support",
-    path: "/support",
+    path: "/profile/support",
     icon: <FcIcons.FcOnlineSupport color="black" size={20} />,
     className: "sidebar-text",
   },

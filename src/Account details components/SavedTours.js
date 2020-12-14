@@ -1,58 +1,22 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./SavedTours.css";
 import Profilenav from "./Profilenav";
-import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  Button,
-} from "reactstrap";
+
+import Profilepage from "./Profilepage";
+import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
+import { useLocation } from "react-router-dom";
+
+import { ApiContext } from "../Context/ApiContext";
 
 const SavedTours = () => {
+  const location = useLocation();
+  const { setAdminRoutes } = useContext(ApiContext);
+
+  useEffect(() => {
+    let value = setAdminRoute(location.pathname);
+    setAdminRoutes(value);
+  }, []);
   const tours = [
-    {
-      tourCost: {
-        adult: 3000,
-        children: 2600,
-      },
-      pickUpPoint: ["No Pickup"],
-      tourCategory: ["Attraction", "Tour"],
-      idealType: [
-        "Family",
-        "Family and kids",
-        "Solo",
-        "Mature Couple",
-        "Young Couple",
-      ],
-      pickUpAvailableOn: ["Morning", "Afternoon"],
-      _id: "5f02c3f15d974f00174f4f9a",
-      cityName: "Bangkok",
-      tourName: "Grand Palace and Emerald Buddha tour",
-      aboutTour:
-        "Discover Bangkok’s history and culture as you explore the world-famous Grand Palace complex\nPrivate and E-guided packages available starting 15 Dec 2019!\nVisit the Wat Phra Kaew, one of the most important Buddhist temples that houses the sacred Emerald Buddha\nCheck out the Wat Saket Private Tuk Tuk Tour for a unique and unforgettable tuk tuk experience in Bangkok",
-      imageUrl:
-        "https://media.tacdn.com/media/attractions-splice-spp-674x446/07/20/2e/be.jpg",
-      ratings: "4.3",
-      reviews: "1,054",
-      inclusion:
-        "1.Admission to select attractions: Grand Palace and Emerald Buddha\n2.English-speaking guide\n3.Skip-the-line services with guidance towards Grand Palace entrance",
-      itinerary: "Opening Hours\nMonday-Sunday:\n08:30-15:30",
-      tourDuration: "7-8 hours",
-      tourType: "Full Day Tour",
-      additionalInformation:
-        "1.Wheelchairs can be borrowed at the cloakrooms near the Exhibition Road entrance\n2.Re-entry is not allowed\n3.The guide will only accompany you inside the Grand Palace",
-      tourPreferance: "On Your Own",
-      trending: "No",
-      referanceLink:
-        "https://www.klook.com/en-IN/activity/22759-grand-palace-emerald-buddha-ticket-bangkok/#krt=r22&krid=0795a2e2-d21c-4423-75dc-acb3c16e854d",
-      countryName: "Thailand",
-      pickUpTime: "NA",
-      dropTime: "NA",
-      __v: 0,
-    },
     {
       tourCost: {
         adult: 2500,
@@ -337,21 +301,24 @@ const SavedTours = () => {
     },
   ];
   return (
-    <div className="savedtour-container">
-      <Profilenav title={"Saved Tours"} />
-      <div className="tours-container">
-        {tours.map((t) => (
-          <div className="tour">
-            <img src={t.imageUrl} alt="tour image " />
-            <div className="tourdetails">
-              <h6 tag="h6" className="mb-2 text-muted">
-                {t.cityName}
-              </h6>
-              <h4 tag="h5">{t.tourName}</h4>
-              {/* <p>{t.aboutTour.slice(0, 100)}</p> */}
+    <div style={{ display: "flex" }}>
+      <Profilepage />
+      <div className="savedtour-container">
+        <Profilenav title={"Saved Tours"} />
+        <div className="tours-container">
+          {tours.map((t) => (
+            <div className="tour">
+              <img src={t.imageUrl} alt="tour image " />
+              <div className="tourdetails">
+                <h6 tag="h6" className="mb-2 text-muted">
+                  {t.cityName}
+                </h6>
+                <h4 tag="h5">{t.tourName}</h4>
+                {/* <p>{t.aboutTour.slice(0, 100)}</p> */}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

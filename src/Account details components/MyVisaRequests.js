@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./MyRequest.css";
 import { GiConqueror, GiRocketFlight } from "react-icons/gi";
 import * as RiIcons from "react-icons/ri";
+import { useLocation } from "react-router-dom";
 
 import {
   Button,
@@ -12,7 +13,17 @@ import {
   PaginationItem,
 } from "reactstrap";
 import Profilenav from "./Profilenav";
+import Profilepage from "./Profilepage";
+import { ApiContext } from "../Context/ApiContext";
+import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
 const MyVisaRequests = () => {
+  const location = useLocation();
+  const { setAdminRoutes } = useContext(ApiContext);
+
+  useEffect(() => {
+    let value = setAdminRoute(location.pathname);
+    setAdminRoutes(value);
+  }, []);
   // const [domesticModal, setDomesticModal] = useState(false);
   // const [internationalModal, setInternationalModal] = useState(false);
 
@@ -89,89 +100,95 @@ const MyVisaRequests = () => {
   const [currentPage, setCurrentpage] = useState(0);
 
   return (
-    <div className="request-container">
-      <div className="requests-info-visa">
-        <Profilenav title={"My Visa Request"} />
-        <div className="requests-body-container ">
-          <div className="card-body">
-            <div className="card-title">
-              <h5>Submitted Requestt</h5>
-              <h1>04</h1>
+    <div style={{ display: "flex" }}>
+      <Profilepage />
+      <div className="request-container">
+        <div className="requests-info-visa">
+          <Profilenav title={"My Visa Request"} />
+          <div className="requests-body-container ">
+            <div className="card-body">
+              <div className="card-title">
+                <h5>Submitted Requestt</h5>
+                <h1>04</h1>
+              </div>
+              <div className="card-logo logo1">
+                <RiIcons.RiVisaFill size={28} color="white" />
+              </div>
             </div>
-            <div className="card-logo logo1">
-              <RiIcons.RiVisaFill size={28} color="white" />
-            </div>
-          </div>
-          <div className="card-body">
-            <div className="card-title">
-              <h5>Completed Request</h5>
-              <h1>04</h1>
-            </div>
-            <div className="card-logo logo2">
-              <GiRocketFlight size={28} color="white" />
+            <div className="card-body">
+              <div className="card-title">
+                <h5>Completed Request</h5>
+                <h1>04</h1>
+              </div>
+              <div className="card-logo logo2">
+                <GiRocketFlight size={28} color="white" />
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="requests-table">
-        <Table hover bordered>
-          <thead>
-            <tr>
-              <th scope="col">No.</th>
-              <th scope="col">Name</th>
-              <th scope="col">Phonu Number</th>
-              <th scope="col">Destination</th>
-              <th scope="col">Employee Type</th>
-            </tr>
-          </thead>
-          <tbody className="bg-white">
-            {colors
-              .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
-              .map((c, i) => (
-                <tr key={i}>
-                  <td>{i + 1}</td>
-                  <td>Vicky</td>
-                  <td>6383756188</td>
-                  <td>Maldives</td>
-                  <td>Salaried</td>
-                </tr>
-              ))}
-          </tbody>
-        </Table>
-      </div>
+        <div className="requests-table">
+          <Table hover bordered>
+            <thead>
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phonu Number</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Employee Type</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white">
+              {colors
+                .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
+                .map((c, i) => (
+                  <tr key={i}>
+                    <td>{i + 1}</td>
+                    <td>Vicky</td>
+                    <td>6383756188</td>
+                    <td>Maldives</td>
+                    <td>Salaried</td>
+                  </tr>
+                ))}
+            </tbody>
+          </Table>
+        </div>
 
-      <div>
-        <Pagination
-          className="pagination justify-content-end"
-          listClassName="justify-content-end"
-        >
-          <PaginationItem disabled={currentPage <= 0}>
-            <PaginationLink
-              onClick={(e) => handleClick(e, currentPage - 1)}
-              previous
-              href="#"
-            >
-              <i className="fa fa-angle-left" />
-            </PaginationLink>
-          </PaginationItem>
-          {[...Array(pagesCount)].map((page, i) => (
-            <PaginationItem active={i === currentPage} key={i}>
-              <PaginationLink onClick={(e) => handleClick(e, i)} href="#pablo">
-                {i + 1}
+        <div>
+          <Pagination
+            className="pagination justify-content-end"
+            listClassName="justify-content-end"
+          >
+            <PaginationItem disabled={currentPage <= 0}>
+              <PaginationLink
+                onClick={(e) => handleClick(e, currentPage - 1)}
+                previous
+                href="#"
+              >
+                <i className="fa fa-angle-left" />
               </PaginationLink>
             </PaginationItem>
-          ))}
-          <PaginationItem disabled={currentPage >= pagesCount - 1}>
-            <PaginationLink
-              onClick={(e) => handleClick(e, currentPage + 1)}
-              next
-              href="#"
-            >
-              <i className="fa fa-angle-right" />
-            </PaginationLink>
-          </PaginationItem>
-        </Pagination>
+            {[...Array(pagesCount)].map((page, i) => (
+              <PaginationItem active={i === currentPage} key={i}>
+                <PaginationLink
+                  onClick={(e) => handleClick(e, i)}
+                  href="#pablo"
+                >
+                  {i + 1}
+                </PaginationLink>
+              </PaginationItem>
+            ))}
+            <PaginationItem disabled={currentPage >= pagesCount - 1}>
+              <PaginationLink
+                onClick={(e) => handleClick(e, currentPage + 1)}
+                next
+                href="#"
+              >
+                <i className="fa fa-angle-right" />
+              </PaginationLink>
+            </PaginationItem>
+          </Pagination>
+        </div>
       </div>
     </div>
   );

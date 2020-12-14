@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Login.css";
 import { Link, Redirect } from "react-router-dom";
-import { auth } from "../firebase";
+import { auth, firedb } from "../firebase";
 import { storeAuthToken } from "./auth";
 import { Ripple } from "react-spinners-css";
-
+import { ApiContext } from "../Context/ApiContext";
 export default function Login({ history }) {
-  console.log("history :>> ", history);
   const [password, setPassword] = useState("123456789");
   const [email, setEmail] = useState("dins@gmail.com");
   const [loaded, setLoaded] = useState(false);
-  const [step, setStep] = useState(0);
+  const { setUserInfo } = useContext(ApiContext);
 
   const signIn = (e, next) => {
     e.preventDefault();
@@ -24,6 +23,7 @@ export default function Login({ history }) {
         setPassword("");
         storeAuthToken(user);
         setLoaded(false);
+        getCurrentUserData(user.user.uid);
         return history.goBack();
       })
       .catch((err) => {
@@ -32,6 +32,14 @@ export default function Login({ history }) {
       });
   };
 
+  const getCurrentUserData = (uid) => {
+    firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
+      if (data !== null) {
+        console.log("data.val() :>> ", data.val());
+        setUserInfo(data.val());
+      }
+    });
+  };
   return (
     <>
       <div className="login_form">

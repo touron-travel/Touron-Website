@@ -23,17 +23,23 @@ import LuxuryTour from "./Tour Categories/Luxury Tour/LuxuryTour";
 import RoadtripTour from "./Tour Categories/Roadtrip Tour/RoadtripTour";
 import SurpriseTour from "./Tour Categories/Surprise Tour/SurpriseTour";
 import Visa from "./Visa Page/Visa";
-import Profilepage from "./Account details components/Profilepage";
-import PrivateRoute from "./Login components/Privateroutes";
-import AdminRoute from "./Login components/AdminRoute";
 import AdminLogin from "./Admin components/AdminLogin";
 import Adminpage from "./Admin components/Adminpage";
+import UserDetails from "./Account details components/UserDetails";
+import MyRequest from "./Account details components/MyRequest";
+import MyVisaRequests from "./Account details components/MyVisaRequests";
+import MyPlans from "./Account details components/MyPlans";
+import SavedTours from "./Account details components/SavedTours";
+import Faq from "./Account details components/Faq";
+import Support from "./Account details components/Support";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
   const [adminRoutes, setAdminRoutes] = useState(false);
+  const [userInfo, setUserInfo] = useState({});
+  console.log("userInfo :>> ", userInfo);
 
   const getTours = async () => {
     try {
@@ -74,7 +80,16 @@ export default function Routes() {
   console.log("adminRoutes :>> ", adminRoutes);
 
   return (
-    <ApiContext.Provider value={{ tours, countries, cities, setAdminRoutes }}>
+    <ApiContext.Provider
+      value={{
+        tours,
+        countries,
+        cities,
+        setAdminRoutes,
+        userInfo,
+        setUserInfo,
+      }}
+    >
       <Router>
         <ScrollToTop>
           {adminRoutes ? null : (
@@ -98,14 +113,13 @@ export default function Routes() {
             <Route path="/signup" component={Signup} />
             <Route path="/popular_tour" component={Popular_tour} />
             <Route path="/popular_countries" component={Popular_countries} />
-            <Route path="/profilepage" component={Profilepage} />
-            <Route path="/user-details" component={Profilepage} />
-            <Route path="/my-requests" component={Profilepage} />
-            <Route path="/myvisa-requests" component={Profilepage} />
-            <Route path="/my-plans" component={Profilepage} />
-            <Route path="/saved-tours" component={Profilepage} />
-            <Route path="/faq" component={Profilepage} />
-            <Route path="/support" component={Profilepage} />
+            <Route path="/profile" exact component={UserDetails} />
+            <Route path="/profile/my-requests" component={MyRequest} />
+            <Route path="/profile/myvisa-requests" component={MyVisaRequests} />
+            <Route path="/profile/my-plans" component={MyPlans} />
+            <Route path="/profile/saved-tours" component={SavedTours} />
+            <Route path="/profile/faq" component={Faq} />
+            <Route path="/profile/support" component={Support} />
             <Route
               path="/countrydetails/:countryname/:countryid"
               component={CountryInner}
