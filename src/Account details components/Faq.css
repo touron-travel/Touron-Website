@@ -6,17 +6,12 @@
 .faq-container {
   height: 100vh;
   overflow: scroll;
-  background: #136a8a; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #267871,
-    #136a8a
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #267871,
-    #136a8a
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #136a8a;
+  background: -webkit-linear-gradient(to right, #267871, #136a8a);
+  background: linear-gradient(to right, #267871, #136a8a);
+  /* background: #24c6dc;
+  background: -webkit-linear-gradient(to right, #514a9d, #24c6dc);
+  background: linear-gradient(to right, #514a9d, #24c6dc); */
 }
 
 .faq-title {
@@ -33,15 +28,7 @@
   align-items: center;
   margin-bottom: 20px;
 }
-.general,
-.booking,
-.support {
-  /* border: 0.5px solid #00000080; */
-  border-bottom-left-radius: 15px;
-  border-top-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top-right-radius: 15px;
-}
+
 .general:hover,
 .booking:hover,
 .support:hover {
@@ -54,21 +41,13 @@
   color: white;
   padding: 10px 20px;
   font-size: 23px;
-  font-family: monospace;
+  font-family: "Times New Roman", Times, serif;
 }
 .general {
   border-bottom-left-radius: 15px;
-  border-top-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  border-top-right-radius: 15px;
-}
-.booking {
-  /* background-color: thistle; */
 }
 .support {
-  /* background-color: violet; */
   border-bottom-right-radius: 15px;
-  border-top-right-radius: 15px;
 }
 
 .questions-container {
@@ -90,20 +69,21 @@
   color: #333945;
   padding: 20px;
   font-family: "Kaushan Script";
+  font-family: "Times New Roman", Times, serif;
 }
 
 .questions p {
   font-size: 18px;
   margin-top: 5px;
-  color: #000;
+  color: #0009;
   padding: 0px 20px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .faq-question {
   display: flex;
   justify-content: space-between;
-  /* background-color: #00000080; */
+  background-color: #00000010;
   border-radius: 10px;
   align-items: center;
 }
