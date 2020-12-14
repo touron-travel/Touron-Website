@@ -128,8 +128,6 @@ const UserDetails = () => {
                     rows="4"
                     className="user-input-alter user-input"
                   />
-
-
                 </div>
               </div>
               <div className="user-button">
@@ -144,6 +142,7 @@ const UserDetails = () => {
               src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
               alt=""
             />
+
             <div className="profile-center">
               <div className="profile-name">
                 <h3>
