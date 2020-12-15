@@ -8,14 +8,15 @@ import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
 import { useLocation } from "react-router-dom";
 const UserDetails = () => {
   const { userInfo } = useContext(ApiContext);
-  console.log("usekjbbbrInfo :>> ", userInfo);
   const location = useLocation();
   const { setAdminRoutes } = useContext(ApiContext);
-
+  const [name, setName] = useState("");
   useEffect(() => {
     let value = setAdminRoute(location.pathname);
     setAdminRoutes(value);
+    // setName(userInfo.name);
   }, []);
+
   return (
     <div style={{ display: "flex" }}>
       <Profilepage />
@@ -46,7 +47,7 @@ const UserDetails = () => {
                       <input
                         type="text"
                         className="user-input-alter user-input"
-                        value={userInfo.name}
+                        value={name}
                       />
                     </div>
                   </div>
@@ -115,7 +116,6 @@ const UserDetails = () => {
                       <label className="user-label">Mobile no</label>
                       <input
                         type="number"
-                        value={userInfo.phoneNumber}
                         className="user-input-alter user-input"
                       />
                     </div>

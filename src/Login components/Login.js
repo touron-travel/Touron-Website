@@ -35,7 +35,6 @@ export default function Login({ history }) {
   const getCurrentUserData = (uid) => {
     firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
       if (data !== null) {
-        console.log("data.val() :>> ", data.val());
         setUserInfo(data.val());
       }
     });

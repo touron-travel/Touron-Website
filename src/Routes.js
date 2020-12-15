@@ -32,6 +32,9 @@ import MyPlans from "./Account details components/MyPlans";
 import SavedTours from "./Account details components/SavedTours";
 import Faq from "./Account details components/Faq";
 import Support from "./Account details components/Support";
+import { isAuthenticated } from "./Login components/auth";
+import { firedb } from "./firebase";
+import PrivateRoute from "./Login components/Privateroutes";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
@@ -39,7 +42,23 @@ export default function Routes() {
   const [cities, setCities] = useState([]);
   const [adminRoutes, setAdminRoutes] = useState(false);
   const [userInfo, setUserInfo] = useState({});
-  console.log("userInfo :>> ", userInfo);
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      const { user } = isAuthenticated();
+      console.log("user :>> ", user);
+      getCurrentUserData(user.uid);
+    }
+  }, []);
+
+  const getCurrentUserData = (uid) => {
+    firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
+      if (data !== null) {
+        console.log("data.val() :>> ", data.val());
+        setUserInfo(data.val());
+      }
+    });
+  };
 
   const getTours = async () => {
     try {
@@ -113,13 +132,16 @@ export default function Routes() {
             <Route path="/signup" component={Signup} />
             <Route path="/popular_tour" component={Popular_tour} />
             <Route path="/popular_countries" component={Popular_countries} />
-            <Route path="/profile" exact component={UserDetails} />
-            <Route path="/profile/my-requests" component={MyRequest} />
-            <Route path="/profile/myvisa-requests" component={MyVisaRequests} />
-            <Route path="/profile/my-plans" component={MyPlans} />
-            <Route path="/profile/saved-tours" component={SavedTours} />
-            <Route path="/profile/faq" component={Faq} />
-            <Route path="/profile/support" component={Support} />
+            <PrivateRoute path="/profile" exact component={UserDetails} />
+            <PrivateRoute path="/profile/my-requests" component={MyRequest} />
+            <PrivateRoute
+              path="/profile/myvisa-requests"
+              component={MyVisaRequests}
+            />
+            <PrivateRoute path="/profile/my-plans" component={MyPlans} />
+            <PrivateRoute path="/profile/saved-tours" component={SavedTours} />
+            <PrivateRoute path="/profile/faq" component={Faq} />
+            <PrivateRoute path="/profile/support" component={Support} />
             <Route
               path="/countrydetails/:countryname/:countryid"
               component={CountryInner}

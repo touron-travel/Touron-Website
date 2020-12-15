@@ -40,6 +40,7 @@ const Signup = ({ history }) => {
           admin: false,
           pushNotificationToken: "",
           photoURL: "",
+          email: email,
         });
 
         storeAuthToken(user);

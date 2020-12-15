@@ -6,7 +6,6 @@ import { UserMenuItems } from "./UserMenuItems";
 import { Link, Redirect } from "react-router-dom";
 import { signout } from "../Login components/auth";
 const Profilenav = (props) => {
-  console.log("history :>> ", props);
   const [userDropdown, setUserDropdown] = useState(false);
   const toggle = () => setUserDropdown(!userDropdown);
 
