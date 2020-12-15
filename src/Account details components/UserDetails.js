@@ -5,7 +5,12 @@ import Profilenav from "./Profilenav";
 import Profilepage from "./Profilepage";
 import { firedb } from "../firebase";
 import { isAuthenticated } from "../Login components/auth";
+import { Alert } from "reactstrap";
+import { ToastProvider, useToasts } from "react-toast-notifications";
+
 const UserDetails = () => {
+  const { addToast } = useToasts();
+  const [uid, setUid] = useState("");
   const [values, setValues] = useState({
     name: "",
     email: "",
@@ -45,9 +50,39 @@ const UserDetails = () => {
   useEffect(() => {
     if (isAuthenticated()) {
       const { user } = isAuthenticated();
+      setUid(user.uid);
       getCurrentUserData(user.uid);
     }
-  });
+  }, []);
+
+  const addOrEditInfo = (e) => {
+    e.preventDefault();
+    let values = {
+      name: name,
+      email: email,
+      age: age,
+      gender: gender,
+      aboutMe: aboutMe,
+      address: address,
+      phoneNumber: phoneNumber,
+      travellerType: travellerType,
+      photoURL: photoURL,
+      profession: profession,
+    };
+    firedb
+      .ref(`userGeneralInfo/${uid}`)
+      .set(values)
+      .then((data) => {
+        addToast("Updated Successfully", {
+          appearance: "success",
+        });
+      })
+      .catch((err) =>
+        addToast(err, {
+          appearance: "success",
+        })
+      );
+  };
 
   const getCurrentUserData = (uid) => {
     firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
@@ -71,42 +106,6 @@ const UserDetails = () => {
     });
   };
 
-  // const getUserData = () => {
-  //   if (user !== null) {
-  //     setName(user.displayName);
-  //     setEmail(user.email);
-
-  //     firebase
-  //       .database()
-  //       .ref(`userGeneralInfo/${user.uid}`)
-  //       .on("value", (data) => {
-  //         console.log(data, "DATA");
-  //         console.log(user.uid, "klkkkkkk");
-
-  //         if (data.val() == null) {
-  //           setAboutMe("");
-  //           setAddress("");
-  //           setAge("");
-  //           setNumber("");
-  //           setGender("");
-  //           setTravellerType("");
-  //         }
-
-  //         if (data.val() !== null) {
-  //           let val = data.val();
-  //           setUserInfo(val);
-  //           setAboutMe(val.aboutMe);
-  //           setAddress(val.address);
-  //           setAge(val.age);
-  //           setNumber(val.phoneNumber);
-  //           setGender(val.gender);
-  //           setTravellerType(val.travellerType);
-  //         }
-  //       });
-  //   }
-  //   // }
-  //   // });
-  // };
   return (
     <div style={{ display: "flex" }}>
       <Profilepage />
@@ -129,6 +128,7 @@ const UserDetails = () => {
             <div className="account-column-info">
               <Form>
                 <h6>User Information</h6>
+
                 <div className="row">
                   <div className="col-mg-6">
                     <div className="form-group">
@@ -138,7 +138,7 @@ const UserDetails = () => {
                         name="name"
                         onChange={handleChange}
                         className="user-input-alter user-input"
-                        value={"ko"}
+                        value={name}
                       />
                     </div>
                   </div>
@@ -254,7 +254,12 @@ const UserDetails = () => {
                   </div>
                 </div>
                 <div className="user-button">
-                  <button className="btn btn-primary btn-sm">Submit</button>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    onClick={addOrEditInfo}
+                  >
+                    Submit
+                  </button>
                 </div>
               </Form>
             </div>
@@ -269,19 +274,16 @@ const UserDetails = () => {
             <div className="profile-center">
               <div className="profile-name">
                 <h3>
-                  Jessica Jones
-                  <span className="profile-age">, 27</span>
+                  {name}
+                  <span className="profile-age">, {age}</span>
                 </h3>
               </div>
-              <div className="user-travel-type">Travel type</div>
-              <div className="user-profession">Profession</div>
+              <div className="user-travel-type">{travellerType}</div>
+              <div className="user-profession">{profession}</div>
               <hr className="my-4" />
               <div className="user-about">
                 <h3>About</h3>
-                <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Quasi debitis quo architecto ea impedit veniam?
-                </p>
+                <p>{aboutMe}</p>
               </div>
             </div>
           </div>

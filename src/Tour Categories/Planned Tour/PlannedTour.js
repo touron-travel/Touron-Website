@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import TourHeader from "../Reusable components/TourHeader";
 import Planned from "../../assests/Plannedtour.jpg";
 import "./Plannedtour.css";
@@ -14,14 +14,16 @@ import Modals from "../Modal";
 import Modal from "react-modal";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link, Redirect } from "react-router-dom";
+import { ApiContext } from "../../Context/ApiContext";
+import { firedb } from "../../firebase";
 
 const PlannedTour = (params) => {
   const [tourType, setTourType] = useState("");
   const [travellerType, setTravellerType] = useState("");
   const [adult, setAdult] = useState(0);
   const [children, setChildren] = useState(0);
-  const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
+  const [fromDate, setFromDate] = useState();
+  const [toDate, setToDate] = useState();
   const [travelMode, setTravelMode] = React.useState("");
   const [preferanece, setPreferanece] = React.useState("");
   const [destination, setDestination] = useState("");
@@ -33,13 +35,11 @@ const PlannedTour = (params) => {
   const [date, setDate] = useState();
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
-  const [dates, setDates] = useState("");
-  const [years, setYears] = useState("");
-  const [months, setMonths] = useState("");
+  const { uid } = useContext(ApiContext);
   const [isLoggedin, setIsLoggedin] = useState(false);
   let random;
   let formatedMonth;
-
+  console.log("fromDate,toDate", fromDate, toDate);
   useEffect(() => {
     if (isAuthenticated()) return setIsLoggedin(true);
   });
@@ -79,21 +79,33 @@ const PlannedTour = (params) => {
   }
 
   const submitData = () => {
-    console.log(
-      tourType,
-      travellerType,
-      adult,
-      children,
-      fromDate,
-      toDate,
-      travelMode,
-      preferanece,
-      destination,
-      startPoint,
-      name,
-      number,
-      budget
-    );
+    let values = {
+      fromDate: fromDate,
+      toDate: toDate,
+      tourType: tourType,
+      travellerType: travellerType,
+      adult: adult,
+      children: children,
+      travelMode: travelMode,
+      preferanece: preferanece,
+      destination: destination,
+      startPoint: startPoint,
+      name: name,
+      number: number,
+      budget: budget,
+      requestID: `T0-${date}${formatedMonth}${year}-${random}`,
+      status: "Query Received",
+      plans: "",
+      reports: "",
+      tourCost: 0,
+      userID: uid,
+      tourCategory: "Planned Tour",
+    };
+    firedb
+      .ref(`requests`)
+      .push(values)
+      .then((data) => console.log("data", data))
+      .catch((err) => console.log("err", err));
   };
 
   useEffect(() => {
@@ -102,8 +114,11 @@ const PlannedTour = (params) => {
     let currentYear = requestDate.getFullYear();
     setDate(requestDate.getDate());
     setMonth(requestDate.getMonth() + 1);
-    setYear(currentYear.toString().slice(2, 5));
+    console.log("currentYear", currentYear);
+    setYear(currentYear.toString().slice(2, 4));
+    console.log("year", year);
     formatedMonth = month < 10 ? "0" + month : month;
+    console.log("object", `T0-${date}${formatedMonth}${year}-${random}`);
   });
   const nextStep = () => {
     if (step == 2 && !isLoggedin) {
@@ -311,7 +326,7 @@ const PlannedTour = (params) => {
             </ul>
           </div>
           <div className="info-tour-buttons">
-            <Link to="/my-requests">
+            <Link to="/profile/my-requests">
               <button className="info-button">Go to My Dashboard</button>
             </Link>
             <Link to="/">

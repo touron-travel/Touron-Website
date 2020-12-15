@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MyRequest.css";
 import { GiConqueror, GiRocketFlight } from "react-icons/gi";
 import { FaTrain } from "react-icons/fa";
@@ -14,10 +14,13 @@ import {
 } from "reactstrap";
 import Profilenav from "./Profilenav";
 import Profilepage from "./Profilepage";
+import { firedb } from "../firebase";
+import { isAuthenticated } from "../Login components/auth";
 const MyRequest = () => {
   const [domesticModal, setDomesticModal] = useState(false);
   const [internationalModal, setInternationalModal] = useState(false);
-
+  const [userRequest, setUserRequest] = useState([]);
+  console.log("userRequest", userRequest);
   const openDomesticModal = () => {
     setDomesticModal(true);
   };
@@ -31,6 +34,26 @@ const MyRequest = () => {
   function closeInternationalModal() {
     setInternationalModal(false);
   }
+
+  useEffect(() => {
+    getUserRequest();
+  }, []);
+  const getUserRequest = () => {
+    const { user } = isAuthenticated();
+
+    firedb.ref("requests").on("value", (data) => {
+      if (data) {
+        let req = [];
+        data.forEach((d) => {
+          if (d.val().userID == user.uid) {
+            console.log("d.va;(", d.val());
+            req.push(d.val());
+          }
+        });
+        setUserRequest(req);
+      }
+    });
+  };
 
   const colors = [
     {
@@ -100,7 +123,7 @@ const MyRequest = () => {
             <div className="card-body">
               <div className="card-title">
                 <h5>Submitted Request</h5>
-                <h1>04</h1>
+                <h1>{userRequest.length}</h1>
               </div>
               <div className="card-logo logo1">
                 <GiConqueror size={28} color="white" />
@@ -108,8 +131,8 @@ const MyRequest = () => {
             </div>
             <div className="card-body">
               <div className="card-title">
-                <h5>Submitted Request</h5>
-                <h1>04</h1>
+                <h5>Completed Request</h5>
+                <h1>0</h1>
               </div>
               <div className="card-logo logo2">
                 <GiRocketFlight size={28} color="white" />
@@ -151,49 +174,57 @@ const MyRequest = () => {
               </tr>
             </thead>
             <tbody className="bg-white">
-              {colors
-                .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
-                .map((c, i) => (
-                  <tr key={i}>
-                    <td style={{ color: `${c.color}` }}>{c.name}</td>
-                    <td>#T0-121220-676767</td>
-                    <td>Planned Tour</td>
-                    <td>Maldives</td>
-                    <td>Jan 26 2021</td>
-                    <td>-56 Days</td>
-                  </tr>
-                ))}
+              {userRequest.length !== 0 ? (
+                <>
+                  {userRequest
+                    .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
+                    .map((c, i) => (
+                      <tr key={i}>
+                        <td>{c.status}</td>
+                        <td>{c.requestID}</td>
+                        <td>{c.tourCategory}</td>
+                        <td>{c.destination}</td>
+                        <td>{c.fromDate}</td>
+                        <td>-56 Days</td>
+                      </tr>
+                    ))}
+                </>
+              ) : (
+                <div className="noFind">No Request found</div>
+              )}
             </tbody>
           </Table>
         </div>
-        <div>
-          <Pagination
-            className="pagination justify-content-end"
-            listClassName="justify-content-end"
-          >
-            <PaginationItem disabled={currentPage <= 0}>
-              <PaginationLink
-                onClick={(e) => handleClick(e, currentPage - 1)}
-                previous
-                href="#"
-              />
-            </PaginationItem>
-            {[...Array(pagesCount)].map((page, i) => (
-              <PaginationItem active={i === currentPage} key={i}>
-                <PaginationLink onClick={(e) => handleClick(e, i)} href="#">
-                  {i + 1}
-                </PaginationLink>
+        {userRequest.length == 0 && userRequest.length <= 8 ? null : (
+          <div>
+            <Pagination
+              className="pagination justify-content-end"
+              listClassName="justify-content-end"
+            >
+              <PaginationItem disabled={currentPage <= 0}>
+                <PaginationLink
+                  onClick={(e) => handleClick(e, currentPage - 1)}
+                  previous
+                  href="#"
+                />
               </PaginationItem>
-            ))}
-            <PaginationItem disabled={currentPage >= pagesCount - 1}>
-              <PaginationLink
-                onClick={(e) => handleClick(e, currentPage + 1)}
-                next
-                href="#"
-              />
-            </PaginationItem>
-          </Pagination>
-        </div>
+              {[...Array(pagesCount)].map((page, i) => (
+                <PaginationItem active={i === currentPage} key={i}>
+                  <PaginationLink onClick={(e) => handleClick(e, i)} href="#">
+                    {i + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+              <PaginationItem disabled={currentPage >= pagesCount - 1}>
+                <PaginationLink
+                  onClick={(e) => handleClick(e, currentPage + 1)}
+                  next
+                  href="#"
+                />
+              </PaginationItem>
+            </Pagination>
+          </div>
+        )}
 
         <Modal
           className="modal-dialog-centered modal-danger"
