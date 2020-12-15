@@ -5,6 +5,7 @@ import "./Profilepage.css";
 import Logo from "../assests/logo2.png";
 import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
 import { ApiContext } from "../../src/Context/ApiContext";
+import { isAuthenticated } from "../Login components/auth";
 const Profilepage = () => {
   const location = useLocation();
   const { setAdminRoutes } = useContext(ApiContext);

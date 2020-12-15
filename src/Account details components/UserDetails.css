@@ -56,8 +56,8 @@
   margin-left: 10px;
 }
 .account-profile img {
-  width: 36px;
-  height: 36px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
 }
 
@@ -184,7 +184,8 @@
   border-radius: 10px;
 }
 .profile-img img {
-  max-width: 180px;
+  width: 180px;
+  height: 180px;
   transform: translate(-50%, -30%);
   position: relative;
   left: 50%;
@@ -240,6 +241,7 @@
   font-family: "Open Sans", sans-serif;
   line-height: 1.7;
 }
+
 @media (max-height: 578px) {
   .account {
     height: 80vh;
