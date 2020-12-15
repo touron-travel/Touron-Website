@@ -20,7 +20,6 @@ const Signup = ({ history }) => {
     setStep(step + 1);
   };
 
-  // const { isLoggedIn, setIsLoggedIn, user, setUser } = useContext(AuthContext);
   const sendOtp = (e) => {
     setLoaded(true);
     e.preventDefault();
@@ -41,6 +40,7 @@ const Signup = ({ history }) => {
           pushNotificationToken: "",
           photoURL: "",
           email: email,
+          profession: "",
         });
 
         storeAuthToken(user);

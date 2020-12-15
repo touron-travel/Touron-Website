@@ -43,23 +43,6 @@ export default function Routes() {
   const [adminRoutes, setAdminRoutes] = useState(false);
   const [userInfo, setUserInfo] = useState({});
 
-  useEffect(() => {
-    if (isAuthenticated()) {
-      const { user } = isAuthenticated();
-      console.log("user :>> ", user);
-      getCurrentUserData(user.uid);
-    }
-  }, []);
-
-  const getCurrentUserData = (uid) => {
-    firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
-      if (data !== null) {
-        console.log("data.val() :>> ", data.val());
-        setUserInfo(data.val());
-      }
-    });
-  };
-
   const getTours = async () => {
     try {
       const tourResponse = await axios.get(`${API}/tour`);

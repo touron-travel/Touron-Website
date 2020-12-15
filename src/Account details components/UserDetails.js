@@ -1,22 +1,112 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./UserDetails.css";
 import { Form, Input } from "reactstrap";
 import Profilenav from "./Profilenav";
 import Profilepage from "./Profilepage";
+import { firedb } from "../firebase";
+import { isAuthenticated } from "../Login components/auth";
 const UserDetails = () => {
-<<<<<<< HEAD
-  const { userInfo } = useContext(ApiContext);
-  const location = useLocation();
-  const { setAdminRoutes } = useContext(ApiContext);
-  const [name, setName] = useState("");
-  useEffect(() => {
-    let value = setAdminRoute(location.pathname);
-    setAdminRoutes(value);
-    // setName(userInfo.name);
-  }, []);
+  const [values, setValues] = useState({
+    name: "",
+    email: "",
+    age: "",
+    gender: "",
+    aboutMe: "",
+    phoneNumber: "",
+    travellerType: "",
+    photoURL: "",
+    address: "",
+    profession: "",
+  });
 
-=======
->>>>>>> 41b9af13d737e8ecb925f3be38724139c332a253
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    console.log("name,value :>> ", name, value);
+
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
+  const {
+    name,
+    email,
+    age,
+    gender,
+    aboutMe,
+    address,
+    phoneNumber,
+    travellerType,
+    photoURL,
+    profession,
+  } = values;
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      const { user } = isAuthenticated();
+      getCurrentUserData(user.uid);
+    }
+  });
+
+  const getCurrentUserData = (uid) => {
+    firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
+      if (data !== null) {
+        let val = data.val();
+        console.log("data.val() :>> ", val);
+        setValues({
+          ...values,
+          name: val.name,
+          email: val.email,
+          age: val.age,
+          gender: val.gender,
+          aboutMe: val.aboutMe,
+          phoneNumber: val.phoneNumber,
+          photoURL: val.photoURL,
+          profession: val.profession,
+          travellerType: val.travellerType,
+          address: val.address,
+        });
+      }
+    });
+  };
+
+  // const getUserData = () => {
+  //   if (user !== null) {
+  //     setName(user.displayName);
+  //     setEmail(user.email);
+
+  //     firebase
+  //       .database()
+  //       .ref(`userGeneralInfo/${user.uid}`)
+  //       .on("value", (data) => {
+  //         console.log(data, "DATA");
+  //         console.log(user.uid, "klkkkkkk");
+
+  //         if (data.val() == null) {
+  //           setAboutMe("");
+  //           setAddress("");
+  //           setAge("");
+  //           setNumber("");
+  //           setGender("");
+  //           setTravellerType("");
+  //         }
+
+  //         if (data.val() !== null) {
+  //           let val = data.val();
+  //           setUserInfo(val);
+  //           setAboutMe(val.aboutMe);
+  //           setAddress(val.address);
+  //           setAge(val.age);
+  //           setNumber(val.phoneNumber);
+  //           setGender(val.gender);
+  //           setTravellerType(val.travellerType);
+  //         }
+  //       });
+  //   }
+  //   // }
+  //   // });
+  // };
   return (
     <div style={{ display: "flex" }}>
       <Profilepage />
@@ -45,11 +135,10 @@ const UserDetails = () => {
                       <label className="user-label">Name</label>
                       <input
                         type="text"
+                        name="name"
+                        onChange={handleChange}
                         className="user-input-alter user-input"
-<<<<<<< HEAD
-                        value={name}
-=======
->>>>>>> 41b9af13d737e8ecb925f3be38724139c332a253
+                        value={"ko"}
                       />
                     </div>
                   </div>
@@ -58,6 +147,9 @@ const UserDetails = () => {
                       <label className="user-label">Email address</label>
                       <input
                         type="text"
+                        onChange={handleChange}
+                        name="email"
+                        value={email}
                         className="user-input-alter user-input"
                       />
                     </div>
@@ -66,7 +158,10 @@ const UserDetails = () => {
                     <div className="form-group">
                       <label className="user-label">Age</label>
                       <input
+                        onChange={handleChange}
                         type="text"
+                        value={age}
+                        name="age"
                         className="user-input-alter user-input"
                       />
                     </div>
@@ -74,17 +169,27 @@ const UserDetails = () => {
                   <div className="col-mg-6">
                     <div className="form-group">
                       <label className="user-label">Gender</label>
-                      <input
-                        type="text"
+                      <Input
+                        onChange={handleChange}
+                        type="select"
+                        name="gender"
+                        value={gender}
                         className="user-input-alter user-input"
-                      />
+                      >
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                      </Input>
                     </div>
                   </div>
                   <div className="col-mg-6">
                     <div className="form-group">
                       <label className="user-label">Profession</label>
                       <input
+                        onChange={handleChange}
                         type="text"
+                        value={profession}
+                        name="profession"
                         className="user-input-alter user-input"
                       />
                     </div>
@@ -94,6 +199,9 @@ const UserDetails = () => {
                       <label className="user-label">Traveler Type</label>
                       <input
                         type="text"
+                        onChange={handleChange}
+                        name="travellerType"
+                        value={travellerType}
                         className="user-input-alter user-input"
                       />
                     </div>
@@ -107,6 +215,9 @@ const UserDetails = () => {
                       <label className="user-label">Address</label>
                       <input
                         type="text"
+                        value={address}
+                        onChange={handleChange}
+                        name="address"
                         className="user-input-alter user-input"
                       />
                     </div>
@@ -118,6 +229,9 @@ const UserDetails = () => {
                       <label className="user-label">Mobile no</label>
                       <input
                         type="number"
+                        onChange={handleChange}
+                        value={phoneNumber}
+                        name="phoneNumber"
                         className="user-input-alter user-input"
                       />
                     </div>
@@ -131,7 +245,10 @@ const UserDetails = () => {
 
                     <Input
                       type="textarea"
+                      value={aboutMe}
+                      name="aboutMe"
                       rows="4"
+                      onChange={handleChange}
                       className="user-input-alter user-input"
                     />
                   </div>
