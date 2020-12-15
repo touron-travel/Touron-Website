@@ -20,7 +20,6 @@ const UserDetails = () => {
   return (
     <div style={{ display: "flex" }}>
       <Profilepage />
-
       <div className="account-section">
         <div className="account">
           <Profilenav title={"User Details"} />
@@ -143,30 +142,30 @@ const UserDetails = () => {
               </Form>
             </div>
           </div>
-        </div>
-        <div className="account-profile-column2">
-          <div className="profile-img">
-            <img
-              src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
-              alt=""
-            />
-          </div>
-          <div className="profile-center">
-            <div className="profile-name">
-              <h3>
-                Jessica Jones
-                <span className="profile-age">, 27</span>
-              </h3>
+          <div className="account-profile-column2">
+            <div className="profile-img">
+              <img
+                src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
+                alt=""
+              />
             </div>
-            <div className="user-travel-type">Travel type</div>
-            <div className="user-profession">Profession</div>
-            <hr className="my-4" />
-            <div className="user-about">
-              <h3>About</h3>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
-                debitis quo architecto ea impedit veniam?
-              </p>
+            <div className="profile-center">
+              <div className="profile-name">
+                <h3>
+                  Jessica Jones
+                  <span className="profile-age">, 27</span>
+                </h3>
+              </div>
+              <div className="user-travel-type">Travel type</div>
+              <div className="user-profession">Profession</div>
+              <hr className="my-4" />
+              <div className="user-about">
+                <h3>About</h3>
+                <p>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                  Quasi debitis quo architecto ea impedit veniam?
+                </p>
+              </div>
             </div>
           </div>
         </div>

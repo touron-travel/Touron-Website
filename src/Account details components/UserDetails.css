@@ -97,13 +97,12 @@
   display: flex;
   justify-content: space-evenly;
   padding: 0 20px;
-}
-.account-profile-column1 {
   position: relative;
   top: -100px;
+}
+.account-profile-column1 {
   width: 611px;
   height: 960px;
-  /* box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15) !important; */
   box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
   background-color: #f7fafc !important;
   border-radius: 10px;
@@ -178,12 +177,9 @@
   margin: 1.5rem 0px;
 }
 .account-profile-column2 {
-  position: relative;
-  top: -100px;
   width: 321px;
   height: 500px;
   background-color: #fff;
-  /* box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15) !important; */
   box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
   border-radius: 10px;
 }
