@@ -23,7 +23,7 @@ export default function Login({ history }) {
         setPassword("");
         storeAuthToken(user);
         setLoaded(false);
-        getCurrentUserData(user.user.uid);
+
         return history.goBack();
       })
       .catch((err) => {
@@ -32,13 +32,6 @@ export default function Login({ history }) {
       });
   };
 
-  const getCurrentUserData = (uid) => {
-    firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
-      if (data !== null) {
-        setUserInfo(data.val());
-      }
-    });
-  };
   return (
     <>
       <div className="login_form">

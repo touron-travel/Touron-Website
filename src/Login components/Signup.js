@@ -43,8 +43,6 @@ const Signup = ({ history }) => {
           profession: "",
         });
 
-        storeAuthToken(user);
-
         axios
           .get(
             `https://2factor.in/API/V1/c9170ed3-3854-11eb-83d4-0200cd936042/SMS/+91${number}/AUTOGEN/touron`
@@ -60,6 +58,8 @@ const Signup = ({ history }) => {
           .catch((err) => {
             console.log(err, "kjhk");
           });
+
+        storeAuthToken(user);
       })
       .catch((err) => {
         console.log("err", err);
@@ -84,6 +84,7 @@ const Signup = ({ history }) => {
           setEmail("");
           setCode("");
           setLoaded(false);
+
           return history.push("/");
         }
       })

@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Popover, PopoverBody } from "reactstrap";
 import "./UserDropdown.css";
 
 import { UserMenuItems } from "./UserMenuItems";
 import { Link, Redirect } from "react-router-dom";
-import { signout } from "../Login components/auth";
+import { isAuthenticated, signout } from "../Login components/auth";
 const Profilenav = (props) => {
   const [userDropdown, setUserDropdown] = useState(false);
   const toggle = () => setUserDropdown(!userDropdown);
+
+  const { user } = isAuthenticated();
 
   return (
     <div className="account-head">
@@ -16,10 +18,13 @@ const Profilenav = (props) => {
       </div>
       <div className="account-profile" id="Popover1">
         <img
+          // src={user.photoUrl}
           src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
           alt=""
         />
-        <h6 onClick={() => setUserDropdown(!userDropdown)}>Jessica Jones</h6>
+        <h6 onClick={() => setUserDropdown(!userDropdown)}>
+          {user.displayName}
+        </h6>
       </div>
       <Popover
         placement="bottom"
