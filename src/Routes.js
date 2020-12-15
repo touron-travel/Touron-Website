@@ -35,13 +35,14 @@ import Support from "./Account details components/Support";
 import { isAuthenticated } from "./Login components/auth";
 import { firedb } from "./firebase";
 import PrivateRoute from "./Login components/Privateroutes";
+import { ToastProvider, useToasts } from "react-toast-notifications";
 
 export default function Routes() {
   const [tours, setTour] = useState([]);
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
   const [adminRoutes, setAdminRoutes] = useState(false);
-  const [userInfo, setUserInfo] = useState({});
+  const [uid, setUid] = useState("");
 
   const getTours = async () => {
     try {
@@ -78,6 +79,12 @@ export default function Routes() {
   useEffect(() => {
     getTours();
   }, []);
+  useEffect(() => {
+    if (isAuthenticated()) {
+      const { user } = isAuthenticated();
+      setUid(user.uid);
+    }
+  }, []);
 
   console.log("adminRoutes :>> ", adminRoutes);
 
@@ -88,69 +95,78 @@ export default function Routes() {
         countries,
         cities,
         setAdminRoutes,
-        userInfo,
-        setUserInfo,
+        uid,
+        setUid,
       }}
     >
       <Router>
-        <ScrollToTop>
-          {adminRoutes ? null : (
-            <div className="nav">
-              <Navbar />
-            </div>
-          )}
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/planned-tour" component={PlannedTour} />
-            <Route path="/surprise-tour" component={SurpriseTour} />
-            <Route path="/roadtrip-tour" component={RoadtripTour} />
-            <Route path="/luxury-tour" component={LuxuryTour} />
-            <Route path="/honeymoon-tour" component={HoneymoonTour} />
-            <Route path="/how-it-works" component={HowItWorks} />
-            <Route path="/visa" component={Visa} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/destination" component={Destination} />
-            <Route path="/login" component={Login} />
-            <Route path="/signup" component={Signup} />
-            <Route path="/popular_tour" component={Popular_tour} />
-            <Route path="/popular_countries" component={Popular_countries} />
-            <PrivateRoute path="/profile" exact component={UserDetails} />
-            <PrivateRoute path="/profile/my-requests" component={MyRequest} />
-            <PrivateRoute
-              path="/profile/myvisa-requests"
-              component={MyVisaRequests}
-            />
-            <PrivateRoute path="/profile/my-plans" component={MyPlans} />
-            <PrivateRoute path="/profile/saved-tours" component={SavedTours} />
-            <PrivateRoute path="/profile/faq" component={Faq} />
-            <PrivateRoute path="/profile/support" component={Support} />
-            <Route
-              path="/countrydetails/:countryname/:countryid"
-              component={CountryInner}
-            />
-            <Route
-              path="/tourdetails/:countryname/:tourname/:tourid"
-              component={TourInner}
-            />
-            <Route path="/admindashboard" component={AdminLogin} />
+        <ToastProvider
+          autoDismissTimeout={2500}
+          placement="top-center"
+          autoDismiss={true}
+        >
+          <ScrollToTop>
+            {adminRoutes ? null : (
+              <div className="nav">
+                <Navbar />
+              </div>
+            )}
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/planned-tour" component={PlannedTour} />
+              <Route path="/surprise-tour" component={SurpriseTour} />
+              <Route path="/roadtrip-tour" component={RoadtripTour} />
+              <Route path="/luxury-tour" component={LuxuryTour} />
+              <Route path="/honeymoon-tour" component={HoneymoonTour} />
+              <Route path="/how-it-works" component={HowItWorks} />
+              <Route path="/visa" component={Visa} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/destination" component={Destination} />
+              <Route path="/login" component={Login} />
+              <Route path="/signup" component={Signup} />
+              <Route path="/popular_tour" component={Popular_tour} />
+              <Route path="/popular_countries" component={Popular_countries} />
+              <PrivateRoute path="/profile" exact component={UserDetails} />
+              <PrivateRoute path="/profile/my-requests" component={MyRequest} />
+              <PrivateRoute
+                path="/profile/myvisa-requests"
+                component={MyVisaRequests}
+              />
+              <PrivateRoute path="/profile/my-plans" component={MyPlans} />
+              <PrivateRoute
+                path="/profile/saved-tours"
+                component={SavedTours}
+              />
+              <PrivateRoute path="/profile/faq" component={Faq} />
+              <PrivateRoute path="/profile/support" component={Support} />
+              <Route
+                path="/countrydetails/:countryname/:countryid"
+                component={CountryInner}
+              />
+              <Route
+                path="/tourdetails/:countryname/:tourname/:tourid"
+                component={TourInner}
+              />
+              <Route path="/admindashboard" component={AdminLogin} />
 
-            <Route path="/adminpage" component={Adminpage} />
-            <Route path="/admin" component={Adminpage} />
-            <Route path="/management" component={Adminpage} />
-            <Route path="/packages" component={Adminpage} />
-            <Route path="/pages" component={Adminpage} />
-            <Route path="/categories" component={Adminpage} />
-            <Route path="/advertisement" component={Adminpage} />
-            <Route path="/trendingplaces" component={Adminpage} />
-            <Route path="/coupons" component={Adminpage} />
-          </Switch>
-          {adminRoutes ? null : (
-            <div className="footer">
-              <Footer />
-            </div>
-          )}
-        </ScrollToTop>
+              <Route path="/adminpage" component={Adminpage} />
+              <Route path="/admin" component={Adminpage} />
+              <Route path="/management" component={Adminpage} />
+              <Route path="/packages" component={Adminpage} />
+              <Route path="/pages" component={Adminpage} />
+              <Route path="/categories" component={Adminpage} />
+              <Route path="/advertisement" component={Adminpage} />
+              <Route path="/trendingplaces" component={Adminpage} />
+              <Route path="/coupons" component={Adminpage} />
+            </Switch>
+            {adminRoutes ? null : (
+              <div className="footer">
+                <Footer />
+              </div>
+            )}
+          </ScrollToTop>
+        </ToastProvider>
       </Router>
     </ApiContext.Provider>
   );
