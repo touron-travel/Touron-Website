@@ -141,7 +141,6 @@ const UserDetails = () => {
       }
     });
   };
-
   const handleEditClick = () => {
     const filepath = document.getElementById("imageButton");
     filepath.click();
@@ -153,10 +152,10 @@ const UserDetails = () => {
         <div className="account">
           <Profilenav title={"User Details"} />
           <div className="account-content">
-            <h1>Hello Jesse</h1>
+            <h1>Hello {name}</h1>
             <p>
               This is your profile page. You can see the progress you've made
-              with your work and manage your projects or assigned tasks
+              with your work and manage your projects or assigned tasks.
             </p>
           </div>
         </div>

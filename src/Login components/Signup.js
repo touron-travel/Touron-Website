@@ -148,7 +148,7 @@ const Signup = ({ history }) => {
                     </div>
                   ) : (
                     <button className="signbutton" onClick={sendOtp}>
-                      Send Otp
+                      Send OTP
                     </button>
                   )}
                 </div>
@@ -165,7 +165,7 @@ const Signup = ({ history }) => {
                   <i className="fas fa-lock"></i>
                   <input
                     type="text"
-                    placeholder="Enter otp"
+                    placeholder="Enter OTP"
                     size="35"
                     required
                     value={code}
@@ -179,7 +179,7 @@ const Signup = ({ history }) => {
                     </div>
                   ) : (
                     <button className="signbutton" onClick={verifyOtp}>
-                      Verify Otp
+                      Verify OTP
                     </button>
                   )}
                 </div>
@@ -196,7 +196,7 @@ const Signup = ({ history }) => {
         <div className="signup_text">
           <h1>Signup</h1>
           <p>
-            Have Account?
+            Have Account?<span> </span>
             <Link to="/login" className="link">
               Login
             </Link>
