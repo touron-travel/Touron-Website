@@ -2,13 +2,16 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ProfileSidebarData } from "./ProfileSidebarData";
 import "./Profilepage.css";
-
 import Logo from "../assests/logo2.png";
-
+import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
+import { ApiContext } from "../../src/Context/ApiContext";
 const Profilepage = () => {
   const location = useLocation();
+  const { setAdminRoutes } = useContext(ApiContext);
 
   useEffect(() => {
+    let value = setAdminRoute(location.pathname);
+    setAdminRoutes(value);
     setClicked(location.pathname);
   }, []);
 

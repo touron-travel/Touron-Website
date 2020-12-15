@@ -102,9 +102,7 @@
   position: relative;
   top: -100px;
   width: 611px;
-
   height: 960px;
-
   /* box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15) !important; */
   box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
   background-color: #f7fafc !important;
@@ -201,6 +199,7 @@
   cursor: pointer;
   transform: translate(-40%, -30%);
 }
+
 .profile-center {
   text-align: center;
   padding: 24px;
@@ -244,4 +243,27 @@
   color: #32325d;
   font-family: "Open Sans", sans-serif;
   line-height: 1.7;
+}
+@media (max-height: 578px) {
+  .account {
+    height: 80vh;
+  }
+  .account::after {
+    height: 80vh;
+  }
+  .account-content {
+    padding: 50px 50px;
+  }
+  .profile-img img {
+    max-width: 180px;
+    transform: translate(-50%, -30%);
+    position: relative;
+    left: 50%;
+    transition: all 0.15s ease;
+    border-radius: 50%;
+  }
+  .profile-img img:hover {
+    cursor: pointer;
+    transform: translate(-40%, -30%);
+  }
 }

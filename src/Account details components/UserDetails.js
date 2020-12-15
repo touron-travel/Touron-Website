@@ -1,12 +1,10 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 import "./UserDetails.css";
 import { Form, Input } from "reactstrap";
 import Profilenav from "./Profilenav";
-import { ApiContext } from "../Context/ApiContext";
 import Profilepage from "./Profilepage";
-import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
-import { useLocation } from "react-router-dom";
 const UserDetails = () => {
+<<<<<<< HEAD
   const { userInfo } = useContext(ApiContext);
   const location = useLocation();
   const { setAdminRoutes } = useContext(ApiContext);
@@ -17,6 +15,8 @@ const UserDetails = () => {
     // setName(userInfo.name);
   }, []);
 
+=======
+>>>>>>> 41b9af13d737e8ecb925f3be38724139c332a253
   return (
     <div style={{ display: "flex" }}>
       <Profilepage />
@@ -47,7 +47,10 @@ const UserDetails = () => {
                       <input
                         type="text"
                         className="user-input-alter user-input"
+<<<<<<< HEAD
                         value={name}
+=======
+>>>>>>> 41b9af13d737e8ecb925f3be38724139c332a253
                       />
                     </div>
                   </div>
@@ -140,31 +143,30 @@ const UserDetails = () => {
               </Form>
             </div>
           </div>
-          <div className="account-profile-column2">
-            <div className="profile-img">
-              <img
-                src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
-                alt=""
-              />
-
-              <div className="profile-center">
-                <div className="profile-name">
-                  <h3>
-                    Jessica Jones
-                    <span className="profile-age">, 27</span>
-                  </h3>
-                </div>
-                <div className="user-travel-type">Travel type</div>
-                <div className="user-profession">Profession</div>
-                <hr className="my-4" />
-                <div className="user-about">
-                  <h3>About</h3>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Quasi debitis quo architecto ea impedit veniam?
-                  </p>
-                </div>
-              </div>
+        </div>
+        <div className="account-profile-column2">
+          <div className="profile-img">
+            <img
+              src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
+              alt=""
+            />
+          </div>
+          <div className="profile-center">
+            <div className="profile-name">
+              <h3>
+                Jessica Jones
+                <span className="profile-age">, 27</span>
+              </h3>
+            </div>
+            <div className="user-travel-type">Travel type</div>
+            <div className="user-profession">Profession</div>
+            <hr className="my-4" />
+            <div className="user-about">
+              <h3>About</h3>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
+                debitis quo architecto ea impedit veniam?
+              </p>
             </div>
           </div>
         </div>

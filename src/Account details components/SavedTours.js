@@ -1,21 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import "./SavedTours.css";
 import Profilenav from "./Profilenav";
-
 import Profilepage from "./Profilepage";
-import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
-import { useLocation } from "react-router-dom";
-
-import { ApiContext } from "../Context/ApiContext";
 
 const SavedTours = () => {
-  const location = useLocation();
-  const { setAdminRoutes } = useContext(ApiContext);
-
-  useEffect(() => {
-    let value = setAdminRoute(location.pathname);
-    setAdminRoutes(value);
-  }, []);
   const tours = [
     {
       tourCost: {
