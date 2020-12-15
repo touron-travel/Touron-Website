@@ -6,25 +6,16 @@ import { Collapse, Button, CardBody, Card } from "reactstrap";
 import { FcPlus } from "react-icons/fc";
 import { RiCloseCircleFill } from "react-icons/ri";
 import Profilepage from "./Profilepage";
-import { ApiContext } from "../Context/ApiContext";
-import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
-import { useLocation } from "react-router-dom";
 
 const Faq = () => {
   const [selectedType, setSelectedType] = useState("general");
-  const [isOpen, setIsOpen] = useState();
-  const location = useLocation();
-  const { setAdminRoutes } = useContext(ApiContext);
+  const [collapseOpen, setCollapseOpen] = useState();
 
-  useEffect(() => {
-    let value = setAdminRoute(location.pathname);
-    setAdminRoutes(value);
-  }, []);
   const toggle = (index) => {
-    if (isOpen === index) {
-      setIsOpen();
+    if (collapseOpen === index) {
+      setCollapseOpen();
     } else {
-      setIsOpen(index);
+      setCollapseOpen(index);
     }
   };
   const FaqQuestions = FaqQuestion();
@@ -33,7 +24,6 @@ const Faq = () => {
       <Profilepage />
       <div className="faq-container">
         <Profilenav title="Frequently Asked Question" />
-
         <div className="faq-types">
           <div
             className="general"
@@ -73,7 +63,7 @@ const Faq = () => {
                 <div className="questions">
                   <div className="faq-question">
                     <h1>{q.question}</h1>
-                    {isOpen === index ? (
+                    {collapseOpen === index ? (
                       <RiCloseCircleFill
                         onClick={() => toggle(index)}
                         size={30}
@@ -88,7 +78,7 @@ const Faq = () => {
                       />
                     )}
                   </div>
-                  <Collapse isOpen={isOpen === index}>
+                  <Collapse isOpen={collapseOpen === index}>
                     <p>{q.answer}</p>
                   </Collapse>
                 </div>

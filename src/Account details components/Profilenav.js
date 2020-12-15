@@ -35,6 +35,7 @@ const Profilenav = (props) => {
                 <Link
                   key={index}
                   to={item.path}
+                  // target="_blank"
                   className={item.className}
                   onClick={() => {
                     if (item.title == "Logout") {

@@ -1,21 +1,9 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 import "./UserDetails.css";
 import { Form, Input } from "reactstrap";
 import Profilenav from "./Profilenav";
-import { ApiContext } from "../Context/ApiContext";
 import Profilepage from "./Profilepage";
-import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
-import { useLocation } from "react-router-dom";
 const UserDetails = () => {
-  const { userInfo } = useContext(ApiContext);
-  console.log("usekjbbbrInfo :>> ", userInfo);
-  const location = useLocation();
-  const { setAdminRoutes } = useContext(ApiContext);
-
-  useEffect(() => {
-    let value = setAdminRoute(location.pathname);
-    setAdminRoutes(value);
-  }, []);
   return (
     <div style={{ display: "flex" }}>
       <Profilepage />
@@ -46,7 +34,6 @@ const UserDetails = () => {
                       <input
                         type="text"
                         className="user-input-alter user-input"
-                        value={userInfo.name}
                       />
                     </div>
                   </div>
@@ -115,7 +102,6 @@ const UserDetails = () => {
                       <label className="user-label">Mobile no</label>
                       <input
                         type="number"
-                        value={userInfo.phoneNumber}
                         className="user-input-alter user-input"
                       />
                     </div>
@@ -140,31 +126,30 @@ const UserDetails = () => {
               </Form>
             </div>
           </div>
-          <div className="account-profile-column2">
-            <div className="profile-img">
-              <img
-                src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
-                alt=""
-              />
-
-              <div className="profile-center">
-                <div className="profile-name">
-                  <h3>
-                    Jessica Jones
-                    <span className="profile-age">, 27</span>
-                  </h3>
-                </div>
-                <div className="user-travel-type">Travel type</div>
-                <div className="user-profession">Profession</div>
-                <hr className="my-4" />
-                <div className="user-about">
-                  <h3>About</h3>
-                  <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Quasi debitis quo architecto ea impedit veniam?
-                  </p>
-                </div>
-              </div>
+        </div>
+        <div className="account-profile-column2">
+          <div className="profile-img">
+            <img
+              src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
+              alt=""
+            />
+          </div>
+          <div className="profile-center">
+            <div className="profile-name">
+              <h3>
+                Jessica Jones
+                <span className="profile-age">, 27</span>
+              </h3>
+            </div>
+            <div className="user-travel-type">Travel type</div>
+            <div className="user-profession">Profession</div>
+            <hr className="my-4" />
+            <div className="user-about">
+              <h3>About</h3>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi
+                debitis quo architecto ea impedit veniam?
+              </p>
             </div>
           </div>
         </div>

@@ -1,21 +1,11 @@
-import React, { useEffect, useContext } from "react";
+import React from "react";
 import Profilenav from "./Profilenav";
 import "./Support.css";
 import logo from "../assests/logo1.png";
 import { Form, Input, Button } from "reactstrap";
 import Profilepage from "./Profilepage";
-import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
-import { ApiContext } from "../Context/ApiContext";
-import { useLocation } from "react-router-dom";
 
 const Support = () => {
-  const location = useLocation();
-  const { setAdminRoutes } = useContext(ApiContext);
-
-  useEffect(() => {
-    let value = setAdminRoute(location.pathname);
-    setAdminRoutes(value);
-  }, []);
   return (
     <div style={{ display: "flex" }}>
       <Profilepage />

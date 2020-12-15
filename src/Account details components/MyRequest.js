@@ -1,9 +1,8 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import "./MyRequest.css";
 import { GiConqueror, GiRocketFlight } from "react-icons/gi";
 import { FaTrain } from "react-icons/fa";
 import { RiFlightTakeoffFill } from "react-icons/ri";
-import { useLocation } from "react-router-dom";
 
 import {
   Button,
@@ -15,18 +14,9 @@ import {
 } from "reactstrap";
 import Profilenav from "./Profilenav";
 import Profilepage from "./Profilepage";
-import { setAdminRoute } from "../Admin components/utilities/AdminroutesCheck";
-import { ApiContext } from "../Context/ApiContext";
 const MyRequest = () => {
   const [domesticModal, setDomesticModal] = useState(false);
   const [internationalModal, setInternationalModal] = useState(false);
-  const location = useLocation();
-  const { setAdminRoutes } = useContext(ApiContext);
-
-  useEffect(() => {
-    let value = setAdminRoute(location.pathname);
-    setAdminRoutes(value);
-  }, []);
 
   const openDomesticModal = () => {
     setDomesticModal(true);
