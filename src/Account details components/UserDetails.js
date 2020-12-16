@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./UserDetails.css";
 import { Form, Input } from "reactstrap";
 import Profilenav from "./Profilenav";
 import Profilepage from "./Profilepage";
 import { auth, firedb, fireStorage } from "../firebase";
-import { isAuthenticated, storeAuthToken } from "../Login components/auth";
+import { isAuthenticated } from "../Login components/auth";
 import { useToasts } from "react-toast-notifications";
 import { MdEdit } from "react-icons/md";
 import { Tooltip } from "reactstrap";
-
+import { ApiContext } from "../Context/ApiContext";
 const UserDetails = () => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
-
   const toggle = () => setTooltipOpen(!tooltipOpen);
   const { addToast } = useToasts();
+  const { setUserInfo, userInfo } = useContext(ApiContext);
   const [uid, setUid] = useState("");
   const [values, setValues] = useState({
     name: "",
@@ -124,6 +124,7 @@ const UserDetails = () => {
     firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
       if (data !== null) {
         let val = data.val();
+        setUserInfo(val);
         console.log("data.val() :>> ", val);
         setValues({
           ...values,
@@ -141,6 +142,7 @@ const UserDetails = () => {
       }
     });
   };
+
   const handleEditClick = () => {
     const filepath = document.getElementById("imageButton");
     filepath.click();
@@ -155,7 +157,7 @@ const UserDetails = () => {
             <h1>Hello {name}</h1>
             <p>
               This is your profile page. You can see the progress you've made
-              with your work and manage your projects or assigned tasks.
+              with your work and manage your projects or assigned tasks
             </p>
           </div>
         </div>

@@ -55,6 +55,8 @@ const MyRequest = () => {
     });
   };
 
+  console.log("...userRequest :>> ", ...userRequest);
+
   const colors = [
     {
       name: "Query Received",
@@ -103,7 +105,7 @@ const MyRequest = () => {
   ];
 
   let pageSize = 7;
-  let pagesCount = Math.ceil(colors.length / pageSize);
+  let pagesCount = Math.ceil(userRequest.length / pageSize);
 
   const handleClick = (e, index) => {
     e.preventDefault();

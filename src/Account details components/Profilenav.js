@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Popover, PopoverBody } from "reactstrap";
 import "./UserDropdown.css";
 
 import { UserMenuItems } from "./UserMenuItems";
 import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated, signout } from "../Login components/auth";
+import { ApiContext } from "../Context/ApiContext";
 const Profilenav = (props) => {
   const [userDropdown, setUserDropdown] = useState(false);
   const toggle = () => setUserDropdown(!userDropdown);
+  const { userInfo } = useContext(ApiContext);
 
   const { user } = isAuthenticated();
 
@@ -18,13 +20,11 @@ const Profilenav = (props) => {
       </div>
       <div className="account-profile" id="Popover1">
         <img
-          // src={user.photoUrl}
-          src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
+          src={userInfo.photoURL}
+          // src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
           alt=""
         />
-        <h6 onClick={() => setUserDropdown(!userDropdown)}>
-          {user.displayName}
-        </h6>
+        <h6 onClick={() => setUserDropdown(!userDropdown)}>{userInfo.name}</h6>
       </div>
       <Popover
         placement="bottom"

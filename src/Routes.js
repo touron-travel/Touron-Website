@@ -33,7 +33,6 @@ import SavedTours from "./Account details components/SavedTours";
 import Faq from "./Account details components/Faq";
 import Support from "./Account details components/Support";
 import { isAuthenticated } from "./Login components/auth";
-import { firedb } from "./firebase";
 import PrivateRoute from "./Login components/Privateroutes";
 import { ToastProvider, useToasts } from "react-toast-notifications";
 
@@ -43,6 +42,7 @@ export default function Routes() {
   const [cities, setCities] = useState([]);
   const [adminRoutes, setAdminRoutes] = useState(false);
   const [uid, setUid] = useState("");
+  const [userInfo, setUserInfo] = useState({});
 
   const getTours = async () => {
     try {
@@ -97,6 +97,8 @@ export default function Routes() {
         setAdminRoutes,
         uid,
         setUid,
+        userInfo,
+        setUserInfo,
       }}
     >
       <Router>

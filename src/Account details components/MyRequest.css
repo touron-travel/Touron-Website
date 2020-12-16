@@ -91,6 +91,12 @@
   top: -140px;
   width: 97%;
 }
+.requests-table.support Table {
+  box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.15) !important;
+  position: absolute;
+  top: 10px;
+  width: 97%;
+}
 .requests-table tr {
   height: 60px;
   text-align: center;

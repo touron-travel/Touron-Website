@@ -17,15 +17,15 @@ import { Link, Redirect } from "react-router-dom";
 import { ApiContext } from "../../Context/ApiContext";
 import { firedb } from "../../firebase";
 
-const PlannedTour = (params) => {
+const PlannedTour = () => {
   const [tourType, setTourType] = useState("");
   const [travellerType, setTravellerType] = useState("");
   const [adult, setAdult] = useState(0);
   const [children, setChildren] = useState(0);
-  const [fromDate, setFromDate] = useState();
-  const [toDate, setToDate] = useState();
-  const [travelMode, setTravelMode] = React.useState("");
-  const [preferanece, setPreferanece] = React.useState("");
+  const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
+  const [travelMode, setTravelMode] = useState("");
+  const [preferanece, setPreferanece] = useState("");
   const [destination, setDestination] = useState("");
   const [startPoint, setStartPoint] = useState("");
   const [name, setName] = useState("");
@@ -101,9 +101,31 @@ const PlannedTour = (params) => {
       userID: uid,
       tourCategory: "Planned Tour",
     };
+
     firedb
       .ref(`requests`)
-      .push(values)
+      .push({
+        fromDate: fromDate,
+        toDate: toDate,
+        tourType: tourType,
+        travellerType: travellerType,
+        adult: adult,
+        children: children,
+        travelMode: travelMode,
+        preferanece: preferanece,
+        destination: destination,
+        startPoint: startPoint,
+        name: name,
+        number: number,
+        budget: budget,
+        requestID: `T0-${date}${formatedMonth}${year}-${random}`,
+        status: "Query Received",
+        plans: "",
+        reports: "",
+        tourCost: 0,
+        userID: uid,
+        tourCategory: "Planned Tour",
+      })
       .then((data) => console.log("data", data))
       .catch((err) => console.log("err", err));
   };

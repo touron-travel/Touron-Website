@@ -10,7 +10,7 @@ import { ApiContext } from "../Context/ApiContext";
 import Popular_tourTile from "./Popular_tourTile";
 import Slider from "react-slick";
 import { SemipolarLoading } from "react-loadingg";
-
+import { Input } from "reactstrap";
 export default function Popular_tour(props) {
   const { countries } = useContext(ApiContext);
   const [tour, setTour] = useState([]);
@@ -24,7 +24,9 @@ export default function Popular_tour(props) {
   const [tourShown, setTourShown] = useState(4);
   const [contentLoaded, setContentLoaded] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState([]);
-  console.log("tour :>> ", tour.length);
+  const [tourCategory, setTourCategory] = useState("");
+  const [idealType, setIdealType] = useState("");
+  const [tourType, setTourType] = useState("");
 
   const getCityTours = async (name) => {
     setContentLoaded(true);
@@ -37,26 +39,56 @@ export default function Popular_tour(props) {
     setTourLength(cityTourLength.data.length);
   };
 
-  // const categoryTours = () => {
-  //   setContentLoaded(true);
-  //   selectedCategory.forEach(async (c) => {
-  //     const tourResponse = await axios.get(
-  //       `${API}/filtertour?tourCategory=${c}&idealType=${c}&tourType=${c}`
-  //     );
-  //     console.log(c, "c");
-  //     console.log(tourResponse.data.length, "length");
-  //     setTour(...tour, tourResponse.data);
-  //   });
-  //   setContentLoaded(false);
-  // };
-
-  const categoryTours = async (category, idealtype, tourtype) => {
+  const filterTourCategory = async (tourCategory) => {
+    setTourCategory(tourCategory);
     setContentLoaded(true);
     const tourResponse = await axios.get(
-      `${API}/filtertour?tourCategory=${category}&idealType=${idealtype}&tourType=${tourtype}`
+      `${API}/tour/tourcategory/${tourCategory}?page=${page}&pageSize=${pageSize}`,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
     );
     setTour(tourResponse.data);
     setContentLoaded(false);
+    const tourLength = await axios.get(
+      `${API}/tour/tourcategory/${tourCategory}`
+    );
+    console.log("tourLength.data.length :>> ", tourLength.data.length);
+    setTourLength(tourLength.data.length);
+  };
+  const filterIdealType = async (idealType) => {
+    setIdealType(idealType);
+    setContentLoaded(true);
+    const tourResponse = await axios.get(
+      `${API}/tour/idealtype/${idealType}?page=${page}&pageSize=${pageSize}`,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+    setTour(tourResponse.data);
+    setContentLoaded(false);
+    const tourLength = await axios.get(`${API}/tour/idealtype/${idealType}`);
+    setTourLength(tourLength.data.length);
+  };
+  const filterTourType = async (tourType) => {
+    setTourType(tourType);
+    setContentLoaded(true);
+    const tourResponse = await axios.get(
+      `${API}/tour/tourtype/${tourType}?page=${page}&pageSize=${pageSize}`,
+      {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+      }
+    );
+    setTour(tourResponse.data);
+    setContentLoaded(false);
+    const tourLength = await axios.get(`${API}/tour/tourtype/${tourType}`);
+    setTourLength(tourLength.data.length);
   };
   const getCityNames = async (name) => {
     const cityName = await axios.get(`${API}/city/countryname/${name}`);
@@ -70,17 +102,22 @@ export default function Popular_tour(props) {
     }
   }, []);
 
-  const filterCategory = (category) => {
-    const filteredTour = tour.filter((t) => {
-      console.log(t.tourCategory.includes(category));
-      return t.tourCategory.includes(category) === false;
-    });
-
-    console.log("filteredTour :>> ", filteredTour);
-  };
-
   useEffect(() => {
-    if (cityName !== "") getCityTours(cityName);
+    if (cityName !== "") {
+      getCityTours(cityName);
+    }
+    if (tourType !== "") filterTourType(tourType);
+    if (tourCategory !== "") filterTourType(tourCategory);
+    if (idealType !== "") filterIdealType(idealType);
+  }, [page]);
+  useEffect(() => {
+    if (idealType !== "") filterIdealType(idealType);
+  }, [page]);
+  useEffect(() => {
+    if (tourCategory !== "") filterTourCategory(tourCategory);
+  }, [page]);
+  useEffect(() => {
+    if (tourType !== "") filterTourType(tourType);
   }, [page]);
 
   function SampleNextArrow(props) {
@@ -309,6 +346,19 @@ export default function Popular_tour(props) {
         <div>
           <div className="tour_category">
             <div className="tour_category-title">Tour Category</div>
+
+            {/* <label htmlFor="jhbdc">jkbsdhbdhb</label>
+            <input type="radio" name="Activities" value="Activities" />
+            <label htmlFor="jhbdc">wc jdc</label>
+
+            <input type="radio" name="Activities" value="Activities" />
+            <input type="radio" name="Activities" value="Activities" />
+            <label htmlFor="jhbdc">knwcj</label>
+
+            <input type="radio" name="Activities" value="Activities" />
+            <label htmlFor="jhbdc">wkjdnce</label>
+
+            <input type="radio" name="Activities" value="Activities" /> */}
             <div className="tour_category-list">
               <ul>
                 <li
@@ -317,26 +367,13 @@ export default function Popular_tour(props) {
                   }
                 >
                   <input
-                    type="checkbox"
+                    type="radio"
                     className="tour_category-list-checkbox"
                     name="activities"
                     onClick={() => {
-                      if (selectedCategory.includes("Activities")) {
-                        const filter = selectedCategory.filter((category) => {
-                          return category !== "Activities";
-                        });
-                        console.log(filter, "filter");
-                        setSelectedCategory(filter);
-                        filterCategory("Activities");
-                      } else {
-                        categoryTours("Activities", "", "");
-
-                        setSelectedCategory([
-                          ...selectedCategory,
-                          "Activities",
-                        ]);
-                      }
+                      filterTourCategory("Activities");
                     }}
+                    checked={tourCategory == "Activities" ? true : false}
                   />
                   Outdoor Activities
                 </li>
@@ -348,26 +385,12 @@ export default function Popular_tour(props) {
                   }
                 >
                   <input
-                    type="checkbox"
+                    type="radio"
                     onClick={() => {
-                      if (selectedCategory.includes("Hop On and Off")) {
-                        const filter = selectedCategory.filter((category) => {
-                          return category !== "Hop On and Off";
-                        });
-                        console.log(filter, "filter");
-                        filterCategory("Hop On and Off");
-
-                        setSelectedCategory(filter);
-                      } else {
-                        categoryTours("Hop On and Off", "", "");
-
-                        setSelectedCategory([
-                          ...selectedCategory,
-                          "Hop On and Off",
-                        ]);
-                      }
+                      filterTourCategory("Hop On and Off");
                     }}
                     className="tour_category-list-checkbox"
+                    checked={tourCategory == "Hop On and Off" ? true : false}
                   />
                   Hop On and Off
                 </li>
@@ -378,24 +401,10 @@ export default function Popular_tour(props) {
                 >
                   <input
                     onClick={() => {
-                      if (selectedCategory.includes("Attraction")) {
-                        const filter = selectedCategory.filter((category) => {
-                          return category !== "Attraction";
-                        });
-                        console.log(filter, "filter");
-                        filterCategory("Attraction");
-
-                        setSelectedCategory(filter);
-                      } else {
-                        categoryTours("Attraction", "", "");
-
-                        setSelectedCategory([
-                          ...selectedCategory,
-                          "Attraction",
-                        ]);
-                      }
+                      filterTourCategory("Attraction");
                     }}
-                    type="checkbox"
+                    type="radio"
+                    checked={tourCategory == "Attraction" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Attraction
@@ -407,20 +416,10 @@ export default function Popular_tour(props) {
                 >
                   <input
                     onClick={() => {
-                      if (selectedCategory.includes("Learning")) {
-                        const filter = selectedCategory.filter((category) => {
-                          return category !== "Learning";
-                        });
-                        console.log(filter, "filter");
-                        setSelectedCategory(filter);
-                        filterCategory("Learning");
-                      } else {
-                        categoryTours("Learning", "", "");
-
-                        setSelectedCategory([...selectedCategory, "Learning"]);
-                      }
+                      filterTourCategory("Learning");
                     }}
-                    type="checkbox"
+                    type="radio"
+                    checked={tourCategory == "Learning" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Learning
@@ -434,23 +433,10 @@ export default function Popular_tour(props) {
                 >
                   <input
                     onClick={() => {
-                      if (selectedCategory.includes("Family and kids")) {
-                        const filter = selectedCategory.filter((category) => {
-                          return category !== "Family and kids";
-                        });
-                        console.log(filter, "filter");
-
-                        setSelectedCategory(filter);
-                      } else {
-                        categoryTours("", "Family and kids", "");
-
-                        setSelectedCategory([
-                          ...selectedCategory,
-                          "Family and kids",
-                        ]);
-                      }
+                      filterIdealType("Family and kids");
                     }}
-                    type="checkbox"
+                    type="radio"
+                    checked={idealType == "Family and kids" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Family and kids
@@ -462,22 +448,10 @@ export default function Popular_tour(props) {
                 >
                   <input
                     onClick={() => {
-                      if (selectedCategory.includes("Young Couple")) {
-                        const filter = selectedCategory.filter((category) => {
-                          return category !== "Young Couple";
-                        });
-                        console.log(filter, "filter");
-                        setSelectedCategory(filter);
-                      } else {
-                        categoryTours("", "Young Couple", "");
-
-                        setSelectedCategory([
-                          ...selectedCategory,
-                          "Young Couple",
-                        ]);
-                      }
+                      filterIdealType("Young Couple");
                     }}
-                    type="checkbox"
+                    type="radio"
+                    checked={idealType == "Young Couple" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Young Couple
@@ -489,19 +463,10 @@ export default function Popular_tour(props) {
                 >
                   <input
                     onClick={() => {
-                      if (selectedCategory.includes("Solo")) {
-                        const filter = selectedCategory.filter((category) => {
-                          return category !== "Solo";
-                        });
-                        console.log(filter, "filter");
-                        setSelectedCategory(filter);
-                      } else {
-                        categoryTours("", "Solo", "");
-
-                        setSelectedCategory([...selectedCategory, "Solo"]);
-                      }
+                      filterIdealType("Solo");
                     }}
-                    type="checkbox"
+                    type="radio"
+                    checked={idealType == "Solo" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Solo
@@ -513,22 +478,10 @@ export default function Popular_tour(props) {
                 >
                   <input
                     onClick={() => {
-                      if (selectedCategory.includes("Mature Couple")) {
-                        const filter = selectedCategory.filter((category) => {
-                          return category !== "Mature Couple";
-                        });
-                        console.log(filter, "filter");
-                        setSelectedCategory(filter);
-                      } else {
-                        categoryTours("", "Mature Couple", "");
-
-                        setSelectedCategory([
-                          ...selectedCategory,
-                          "Mature Couple",
-                        ]);
-                      }
+                      filterIdealType("Mature Couple");
                     }}
-                    type="checkbox"
+                    type="radio"
+                    checked={idealType == "Mature Couple" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Mature Couple
@@ -540,22 +493,10 @@ export default function Popular_tour(props) {
                 >
                   <input
                     onClick={() => {
-                      if (selectedCategory.includes("Full Day Tour")) {
-                        const filter = selectedCategory.filter((category) => {
-                          return category !== "Full Day Tour";
-                        });
-                        console.log(filter, "filter");
-                        setSelectedCategory(filter);
-                      } else {
-                        categoryTours("", "", "Full Day Tour");
-
-                        setSelectedCategory([
-                          ...selectedCategory,
-                          "Full Day Tour",
-                        ]);
-                      }
+                      filterTourType("Full Day Tour");
                     }}
-                    type="checkbox"
+                    type="radio"
+                    checked={tourType == "Full Day Tour" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Full Day Tour
@@ -567,22 +508,10 @@ export default function Popular_tour(props) {
                 >
                   <input
                     onClick={() => {
-                      if (selectedCategory.includes("Half Day Tour")) {
-                        const filter = selectedCategory.filter((category) => {
-                          return category !== "Half Day Tour";
-                        });
-                        console.log(filter, "filter");
-                        setSelectedCategory(filter);
-                      } else {
-                        categoryTours("", "", "Half Day Tour");
-
-                        setSelectedCategory([
-                          ...selectedCategory,
-                          "Half Day Tour",
-                        ]);
-                      }
+                      filterTourType("Half Day Tour");
                     }}
-                    type="checkbox"
+                    type="radio"
+                    checked={tourType == "Half Day Tour" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Half Day Tour
@@ -593,35 +522,13 @@ export default function Popular_tour(props) {
                   }
                 >
                   <input
-                    type="checkbox"
                     onClick={() => {
-                      if (selectedCategory.includes("Night Tour")) {
-                        const filter = selectedCategory.filter((category) => {
-                          return category !== "Night Tour";
-                        });
-                        console.log(filter, "filter");
-                        setSelectedCategory(filter);
-                      } else {
-                        categoryTours("", "", "Night Tour");
-
-                        setSelectedCategory([
-                          ...selectedCategory,
-                          "Night Tour",
-                        ]);
-                      }
+                      filterTourType("Night Tour");
                     }}
+                    type="radio"
+                    checked={tourType == "Night Tour" ? true : false}
                     className="tour_category-list-checkbox"
                   />
-                  Night Tour
-                </li>
-                <li
-                  onClick={() => {
-                    categoryTours();
-                  }}
-                  className={
-                    selectedCategory.includes("Night Tour") ? "selected" : ""
-                  }
-                >
                   Night Tour
                 </li>
               </ul>
