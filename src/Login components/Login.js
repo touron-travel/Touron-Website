@@ -38,7 +38,7 @@ export default function Login({ history }) {
         <div className="login_text">
           <h1>Login</h1>
           <p>
-            No Account?
+            No Account?<span> </span>
             <Link to="/signup" className="link">
               Register
             </Link>
