@@ -5,6 +5,9 @@ import { ApiContext } from "../Context/ApiContext";
 import axios from "axios";
 import { API } from "../backend";
 import { Link } from "react-scroll";
+import { Form, Input } from "reactstrap";
+import { firedb } from "../firebase";
+import { isAuthenticated } from "../Login components/auth";
 
 const Visa = () => {
   const { countries } = useContext(ApiContext);
@@ -14,17 +17,31 @@ const Visa = () => {
 
   const [countryName, setCountryName] = useState("");
   const [visaDetails, setVisaDetails] = useState({});
+  console.log(visaDetails.selfEmployedDocs, "de");
   const [personType, setPersonType] = useState("");
   const [show, setshow] = useState(false);
   const [step, setStep] = useState(0);
+  const [name, setName] = useState("");
+  const [number, setNumber] = useState("");
+  const [travelMonth, setTravelMonth] = useState("");
+  const [workType, setWorkType] = useState("");
+  const [country, setCountry] = useState("");
+  const [uid, setUid] = useState("");
+  console.log("name", name);
+  console.log("country", country);
+  console.log("number", number);
+  console.log("travelMonth", travelMonth);
+  console.log("workType", workType);
 
-  const getVisaDetails = async (countryname) => {
+  console.log("step", step);
+
+  const getVisaDetails = async (countryName) => {
+    console.log("countryName", countryName);
     try {
-      const visaResponse = await axios.get(`${API}/visa/${countryname}`);
+      const visaResponse = await axios.get(`${API}/visa/${countryName}`);
       console.log("visaResponse", visaResponse.data);
       setVisaDetails(...visaResponse.data);
       setshow(true);
-      setCountryName("");
     } catch (err) {
       console.log(err, "err");
     }
@@ -35,6 +52,29 @@ const Visa = () => {
   };
   const prevStep = () => {
     if (step === 1) setStep(step - 1);
+  };
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      const { user } = isAuthenticated();
+      setUid(user.uid);
+    }
+  }, []);
+
+  const addOrEditInfo = (e) => {
+    e.preventDefault();
+    let values = {
+      userID: uid,
+      name: name,
+      phoneNumber: number,
+      countryName: country,
+      workType: workType,
+      travelMonth: travelMonth,
+    };
+    firedb.ref(`visaSubmission`).push(values);
+    setName("");
+    setNumber("");
+    setCountry("");
   };
 
   const renderItem = () => {
@@ -85,17 +125,19 @@ const Visa = () => {
       <div className="visa-container" style={backgroundImage}>
         <h1>Choose the country</h1>
         <div className="visa-country-search">
-          <select placeholder="Select the country">
+          <select
+            placeholder="Select the country"
+            onChange={(e) => {
+              setCountryName(e.target.value);
+              getVisaDetails(e.target.value);
+            }}
+          >
             {countries.map((c, index) => {
               return (
                 <option
                   key={index}
                   value={c.countryName}
                   className="visa-option"
-                  onChange={(e) => {
-                    setCountryName(e.target.value);
-                    getVisaDetails(e.target.value);
-                  }}
                 >
                   {c.countryName}
                 </option>
@@ -133,7 +175,86 @@ const Visa = () => {
             <i className="fa fa-chevron-right"></i>
             <h4 className="visa-countryName"> {visaDetails.countryName}</h4>
           </div>
-          {renderItem()}
+          <div className="visa-content">
+            <div className="visa-content-details">{renderItem()}</div>
+            <div className="visa-content-form">
+              <div className="visa-content-from-head">
+                <h3>Visa Request</h3>
+              </div>
+              <Form>
+                <div className="visa-group">
+                  <label className="visa-label">Name</label>
+                  <input
+                    type="text"
+                    className="user-input-alter user-input"
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="visa-group">
+                  <label className="visa-label">Country Name</label>
+                  <input
+                    type="text"
+                    className="user-input-alter user-input"
+                    value={visaDetails.countryName}
+                    onChange={(e) => {
+                      setCountry(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="visa-group">
+                  <label className="visa-label">Phone Number</label>
+                  <input
+                    type="number"
+                    className="user-input-alter user-input"
+                    value={number}
+                    onChange={(e) => {
+                      setNumber(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="visa-group">
+                  <label className="visa-label">Travel Month</label>
+                  <Input
+                    type="select"
+                    className="user-input-alter user-input"
+                    onChange={(e) => setTravelMonth(e.target.value)}
+                  >
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                  </Input>
+                </div>
+                <div className="visa-group">
+                  <label className="visa-label">Work Type</label>
+                  <Input
+                    type="select"
+                    className="user-input-alter user-input"
+                    onChange={(e) => setWorkType(e.target.value)}
+                  >
+                    <option value="Salaried">Salaried</option>
+                    <option value="SelfEmployed">Self Employed</option>
+                  </Input>
+                </div>
+                <div className="user-button">
+                  <button className="btn btn-visa" onClick={addOrEditInfo}>
+                    Submit
+                  </button>
+                </div>
+              </Form>
+            </div>
+          </div>
         </div>
       ) : null}
     </>

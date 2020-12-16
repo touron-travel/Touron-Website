@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MyRequest.css";
 import { GiConqueror, GiRocketFlight } from "react-icons/gi";
 import * as RiIcons from "react-icons/ri";
-
 import {
   Button,
   Table,
@@ -13,7 +12,32 @@ import {
 } from "reactstrap";
 import Profilenav from "./Profilenav";
 import Profilepage from "./Profilepage";
+import { firedb } from "../firebase";
+import { isAuthenticated } from "../Login components/auth";
+
 const MyVisaRequests = () => {
+  const [visaRequest, setVisaRequest] = useState([]);
+
+  useEffect(() => {
+    getVisaRequest();
+  }, []);
+  const getVisaRequest = () => {
+    const { user } = isAuthenticated();
+
+    firedb.ref("visaSubmission").on("value", (data) => {
+      if (data) {
+        let visareq = [];
+        data.forEach((d) => {
+          if (d.val().userID == user.uid) {
+            console.log("d.va;(", d.val());
+            visareq.push(d.val());
+          }
+        });
+        setVisaRequest(visareq);
+      }
+    });
+  };
+
   // const [domesticModal, setDomesticModal] = useState(false);
   // const [internationalModal, setInternationalModal] = useState(false);
 
@@ -126,20 +150,28 @@ const MyVisaRequests = () => {
                 <th scope="col">Phonu Number</th>
                 <th scope="col">Destination</th>
                 <th scope="col">Employee Type</th>
+                <th scope="col">Travel Month</th>
               </tr>
             </thead>
             <tbody className="bg-white">
-              {colors
-                .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
-                .map((c, i) => (
-                  <tr key={i}>
-                    <td>{i + 1}</td>
-                    <td>Vicky</td>
-                    <td>6383756188</td>
-                    <td>Maldives</td>
-                    <td>Salaried</td>
-                  </tr>
-                ))}
+              {visaRequest.length !== 0 ? (
+                <>
+                  {visaRequest
+                    .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
+                    .map((c, i) => (
+                      <tr key={i}>
+                        <td>{i + 1}</td>
+                        <td>{c.name}</td>
+                        <td>{c.phoneNumber}</td>
+                        <td>{c.countryName}</td>
+                        <td>{c.workType}</td>
+                        <td>{c.travelMonth}</td>
+                      </tr>
+                    ))}
+                </>
+              ) : (
+                <div className="noFind">No Visa Request found</div>
+              )}
             </tbody>
           </Table>
         </div>
