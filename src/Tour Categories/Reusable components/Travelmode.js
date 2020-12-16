@@ -29,7 +29,7 @@ const Travelmode = ({
           <div style={{ position: "absolute", top: "10px", right: "10px" }}>
             {travelMode == name1 ? <Checked /> : null}
           </div>
-          <img src={imgSrc2} alt="" />
+          <img src={imgSrc1} alt="" />
           <h6>{name1}</h6>
         </div>
         <div
@@ -43,7 +43,7 @@ const Travelmode = ({
           <div style={{ position: "absolute", top: "10px", right: "10px" }}>
             {travelMode == name2 ? <Checked /> : null}
           </div>
-          <img src={imgSrc1} alt="" />
+          <img src={imgSrc2} alt="" />
           <h6>{name2}</h6>
         </div>
       </div>
