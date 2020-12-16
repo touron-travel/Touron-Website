@@ -122,8 +122,8 @@ const MyVisaRequests = () => {
           <div className="requests-body-container ">
             <div className="card-body">
               <div className="card-title">
-                <h5>Submitted Requestt</h5>
-                <h1>04</h1>
+                <h5>Submitted Request</h5>
+                <h1>{visaRequest.length}</h1>
               </div>
               <div className="card-logo logo1">
                 <RiIcons.RiVisaFill size={28} color="white" />
@@ -132,7 +132,7 @@ const MyVisaRequests = () => {
             <div className="card-body">
               <div className="card-title">
                 <h5>Completed Request</h5>
-                <h1>04</h1>
+                <h1>0</h1>
               </div>
               <div className="card-logo logo2">
                 <GiRocketFlight size={28} color="white" />

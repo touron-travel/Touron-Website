@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import visa from "../assests/visa.jpg";
 import "./Visa.css";
 import { ApiContext } from "../Context/ApiContext";
 import axios from "axios";
@@ -8,6 +7,7 @@ import { Link } from "react-scroll";
 import { Form, Input } from "reactstrap";
 import { firedb } from "../firebase";
 import { isAuthenticated } from "../Login components/auth";
+import { useToasts } from "react-toast-notifications";
 
 const Visa = () => {
   const { countries } = useContext(ApiContext);
@@ -27,6 +27,8 @@ const Visa = () => {
   const [workType, setWorkType] = useState("");
   const [country, setCountry] = useState("");
   const [uid, setUid] = useState("");
+  const { addToast } = useToasts();
+
   console.log("name", name);
   console.log("country", country);
   console.log("number", number);
@@ -71,7 +73,19 @@ const Visa = () => {
       workType: workType,
       travelMonth: travelMonth,
     };
-    firedb.ref(`visaSubmission`).push(values);
+    firedb
+      .ref(`visaSubmission`)
+      .push(values)
+      .then(() => {
+        addToast("Visa Requested Successfully", {
+          appearance: "success",
+        });
+      })
+      .catch((err) =>
+        addToast(err, {
+          appearance: "success",
+        })
+      );
     setName("");
     setNumber("");
     setCountry("");

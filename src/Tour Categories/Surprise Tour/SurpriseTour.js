@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import TourHeader from "../Reusable components/TourHeader";
 import Surprise from "../../assests/Surprise.jpg";
 import Tourtype from "../Reusable components/Tourtype";
@@ -14,6 +14,8 @@ import Modal from "react-modal";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../../Login components/auth";
+import { ApiContext } from "../../Context/ApiContext";
+import { firedb } from "../../firebase";
 
 const SurpriseTour = (params) => {
   const [tourType, setTourType] = React.useState("");
@@ -39,6 +41,7 @@ const SurpriseTour = (params) => {
   const [years, setYears] = useState("");
   const [months, setMonths] = useState("");
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const { uid } = useContext(ApiContext);
   let random;
   let formatedMonth;
 
@@ -78,18 +81,50 @@ const SurpriseTour = (params) => {
   };
   const closeFormModal = () => {
     setFormModalOpen(false);
-    // return <Redirect to="/" />;
   };
 
-  //   useEffect(() => {
-  //     random = Math.floor((Math.random() + 4) * 345334 * Math.random());
-  //     const requestDate = new Date();
-  //     let currentYear = requestDate.getFullYear();
-  //     setDate(requestDate.getDate());
-  //     setMonth(requestDate.getMonth() + 1);
-  //     setYear(currentYear.toString().slice(2, 5));
-  //     formatedMonth = month < 10 ? "0" + month : month;
-  //   });
+  const submitData = () => {
+    let values = {
+      requestID: `T0-${date}${formatedMonth}${year}-${random}`,
+      tourCategory: "Surprise Tour",
+      tourType: tourType,
+      travellerType: travellerType,
+      fromDate: fromDate,
+      adult: adult,
+      children: children,
+      travelMode: travelMode,
+      startPoint: startPoint,
+      toDate: toDate,
+      expediture1: expediture1,
+      expediture2: expediture2,
+      expediture3: expediture3,
+      tourPreferance: tourPreferance,
+      name: name,
+      number: number,
+      budget: budget,
+      userID: uid,
+      status: "Query Received",
+      tourCost: 0,
+    };
+    firedb
+      .ref(`requests`)
+      .push(values)
+      .then((data) => console.log("data", data))
+      .catch((err) => console.log("err", err));
+  };
+
+  useEffect(() => {
+    random = Math.floor((Math.random() + 4) * 345334 * Math.random());
+    const requestDate = new Date();
+    let currentYear = requestDate.getFullYear();
+    setDate(requestDate.getDate());
+    setMonth(requestDate.getMonth() + 1);
+    console.log("currentYear", currentYear);
+    setYear(currentYear.toString().slice(2, 4));
+    console.log("year", year);
+    formatedMonth = month < 10 ? "0" + month : month;
+    console.log("object", `T0-${date}${formatedMonth}${year}-${random}`);
+  });
 
   const nextStep = () => {
     if (step == 2 && !isLoggedin) {
@@ -332,7 +367,7 @@ const SurpriseTour = (params) => {
           </ul>
         </div>
         <div className="info-tour-buttons">
-          <Link to="/my-requests">
+          <Link to="/profile/my-requests">
             <button className="info-button">Go to My Dashboard</button>
           </Link>
           <Link to="/">
@@ -356,7 +391,13 @@ const SurpriseTour = (params) => {
                 Previous
               </div>
               {step == 8 ? (
-                <div className="submit-button" onClick={() => nextStep()}>
+                <div
+                  className="submit-button"
+                  onClick={() => {
+                    openFormModal();
+                    submitData();
+                  }}
+                >
                   Submit
                 </div>
               ) : (
