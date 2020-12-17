@@ -102,71 +102,40 @@ const Visa = () => {
     setPersons(0);
   };
 
-  const VisaQuestionSalaried = [
-    {
-      question: "Document Required",
-      answer: "visaDetails.salaryDocs.salaryDocsRequired",
-    },
-    {
-      question: "Financials",
-      answer: "visaDetails.salaryDocs.salaryFinancials",
-    },
-    {
-      question: "Submission",
-      answer: "visaDetails.salaryDocs.salarySubmission",
-    },
-    {
-      question: "Appointment",
-      answer: "visaDetails.salaryDocs.salaryAppointment",
-    },
-    {
-      question: "Honeymooners",
-      answer: "visaDetails.salaryDocs.salaryHoneymooners",
-    },
-    {
-      question: "Duration",
-      answer: "visaDetails.salaryDocs.salaryDuration",
-    },
-    {
-      question: "Photograph",
-      answer: "visaDetails.salaryDocs.salaryPhotography",
-    },
-  ];
-
-  const VisaQuestionSelfEmployed = [
-    {
-      question: "Document Required",
-      answer: "visaDetails.selfEmployedDocs.selfEmployedDocsRequired",
-    },
-    {
-      question: "Financials",
-      answer: "visaDetails.selfEmployedDocs.selfEmployedFinancials",
-    },
-    {
-      question: "Submission",
-      answer: "visaDetails.selfEmployedDocs.selfEmployedSubmission",
-    },
-    {
-      question: "Appointment",
-      answer: "visaDetails.selfEmployedDocs.selfEmployedAppointment",
-    },
-    {
-      question: "Honeymooners",
-      answer: "visaDetails.selfEmployedDocs.selfEmployedHoneymooners",
-    },
-    {
-      question: "Duration",
-      answer: "visaDetails.selfEmployedDocs.selfEmployedDuration",
-    },
-    {
-      question: "Photograph",
-      answer: "visaDetails.selfEmployedDocs.selfEmployedPhotography",
-    },
-  ];
-
   const renderItem = () => {
     switch (step) {
       case 0:
+        const VisaQuestionSalaried = [
+          {
+            question: "Document Required",
+            answer: visaDetails.salaryDocs.salaryDocsRequired,
+          },
+          {
+            question: "Financials",
+            answer: visaDetails.salaryDocs.salaryFinancials,
+          },
+          {
+            question: "Submission",
+            answer: visaDetails.salaryDocs.salarySubmission,
+          },
+          {
+            question: "Appointment",
+            answer: visaDetails.salaryDocs.salaryAppointment,
+          },
+          {
+            question: "Honeymooners",
+            answer: visaDetails.salaryDocs.salaryHoneymooners,
+          },
+          {
+            question: "Duration",
+            answer: visaDetails.salaryDocs.salaryDuration,
+          },
+          {
+            question: "Photograph",
+            answer: visaDetails.salaryDocs.salaryPhotography,
+          },
+        ];
+
         return (
           <div className="salaried-details">
             {VisaQuestionSalaried.map((q, index) => {
@@ -198,6 +167,36 @@ const Visa = () => {
           </div>
         );
       case 1:
+        const VisaQuestionSelfEmployed = [
+          {
+            question: "Document Required",
+            answer: visaDetails.selfEmployedDocs.selfEmployedDocsRequired,
+          },
+          {
+            question: "Financials",
+            answer: visaDetails.selfEmployedDocs.selfEmployedFinancials,
+          },
+          {
+            question: "Submission",
+            answer: visaDetails.selfEmployedDocs.selfEmployedSubmission,
+          },
+          {
+            question: "Appointment",
+            answer: visaDetails.selfEmployedDocs.selfEmployedAppointment,
+          },
+          {
+            question: "Honeymooners",
+            answer: visaDetails.selfEmployedDocs.selfEmployedHoneymooners,
+          },
+          {
+            question: "Duration",
+            answer: visaDetails.selfEmployedDocs.selfEmployedDuration,
+          },
+          {
+            question: "Photograph",
+            answer: visaDetails.selfEmployedDocs.selfEmployedPhotography,
+          },
+        ];
         return (
           <div className="selfEmployed-details">
             {VisaQuestionSelfEmployed.map((q, index) => {
