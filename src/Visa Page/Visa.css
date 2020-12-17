@@ -65,8 +65,8 @@
   background-color: white;
 }
 .visa-details {
-  background-color: #fff;
   padding: 40px;
+  background-color: #fff;
 }
 .visa-details-categories {
   display: flex;
@@ -111,20 +111,6 @@
 .selfEmployed-details {
   padding-top: 70px;
 }
-.salaried-details h1,
-.selfEmployed-details h1 {
-  font-family: "Kaushan Script", cursive;
-  font-weight: 700;
-  padding-bottom: 10px;
-}
-.salaried-details p,
-.selfEmployed-details p {
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  font-size: 20px;
-  text-align: justify;
-  color: #434343;
-  padding-bottom: 30px;
-}
 .visa-country {
   display: flex;
   align-items: center;
@@ -156,10 +142,6 @@
 .visa-content {
   display: flex;
   justify-content: space-evenly;
-}
-.visa-content-details {
-  display: flex;
-  flex-basis: 70%;
 }
 .visa-content-form {
   margin-top: 70px;
@@ -194,4 +176,31 @@
   display: flex;
   flex-direction: column;
   padding: 15px 40px;
+}
+.questionss {
+  /* background-color: #fff; */
+  width: 600px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background-color: #00000010;
+}
+.visa-questionss {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 10px;
+  align-items: center;
+  background-color: #f7fafc !important;
+}
+.questionss h1 {
+  font-size: 20px;
+  color: #333945;
+  padding: 20px;
+  font-family: "Kaushan Script", cursive;
+}
+.questionss p {
+  font-size: 18px;
+  margin-top: 5px;
+  color: #0009;
+  padding: 0px 20px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
