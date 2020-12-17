@@ -8,6 +8,7 @@ import { Form, Input } from "reactstrap";
 import { firedb } from "../firebase";
 import { isAuthenticated } from "../Login components/auth";
 import { useToasts } from "react-toast-notifications";
+import { noAuto } from "@fortawesome/fontawesome-svg-core";
 
 const Visa = () => {
   const { countries } = useContext(ApiContext);
@@ -26,6 +27,7 @@ const Visa = () => {
   const [travelMonth, setTravelMonth] = useState("");
   const [workType, setWorkType] = useState("");
   const [country, setCountry] = useState("");
+  const [persons, setPersons] = useState(0);
   const [uid, setUid] = useState("");
   const { addToast } = useToasts();
 
@@ -34,6 +36,7 @@ const Visa = () => {
   console.log("number", number);
   console.log("travelMonth", travelMonth);
   console.log("workType", workType);
+  console.log("persons", persons);
 
   console.log("step", step);
 
@@ -72,6 +75,8 @@ const Visa = () => {
       countryName: country,
       workType: workType,
       travelMonth: travelMonth,
+      persons: persons,
+      status: "Received",
     };
     firedb
       .ref(`visaSubmission`)
@@ -226,6 +231,17 @@ const Visa = () => {
                     value={number}
                     onChange={(e) => {
                       setNumber(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="visa-group">
+                  <label className="visa-label">Number of Persons</label>
+                  <input
+                    type="number"
+                    className="user-input-alter user-input"
+                    value={persons}
+                    onChange={(e) => {
+                      setPersons(e.target.value);
                     }}
                   />
                 </div>
