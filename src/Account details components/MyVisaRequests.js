@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./MyRequest.css";
 import { GiConqueror, GiRocketFlight } from "react-icons/gi";
 import * as RiIcons from "react-icons/ri";
 import {
   Button,
   Table,
+  Input,
   Modal,
   Pagination,
   PaginationLink,
@@ -12,90 +13,125 @@ import {
 } from "reactstrap";
 import Profilenav from "./Profilenav";
 import Profilepage from "./Profilepage";
-import { firedb } from "../firebase";
+import { firedb, fireStorage } from "../firebase";
 import { isAuthenticated } from "../Login components/auth";
+import { useToasts } from "react-toast-notifications";
+import { ApiContext } from "../Context/ApiContext";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const MyVisaRequests = () => {
+  const { userInfo } = useContext(ApiContext);
+
+  const { addToast } = useToasts();
+
   const [visaRequest, setVisaRequest] = useState([]);
+  const [selectedVisaRequest, setSelectedVisaRequest] = useState({});
+  const [visaModal, setVisaModal] = useState(false);
+  const [status, setStatus] = useState("");
+  const [key, setKey] = useState("");
+  const { user } = isAuthenticated();
+
+  const openVisaModal = () => {
+    setVisaModal(true);
+  };
+  const closeVisaModal = () => {
+    setVisaModal(false);
+  };
 
   useEffect(() => {
     getVisaRequest();
+    if (!userInfo.admin) getAllVisaRequest();
   }, []);
-  const getVisaRequest = () => {
-    const { user } = isAuthenticated();
 
+  const updateVisaRequest = () => {
+    firedb
+      .ref(`visaSubmission/${key}`)
+      .update({
+        status: status,
+      })
+      .then(() => {
+        setKey("");
+        setStatus("");
+        console.log("success :>> ");
+        closeVisaModal();
+        addToast("Visa Status Updated Successfully", {
+          appearance: "success",
+        });
+      })
+      .catch((err) => console.log("err :>> ", err));
+  };
+  const getAllVisaRequest = () => {
     firedb.ref("visaSubmission").on("value", (data) => {
       if (data) {
-        let visareq = [];
-        data.forEach((d) => {
-          if (d.val().userID == user.uid) {
-            console.log("d.va;(", d.val());
-            visareq.push(d.val());
-          }
+        setVisaRequest({
+          ...data.val(),
         });
-        setVisaRequest(visareq);
       }
     });
   };
+  const getVisaRequest = () => {
+    // const { user } = isAuthenticated();
 
-  // const [domesticModal, setDomesticModal] = useState(false);
-  // const [internationalModal, setInternationalModal] = useState(false);
+    firedb.ref("visaSubmission").on("value", (data) => {
+      let vr = [];
+      if (data.val() !== null) {
+        data.forEach((c) => {
+          if (c.val().userID == user.uid) {
+            vr.push(c.val());
+          }
+        });
+      }
 
-  // const openDomesticModal = () => {
-  //   setDomesticModal(true);
-  // };
-  // const closeDomesticModal = () => {
-  //   setDomesticModal(false);
-  // };
+      setVisaRequest(vr);
+    });
+  };
 
-  // function openInternationalModal() {
-  //   setInternationalModal(true);
-  // }
-  // function closeInternationalModal() {
-  //   setInternationalModal(false);
-  // }
-
+  const uploadFile = (e) => {
+    let file = e.target.files[0];
+    console.log("file :>> ", file.name);
+    fireStorage
+      .ref(`users/${user.uid}/profile.jpg`)
+      .put(file)
+      .then(() => {
+        fireStorage
+          .ref(`users/${user.uid}/profile.jpg`)
+          .getDownloadURL()
+          .then((fileUrl) => {
+            console.log("fileUrl :>> ", fileUrl);
+            firedb
+              .ref(`visaSubmission/${key}`)
+              .update({
+                downloadUrl: fileUrl,
+              })
+              .then((data) => {
+                closeVisaModal();
+                addToast("Uploaded Successfully", {
+                  appearance: "success",
+                });
+              })
+              .catch((err) =>
+                addToast(err, {
+                  appearance: "success",
+                })
+              );
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   const colors = [
     {
       name: "Query Received",
       color: "#f39c12",
     },
-    {
-      name: "Plan Shared",
-      color: "#7f8c8d",
-    },
+
     {
       name: "On Progress",
       color: "#8e44ad",
     },
-    {
-      name: "Cancelled",
-      color: "red",
-    },
-    {
-      name: "On Hold",
-      color: "#3498db",
-    },
-    {
-      name: "Duplicate Query",
-      color: "#fbc531",
-    },
-    {
-      name: "Tour Booked",
-      color: "#2d3436",
-    },
-    {
-      name: "Awaiting Payment",
-      color: "#00cec9",
-    },
-    {
-      name: "Cancellation Requested",
-      color: "#d63031",
-    },
-    {
-      name: "Estimated",
-      color: "#2d3436",
-    },
+
     {
       name: "Completed",
       color: "#55efc4",
@@ -123,7 +159,7 @@ const MyVisaRequests = () => {
             <div className="card-body">
               <div className="card-title">
                 <h5>Submitted Request</h5>
-                <h1>{visaRequest.length}</h1>
+                <h1>{Object.keys(visaRequest).length}</h1>
               </div>
               <div className="card-logo logo1">
                 <RiIcons.RiVisaFill size={28} color="white" />
@@ -145,27 +181,36 @@ const MyVisaRequests = () => {
           <Table hover bordered>
             <thead>
               <tr>
-                <th scope="col">No.</th>
                 <th scope="col">Name</th>
-                <th scope="col">Phonu Number</th>
+                <th scope="col">Phone Number</th>
                 <th scope="col">Destination</th>
                 <th scope="col">Employee Type</th>
                 <th scope="col">Travel Month</th>
+                <th scope="col">No Of Persons</th>
+                <th scope="col">Request Status</th>
               </tr>
             </thead>
             <tbody className="bg-white">
               {visaRequest.length !== 0 ? (
                 <>
-                  {visaRequest
+                  {Object.keys(visaRequest)
                     .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
                     .map((c, i) => (
-                      <tr key={i}>
-                        <td>{i + 1}</td>
-                        <td>{c.name}</td>
-                        <td>{c.phoneNumber}</td>
-                        <td>{c.countryName}</td>
-                        <td>{c.workType}</td>
-                        <td>{c.travelMonth}</td>
+                      <tr
+                        key={i}
+                        onClick={() => {
+                          setKey(c);
+                          setSelectedVisaRequest(visaRequest[c]);
+                          openVisaModal();
+                        }}
+                      >
+                        <td>{visaRequest[c].name}</td>
+                        <td>{visaRequest[c].phoneNumber}</td>
+                        <td>{visaRequest[c].countryName}</td>
+                        <td>{visaRequest[c].workType}</td>
+                        <td>{visaRequest[c].travelMonth}</td>
+                        <td>{visaRequest[c].persons}</td>
+                        <td>{visaRequest[c].status}</td>
                       </tr>
                     ))}
                 </>
@@ -212,6 +257,102 @@ const MyVisaRequests = () => {
           </Pagination>
         </div>
       </div>
+      <Modal
+        className="modal-dialog-centered modal-danger"
+        contentClassName="bg-gradient-danger"
+        isOpen={visaModal}
+      >
+        <div className="modal-header">
+          <h6 className="modal-title" id="modal-title-notification">
+            Visa Request
+          </h6>
+          <button
+            aria-label="Close"
+            className="close"
+            data-dismiss="modal"
+            type="button"
+            onClick={closeVisaModal}
+          >
+            <span aria-hidden={true}>×</span>
+          </button>
+        </div>
+        <div className="modal-visadetails">
+          <h1>Name : {selectedVisaRequest.name}</h1>
+          <h1>Phone Number : {selectedVisaRequest.phoneNumber}</h1>
+          <h1>Country Name : {selectedVisaRequest.countryName}</h1>
+          <h1>Work Type : {selectedVisaRequest.workType}</h1>
+          <h1>No Of Persons : {selectedVisaRequest.persons}</h1>
+
+          {!userInfo.admin ? (
+            <>
+              <div className="status" style={{ display: "flex" }}>
+                <h1>Status : </h1>
+                <Input
+                  type="select"
+                  onChange={(e) => setStatus(e.target.value)}
+                  value={selectedVisaRequest.status}
+                >
+                  <option value="Received">Received</option>
+                  <option value="On Progress">On Progress</option>
+                  <option value="Completed">Completed</option>
+                </Input>
+              </div>
+              <div className="update-button">
+                <button
+                  className="btn btn-success btn-sm"
+                  onClick={updateVisaRequest}
+                >
+                  Update
+                </button>
+                <Input
+                  type="file"
+                  hidden
+                  id="fileUpload"
+                  onChange={uploadFile}
+                />
+                <button
+                  className="btn btn-success btn-sm"
+                  onClick={() => {
+                    const file = document.getElementById("fileUpload");
+                    file.click();
+                  }}
+                >
+                  Upload File
+                </button>
+
+                {selectedVisaRequest.downloadUrl == "" ? null : (
+                  <button className="btn btn-success btn-sm">
+                    <a
+                      target="_blank"
+                      className="plink"
+                      href={selectedVisaRequest.downloadUrl}
+                    >
+                      Download File
+                    </a>
+                  </button>
+                )}
+              </div>
+            </>
+          ) : (
+            <>
+              <h1>Status : {selectedVisaRequest.status}</h1>
+              <div className="update-button">
+                {selectedVisaRequest.downloadUrl == "" ? null : (
+                  <button className="btn btn-success btn-sm">
+                    <a
+                      target="_blank"
+                      className="plink"
+                      href={selectedVisaRequest.downloadUrl}
+                    >
+                      Download File
+                    </a>
+                  </button>
+                )}
+              </div>
+            </>
+          )}
+        </div>
+      </Modal>
     </div>
   );
 };

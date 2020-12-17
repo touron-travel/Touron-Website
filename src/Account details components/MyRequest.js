@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./MyRequest.css";
 import { GiConqueror, GiRocketFlight } from "react-icons/gi";
 import { FaTrain } from "react-icons/fa";
@@ -16,16 +16,26 @@ import Profilenav from "./Profilenav";
 import Profilepage from "./Profilepage";
 import { firedb } from "../firebase";
 import { isAuthenticated } from "../Login components/auth";
+import { ApiContext } from "../Context/ApiContext";
 const MyRequest = () => {
   const [domesticModal, setDomesticModal] = useState(false);
   const [internationalModal, setInternationalModal] = useState(false);
+  const [detailsModal, setDetailsModal] = useState(false);
   const [userRequest, setUserRequest] = useState([]);
-  console.log("userRequest", userRequest);
+  const [selectedRequest, setSelectedRequest] = useState({});
+  const { userInfo } = useContext(ApiContext);
+  console.log("userRequest", userInfo.admin);
   const openDomesticModal = () => {
     setDomesticModal(true);
   };
   const closeDomesticModal = () => {
     setDomesticModal(false);
+  };
+  const openDetailsModal = () => {
+    setDetailsModal(true);
+  };
+  const closeDetailsModal = () => {
+    setDetailsModal(false);
   };
 
   function openInternationalModal() {
@@ -37,6 +47,7 @@ const MyRequest = () => {
 
   useEffect(() => {
     getUserRequest();
+    if (userInfo.admin) getAllRequest();
   }, []);
   const getUserRequest = () => {
     const { user } = isAuthenticated();
@@ -46,9 +57,20 @@ const MyRequest = () => {
         let req = [];
         data.forEach((d) => {
           if (d.val().userID == user.uid) {
-            console.log("d.va;(", d.val());
+            // console.log("d.va;(", d.val());
             req.push(d.val());
           }
+        });
+        setUserRequest(req);
+      }
+    });
+  };
+  const getAllRequest = () => {
+    firedb.ref("requests").on("value", (data) => {
+      if (data) {
+        let req = [];
+        data.forEach((d) => {
+          req.push(d.val());
         });
         setUserRequest(req);
       }
@@ -181,7 +203,13 @@ const MyRequest = () => {
                   {userRequest
                     .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
                     .map((c, i) => (
-                      <tr key={i}>
+                      <tr
+                        key={i}
+                        onClick={() => {
+                          setSelectedRequest(c);
+                          openDetailsModal();
+                        }}
+                      >
                         <td>{c.status}</td>
                         <td>{c.requestID}</td>
                         <td>{c.tourCategory}</td>
@@ -311,6 +339,41 @@ const MyRequest = () => {
               data-dismiss="modal"
               type="button"
               onClick={closeInternationalModal}
+            >
+              Close
+            </Button>
+          </div>
+        </Modal>
+        <Modal
+          className="modal-dialog-centered modal-danger"
+          contentClassName="bg-gradient-danger"
+          isOpen={detailsModal}
+        >
+          <div className="modal-header">
+            <h6 className="modal-title" id="modal-title-notification">
+              {selectedRequest.requestID}
+            </h6>
+            <button
+              aria-label="Close"
+              className="close"
+              data-dismiss="modal"
+              type="button"
+              onClick={closeDetailsModal}
+            >
+              <span aria-hidden={true}>×</span>
+            </button>
+          </div>
+
+          <div className="modal-footer">
+            <Button className="btn-white" color="default" type="button">
+              Ok, Got it
+            </Button>
+            <Button
+              className="text-white ml-auto"
+              color="link"
+              data-dismiss="modal"
+              type="button"
+              onClick={closeDetailsModal}
             >
               Close
             </Button>

@@ -138,3 +138,21 @@
   background: -webkit-linear-gradient(to right, #514a9d, #24c6dc);
   background: linear-gradient(to right, #514a9d, #24c6dc);
 }
+
+.modal-visadetails h1 {
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+  padding: 30px;
+}
+
+.status .form-control {
+  width: 200px;
+  margin: 25px 0px;
+}
+.modal-visadetails .update-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  justify-content: space-evenly;
+}

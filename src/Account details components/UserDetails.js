@@ -75,7 +75,7 @@ const UserDetails = () => {
     };
     firedb
       .ref(`userGeneralInfo/${uid}`)
-      .set(values)
+      .update(values)
       .then((data) => {
         addToast("Updated Successfully", {
           appearance: "success",

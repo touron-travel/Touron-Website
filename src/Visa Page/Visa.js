@@ -31,15 +31,6 @@ const Visa = () => {
   const [uid, setUid] = useState("");
   const { addToast } = useToasts();
 
-  console.log("name", name);
-  console.log("country", country);
-  console.log("number", number);
-  console.log("travelMonth", travelMonth);
-  console.log("workType", workType);
-  console.log("persons", persons);
-
-  console.log("step", step);
-
   const getVisaDetails = async (countryName) => {
     console.log("countryName", countryName);
     try {
@@ -77,6 +68,7 @@ const Visa = () => {
       travelMonth: travelMonth,
       persons: persons,
       status: "Received",
+      downloadUrl: "",
     };
     firedb
       .ref(`visaSubmission`)
