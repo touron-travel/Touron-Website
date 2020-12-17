@@ -8,7 +8,9 @@ import { Form, Input } from "reactstrap";
 import { firedb } from "../firebase";
 import { isAuthenticated } from "../Login components/auth";
 import { useToasts } from "react-toast-notifications";
-import { noAuto } from "@fortawesome/fontawesome-svg-core";
+import { FcPlus } from "react-icons/fc";
+import { RiCloseCircleFill } from "react-icons/ri";
+import { Collapse, Button, CardBody, Card } from "reactstrap";
 
 const Visa = () => {
   const { countries } = useContext(ApiContext);
@@ -30,6 +32,17 @@ const Visa = () => {
   const [persons, setPersons] = useState(0);
   const [uid, setUid] = useState("");
   const { addToast } = useToasts();
+  const [collapseOpen, setCollapseOpen] = useState();
+
+  const toggle = (index) => {
+    if (collapseOpen === index) {
+      setCollapseOpen();
+    } else {
+      setCollapseOpen(index);
+    }
+  };
+
+  console.log("collapseOpen", collapseOpen);
 
   const getVisaDetails = async (countryName) => {
     console.log("countryName", countryName);
@@ -86,46 +99,133 @@ const Visa = () => {
     setName("");
     setNumber("");
     setCountry("");
+    setPersons(0);
   };
+
+  const VisaQuestionSalaried = [
+    {
+      question: "Document Required",
+      answer: "visaDetails.salaryDocs.salaryDocsRequired",
+    },
+    {
+      question: "Financials",
+      answer: "visaDetails.salaryDocs.salaryFinancials",
+    },
+    {
+      question: "Submission",
+      answer: "visaDetails.salaryDocs.salarySubmission",
+    },
+    {
+      question: "Appointment",
+      answer: "visaDetails.salaryDocs.salaryAppointment",
+    },
+    {
+      question: "Honeymooners",
+      answer: "visaDetails.salaryDocs.salaryHoneymooners",
+    },
+    {
+      question: "Duration",
+      answer: "visaDetails.salaryDocs.salaryDuration",
+    },
+    {
+      question: "Photograph",
+      answer: "visaDetails.salaryDocs.salaryPhotography",
+    },
+  ];
+
+  const VisaQuestionSelfEmployed = [
+    {
+      question: "Document Required",
+      answer: "visaDetails.selfEmployedDocs.selfEmployedDocsRequired",
+    },
+    {
+      question: "Financials",
+      answer: "visaDetails.selfEmployedDocs.selfEmployedFinancials",
+    },
+    {
+      question: "Submission",
+      answer: "visaDetails.selfEmployedDocs.selfEmployedSubmission",
+    },
+    {
+      question: "Appointment",
+      answer: "visaDetails.selfEmployedDocs.selfEmployedAppointment",
+    },
+    {
+      question: "Honeymooners",
+      answer: "visaDetails.selfEmployedDocs.selfEmployedHoneymooners",
+    },
+    {
+      question: "Duration",
+      answer: "visaDetails.selfEmployedDocs.selfEmployedDuration",
+    },
+    {
+      question: "Photograph",
+      answer: "visaDetails.selfEmployedDocs.selfEmployedPhotography",
+    },
+  ];
 
   const renderItem = () => {
     switch (step) {
       case 0:
         return (
           <div className="salaried-details">
-            <h1>Document Required</h1>
-            <p>{visaDetails.salaryDocs.salaryDocsRequired}</p>
-            <h1>Financials</h1>
-            <p>{visaDetails.salaryDocs.salaryFinancials}</p>
-            <h1>Submission</h1>
-            <p>{visaDetails.salaryDocs.salarySubmission}</p>
-            <h1>Appointment</h1>
-            <p>{visaDetails.salaryDocs.salaryAppointment}</p>
-            <h1>Honeymooners</h1>
-            <p>{visaDetails.salaryDocs.salaryHoneymooners}</p>
-            <h1>Duration</h1>
-            <p>{visaDetails.salaryDocs.salaryDuration}</p>
-            <h1>Photograph</h1>
-            <p>{visaDetails.salaryDocs.salaryPhotography}</p>
+            {VisaQuestionSalaried.map((q, index) => {
+              return (
+                <div className="questionss" key={index}>
+                  <div className="visa-questionss">
+                    <h1>{q.question}</h1>
+                    {collapseOpen === index ? (
+                      <RiCloseCircleFill
+                        onClick={() => toggle(index)}
+                        size={30}
+                        className="que-icon"
+                        color="red"
+                      />
+                    ) : (
+                      <FcPlus
+                        onClick={() => toggle(index)}
+                        size={30}
+                        className="que-icon"
+                      />
+                    )}
+                  </div>
+                  <Collapse isOpen={collapseOpen === index}>
+                    <p>{q.answer}</p>
+                  </Collapse>
+                </div>
+              );
+            })}
           </div>
         );
       case 1:
         return (
           <div className="selfEmployed-details">
-            <h1>Document Required</h1>
-            <p>{visaDetails.selfEmployedDocs.selfEmployedDocsRequired}</p>
-            <h1>Financials</h1>
-            <p>{visaDetails.selfEmployedDocs.selfEmployedFinancials}</p>
-            <h1>Submission</h1>
-            <p>{visaDetails.selfEmployedDocs.selfEmployedSubmission}</p>
-            <h1>Appointment</h1>
-            <p>{visaDetails.selfEmployedDocs.selfEmployedAppointment}</p>
-            <h1>Honeymooners</h1>
-            <p>{visaDetails.selfEmployedDocs.selfEmployedHoneymooners}</p>
-            <h1>Duration</h1>
-            <p>{visaDetails.selfEmployedDocs.selfEmployedDuration}</p>
-            <h1>Photograph</h1>
-            <p>{visaDetails.selfEmployedDocs.selfEmployedPhotography}</p>
+            {VisaQuestionSelfEmployed.map((q, index) => {
+              return (
+                <div className="questionss" key={index}>
+                  <div className="visa-questionss">
+                    <h1>{q.question}</h1>
+                    {collapseOpen === index ? (
+                      <RiCloseCircleFill
+                        onClick={() => toggle(index)}
+                        size={30}
+                        className="que-icon"
+                        color="red"
+                      />
+                    ) : (
+                      <FcPlus
+                        onClick={() => toggle(index)}
+                        size={30}
+                        className="que-icon"
+                      />
+                    )}
+                  </div>
+                  <Collapse isOpen={collapseOpen === index}>
+                    <p>{q.answer}</p>
+                  </Collapse>
+                </div>
+              );
+            })}
           </div>
         );
     }
