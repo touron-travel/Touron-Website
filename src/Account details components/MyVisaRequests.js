@@ -31,6 +31,8 @@ const MyVisaRequests = () => {
   const [status, setStatus] = useState("");
   const [key, setKey] = useState("");
   const { user } = isAuthenticated();
+  console.log("visaRequest :>> ", visaRequest);
+  console.log("Object.keys(visaRequest) :>> ", Object.keys(visaRequest));
 
   const openVisaModal = () => {
     setVisaModal(true);
@@ -71,8 +73,6 @@ const MyVisaRequests = () => {
     });
   };
   const getVisaRequest = () => {
-    // const { user } = isAuthenticated();
-
     firedb.ref("visaSubmission").on("value", (data) => {
       let vr = [];
       if (data.val() !== null) {
@@ -82,23 +82,21 @@ const MyVisaRequests = () => {
           }
         });
       }
-
       setVisaRequest(vr);
     });
   };
 
   const uploadFile = (e) => {
     let file = e.target.files[0];
-    console.log("file :>> ", file.name);
+    // console.log("file :>> ", file.name);
     fireStorage
-      .ref(`users/${user.uid}/profile.jpg`)
+      .ref(`users/${user.uid}/plan.pdf`)
       .put(file)
       .then(() => {
         fireStorage
-          .ref(`users/${user.uid}/profile.jpg`)
+          .ref(`users/${user.uid}/plan.pdf`)
           .getDownloadURL()
           .then((fileUrl) => {
-            console.log("fileUrl :>> ", fileUrl);
             firedb
               .ref(`visaSubmission/${key}`)
               .update({
@@ -115,7 +113,8 @@ const MyVisaRequests = () => {
                   appearance: "success",
                 })
               );
-          });
+          })
+          .catch((err) => console.log("err :>> ", err));
       })
       .catch((err) => {
         console.log(err);
