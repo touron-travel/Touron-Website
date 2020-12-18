@@ -18,7 +18,7 @@ const Visa = () => {
     backgroundImage: `url('https://images.unsplash.com/photo-1578894381163-e72c17f2d45f?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1081&q=80')`,
   };
 
-  const [countryName, setCountryName] = useState("");
+  const [countryName, setCountryName] = useState("Thailand");
   const [visaDetails, setVisaDetails] = useState({});
   console.log(visaDetails.selfEmployedDocs, "de");
   const [personType, setPersonType] = useState("");
@@ -26,10 +26,10 @@ const Visa = () => {
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-  const [travelMonth, setTravelMonth] = useState("");
-  const [workType, setWorkType] = useState("");
+  const [travelMonth, setTravelMonth] = useState("January");
+  const [workType, setWorkType] = useState("Salaried");
   const [country, setCountry] = useState("");
-  const [persons, setPersons] = useState(0);
+  const [persons, setPersons] = useState();
   const [uid, setUid] = useState("");
   const { addToast } = useToasts();
   const [collapseOpen, setCollapseOpen] = useState();
@@ -50,6 +50,7 @@ const Visa = () => {
       const visaResponse = await axios.get(`${API}/visa/${countryName}`);
       console.log("visaResponse", visaResponse.data);
       setVisaDetails(...visaResponse.data);
+      setCountry(visaResponse.data[0].countryName);
       setshow(true);
     } catch (err) {
       console.log(err, "err");
@@ -235,12 +236,14 @@ const Visa = () => {
       <div className="visa-container" style={backgroundImage}>
         <h1>Choose the country</h1>
         <div className="visa-country-search">
-          <select
+          <Input
+            type="select"
             placeholder="Select the country"
             onChange={(e) => {
               setCountryName(e.target.value);
               getVisaDetails(e.target.value);
             }}
+            value={countryName}
           >
             {countries.map((c, index) => {
               return (
@@ -253,7 +256,7 @@ const Visa = () => {
                 </option>
               );
             })}
-          </select>
+          </Input>
         </div>
         <Link to="visa-details" duration={500} smooth={true}>
           <button>Next</button>
@@ -308,7 +311,7 @@ const Visa = () => {
                   <input
                     type="text"
                     className="user-input-alter user-input"
-                    value={visaDetails.countryName}
+                    value={country}
                     onChange={(e) => {
                       setCountry(e.target.value);
                     }}
@@ -332,6 +335,7 @@ const Visa = () => {
                     className="user-input-alter user-input"
                     value={persons}
                     onChange={(e) => {
+                      console.log("e.target.value", e.target.value);
                       setPersons(e.target.value);
                     }}
                   />
@@ -342,6 +346,7 @@ const Visa = () => {
                     type="select"
                     className="user-input-alter user-input"
                     onChange={(e) => setTravelMonth(e.target.value)}
+                    value={travelMonth}
                   >
                     <option value="January">January</option>
                     <option value="February">February</option>
@@ -363,6 +368,7 @@ const Visa = () => {
                     type="select"
                     className="user-input-alter user-input"
                     onChange={(e) => setWorkType(e.target.value)}
+                    value={workType}
                   >
                     <option value="Salaried">Salaried</option>
                     <option value="SelfEmployed">Self Employed</option>
