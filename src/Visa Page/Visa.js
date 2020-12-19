@@ -108,31 +108,31 @@ const Visa = () => {
       case 0:
         const VisaQuestionSalaried = [
           {
-            question: "Document Required",
+            question: "What are the Document Required ?",
             answer: visaDetails.salaryDocs.salaryDocsRequired,
           },
           {
-            question: "Financials",
+            question: "Financials Requirements needed",
             answer: visaDetails.salaryDocs.salaryFinancials,
           },
           {
-            question: "Submission",
+            question: "Where the docs should be Submitted ?",
             answer: visaDetails.salaryDocs.salarySubmission,
           },
           {
-            question: "Appointment",
+            question: "Where i can get the Appointment ?",
             answer: visaDetails.salaryDocs.salaryAppointment,
           },
           {
-            question: "Honeymooners",
+            question: "Details for Honeymooners",
             answer: visaDetails.salaryDocs.salaryHoneymooners,
           },
           {
-            question: "Duration",
+            question: "How long the duration will be ?",
             answer: visaDetails.salaryDocs.salaryDuration,
           },
           {
-            question: "Photograph",
+            question: "What are the Photograph that needed ?",
             answer: visaDetails.salaryDocs.salaryPhotography,
           },
         ];
@@ -170,31 +170,35 @@ const Visa = () => {
       case 1:
         const VisaQuestionSelfEmployed = [
           {
-            question: "Document Required",
+            question: "What are the Document Required ?",
+
             answer: visaDetails.selfEmployedDocs.selfEmployedDocsRequired,
           },
           {
-            question: "Financials",
+            question: "Financials Requirements needed",
             answer: visaDetails.selfEmployedDocs.selfEmployedFinancials,
           },
           {
-            question: "Submission",
+            question: "Where the docs should be Submitted ?",
+
             answer: visaDetails.selfEmployedDocs.selfEmployedSubmission,
           },
           {
-            question: "Appointment",
+            question: "Where i can get the Appointment ?",
+
             answer: visaDetails.selfEmployedDocs.selfEmployedAppointment,
           },
           {
-            question: "Honeymooners",
+            question: "Details for Honeymooners",
             answer: visaDetails.selfEmployedDocs.selfEmployedHoneymooners,
           },
           {
-            question: "Duration",
+            question: "How long the duration will be ?",
             answer: visaDetails.selfEmployedDocs.selfEmployedDuration,
           },
           {
-            question: "Photograph",
+            question: "What are the Photograph that needed ?",
+
             answer: visaDetails.selfEmployedDocs.selfEmployedPhotography,
           },
         ];
@@ -287,12 +291,16 @@ const Visa = () => {
             <h4 className="visa-name">Visa</h4>
             <i className="fa fa-chevron-right"></i>
             <h4 className="visa-countryName"> {visaDetails.countryName}</h4>
+            <i className="fa fa-chevron-right"></i>
+            <h4 className="visa-countryName">
+              {step == 0 ? "Salaried" : "Self Employed"}
+            </h4>
           </div>
           <div className="visa-content">
             <div className="visa-content-details">{renderItem()}</div>
             <div className="visa-content-form">
               <div className="visa-content-from-head">
-                <h3>Visa Request</h3>
+                <h3>Apply Visa For {country}</h3>
               </div>
               <Form>
                 <div className="visa-group">
@@ -317,28 +325,30 @@ const Visa = () => {
                     }}
                   />
                 </div>
-                <div className="visa-group">
-                  <label className="visa-label">Phone Number</label>
-                  <input
-                    type="number"
-                    className="user-input-alter user-input"
-                    value={number}
-                    onChange={(e) => {
-                      setNumber(e.target.value);
-                    }}
-                  />
-                </div>
-                <div className="visa-group">
-                  <label className="visa-label">Number of Persons</label>
-                  <input
-                    type="number"
-                    className="user-input-alter user-input"
-                    value={persons}
-                    onChange={(e) => {
-                      console.log("e.target.value", e.target.value);
-                      setPersons(e.target.value);
-                    }}
-                  />
+                <div className="form-row">
+                  <div>
+                    <label className="visa-label">Phone Number</label>
+                    <input
+                      type="number"
+                      className="user-input-alter user-input"
+                      value={number}
+                      onChange={(e) => {
+                        setNumber(e.target.value);
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="visa-label">Number of Persons</label>
+                    <input
+                      type="number"
+                      className="user-input-alter user-input"
+                      value={persons}
+                      onChange={(e) => {
+                        console.log("e.target.value", e.target.value);
+                        setPersons(e.target.value);
+                      }}
+                    />
+                  </div>
                 </div>
                 <div className="visa-group">
                   <label className="visa-label">Travel Month</label>

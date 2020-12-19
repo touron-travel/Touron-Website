@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import "./MyRequest.css";
 import { GiConqueror, GiRocketFlight } from "react-icons/gi";
 import * as RiIcons from "react-icons/ri";
+import { Ellipsis } from "react-spinners-css";
+
 import {
   Button,
   Table,
@@ -29,8 +31,11 @@ const MyVisaRequests = () => {
   const [selectedVisaRequest, setSelectedVisaRequest] = useState({});
   const [visaModal, setVisaModal] = useState(false);
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
   const [key, setKey] = useState("");
   const { user } = isAuthenticated();
+  console.log("visaRequest :>> ", visaRequest);
+  console.log("Object.keys(visaRequest) :>> ", Object.keys(visaRequest));
 
   const openVisaModal = () => {
     setVisaModal(true);
@@ -62,16 +67,18 @@ const MyVisaRequests = () => {
       .catch((err) => console.log("err :>> ", err));
   };
   const getAllVisaRequest = () => {
+    setLoading(true);
     firedb.ref("visaSubmission").on("value", (data) => {
       if (data) {
         setVisaRequest({
           ...data.val(),
         });
       }
+      setLoading(false);
     });
   };
   const getVisaRequest = () => {
-    // const { user } = isAuthenticated();
+    setLoading(true);
 
     firedb.ref("visaSubmission").on("value", (data) => {
       let vr = [];
@@ -82,23 +89,22 @@ const MyVisaRequests = () => {
           }
         });
       }
-
       setVisaRequest(vr);
+      setLoading(false);
     });
   };
 
   const uploadFile = (e) => {
     let file = e.target.files[0];
-    console.log("file :>> ", file.name);
+    // console.log("file :>> ", file.name);
     fireStorage
-      .ref(`users/${user.uid}/profile.jpg`)
+      .ref(`users/${user.uid}/plan.pdf`)
       .put(file)
       .then(() => {
         fireStorage
-          .ref(`users/${user.uid}/profile.jpg`)
+          .ref(`users/${user.uid}/plan.pdf`)
           .getDownloadURL()
           .then((fileUrl) => {
-            console.log("fileUrl :>> ", fileUrl);
             firedb
               .ref(`visaSubmission/${key}`)
               .update({
@@ -115,7 +121,8 @@ const MyVisaRequests = () => {
                   appearance: "success",
                 })
               );
-          });
+          })
+          .catch((err) => console.log("err :>> ", err));
       })
       .catch((err) => {
         console.log(err);
@@ -191,31 +198,42 @@ const MyVisaRequests = () => {
               </tr>
             </thead>
             <tbody className="bg-white">
-              {visaRequest.length !== 0 ? (
-                <>
-                  {Object.keys(visaRequest)
-                    .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
-                    .map((c, i) => (
-                      <tr
-                        key={i}
-                        onClick={() => {
-                          setKey(c);
-                          setSelectedVisaRequest(visaRequest[c]);
-                          openVisaModal();
-                        }}
-                      >
-                        <td>{visaRequest[c].name}</td>
-                        <td>{visaRequest[c].phoneNumber}</td>
-                        <td>{visaRequest[c].countryName}</td>
-                        <td>{visaRequest[c].workType}</td>
-                        <td>{visaRequest[c].travelMonth}</td>
-                        <td>{visaRequest[c].persons}</td>
-                        <td>{visaRequest[c].status}</td>
-                      </tr>
-                    ))}
-                </>
+              {loading ? (
+                <div className="loading">
+                  Fetching Data <Ellipsis color="#fff" />
+                </div>
               ) : (
-                <div className="noFind">No Visa Request found</div>
+                <>
+                  {visaRequest.length !== 0 ? (
+                    <>
+                      {Object.keys(visaRequest)
+                        .slice(
+                          currentPage * pageSize,
+                          (currentPage + 1) * pageSize
+                        )
+                        .map((c, i) => (
+                          <tr
+                            key={i}
+                            onClick={() => {
+                              setKey(c);
+                              setSelectedVisaRequest(visaRequest[c]);
+                              openVisaModal();
+                            }}
+                          >
+                            <td>{visaRequest[c].name}</td>
+                            <td>{visaRequest[c].phoneNumber}</td>
+                            <td>{visaRequest[c].countryName}</td>
+                            <td>{visaRequest[c].workType}</td>
+                            <td>{visaRequest[c].travelMonth}</td>
+                            <td>{visaRequest[c].persons}</td>
+                            <td>{visaRequest[c].status}</td>
+                          </tr>
+                        ))}
+                    </>
+                  ) : (
+                    <div className="noFind">No Visa Request found</div>
+                  )}
+                </>
               )}
             </tbody>
           </Table>
