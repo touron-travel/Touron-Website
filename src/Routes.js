@@ -34,14 +34,13 @@ import Faq from "./Account details components/Faq";
 import Support from "./Account details components/Support";
 import { isAuthenticated } from "./Login components/auth";
 import PrivateRoute from "./Login components/Privateroutes";
-import { ToastProvider, useToasts } from "react-toast-notifications";
-
+import { ToastProvider } from "react-toast-notifications";
+import { firedb } from "./firebase";
 export default function Routes() {
   const [tours, setTour] = useState([]);
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
   const [adminRoutes, setAdminRoutes] = useState(false);
-  const [uid, setUid] = useState("");
   const [userInfo, setUserInfo] = useState({});
 
   const getTours = async () => {
@@ -82,7 +81,12 @@ export default function Routes() {
   useEffect(() => {
     if (isAuthenticated()) {
       const { user } = isAuthenticated();
-      setUid(user.uid);
+      firedb.ref(`userGeneralInfo/${user.uid}`).on("value", (data) => {
+        if (data !== null) {
+          let val = data.val();
+          setUserInfo(val);
+        }
+      });
     }
   }, []);
 
@@ -95,8 +99,7 @@ export default function Routes() {
         countries,
         cities,
         setAdminRoutes,
-        uid,
-        setUid,
+
         userInfo,
         setUserInfo,
       }}
