@@ -164,6 +164,26 @@
   margin-bottom: 30px;
   justify-content: space-evenly;
 }
+.duplicateDelete {
+  color: red;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.modal-request {
+  width: 1000px;
+  height: 650px;
+  left: 50%;
+  /* top: 50%; */
+  right: auto;
+  /* bottom: auto; */
+  transform: translate(-50%, 0%);
+}
+.modal-req {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 20px;
+=======
 
 .bg-white .loading {
   width: 100%;

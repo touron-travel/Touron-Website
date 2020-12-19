@@ -3,8 +3,9 @@ import "./MyRequest.css";
 import { GiConqueror, GiRocketFlight } from "react-icons/gi";
 import { FaTrain } from "react-icons/fa";
 import { RiFlightTakeoffFill } from "react-icons/ri";
-
+import { MdDeleteForever } from "react-icons/md";
 import {
+  Input,
   Button,
   Table,
   Modal,
@@ -17,12 +18,19 @@ import Profilepage from "./Profilepage";
 import { firedb } from "../firebase";
 import { isAuthenticated } from "../Login components/auth";
 import { ApiContext } from "../Context/ApiContext";
+import { useToasts } from "react-toast-notifications";
+
 const MyRequest = () => {
+  const { addToast } = useToasts();
+
   const [domesticModal, setDomesticModal] = useState(false);
   const [internationalModal, setInternationalModal] = useState(false);
-  const [detailsModal, setDetailsModal] = useState(false);
+  const [detailsModal, setDetailsModal] = useState(true);
   const [userRequest, setUserRequest] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState({});
+  const [status, setStatus] = useState("");
+  const [key, setKey] = useState("");
+
   const { userInfo } = useContext(ApiContext);
   console.log("userRequest", userInfo.admin);
   const openDomesticModal = () => {
@@ -47,8 +55,9 @@ const MyRequest = () => {
 
   useEffect(() => {
     getUserRequest();
-    if (userInfo.admin) getAllRequest();
+    if (!userInfo.admin) getAllRequest();
   }, []);
+
   const getUserRequest = () => {
     const { user } = isAuthenticated();
 
@@ -68,16 +77,45 @@ const MyRequest = () => {
   const getAllRequest = () => {
     firedb.ref("requests").on("value", (data) => {
       if (data) {
-        let req = [];
-        data.forEach((d) => {
-          req.push(d.val());
+        setUserRequest({
+          ...data.val(),
         });
-        setUserRequest(req);
       }
     });
   };
 
-  console.log("...userRequest :>> ", ...userRequest);
+  const updateRequest = () => {
+    firedb
+      .ref(`requests/${key}`)
+      .update({
+        status: status,
+      })
+      .then(() => {
+        setKey("");
+        setStatus("");
+        console.log("success :>> ");
+        closeDetailsModal();
+        addToast("Request Status Updated Successfully", {
+          appearance: "success",
+        });
+      })
+      .catch((err) => console.log("err :>> ", err));
+  };
+  const deleteRequest = () => {
+    firedb
+      .ref(`requests/${key}`)
+      .set(null)
+      .then(() => {
+        setKey("");
+        setStatus("");
+        console.log("success :>> ");
+        closeDetailsModal();
+        addToast("Duplicated Query Deleted Successfully", {
+          appearance: "error",
+        });
+      })
+      .catch((err) => console.log("err :>> ", err));
+  };
 
   const colors = [
     {
@@ -147,7 +185,7 @@ const MyRequest = () => {
             <div className="card-body">
               <div className="card-title">
                 <h5>Submitted Request</h5>
-                <h1>{userRequest.length}</h1>
+                <h1>{Object.keys(userRequest).length}</h1>
               </div>
               <div className="card-logo logo1">
                 <GiConqueror size={28} color="white" />
@@ -200,22 +238,32 @@ const MyRequest = () => {
             <tbody className="bg-white">
               {userRequest.length !== 0 ? (
                 <>
-                  {userRequest
+                  {Object.keys(userRequest)
                     .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
                     .map((c, i) => (
                       <tr
                         key={i}
                         onClick={() => {
-                          setSelectedRequest(c);
+                          setKey(c);
+                          setSelectedRequest(userRequest[c]);
                           openDetailsModal();
                         }}
                       >
-                        <td>{c.status}</td>
-                        <td>{c.requestID}</td>
-                        <td>{c.tourCategory}</td>
-                        <td>{c.destination}</td>
-                        <td>{c.fromDate}</td>
-                        <td>-56 Days</td>
+                        <td>{userRequest[c].status}</td>
+                        <td>{userRequest[c].requestID}</td>
+                        <td>{userRequest[c].tourCategory}</td>
+                        <td>
+                          {userRequest[c].tourCategory == "Surprise Tour"
+                            ? "--"
+                            : userRequest[c].destination}
+                        </td>
+                        <td>{userRequest[c].fromDate}</td>
+                        <td>
+                          -56 Days
+                          {userRequest[c].status == "Duplicate Query" ? (
+                            <MdDeleteForever className="duplicateDelete" />
+                          ) : null}
+                        </td>
                       </tr>
                     ))}
                 </>
@@ -225,36 +273,42 @@ const MyRequest = () => {
             </tbody>
           </Table>
         </div>
-        {userRequest.length == 0 && userRequest.length <= 8 ? null : (
-          <div>
-            <Pagination
-              className="pagination justify-content-end"
-              listClassName="justify-content-end"
-            >
-              <PaginationItem disabled={currentPage <= 0}>
+
+        {/* <div>
+          <Pagination
+            className="pagination justify-content-end"
+            listClassName="justify-content-end"
+          >
+            <PaginationItem disabled={currentPage <= 0}>
+              <PaginationLink
+                onClick={(e) => handleClick(e, currentPage - 1)}
+                previous
+                href="#"
+              >
+                <i className="fa fa-angle-left" />
+              </PaginationLink>
+            </PaginationItem>
+            {[...Array(pagesCount)].map((page, i) => (
+              <PaginationItem active={i === currentPage} key={i}>
                 <PaginationLink
-                  onClick={(e) => handleClick(e, currentPage - 1)}
-                  previous
-                  href="#"
-                />
+                  onClick={(e) => handleClick(e, i)}
+                  href="#pablo"
+                >
+                  {i + 1}
+                </PaginationLink>
               </PaginationItem>
-              {[...Array(pagesCount)].map((page, i) => (
-                <PaginationItem active={i === currentPage} key={i}>
-                  <PaginationLink onClick={(e) => handleClick(e, i)} href="#">
-                    {i + 1}
-                  </PaginationLink>
-                </PaginationItem>
-              ))}
-              <PaginationItem disabled={currentPage >= pagesCount - 1}>
-                <PaginationLink
-                  onClick={(e) => handleClick(e, currentPage + 1)}
-                  next
-                  href="#"
-                />
-              </PaginationItem>
-            </Pagination>
-          </div>
-        )}
+            ))}
+            <PaginationItem disabled={currentPage >= pagesCount - 1}>
+              <PaginationLink
+                onClick={(e) => handleClick(e, currentPage + 1)}
+                next
+                href="#"
+              >
+                <i className="fa fa-angle-right" />
+              </PaginationLink>
+            </PaginationItem>
+          </Pagination>
+        </div> */}
 
         <Modal
           className="modal-dialog-centered modal-danger"
@@ -344,14 +398,10 @@ const MyRequest = () => {
             </Button>
           </div>
         </Modal>
-        <Modal
-          className="modal-dialog-centered modal-danger"
-          contentClassName="bg-gradient-danger"
-          isOpen={detailsModal}
-        >
+        <Modal contentClassName="modal-request" isOpen={detailsModal}>
           <div className="modal-header">
             <h6 className="modal-title" id="modal-title-notification">
-              {selectedRequest.requestID}
+              Request Info
             </h6>
             <button
               aria-label="Close"
@@ -363,20 +413,149 @@ const MyRequest = () => {
               <span aria-hidden={true}>×</span>
             </button>
           </div>
+          <div className="modal-visadetails">
+            <div className="modal-req">
+              <div className="iternary">
+                <Table bordered>
+                  <thead>
+                    <tr>
+                      <th>Iternary</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Request ID</td>
+                      <td>{selectedRequest.requestID}</td>
+                    </tr>
+                    <tr>
+                      <td>Tour Category</td>
+                      <td>{selectedRequest.tourCategory}</td>
+                    </tr>
+                    <tr>
+                      <td>Destination Type</td>
+                      <td>{selectedRequest.tourType}</td>
+                    </tr>
+                    <tr>
+                      <td>Travel Mode</td>
+                      <td>{selectedRequest.travelMode}</td>
+                    </tr>
+                    <tr>
+                      <td>Tour Preferance</td>
+                      <td>{selectedRequest.tourPreference}</td>
+                    </tr>
+                    <tr>
+                      <td>From Date</td>
+                      <td>{selectedRequest.fromDate}</td>
+                    </tr>
+                    <tr>
+                      <td>To Date</td>
+                      <td>{selectedRequest.toDate}</td>
+                    </tr>
+                    <tr>
+                      <td>Destination</td>
+                      <td>{selectedRequest.destination}</td>
+                    </tr>
+                    <tr>
+                      <td>Boarding Point</td>
+                      <td>{selectedRequest.startPoint}</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>
+              <div className="companions">
+                <Table bordered>
+                  <thead>
+                    <tr>
+                      <th>Companions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Tour Companions</td>
+                      <td>{selectedRequest.travellerType}</td>
+                    </tr>
+                    <tr>
+                      <td>Adult(s)</td>
+                      <td>{selectedRequest.adult}</td>
+                    </tr>
+                    <tr>
+                      <td>Children(s)</td>
+                      <td>{selectedRequest.children}</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>
+              <div className="Information">
+                <Table bordered>
+                  <thead>
+                    <tr>
+                      <th>Other Information</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Your Preferaneces</td>
+                      <td>{selectedRequest.preferanece}</td>
+                    </tr>
+                    <tr>
+                      <td>Name</td>
+                      <td>{selectedRequest.name}</td>
+                    </tr>
+                    <tr>
+                      <td>Budget</td>
+                      <td>{selectedRequest.budget}</td>
+                    </tr>
+                    <tr>
+                      <td>Whatsapp Number</td>
+                      <td>{selectedRequest.number}</td>
+                    </tr>
+                  </tbody>
+                </Table>
+              </div>
+            </div>
 
-          <div className="modal-footer">
-            <Button className="btn-white" color="default" type="button">
-              Ok, Got it
-            </Button>
-            <Button
-              className="text-white ml-auto"
-              color="link"
-              data-dismiss="modal"
-              type="button"
-              onClick={closeDetailsModal}
-            >
-              Close
-            </Button>
+            {!userInfo.admin ? (
+              <>
+                <div
+                  className="status"
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <h1>Status:</h1>
+                  <Input
+                    type="select"
+                    onChange={(e) => setStatus(e.target.value)}
+                    value={selectedRequest.status}
+                  >
+                    {colors.map((c, index) => {
+                      return <option value={c.name}>{c.name}</option>;
+                    })}
+                  </Input>
+                </div>
+                <div className="update-button">
+                  <button
+                    className="btn btn-success btn-sm"
+                    onClick={updateRequest}
+                  >
+                    Update
+                  </button>
+                </div>
+                <div className="update-button">
+                  {selectedRequest.status == "Duplicate Query" ? (
+                    <MdDeleteForever
+                      onClick={deleteRequest}
+                      className="duplicateDelete"
+                    />
+                  ) : null}
+                </div>
+              </>
+            ) : (
+              <>
+                <h1>Status: {selectedRequest.status}</h1>
+              </>
+            )}
           </div>
         </Modal>
       </div>
