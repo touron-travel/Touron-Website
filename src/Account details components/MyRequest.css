@@ -144,7 +144,9 @@
   font-family: "Times New Roman", Times, serif;
   padding: 30px;
 }
-
+.modal-title {
+  color: #2b3139;
+}
 .status .form-control {
   width: 200px;
   margin: 25px 0px;
@@ -175,4 +177,41 @@
   display: flex;
   justify-content: space-evenly;
   padding-top: 20px;
+}
+.status {
+  display: flex;
+}
+.status-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.update-button {
+  margin: 25px;
+}
+.title-iternary {
+  color: #0045be;
+}
+.title-companions {
+  color: #f5c160;
+}
+.title-Information {
+  color: #e8290b;
+}
+.title-Information-icon,
+.title-companions-icon,
+.title-iternary-icon {
+  font-size: 30px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+}
+.user-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.user-status h1 {
+  border: 2px solid #2b3139;
+  padding: 8px;
+  border-radius: 10px;
 }
