@@ -3,7 +3,10 @@ import "./MyRequest.css";
 import { GiConqueror, GiRocketFlight } from "react-icons/gi";
 import { FaTrain } from "react-icons/fa";
 import { RiFlightTakeoffFill } from "react-icons/ri";
+import { HiInformationCircle } from "react-icons/hi";
 import { MdDeleteForever } from "react-icons/md";
+import { TiGroup, TiTicket } from "react-icons/ti";
+
 import {
   Input,
   Button,
@@ -55,7 +58,7 @@ const MyRequest = () => {
 
   useEffect(() => {
     getUserRequest();
-    if (!userInfo.admin) getAllRequest();
+    if (userInfo.admin) getAllRequest();
   }, []);
 
   const getUserRequest = () => {
@@ -400,9 +403,9 @@ const MyRequest = () => {
         </Modal>
         <Modal contentClassName="modal-request" isOpen={detailsModal}>
           <div className="modal-header">
-            <h6 className="modal-title" id="modal-title-notification">
+            <h3 className="modal-title" id="modal-title-notification">
               Request Info
-            </h6>
+            </h3>
             <button
               aria-label="Close"
               className="close"
@@ -419,7 +422,10 @@ const MyRequest = () => {
                 <Table bordered>
                   <thead>
                     <tr>
-                      <th>Iternary</th>
+                      <th className="title-iternary">
+                        <TiTicket className="title-iternary-icon" />
+                        Iternary
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -466,7 +472,10 @@ const MyRequest = () => {
                 <Table bordered>
                   <thead>
                     <tr>
-                      <th>Companions</th>
+                      <th className="title-companions">
+                        <TiGroup className="title-companions-icon" />
+                        Companions
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -489,7 +498,10 @@ const MyRequest = () => {
                 <Table bordered>
                   <thead>
                     <tr>
-                      <th>Other Information</th>
+                      <th className="title-Information">
+                        <HiInformationCircle className="title-Information-icon" />
+                        Other Information
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -514,46 +526,48 @@ const MyRequest = () => {
               </div>
             </div>
 
-            {!userInfo.admin ? (
+            {userInfo.admin ? (
               <>
-                <div
-                  className="status"
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                >
-                  <h1>Status:</h1>
-                  <Input
-                    type="select"
-                    onChange={(e) => setStatus(e.target.value)}
-                    value={selectedRequest.status}
-                  >
-                    {colors.map((c, index) => {
-                      return <option value={c.name}>{c.name}</option>;
-                    })}
-                  </Input>
-                </div>
-                <div className="update-button">
-                  <button
-                    className="btn btn-success btn-sm"
-                    onClick={updateRequest}
-                  >
-                    Update
-                  </button>
-                </div>
-                <div className="update-button">
-                  {selectedRequest.status == "Duplicate Query" ? (
-                    <MdDeleteForever
-                      onClick={deleteRequest}
-                      className="duplicateDelete"
-                    />
-                  ) : null}
+                <div className="status-flex">
+                  <div className="status">
+                    <h1>Status:</h1>
+                    <Input
+                      type="select"
+                      onChange={(e) => setStatus(e.target.value)}
+                      value={selectedRequest.status}
+                    >
+                      {colors.map((c, index) => {
+                        return (
+                          <option key={index} value={c.name}>
+                            {c.name}
+                          </option>
+                        );
+                      })}
+                    </Input>
+                  </div>
+                  <div className="update-button">
+                    <button
+                      className="btn btn-success btn-sm"
+                      onClick={updateRequest}
+                    >
+                      Update
+                    </button>
+                  </div>
+                  <div className="del-button">
+                    {selectedRequest.status == "Duplicate Query" ? (
+                      <MdDeleteForever
+                        onClick={deleteRequest}
+                        className="duplicateDelete"
+                      />
+                    ) : null}
+                  </div>
                 </div>
               </>
             ) : (
               <>
-                <h1>Status: {selectedRequest.status}</h1>
+                <div className="user-status">
+                  <h1>Status: {selectedRequest.status}</h1>
+                </div>
               </>
             )}
           </div>
