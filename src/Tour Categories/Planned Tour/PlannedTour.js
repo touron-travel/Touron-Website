@@ -35,7 +35,7 @@ const PlannedTour = () => {
   const [date, setDate] = useState();
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
-  const { uid } = useContext(ApiContext);
+  const { user } = isAuthenticated();
   const [isLoggedin, setIsLoggedin] = useState(false);
   let random;
   let formatedMonth;
@@ -68,7 +68,6 @@ const PlannedTour = () => {
   };
   const closeFormModal = () => {
     setFormModalOpen(false);
-    // return <Redirect to="/" />;
   };
 
   function openModal() {
@@ -80,8 +79,8 @@ const PlannedTour = () => {
 
   const submitData = () => {
     let values = {
-      fromDate: fromDate,
-      toDate: toDate,
+      from: fromDate,
+      to: toDate,
       tourType: tourType,
       travellerType: travellerType,
       adult: adult,
@@ -98,34 +97,13 @@ const PlannedTour = () => {
       plans: "",
       reports: "",
       tourCost: 0,
-      userID: uid,
+      userID: user.uid,
       tourCategory: "Planned Tour",
     };
 
     firedb
       .ref(`requests`)
-      .push({
-        fromDate: fromDate,
-        toDate: toDate,
-        tourType: tourType,
-        travellerType: travellerType,
-        adult: adult,
-        children: children,
-        travelMode: travelMode,
-        preferanece: preferanece,
-        destination: destination,
-        startPoint: startPoint,
-        name: name,
-        number: number,
-        budget: budget,
-        requestID: `T0-${date}${formatedMonth}${year}-${random}`,
-        status: "Query Received",
-        plans: "",
-        reports: "",
-        tourCost: 0,
-        userID: uid,
-        tourCategory: "Planned Tour",
-      })
+      .push(values)
       .then((data) => console.log("data", data))
       .catch((err) => console.log("err", err));
   };

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import "./MyRequest.css";
 import { GiConqueror, GiRocketFlight } from "react-icons/gi";
 import * as RiIcons from "react-icons/ri";
+import { Ellipsis } from "react-spinners-css";
+
 import {
   Button,
   Table,
@@ -29,6 +31,7 @@ const MyVisaRequests = () => {
   const [selectedVisaRequest, setSelectedVisaRequest] = useState({});
   const [visaModal, setVisaModal] = useState(false);
   const [status, setStatus] = useState("");
+  const [loading, setLoading] = useState(false);
   const [key, setKey] = useState("");
   const { user } = isAuthenticated();
   console.log("visaRequest :>> ", visaRequest);
@@ -64,15 +67,19 @@ const MyVisaRequests = () => {
       .catch((err) => console.log("err :>> ", err));
   };
   const getAllVisaRequest = () => {
+    setLoading(true);
     firedb.ref("visaSubmission").on("value", (data) => {
       if (data) {
         setVisaRequest({
           ...data.val(),
         });
       }
+      setLoading(false);
     });
   };
   const getVisaRequest = () => {
+    setLoading(true);
+
     firedb.ref("visaSubmission").on("value", (data) => {
       let vr = [];
       if (data.val() !== null) {
@@ -83,6 +90,7 @@ const MyVisaRequests = () => {
         });
       }
       setVisaRequest(vr);
+      setLoading(false);
     });
   };
 
@@ -190,31 +198,42 @@ const MyVisaRequests = () => {
               </tr>
             </thead>
             <tbody className="bg-white">
-              {visaRequest.length !== 0 ? (
-                <>
-                  {Object.keys(visaRequest)
-                    .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
-                    .map((c, i) => (
-                      <tr
-                        key={i}
-                        onClick={() => {
-                          setKey(c);
-                          setSelectedVisaRequest(visaRequest[c]);
-                          openVisaModal();
-                        }}
-                      >
-                        <td>{visaRequest[c].name}</td>
-                        <td>{visaRequest[c].phoneNumber}</td>
-                        <td>{visaRequest[c].countryName}</td>
-                        <td>{visaRequest[c].workType}</td>
-                        <td>{visaRequest[c].travelMonth}</td>
-                        <td>{visaRequest[c].persons}</td>
-                        <td>{visaRequest[c].status}</td>
-                      </tr>
-                    ))}
-                </>
+              {loading ? (
+                <div className="loading">
+                  Fetching Data <Ellipsis color="#fff" />
+                </div>
               ) : (
-                <div className="noFind">No Visa Request found</div>
+                <>
+                  {visaRequest.length !== 0 ? (
+                    <>
+                      {Object.keys(visaRequest)
+                        .slice(
+                          currentPage * pageSize,
+                          (currentPage + 1) * pageSize
+                        )
+                        .map((c, i) => (
+                          <tr
+                            key={i}
+                            onClick={() => {
+                              setKey(c);
+                              setSelectedVisaRequest(visaRequest[c]);
+                              openVisaModal();
+                            }}
+                          >
+                            <td>{visaRequest[c].name}</td>
+                            <td>{visaRequest[c].phoneNumber}</td>
+                            <td>{visaRequest[c].countryName}</td>
+                            <td>{visaRequest[c].workType}</td>
+                            <td>{visaRequest[c].travelMonth}</td>
+                            <td>{visaRequest[c].persons}</td>
+                            <td>{visaRequest[c].status}</td>
+                          </tr>
+                        ))}
+                    </>
+                  ) : (
+                    <div className="noFind">No Visa Request found</div>
+                  )}
+                </>
               )}
             </tbody>
           </Table>
