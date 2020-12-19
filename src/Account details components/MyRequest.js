@@ -6,7 +6,7 @@ import { RiFlightTakeoffFill } from "react-icons/ri";
 import { HiInformationCircle } from "react-icons/hi";
 import { MdDeleteForever } from "react-icons/md";
 import { TiGroup, TiTicket } from "react-icons/ti";
-
+import { Ellipsis } from "react-spinners-css";
 import {
   Input,
   Button,
@@ -28,11 +28,35 @@ const MyRequest = () => {
 
   const [domesticModal, setDomesticModal] = useState(false);
   const [internationalModal, setInternationalModal] = useState(false);
-  const [detailsModal, setDetailsModal] = useState(true);
+  const [detailsModal, setDetailsModal] = useState(false);
   const [userRequest, setUserRequest] = useState([]);
   const [selectedRequest, setSelectedRequest] = useState({});
   const [status, setStatus] = useState("");
   const [key, setKey] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  // const date = Date.parse(selectedRequest.fromDate) - Date.parse(new Date());
+
+  // console.log("date", new Date(date));
+
+  const getDepatureDate = (date) => {
+    const countDate = Date.parse(date);
+
+    console.log("countDate", countDate);
+    const now = new Date().getTime();
+    const gap = countDate - now;
+
+    const second = 1000;
+    const minute = second * 60;
+    const hour = minute * 60;
+    const day = hour * 24;
+
+    const d = Math.floor(gap / day);
+    return d;
+    // setDepartureDays(d);
+    // console.log("d", d);
+    // const date = Date.parse(selectedRequest.fromDate) - Date.parse(new Date());
+  };
 
   const { userInfo } = useContext(ApiContext);
   console.log("userRequest", userInfo.admin);
@@ -58,10 +82,12 @@ const MyRequest = () => {
 
   useEffect(() => {
     getUserRequest();
-    if (userInfo.admin) getAllRequest();
+    if (!userInfo.admin) getAllRequest();
   }, []);
 
   const getUserRequest = () => {
+    setLoading(true);
+
     const { user } = isAuthenticated();
 
     firedb.ref("requests").on("value", (data) => {
@@ -74,16 +100,19 @@ const MyRequest = () => {
           }
         });
         setUserRequest(req);
+        setLoading(false);
       }
     });
   };
   const getAllRequest = () => {
+    setLoading(true);
     firedb.ref("requests").on("value", (data) => {
       if (data) {
         setUserRequest({
           ...data.val(),
         });
       }
+      setLoading(false);
     });
   };
 
@@ -239,39 +268,50 @@ const MyRequest = () => {
               </tr>
             </thead>
             <tbody className="bg-white">
-              {userRequest.length !== 0 ? (
-                <>
-                  {Object.keys(userRequest)
-                    .slice(currentPage * pageSize, (currentPage + 1) * pageSize)
-                    .map((c, i) => (
-                      <tr
-                        key={i}
-                        onClick={() => {
-                          setKey(c);
-                          setSelectedRequest(userRequest[c]);
-                          openDetailsModal();
-                        }}
-                      >
-                        <td>{userRequest[c].status}</td>
-                        <td>{userRequest[c].requestID}</td>
-                        <td>{userRequest[c].tourCategory}</td>
-                        <td>
-                          {userRequest[c].tourCategory == "Surprise Tour"
-                            ? "--"
-                            : userRequest[c].destination}
-                        </td>
-                        <td>{userRequest[c].fromDate}</td>
-                        <td>
-                          -56 Days
-                          {userRequest[c].status == "Duplicate Query" ? (
-                            <MdDeleteForever className="duplicateDelete" />
-                          ) : null}
-                        </td>
-                      </tr>
-                    ))}
-                </>
+              {loading ? (
+                <div className="req-loading">
+                  Fetching Data <Ellipsis color="#fff" />
+                </div>
               ) : (
-                <div className="noFind">No Request found</div>
+                <>
+                  {userRequest.length !== 0 ? (
+                    <>
+                      {Object.keys(userRequest)
+                        .slice(
+                          currentPage * pageSize,
+                          (currentPage + 1) * pageSize
+                        )
+                        .map((c, i) => (
+                          <tr
+                            key={i}
+                            onClick={() => {
+                              setKey(c);
+                              setSelectedRequest(userRequest[c]);
+                              openDetailsModal();
+                            }}
+                          >
+                            <td>{userRequest[c].status}</td>
+                            <td>{userRequest[c].requestID}</td>
+                            <td>{userRequest[c].tourCategory}</td>
+                            <td>
+                              {userRequest[c].tourCategory == "Surprise Tour"
+                                ? "--"
+                                : userRequest[c].destination}
+                            </td>
+                            <td>{userRequest[c].fromDate}</td>
+                            <td>
+                              {getDepatureDate(userRequest[c].fromDate)} days
+                              {userRequest[c].status == "Duplicate Query" ? (
+                                <MdDeleteForever className="duplicateDelete" />
+                              ) : null}
+                            </td>
+                          </tr>
+                        ))}
+                    </>
+                  ) : (
+                    <div className="noFind">No Request found</div>
+                  )}
+                </>
               )}
             </tbody>
           </Table>
@@ -526,7 +566,7 @@ const MyRequest = () => {
               </div>
             </div>
 
-            {userInfo.admin ? (
+            {!userInfo.admin ? (
               <>
                 <div className="status-flex">
                   <div className="status">
@@ -546,19 +586,18 @@ const MyRequest = () => {
                     </Input>
                   </div>
                   <div className="update-button">
-                    <button
-                      className="btn btn-success btn-sm"
-                      onClick={updateRequest}
-                    >
+                    <button className="btn btn-success" onClick={updateRequest}>
                       Update
                     </button>
                   </div>
                   <div className="del-button">
                     {selectedRequest.status == "Duplicate Query" ? (
-                      <MdDeleteForever
+                      <button
+                        className="btn btn-danger"
                         onClick={deleteRequest}
-                        className="duplicateDelete"
-                      />
+                      >
+                        Delete
+                      </button>
                     ) : null}
                   </div>
                 </div>
