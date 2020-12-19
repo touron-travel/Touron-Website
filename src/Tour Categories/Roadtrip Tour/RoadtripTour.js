@@ -7,12 +7,14 @@ import TouristDate from "../Reusable components/TouristDate";
 import Checkout from "../Reusable components/Checkout";
 import Travelmode from "../Reusable components/Travelmode";
 import Roadtripques1 from "../Reusable components/Roadtripques1";
+import Roadtripques from "../Reusable components/Roadtripques";
 import Drivetype from "../Reusable components/Drivetype";
 import { isAuthenticated } from "../../Login components/auth";
 import Modals from "../Modal";
 import Modal from "react-modal";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { firedb } from "../../firebase";
 
 const RoadtripTour = (params) => {
   const [travelMode, setTravelMode] = React.useState("");
@@ -25,7 +27,7 @@ const RoadtripTour = (params) => {
   const [driveDuration, setDriveDuration] = useState("");
   const [driveRestriction, setDriveRestriction] = useState("");
   const [stops, setStops] = useState("");
-  const [carRent, setCarRent] = useState("");
+  const [carRent, setCarRent] = useState("No");
   const [additionalInfo, setAdditionalInfo] = useState("");
   const [name, setName] = useState("");
   const [driveType, setDriveType] = useState("");
@@ -36,10 +38,8 @@ const RoadtripTour = (params) => {
   const [date, setDate] = useState();
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
-  const [dates, setDates] = useState("");
-  const [years, setYears] = useState("");
-  const [months, setMonths] = useState("");
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const { user } = isAuthenticated();
 
   let random;
   let formatedMonth;
@@ -58,6 +58,40 @@ const RoadtripTour = (params) => {
   }
 
   const [formModalIsOpen, setFormModalOpen] = useState(false);
+  const submitData = () => {
+    let values = {
+      requestID: `TO-${date}${formatedMonth}${year}-${random}`,
+      tourCategory: "Road Trip",
+      travellerType: travellerType,
+      fromDate: fromDate.toDateString(),
+      adult: adult,
+      children: children,
+      travelMode: travelMode,
+      startPoint: startPoint,
+      driveRestriction: driveRestriction,
+      driveDuration: driveDuration,
+      toDate: toDate.toDateString(),
+      stops: stops,
+      carRent: carRent,
+      additionalInfo: additionalInfo,
+      name: name,
+      number: number,
+      budget: budget,
+      driverType: driverType,
+      driveType: driveType,
+      status: "Query Received",
+      userID: user.uid,
+      plans: "",
+      reports: "",
+      tourCost: 0,
+    };
+    console.log(values);
+    firedb
+      .ref(`requests`)
+      .push(values)
+      .then((data) => openFormModal())
+      .catch((err) => console.log("err", err));
+  };
 
   const customFormModalStyles = {
     content: {
@@ -82,28 +116,26 @@ const RoadtripTour = (params) => {
     setFormModalOpen(false);
     // return <Redirect to="/" />;
   };
-  // useEffect(() => {
-  //     random = Math.floor((Math.random() + 4) * 345334 * Math.random());
-  //     const requestDate = new Date();
-  //     let currentYear = requestDate.getFullYear();
-  //     setDate(requestDate.getDate());
-  //     setMonth(requestDate.getMonth() + 1);
-  //     setYear(currentYear.toString().slice(2, 5));
-  //     formatedMonth = month < 10 ? "0" + month : month;
-  //   });
+  useEffect(() => {
+    random = Math.floor((Math.random() + 4) * 345334 * Math.random());
+    const requestDate = new Date();
+    let currentYear = requestDate.getFullYear();
+    setDate(requestDate.getDate());
+    setMonth(requestDate.getMonth() + 1);
+    setYear(currentYear.toString().slice(2, 5));
+    formatedMonth = month < 10 ? "0" + month : month;
+  });
 
   const nextStep = () => {
     if (step == 2 && !isLoggedin) {
       openModal();
       return;
     }
-    if (step !== 8 && travelMode !== "") setStep(step + 1);
 
-    if (carRent == "No") setStep(step + 2);
+    if (step !== 7 && travelMode !== "") setStep(step + 1);
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
-    if (carRent == "No") setStep(step - 2);
   };
   const renderForm = (step) => {
     switch (step) {
@@ -180,7 +212,7 @@ const RoadtripTour = (params) => {
         );
       case 5:
         return (
-          <Roadtripques1
+          <Roadtripques
             imgSrc={
               "https://image.freepik.com/free-vector/car-towing-caravan-trailer-camper-against-mountains-spruce-trees-background-summer-travel-lettering-vehicle-wild-nature-adventure-trip-seasonal-camping-illustration_198278-1324.jpg"
             }
@@ -220,33 +252,16 @@ const RoadtripTour = (params) => {
             func1={(value) => setAdditionalInfo(value)}
             func2={(value) => setCarRent(value)}
             className={"roadtripques-img2"}
-          />
-        );
-      case 7:
-        return (
-          <Drivetype
             driveType={driveType}
             driverType={driverType}
-            imgSrc1={
-              "https://image.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg"
-            }
-            imgSrc2={
-              "https://image.freepik.com/free-photo/black-urban-sport-two-seater-motorcycle_101266-599.jpg"
-            }
-            imgSrc3={
-              "https://image.freepik.com/free-vector/modern-blue-urban-adventure-suv-vehicle-illustration_1344-205.jpg"
-            }
-            imgSrc4={
-              "https://image.freepik.com/free-photo/black-urban-sport-two-seater-motorcycle_101266-599.jpg"
-            }
             setRent={() => setDriveType("Rented Bike/Car")}
             setOwned={() => setDriveType("Own Bike/Car")}
             setSelf={() => setDriverType("Self Drive")}
             setDriver={() => setDriverType("Car Driver needed")}
-            nextStep={() => nextStep()}
           />
         );
-      case 8:
+
+      case 7:
         return (
           <Checkout
             imgSrc={
@@ -390,8 +405,8 @@ const RoadtripTour = (params) => {
               <div className="previous-button" onClick={() => prevStep()}>
                 Previous
               </div>
-              {step == 8 ? (
-                <div className="submit-button" onClick={() => nextStep()}>
+              {step == 7 ? (
+                <div className="submit-button" onClick={() => submitData()}>
                   Submit
                 </div>
               ) : (

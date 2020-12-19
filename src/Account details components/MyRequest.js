@@ -58,7 +58,7 @@ const MyRequest = () => {
 
   useEffect(() => {
     getUserRequest();
-    if (userInfo.admin) getAllRequest();
+    if (!userInfo.admin) getAllRequest();
   }, []);
 
   const getUserRequest = () => {
@@ -526,7 +526,7 @@ const MyRequest = () => {
               </div>
             </div>
 
-            {userInfo.admin ? (
+            {!userInfo.admin ? (
               <>
                 <div className="status-flex">
                   <div className="status">

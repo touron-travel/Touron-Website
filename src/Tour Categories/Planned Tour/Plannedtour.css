@@ -15,7 +15,7 @@
   box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
   display: flex;
   flex-direction: column;
-  height: 700px;
+  height: 730px;
   border-radius: 20px;
   z-index: 1;
 }
@@ -84,6 +84,7 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   box-shadow: inset 0 2px 15px 0px rgba(4, 32, 66, 0.2);
+  margin: 30px 0px;
 }
 .navigation_btn .next-button {
   background-color: #badc58;
@@ -191,8 +192,8 @@
     box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
     width: 40%;
     height: auto;
-    margin: 0px 40px 0px 0px;
-    border-radius: 50px;
+    /* margin: 0px 40px 0px 0px; */
+    border-radius: 10px;
   }
   .planned_tour-details h1 {
     padding-top: 20px;
