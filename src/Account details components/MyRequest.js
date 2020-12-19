@@ -35,10 +35,6 @@ const MyRequest = () => {
   const [key, setKey] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // const date = Date.parse(selectedRequest.fromDate) - Date.parse(new Date());
-
-  // console.log("date", new Date(date));
-
   const getDepatureDate = (date) => {
     const countDate = Date.parse(date);
 
@@ -53,9 +49,6 @@ const MyRequest = () => {
 
     const d = Math.floor(gap / day);
     return d;
-    // setDepartureDays(d);
-    // console.log("d", d);
-    // const date = Date.parse(selectedRequest.fromDate) - Date.parse(new Date());
   };
 
   const { userInfo } = useContext(ApiContext);
