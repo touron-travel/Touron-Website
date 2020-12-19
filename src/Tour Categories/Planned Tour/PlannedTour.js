@@ -39,7 +39,7 @@ const PlannedTour = () => {
   const [isLoggedin, setIsLoggedin] = useState(false);
   let random;
   let formatedMonth;
-  console.log("fromDate,toDate", fromDate, toDate);
+  // console.log("fromDate,toDate", fromDate, toDate);
   useEffect(() => {
     if (isAuthenticated()) return setIsLoggedin(true);
   });
@@ -79,8 +79,8 @@ const PlannedTour = () => {
 
   const submitData = () => {
     let values = {
-      from: fromDate,
-      to: toDate,
+      fromDate: fromDate.toDateString(),
+      toDate: toDate.toDateString(),
       tourType: tourType,
       travellerType: travellerType,
       adult: adult,
@@ -101,6 +101,7 @@ const PlannedTour = () => {
       tourCategory: "Planned Tour",
     };
 
+    console.log("values :>> ", values);
     firedb
       .ref(`requests`)
       .push(values)
@@ -114,11 +115,11 @@ const PlannedTour = () => {
     let currentYear = requestDate.getFullYear();
     setDate(requestDate.getDate());
     setMonth(requestDate.getMonth() + 1);
-    console.log("currentYear", currentYear);
+    // console.log("currentYear", currentYear);
     setYear(currentYear.toString().slice(2, 4));
-    console.log("year", year);
+    // console.log("year", year);
     formatedMonth = month < 10 ? "0" + month : month;
-    console.log("object", `T0-${date}${formatedMonth}${year}-${random}`);
+    // console.log("object", `T0-${date}${formatedMonth}${year}-${random}`);
   });
   const nextStep = () => {
     if (step == 2 && !isLoggedin) {

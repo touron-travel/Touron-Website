@@ -6,7 +6,6 @@ import "react-nice-dates/build/style.css";
 
 const TouristDate = ({ imgSrc, fromDate, toDate, setFromDate, setToDate }) => {
   console.log("fromDate :>> ", fromDate);
-  console.log("toDate :>> ", toDate);
   return (
     <DateRangePicker
       startDate={fromDate}

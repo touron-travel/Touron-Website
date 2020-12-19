@@ -41,7 +41,7 @@ const SurpriseTour = (params) => {
   const [years, setYears] = useState("");
   const [months, setMonths] = useState("");
   const [isLoggedin, setIsLoggedin] = useState(false);
-  const { uid } = useContext(ApiContext);
+  const { user } = isAuthenticated();
   let random;
   let formatedMonth;
 
@@ -89,12 +89,12 @@ const SurpriseTour = (params) => {
       tourCategory: "Surprise Tour",
       tourType: tourType,
       travellerType: travellerType,
-      fromDate: fromDate,
       adult: adult,
       children: children,
       travelMode: travelMode,
       startPoint: startPoint,
-      toDate: toDate,
+      fromDate: fromDate.toDateString(),
+      toDate: toDate.toDateString(),
       expediture1: expediture1,
       expediture2: expediture2,
       expediture3: expediture3,
@@ -102,7 +102,7 @@ const SurpriseTour = (params) => {
       name: name,
       number: number,
       budget: budget,
-      userID: uid,
+      userID: user.uid,
       status: "Query Received",
       tourCost: 0,
     };

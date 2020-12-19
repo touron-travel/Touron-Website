@@ -98,9 +98,12 @@ const RoadtripTour = (params) => {
       return;
     }
     if (step !== 8 && travelMode !== "") setStep(step + 1);
+
+    if (carRent == "No") setStep(step + 2);
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
+    if (carRent == "No") setStep(step - 2);
   };
   const renderForm = (step) => {
     switch (step) {
