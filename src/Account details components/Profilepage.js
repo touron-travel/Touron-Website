@@ -17,11 +17,13 @@ const Profilepage = () => {
   }, []);
 
   const [clicked, setClicked] = useState("");
+
   return (
     <div className={"sidebar-menu"}>
       <div className="sidebar-image">
         <img src={Logo} alt="" />
       </div>
+
       <ul className="sidebar-menu-items">
         {ProfileSidebarData.map((item, index) => {
           return (

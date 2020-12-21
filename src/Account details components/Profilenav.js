@@ -6,6 +6,8 @@ import { UserMenuItems } from "./UserMenuItems";
 import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated, signout } from "../Login components/auth";
 import { ApiContext } from "../Context/ApiContext";
+import * as BsIcons from "react-icons/bs";
+
 const Profilenav = (props) => {
   const [userDropdown, setUserDropdown] = useState(false);
   const toggle = () => setUserDropdown(!userDropdown);
@@ -24,6 +26,7 @@ const Profilenav = (props) => {
           // src="https://demos.creative-tim.com/argon-dashboard-react/static/media/team-4-800x800.23007132.jpg"
           alt=""
         />
+
         <h6 onClick={() => setUserDropdown(!userDropdown)}>{userInfo.name}</h6>
       </div>
       <Popover

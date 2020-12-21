@@ -3,6 +3,7 @@ import "./MyRequest.css";
 import { GiRocketFlight } from "react-icons/gi";
 import * as RiIcons from "react-icons/ri";
 import { Ellipsis } from "react-spinners-css";
+import * as BiIcons from "react-icons/bi";
 
 import {
   Button,
@@ -150,13 +151,30 @@ const MyVisaRequests = () => {
 
     setCurrentpage(index);
   };
-
+  const [clicked, setClicked] = useState(false);
+  const toggleSidebar = () => {
+    setClicked(!clicked);
+  };
   const [currentPage, setCurrentpage] = useState(0);
 
   return (
     <div style={{ display: "flex" }}>
-      <Profilepage />
+      <div className={clicked ? "toggleSidebar" : "toggleSideba"}>
+        <Profilepage />
+      </div>
       <div className="request-container">
+        <BiIcons.BiMenuAltRight
+          onClick={toggleSidebar}
+          size={50}
+          color="white"
+          style={{
+            zIndex: 20,
+            position: "absolute",
+            paddingLeft: 20,
+            marginRight: 20,
+            top: 18,
+          }}
+        />
         <div className="requests-info-visa">
           <Profilenav title={"My Visa Request"} />
           <div className="requests-body-container ">

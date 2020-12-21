@@ -265,3 +265,12 @@
     transform: translate(-40%, -30%);
   }
 }
+
+.toggleSidebar {
+  margin-left: -240px;
+  transition: 0.2s ease-out;
+}
+.toggleSideba {
+  width: 300px;
+  transition: 0.2s ease-in;
+}

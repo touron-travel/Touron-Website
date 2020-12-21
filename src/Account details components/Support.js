@@ -16,6 +16,7 @@ import {
 import { ApiContext } from "../Context/ApiContext";
 import { firedb } from "../firebase";
 import { useToasts } from "react-toast-notifications";
+import * as BiIcons from "react-icons/bi";
 
 const Support = () => {
   const { addToast } = useToasts();
@@ -85,13 +86,31 @@ const Support = () => {
     setCurrentpage(index);
   };
 
+  const [clicked, setClicked] = useState(false);
+  const toggleSidebar = () => {
+    setClicked(!clicked);
+  };
   const { name, email, queryType, comments, mobileNumber } = values;
   const [currentPage, setCurrentpage] = useState(0);
   return (
     <div>
       <div style={{ display: "flex" }}>
-        <Profilepage />
+        <div className={clicked ? "toggleSidebar" : "toggleSideba"}>
+          <Profilepage />
+        </div>
         <div className="support-container">
+          <BiIcons.BiMenuAltRight
+            onClick={toggleSidebar}
+            size={50}
+            color="white"
+            style={{
+              zIndex: 20,
+              position: "absolute",
+              paddingLeft: 20,
+              marginRight: 20,
+              top: 18,
+            }}
+          />
           <div className="support-section">
             <Profilenav title={"Support"} />
           </div>

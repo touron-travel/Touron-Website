@@ -32,8 +32,6 @@
 
 .icons {
   display: flex;
-}
-.icons {
   padding-left: 20px;
   float: right;
 }
@@ -121,6 +119,7 @@
 @media (max-width: 768px) {
   .footer {
     padding: 10px 10px;
+    position: relative;
   }
   .footnav {
     border-bottom: none;
@@ -136,7 +135,10 @@
     flex-direction: column;
   }
   .icons {
-    position: relative;
-    top: 170vh;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

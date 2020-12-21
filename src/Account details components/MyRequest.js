@@ -22,6 +22,7 @@ import { firedb } from "../firebase";
 import { isAuthenticated } from "../Login components/auth";
 import { ApiContext } from "../Context/ApiContext";
 import { useToasts } from "react-toast-notifications";
+import * as BiIcons from "react-icons/bi";
 
 const MyRequest = () => {
   const { addToast } = useToasts();
@@ -196,13 +197,31 @@ const MyRequest = () => {
     e.preventDefault();
     setCurrentpage(index);
   };
+  const [clicked, setClicked] = useState(false);
+  const toggleSidebar = () => {
+    setClicked(!clicked);
+  };
 
   const [currentPage, setCurrentpage] = useState(0);
 
   return (
     <div style={{ display: "flex" }}>
-      <Profilepage />
+      <div className={clicked ? "toggleSidebar" : "toggleSideba"}>
+        <Profilepage />
+      </div>
       <div className="request-container">
+        <BiIcons.BiMenuAltRight
+          onClick={toggleSidebar}
+          size={50}
+          color="white"
+          style={{
+            zIndex: 20,
+            position: "absolute",
+            paddingLeft: 20,
+            marginRight: 20,
+            top: 18,
+          }}
+        />
         <div className="requests-info">
           <Profilenav title={"My Request"} />
           <div className="requests-body-container ">

@@ -6,6 +6,7 @@ import { Collapse, Button, CardBody, Card } from "reactstrap";
 import { FcPlus } from "react-icons/fc";
 import { RiCloseCircleFill } from "react-icons/ri";
 import Profilepage from "./Profilepage";
+import * as BiIcons from "react-icons/bi";
 
 const Faq = () => {
   const [selectedType, setSelectedType] = useState("general");
@@ -18,11 +19,30 @@ const Faq = () => {
       setCollapseOpen(index);
     }
   };
+  const [clicked, setClicked] = useState(false);
+  const toggleSidebar = () => {
+    setClicked(!clicked);
+  };
   const FaqQuestions = FaqQuestion();
   return (
     <div style={{ display: "flex" }}>
-      <Profilepage />
+      <div className={clicked ? "toggleSidebar" : "toggleSideba"}>
+        <Profilepage />
+      </div>
+
       <div className="faq-container">
+        <BiIcons.BiMenuAltRight
+          onClick={toggleSidebar}
+          size={50}
+          color="white"
+          style={{
+            zIndex: 20,
+            position: "absolute",
+            paddingLeft: 20,
+            marginRight: 20,
+            top: 18,
+          }}
+        />
         <Profilenav title="Frequently Asked Question" />
         <div className="faq-types">
           <div

@@ -2,8 +2,13 @@ import React, { useState, useEffect } from "react";
 import "./SavedTours.css";
 import Profilenav from "./Profilenav";
 import Profilepage from "./Profilepage";
+import * as BiIcons from "react-icons/bi";
 
 const SavedTours = () => {
+  const [clicked, setClicked] = useState(false);
+  const toggleSidebar = () => {
+    setClicked(!clicked);
+  };
   const tours = [
     {
       tourCost: {
@@ -290,8 +295,22 @@ const SavedTours = () => {
   ];
   return (
     <div style={{ display: "flex" }}>
-      <Profilepage />
+      <div className={clicked ? "toggleSidebar" : "toggleSideba"}>
+        <Profilepage />
+      </div>
       <div className="savedtour-container">
+        <BiIcons.BiMenuAltRight
+          onClick={toggleSidebar}
+          size={50}
+          color="white"
+          style={{
+            zIndex: 20,
+            position: "absolute",
+            paddingLeft: 20,
+            marginRight: 20,
+            top: 18,
+          }}
+        />
         <Profilenav title={"Saved Tours"} />
         <div className="tours-container">
           {tours.map((t) => (

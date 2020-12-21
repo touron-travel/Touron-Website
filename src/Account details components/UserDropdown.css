@@ -24,3 +24,7 @@
   text-decoration: none;
   color: #000;
 }
+
+.account-title h4 {
+  margin-left: 30px;
+}

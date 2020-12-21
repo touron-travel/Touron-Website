@@ -9,6 +9,8 @@ import { useToasts } from "react-toast-notifications";
 import { MdEdit } from "react-icons/md";
 import { Tooltip } from "reactstrap";
 import { ApiContext } from "../Context/ApiContext";
+import * as BiIcons from "react-icons/bi";
+
 const UserDetails = () => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const toggle = () => setTooltipOpen(!tooltipOpen);
@@ -147,10 +149,30 @@ const UserDetails = () => {
     const filepath = document.getElementById("imageButton");
     filepath.click();
   };
+
+  const [clicked, setClicked] = useState(false);
+  const toggleSidebar = () => {
+    setClicked(!clicked);
+  };
+  console.log("clicked :>> ", clicked);
   return (
     <div style={{ display: "flex" }}>
-      <Profilepage />
+      <div className={clicked ? "toggleSidebar" : "toggleSideba"}>
+        <Profilepage />
+      </div>
       <div className="account-section">
+        <BiIcons.BiMenuAltRight
+          onClick={toggleSidebar}
+          size={50}
+          color="white"
+          style={{
+            zIndex: 20,
+            position: "absolute",
+            paddingLeft: 20,
+            marginRight: 20,
+            top: 18,
+          }}
+        />
         <div className="account">
           <Profilenav title={"User Details"} />
           <div className="account-content">

@@ -5,11 +5,11 @@
 }
 .sidebar-menu {
   background-color: #fff;
-  width: 23%;
   height: 100vh;
   /* border-right: 1px solid #00000080; */
   box-shadow: 1px 1px 10px 0px #00000080;
 }
+
 .sidebar-menu.active {
   left: 0;
   transition: 350ms;
