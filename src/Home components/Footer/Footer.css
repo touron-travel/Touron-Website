@@ -118,7 +118,7 @@
 
 /* Responsive */
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .footer {
     padding: 10px 10px;
   }

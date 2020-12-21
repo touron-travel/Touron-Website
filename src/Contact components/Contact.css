@@ -175,3 +175,14 @@ a:hover {
   text-decoration: none;
   color: #ff7f00;
 } */
+
+@media (max-width: 768px) {
+  .contact_title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  p.locate {
+    font-size: 13px;
+  }
+}

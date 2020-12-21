@@ -22,6 +22,7 @@ export default function About() {
     speed: 1000,
     slidesToShow: 3,
     slidesToScroll: 1,
+    arrows: false,
   };
 
   return (
@@ -43,7 +44,9 @@ export default function About() {
         </div>
       </div>
       <div className="intro">
-        <img className="intro_image" src={intro} alt="" />
+        <div className="intro_image-flex">
+          <img className="intro_image" src={intro} alt="" />
+        </div>
         <div className="intro_content">
           <div className="intro_title">we have the best tours</div>
           <p className="intro_text">
@@ -68,20 +71,14 @@ export default function About() {
       </div>
 
       <div className="stats">
-        <div className="row">
-          <div className="col text-center">
-            <div className="section_title">years statistics</div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-10 offset-lg-1 text-center">
-            <p className="stats_text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-              quis vulputate eros, iaculis consequat nisl. Nunc et suscipit
-              urna. Integer elementum orci eu vehicula pretium. Donec bibendum
-              tristique condimentum. Aenean in lacus ligula.
-            </p>
-          </div>
+        <div className="stats-content">
+          <div className="section_title">years statistics</div>
+          <p className="stats_text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+            quis vulputate eros, iaculis consequat nisl. Nunc et suscipit urna.
+            Integer elementum orci eu vehicula pretium. Donec bibendum tristique
+            condimentum. Aenean in lacus ligula.
+          </p>
         </div>
 
         <div className="stats_years">
