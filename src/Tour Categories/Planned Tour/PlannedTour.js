@@ -18,6 +18,9 @@ import { ApiContext } from "../../Context/ApiContext";
 import { firedb } from "../../firebase";
 
 const PlannedTour = () => {
+  const { userInfo } = useContext(ApiContext);
+  const [number, setNumber] = useState(userInfo.phoneNumber);
+  const [name, setName] = useState(userInfo.name);
   const [tourType, setTourType] = useState("");
   const [travellerType, setTravellerType] = useState("");
   const [adult, setAdult] = useState(0);
@@ -28,9 +31,7 @@ const PlannedTour = () => {
   const [preferanece, setPreferanece] = useState("");
   const [destination, setDestination] = useState("");
   const [startPoint, setStartPoint] = useState("");
-  const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
-  const [number, setNumber] = useState("");
   const [step, setStep] = useState(1);
   const [date, setDate] = useState();
   const [month, setMonth] = useState();
@@ -39,11 +40,10 @@ const PlannedTour = () => {
   const [isLoggedin, setIsLoggedin] = useState(false);
   let random;
   let formatedMonth;
-  // console.log("fromDate,toDate", fromDate, toDate);
   useEffect(() => {
     if (isAuthenticated()) return setIsLoggedin(true);
   });
-
+  console.log("fromDate,toDate :>> ", fromDate, toDate);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [formModalIsOpen, setFormModalOpen] = useState(false);
 
@@ -53,7 +53,6 @@ const PlannedTour = () => {
       left: "50%",
       right: "auto",
       bottom: "auto",
-      // marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       borderRadius: "20px",
       boxShadow: "1px 3px 1px #9E9E9E",
@@ -115,18 +114,18 @@ const PlannedTour = () => {
     let currentYear = requestDate.getFullYear();
     setDate(requestDate.getDate());
     setMonth(requestDate.getMonth() + 1);
-    // console.log("currentYear", currentYear);
     setYear(currentYear.toString().slice(2, 4));
-    // console.log("year", year);
     formatedMonth = month < 10 ? "0" + month : month;
-    // console.log("object", `T0-${date}${formatedMonth}${year}-${random}`);
   });
   const nextStep = () => {
     if (step == 2 && !isLoggedin) {
       openModal();
       return;
     }
-    if (step !== 7 && tourType !== "") setStep(step + 1);
+    if (fromDate == "" && toDate == "") {
+      return;
+    }
+    if (step !== 7 && tourType !== "" && step !== 2) setStep(step + 1);
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
@@ -134,7 +133,15 @@ const PlannedTour = () => {
   const renderForm = (step) => {
     switch (step) {
       case 1:
-        return <Tourtype tourType={tourType} setTourType={setTourType} />;
+        return (
+          <Tourtype
+            tourType={tourType}
+            setTourType={(e) => {
+              setTourType(e);
+              setStep(step + 1);
+            }}
+          />
+        );
       case 2:
         return (
           <Travellertype
@@ -151,14 +158,22 @@ const PlannedTour = () => {
               "https://image.freepik.com/free-vector/newlywed-couple-is-driving-car-their-honeymoon_3446-291.jpg"
             }
             travellerType={travellerType}
-            nextStep={() => nextStep()}
             setSolo={() => {
               setTravellerType("Solo");
               setStep(4);
             }}
-            setFamily={() => setTravellerType("Family")}
-            setFriends={() => setTravellerType("Friends")}
-            setGroup={() => setTravellerType("Group")}
+            setFamily={() => {
+              setTravellerType("Family");
+              setStep(step + 1);
+            }}
+            setFriends={() => {
+              setTravellerType("Friends");
+              setStep(step + 1);
+            }}
+            setGroup={() => {
+              setTravellerType("Group");
+              setStep(step + 1);
+            }}
           />
         );
 
@@ -192,8 +207,14 @@ const PlannedTour = () => {
             name1={"Train"}
             name2={"Flight"}
             travelMode={travelMode}
-            setTrain={() => setTravelMode("Train")}
-            setFlight={() => setTravelMode("Flight")}
+            setTrain={() => {
+              setTravelMode("Train");
+              setStep(step + 1);
+            }}
+            setFlight={() => {
+              setTravelMode("Flight");
+              setStep(step + 1);
+            }}
           />
         );
       case 5:
@@ -228,12 +249,11 @@ const PlannedTour = () => {
         return (
           <Checkout
             imgSrc={
-              "https://image.freepik.com/free-vector/business-background-design_1270-63.jpg"
+              "https://image.freepik.com/free-vector/self-checkout-concept-illustration_114360-2331.jpg"
             }
             setName={(value) => setName(value)}
             setNumber={(value) => setNumber(value)}
             setBudget={(value) => setBudget(value)}
-            // submitData={() => submitData()}
             name={name}
             number={number}
             budget={budget}

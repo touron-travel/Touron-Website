@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./Destination.css";
-const Destination = ({
+
+import { Input } from "reactstrap";
+const LuxuryDestination = ({
   imgSrc,
   destination,
   startPoint,
@@ -13,14 +15,20 @@ const Destination = ({
     <div className="destination-container">
       <img className="destination-img" src={imgSrc} alt="" />
       <div className="destination-questions">
-        <div className="que1">
+        <div className="que2 qes2">
           <h6>Enter the holiday destination you want to travel</h6>
-          <input
-            type="text"
+          <Input
+            type="select"
+            className="luxury-dest"
             onChange={(e) => setDestination(e.target.value)}
             value={destination}
-            className="user-input-alter user-input"
-          />
+          >
+            <option value="Country1">Country1</option>
+            <option value="Country1">Country1</option>
+            <option value="Country1">Country1</option>
+            <option value="Country1">Country1</option>
+            <option value="Country1">Country1</option>
+          </Input>
         </div>
         <div className="que2">
           <h6>From where would you like to start your journey </h6>
@@ -29,7 +37,6 @@ const Destination = ({
             type="text"
             onChange={(e) => setStartPoint(e.target.value)}
             value={startPoint}
-            className="user-input-alter user-input"
           />
         </div>
         <div className="que3">
@@ -38,7 +45,6 @@ const Destination = ({
             type="text"
             onChange={(e) => setPreferanece(e.target.value)}
             value={preferanece}
-            className="user-input-alter user-input"
           />
         </div>
       </div>
@@ -46,4 +52,4 @@ const Destination = ({
   );
 };
 
-export default Destination;
+export default LuxuryDestination;

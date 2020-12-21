@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./MyRequest.css";
-import { GiConqueror, GiRocketFlight } from "react-icons/gi";
+import { GiRocketFlight } from "react-icons/gi";
 import * as RiIcons from "react-icons/ri";
 import { Ellipsis } from "react-spinners-css";
 
@@ -19,8 +19,6 @@ import { firedb, fireStorage } from "../firebase";
 import { isAuthenticated } from "../Login components/auth";
 import { useToasts } from "react-toast-notifications";
 import { ApiContext } from "../Context/ApiContext";
-import axios from "axios";
-import { Link } from "react-router-dom";
 
 const MyVisaRequests = () => {
   const { userInfo } = useContext(ApiContext);
@@ -96,7 +94,6 @@ const MyVisaRequests = () => {
 
   const uploadFile = (e) => {
     let file = e.target.files[0];
-    // console.log("file :>> ", file.name);
     fireStorage
       .ref(`users/${user.uid}/plan.pdf`)
       .put(file)
@@ -146,7 +143,7 @@ const MyVisaRequests = () => {
   ];
 
   let pageSize = 7;
-  let pagesCount = Math.ceil(colors.length / pageSize);
+  let pagesCount = Math.ceil(Object.keys(visaRequest).length / pageSize);
 
   const handleClick = (e, index) => {
     e.preventDefault();
@@ -238,42 +235,43 @@ const MyVisaRequests = () => {
             </tbody>
           </Table>
         </div>
-
-        <div>
-          <Pagination
-            className="pagination justify-content-end"
-            listClassName="justify-content-end"
-          >
-            <PaginationItem disabled={currentPage <= 0}>
-              <PaginationLink
-                onClick={(e) => handleClick(e, currentPage - 1)}
-                previous
-                href="#"
-              >
-                <i className="fa fa-angle-left" />
-              </PaginationLink>
-            </PaginationItem>
-            {[...Array(pagesCount)].map((page, i) => (
-              <PaginationItem active={i === currentPage} key={i}>
+        {Object.keys(visaRequest).length <= 7 ? null : (
+          <div>
+            <Pagination
+              className="pagination justify-content-end"
+              listClassName="justify-content-end"
+            >
+              <PaginationItem disabled={currentPage <= 0}>
                 <PaginationLink
-                  onClick={(e) => handleClick(e, i)}
-                  href="#pablo"
+                  onClick={(e) => handleClick(e, currentPage - 1)}
+                  previous
+                  href="#"
                 >
-                  {i + 1}
+                  <i className="fa fa-angle-left" />
                 </PaginationLink>
               </PaginationItem>
-            ))}
-            <PaginationItem disabled={currentPage >= pagesCount - 1}>
-              <PaginationLink
-                onClick={(e) => handleClick(e, currentPage + 1)}
-                next
-                href="#"
-              >
-                <i className="fa fa-angle-right" />
-              </PaginationLink>
-            </PaginationItem>
-          </Pagination>
-        </div>
+              {[...Array(pagesCount)].map((page, i) => (
+                <PaginationItem active={i === currentPage} key={i}>
+                  <PaginationLink
+                    onClick={(e) => handleClick(e, i)}
+                    href="#pablo"
+                  >
+                    {i + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+              <PaginationItem disabled={currentPage >= pagesCount - 1}>
+                <PaginationLink
+                  onClick={(e) => handleClick(e, currentPage + 1)}
+                  next
+                  href="#"
+                >
+                  <i className="fa fa-angle-right" />
+                </PaginationLink>
+              </PaginationItem>
+            </Pagination>
+          </div>
+        )}
       </div>
       <Modal
         className="modal-dialog-centered modal-danger"

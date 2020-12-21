@@ -16,8 +16,10 @@ import { Link } from "react-router-dom";
 import { isAuthenticated } from "../../Login components/auth";
 import { ApiContext } from "../../Context/ApiContext";
 import { firedb } from "../../firebase";
-
 const SurpriseTour = (params) => {
+  const { userInfo } = useContext(ApiContext);
+  const [number, setNumber] = useState(userInfo.phoneNumber);
+  const [name, setName] = useState(userInfo.name);
   const [tourType, setTourType] = React.useState("");
   const [travellerType, setTravellerType] = React.useState("");
   const [adult, setAdult] = React.useState(0);
@@ -30,9 +32,7 @@ const SurpriseTour = (params) => {
   const [expediture3, setExpediture3] = useState("");
   const [tourPreferance, setTourPreferance] = useState("");
   const [startPoint, setStartPoint] = useState("");
-  const [name, setName] = useState("");
   const [budget, setBudget] = useState("");
-  const [number, setNumber] = useState("");
   const [step, setStep] = useState(1);
   const [date, setDate] = useState();
   const [month, setMonth] = useState();
@@ -131,6 +131,9 @@ const SurpriseTour = (params) => {
       openModal();
       return;
     }
+    if (fromDate == "" && toDate == "") {
+      return;
+    }
     if (step !== 8 && tourType !== "") setStep(step + 1);
   };
 
@@ -140,7 +143,15 @@ const SurpriseTour = (params) => {
   const renderForm = (step) => {
     switch (step) {
       case 1:
-        return <Tourtype tourType={tourType} setTourType={setTourType} />;
+        return (
+          <Tourtype
+            tourType={tourType}
+            setTourType={(e) => {
+              setTourType(e);
+              setStep(step + 1);
+            }}
+          />
+        );
       case 2:
         return (
           <Travellertype
@@ -157,14 +168,22 @@ const SurpriseTour = (params) => {
               "https://image.freepik.com/free-vector/newlywed-couple-is-driving-car-their-honeymoon_3446-291.jpg"
             }
             travellerType={travellerType}
-            nextStep={() => nextStep()}
             setSolo={() => {
               setTravellerType("Solo");
               setStep(4);
             }}
-            setFamily={() => setTravellerType("Family")}
-            setFriends={() => setTravellerType("Friends")}
-            setGroup={() => setTravellerType("Group")}
+            setFamily={() => {
+              setTravellerType("Family");
+              setStep(step + 1);
+            }}
+            setFriends={() => {
+              setTravellerType("Friends");
+              setStep(step + 1);
+            }}
+            setGroup={() => {
+              setTravellerType("Group");
+              setStep(step + 1);
+            }}
           />
         );
       case 3:
@@ -199,10 +218,22 @@ const SurpriseTour = (params) => {
               "https://image.freepik.com/free-vector/backpacker-with-map-search-directions-wilderness_80802-300.jpg"
             }
             tourPreferance={tourPreferance}
-            setAdventure={() => setTourPreferance("Adventure")}
-            setRelaxation={() => setTourPreferance("Relaxation")}
-            setCultural={() => setTourPreferance("Cultural")}
-            setExplore={() => setTourPreferance("Explore")}
+            setAdventure={() => {
+              setTourPreferance("Adventure");
+              setStep(step + 1);
+            }}
+            setRelaxation={() => {
+              setTourPreferance("Relaxation");
+              setStep(step + 1);
+            }}
+            setCultural={() => {
+              setTourPreferance("Cultural");
+              setStep(step + 1);
+            }}
+            setExplore={() => {
+              setTourPreferance("Explore");
+              setStep(step + 1);
+            }}
             nextStep={() => nextStep()}
           />
         );
@@ -219,9 +250,14 @@ const SurpriseTour = (params) => {
             name1={"Train"}
             name2={"Flight"}
             travelMode={travelMode}
-            setTrain={() => setTravelMode("Train")}
-            setFlight={() => setTravelMode("Flight")}
-            // setTravelMode={setTravelMode}
+            setTrain={() => {
+              setTravelMode("Train");
+              setStep(step + 1);
+            }}
+            setFlight={() => {
+              setTravelMode("Flight");
+              setStep(step + 1);
+            }}
           />
         );
       case 6:
@@ -256,12 +292,11 @@ const SurpriseTour = (params) => {
         return (
           <Checkout
             imgSrc={
-              "https://image.freepik.com/free-vector/business-background-design_1270-63.jpg"
+              "https://image.freepik.com/free-vector/self-checkout-concept-illustration_114360-2331.jpg"
             }
             setName={(value) => setName(value)}
             setNumber={(value) => setNumber(value)}
             setBudget={(value) => setBudget(value)}
-            // submitData={() => submitData()}
             name={name}
             number={number}
             budget={budget}
@@ -287,83 +322,86 @@ const SurpriseTour = (params) => {
 
         <div className="tour-info">
           <h1>Tour Informations</h1>
-          <ul>
-            <li>
-              Tour type:
-              <span> </span>
-              {tourType}
-            </li>
-            <li>
-              Traveller type:
-              <span> </span>
-              {travellerType}
-            </li>
-            <li>
-              Adult:
-              <span> </span>
-              {adult}
-            </li>
-            <li>
-              Children:
-              <span> </span>
-              {children}
-            </li>
-            <li>
-              Tour preferance:
-              <span> </span>
-              {tourPreferance}
-            </li>
-            <li>
-              Travel mode:
-              <span> </span>
-              {travelMode}
-            </li>
-            {/* <li>
-              From Date:
-              <span> </span>
-              {fromDate}
-            </li>
-            <li>
-              To Date:
-              <span> </span>
-              {toDate}
-            </li> */}
-
-            <li>
-              Expediture1:
-              <span> </span>
-              {expediture1}
-            </li>
-            <li>
-              Expediture2:
-              <span> </span>
-              {expediture2}
-            </li>
-            <li>
-              Expediture3:
-              <span> </span>
-              {expediture3}
-            </li>
-            <li>
-              Start point
-              <span> </span>
-              {startPoint}
-            </li>
-            <li>
-              Enter your Name:
-              <span> </span>
-              {name}
-            </li>
-            <li>
-              Your Budget:
-              <span> </span>
-              {budget}
-            </li>
-            <li>
-              Whatsapp Number:
-              <span> </span>
-              {number}
-            </li>
+          <ul className="formModal">
+            <div className="row1">
+              <li>
+                Tour type:
+                <span> </span>
+                {tourType}
+              </li>
+              <li>
+                Traveller type:
+                <span> </span>
+                {travellerType}
+              </li>
+              <li>
+                Adult:
+                <span> </span>
+                {adult}
+              </li>
+              <li>
+                Children:
+                <span> </span>
+                {children}
+              </li>
+              <li>
+                Tour preferance:
+                <span> </span>
+                {tourPreferance}
+              </li>
+              <li>
+                Travel mode:
+                <span> </span>
+                {travelMode}
+              </li>
+              <li>
+                From Date:
+                <span> </span>
+                {fromDate.toString().slice(0, 15)}
+              </li>
+              <li>
+                To Date:
+                <span> </span>
+                {toDate.toString().slice(0, 15)}
+              </li>
+            </div>
+            <div className="row2">
+              <li>
+                Expediture1:
+                <span> </span>
+                {expediture1}
+              </li>
+              <li>
+                Expediture2:
+                <span> </span>
+                {expediture2}
+              </li>
+              <li>
+                Expediture3:
+                <span> </span>
+                {expediture3}
+              </li>
+              <li>
+                Start point
+                <span> </span>
+                {startPoint}
+              </li>
+              <li>
+                Enter your Name:
+                <span> </span>
+                {name}
+              </li>
+              <li>
+                Your Budget:
+                <span> </span>
+                {budget}
+              </li>
+              <li>
+                Whatsapp Number:
+                <span> </span>
+                {number}
+              </li>
+            </div>
           </ul>
         </div>
         <div className="info-tour-buttons">

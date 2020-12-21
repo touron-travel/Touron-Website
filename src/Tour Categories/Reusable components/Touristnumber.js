@@ -26,7 +26,7 @@ const Touristnumber = ({
           >
             -
           </button>
-          <input type="text" value={adult} />
+          <input type="text" value={adult} className="numbers" />
           <button className="increment" onClick={() => setAdult(adult + 1)}>
             +
           </button>
@@ -47,7 +47,7 @@ const Touristnumber = ({
           >
             -
           </button>
-          <input type="text" value={children} />
+          <input type="text" value={children} className="numbers" />
           <button
             className="increment"
             onClick={() => setChildren(children + 1)}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import TourHeader from "../Reusable components/TourHeader";
 import Road from "../../assests/Roadtrip.jpg";
 import Travellertype from "../Reusable components/Travellertype";
@@ -15,8 +15,12 @@ import Modal from "react-modal";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { firedb } from "../../firebase";
+import { ApiContext } from "../../Context/ApiContext";
 
 const RoadtripTour = (params) => {
+  const { userInfo } = useContext(ApiContext);
+  const [number, setNumber] = useState(userInfo.phoneNumber);
+  const [name, setName] = useState(userInfo.name);
   const [travelMode, setTravelMode] = React.useState("");
   const [travellerType, setTravellerType] = React.useState("");
   const [adult, setAdult] = React.useState(0);
@@ -29,11 +33,9 @@ const RoadtripTour = (params) => {
   const [stops, setStops] = useState("");
   const [carRent, setCarRent] = useState("No");
   const [additionalInfo, setAdditionalInfo] = useState("");
-  const [name, setName] = useState("");
   const [driveType, setDriveType] = useState("");
   const [driverType, setDriverType] = useState("");
   const [budget, setBudget] = useState("");
-  const [number, setNumber] = useState("");
   const [step, setStep] = useState(1);
   const [date, setDate] = useState();
   const [month, setMonth] = useState();
@@ -131,7 +133,9 @@ const RoadtripTour = (params) => {
       openModal();
       return;
     }
-
+    if (fromDate == "" && toDate == "") {
+      return;
+    }
     if (step !== 7 && travelMode !== "") setStep(step + 1);
   };
   const prevStep = () => {
@@ -152,8 +156,14 @@ const RoadtripTour = (params) => {
             name1={"Bike"}
             name2={"Car"}
             travelMode={travelMode}
-            setTrain={() => setTravelMode("Bike")}
-            setFlight={() => setTravelMode("Car")}
+            setTrain={() => {
+              setTravelMode("Bike");
+              setStep(step + 1);
+            }}
+            setFlight={() => {
+              setTravelMode("Car");
+              setStep(step + 1);
+            }}
           />
         );
       case 2:
@@ -172,14 +182,22 @@ const RoadtripTour = (params) => {
               "https://image.freepik.com/free-vector/newlywed-couple-is-driving-car-their-honeymoon_3446-291.jpg"
             }
             travellerType={travellerType}
-            nextStep={() => nextStep()}
             setSolo={() => {
               setTravellerType("Solo");
-              setStep(5);
+              setStep(4);
             }}
-            setFamily={() => setTravellerType("Family")}
-            setFriends={() => setTravellerType("Friends")}
-            setGroup={() => setTravellerType("Group")}
+            setFamily={() => {
+              setTravellerType("Family");
+              setStep(step + 1);
+            }}
+            setFriends={() => {
+              setTravellerType("Friends");
+              setStep(step + 1);
+            }}
+            setGroup={() => {
+              setTravellerType("Group");
+              setStep(step + 1);
+            }}
           />
         );
       case 3:
@@ -265,7 +283,7 @@ const RoadtripTour = (params) => {
         return (
           <Checkout
             imgSrc={
-              "https://image.freepik.com/free-vector/business-background-design_1270-63.jpg"
+              "https://image.freepik.com/free-vector/self-checkout-concept-illustration_114360-2331.jpg"
             }
             setName={(value) => setName(value)}
             setNumber={(value) => setNumber(value)}
@@ -296,88 +314,92 @@ const RoadtripTour = (params) => {
 
           <div className="tour-info">
             <h1>Tour Informations</h1>
-            <ul>
-              <li>
-                Travel mode:
-                <span> </span>
-                {travelMode}
-              </li>
-              <li>
-                Traveller type:
-                <span> </span>
-                {travellerType}
-              </li>
-              <li>
-                Adult:
-                <span> </span>
-                {adult}
-              </li>
-              <li>
-                Children:
-                <span> </span>
-                {children}
-              </li>
-              <li>
-                Travel mode:
-                <span> </span>
-                {travelMode}
-              </li>
-              {/* <li>
-              From Date:
-              <span> </span>
-              {fromDate}
-            </li>
-            <li>
-              To Date:
-              <span> </span>
-              {toDate}
-            </li> */}
-              <li>
-                How long would you like to drive:
-                <span> </span>
-                {driveDuration}
-              </li>
-              <li>
-                Any travel or dietary restrictions:
-                <span> </span>
-                {driveRestriction}
-              </li>
-              <li>
-                Where will be your starting point:
-                <span> </span>
-                {startPoint}
-              </li>
-              <li>
-                Would you like to add extra beds or additional room if
-                travelling as 3/5/7:
-                <span> </span>
-                {additionalInfo}
-              </li>
-              <li>
-                Do you need any help in renting a car:
-                <span> </span>
-                {carRent}
-              </li>
-              <li>
-                What kind of stops do you prefer on your drive:
-                <span> </span>
-                {stops}
-              </li>
-              <li>
-                Enter your Name:
-                <span> </span>
-                {name}
-              </li>
-              <li>
-                Your Budget:
-                <span> </span>
-                {budget}
-              </li>
-              <li>
-                Whatsapp Number:
-                <span> </span>
-                {number}
-              </li>
+            <ul className="formModalr">
+              <div className="row1">
+                <li>
+                  Travel mode:
+                  <span> </span>
+                  {travelMode}
+                </li>
+                <li>
+                  Traveller type:
+                  <span> </span>
+                  {travellerType}
+                </li>
+                <li>
+                  Adult:
+                  <span> </span>
+                  {adult}
+                </li>
+                <li>
+                  Children:
+                  <span> </span>
+                  {children}
+                </li>
+                <li>
+                  Travel mode:
+                  <span> </span>
+                  {travelMode}
+                </li>
+                <li>
+                  From Date:
+                  <span> </span>
+                  {fromDate.toString().slice(0, 15)}
+                </li>
+                <li>
+                  To Date:
+                  <span> </span>
+                  {toDate.toString().slice(0, 15)}
+                </li>
+                <li>
+                  How long would you like to drive:
+                  <span> </span>
+                  {driveDuration}
+                </li>
+              </div>
+              <div className="row2">
+                <li>
+                  Any travel or dietary restrictions:
+                  <span> </span>
+                  {driveRestriction}
+                </li>
+                <li>
+                  Where will be your starting point:
+                  <span> </span>
+                  {startPoint}
+                </li>
+                <li>
+                  Would you like to add extra beds or additional room if
+                  travelling as 3/5/7:
+                  <span> </span>
+                  {additionalInfo}
+                </li>
+                <li>
+                  Do you need any help in renting a car:
+                  <span> </span>
+                  {carRent}
+                </li>
+                <li>
+                  What kind of stops do you prefer on your drive:
+                  <span> </span>
+                  {stops}
+                </li>
+                <li>
+                  Enter your Name:
+                  <span> </span>
+                  {name}
+                </li>
+                <li>
+                  Your Budget:
+                  <span> </span>
+                  {budget}
+                </li>
+                <li>
+                  Whatsapp Number:
+                  <span> </span>
+                  {number}
+                </li>
+              </div>
             </ul>
           </div>
           <div className="info-tour-buttons">

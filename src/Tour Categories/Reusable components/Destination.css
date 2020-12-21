@@ -29,11 +29,15 @@
   margin: 0px 30px;
 }
 
+.que2.qes2 .form-control {
+  width: 200px;
+}
+
 .destination-container input {
-  outline: none;
-  border: 1px solid blue;
-  border-radius: 20px;
+  border: 1px solid #74e4e4;
+  border-radius: 5px;
   padding: 10px;
+  background-color: transparent;
   flex-basis: 30%;
 }
 

@@ -154,6 +154,27 @@
   /* font-family: monospace; */
   font-size: 17px;
 }
+
+.formModal {
+  display: flex;
+  /* padding: 0 100px; */
+  justify-content: space-around;
+  align-items: center;
+  width: 700px;
+}
+.formModalr {
+  display: flex;
+  /* padding: 0 100px; */
+  justify-content: space-around;
+  align-items: center;
+  width: 900px;
+}
+.row1,
+.row2 {
+  padding: 0 50px;
+  /* margin: 0 30px; */
+}
+
 @media (max-height: 578px) {
   .Planned-form-container {
     display: flex;

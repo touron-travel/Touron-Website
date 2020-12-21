@@ -1,10 +1,7 @@
 .tourist-container {
   width: 100%;
-  /* height: 300px; */
   display: flex;
   align-items: center;
-  /* justify-content: center; */
-  /* justify-content: space-evenly; */
   flex-direction: column;
 }
 .adult,
@@ -21,8 +18,13 @@
 .tourist-func .increment,
 .tourist-func .decrement {
   background-color: tomato;
-  padding: 0px 10px;
+  padding: 8px 15px;
   color: #fff;
+  border-radius: 50%;
+  outline: none;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
 }
 
 .adult img,
@@ -34,7 +36,14 @@
 .tourist-container input {
   text-align: center;
 }
-
+.numbers {
+  outline: none;
+  border: none;
+  font-size: 30px;
+  font-family: "Times New Roman", Times, serif;
+  padding: 0 5px;
+  width: 100px;
+}
 @media (max-height: 578px) {
   .adult img,
   .child img {
