@@ -326,7 +326,7 @@ const Visa = () => {
                   />
                 </div>
                 <div className="form-row">
-                  <div>
+                  <div className="visa-group1">
                     <label className="visa-label">Phone Number</label>
                     <input
                       type="number"
@@ -337,7 +337,7 @@ const Visa = () => {
                       }}
                     />
                   </div>
-                  <div>
+                  <div className="visa-group">
                     <label className="visa-label">Number of Persons</label>
                     <input
                       type="number"

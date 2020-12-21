@@ -144,10 +144,14 @@
   display: flex;
   justify-content: space-evenly;
 }
+.visa-content-details {
+  flex-basis: 55%;
+}
 .visa-content-form {
   margin-top: 70px;
   margin-left: 10px;
-  width: 500px;
+  /* width: 500px; */
+  flex-basis: 40%;
   /* height: 780px; */
   box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
   background-color: #f7fafc !important;
@@ -191,7 +195,6 @@
   width: 700px;
   margin-bottom: 15px;
   border-radius: 10px;
-  /* background-color: #00000010; */
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.16);
 }
 .visa-questionss {
@@ -213,4 +216,193 @@
   color: #0009;
   padding: 20px;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+@media screen and (max-width: 768px) {
+  .visa-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .visa-content-details {
+    padding: 0;
+    flex-basis: 100%;
+  }
+  .visa-content-form {
+    flex-basis: 100%;
+  }
+  .visa-country {
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-left: 0;
+  }
+  .visa-country-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  .visa-country i {
+    font-size: 13px;
+    color: #434343;
+  }
+  .visa-countryName {
+    padding: 0px 10px;
+    font-family: "Kaushan Script";
+    font-size: 25px;
+  }
+  .visa-name {
+    color: #db6500;
+    padding: 0px 10px;
+    font-family: "Caveat", cursive;
+    font-size: 25px;
+  }
+  .salaried-details,
+  .selfEmployed-details {
+    padding-top: 30px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .visa-container h1 {
+    font-size: 40px;
+  }
+  .questionss {
+    background-color: #fff;
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.16);
+  }
+  .visa-groups {
+    padding: 15px 40px;
+  }
+
+  .form-row .visa-group {
+    width: 100%;
+    padding: 0 12px;
+  }
+  .form-row .visa-group1 {
+    width: 100%;
+    padding: 0 12px;
+    margin-bottom: 30px;
+  }
+  .questionss p {
+    font-size: 18px;
+    margin-top: 5px;
+    padding: 20px;
+  }
+  .questionss h1 {
+    font-size: 18px;
+    color: #333945;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .visa-details-categories {
+    height: 50px;
+  }
+  .salaried {
+    font-size: 13px;
+  }
+  .selfEmployed {
+    font-size: 13px;
+  }
+  .none {
+    font-size: 13px;
+  }
+  .visa-countryName {
+    padding: 0px 10px;
+    font-family: "Kaushan Script";
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .visa-container h1 {
+    font-size: 28px;
+  }
+  .visa-country-search .form-control {
+    width: 100px;
+  }
+  .visa-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .visa-content-details {
+    padding: 0;
+    flex-basis: 100%;
+  }
+  .visa-content-form {
+    flex-basis: 100%;
+  }
+  .visa-country {
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-left: 0;
+  }
+  .visa-country-image {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+  .visa-country i {
+    font-size: 13px;
+    color: #434343;
+  }
+  .visa-countryName {
+    padding: 0px 10px;
+    font-family: "Kaushan Script";
+    font-size: 13px;
+  }
+  .visa-name {
+    color: #db6500;
+    padding: 0px 10px;
+    font-family: "Caveat", cursive;
+    font-size: 17px;
+  }
+  .salaried-details,
+  .selfEmployed-details {
+    padding-top: 30px;
+  }
+  .questionss p {
+    font-size: 15px;
+    margin-top: 5px;
+    padding: 20px;
+  }
+  .questionss h1 {
+    font-size: 13px;
+    color: #333945;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .questionss p {
+    font-size: 10px;
+    margin-top: 5px;
+    padding: 20px;
+  }
+  .questionss h1 {
+    font-size: 10px;
+    color: #333945;
+    padding: 20px;
+  }
+  .visa-group label {
+    font-size: 10px;
+  }
+  .visa-details-categories {
+    height: 45px;
+  }
+  .salaried {
+    font-size: 12px;
+  }
+  .selfEmployed {
+    font-size: 12px;
+  }
+  .none {
+    font-size: 12px;
+  }
 }
