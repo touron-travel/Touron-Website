@@ -107,10 +107,10 @@
     display: none;
   }
   .hamburger {
-    position: fixed;
+    position: absolute;
     cursor: pointer;
     right: 3%;
-    top: 10%;
+    top: 40%;
     transform: translate(-5%, -50%);
     z-index: 12;
     display: flex;

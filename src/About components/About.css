@@ -72,9 +72,12 @@
 .intro_image-flex {
   flex-basis: 40%;
 }
+.intro_image-flex {
+  flex-basis: 50%;
+}
 .intro_content {
+  flex-basis: 50%;
   padding-right: 40px;
-  flex-basis: 60%;
 }
 .intro_title {
   font-size: 30px;
@@ -428,8 +431,20 @@ p.stats_text {
   color: #fff;
   cursor: pointer;
 }
+.stats-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.stats_text {
+  text-align: center;
+}
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  .aboutimage {
+    width: 100%;
+  }
   .team_content {
     display: flex;
     justify-content: center;
@@ -455,8 +470,8 @@ p.stats_text {
     flex-basis: 100%;
   }
   .intro_content {
-    display: flex;
     flex-basis: 100%;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -476,5 +491,145 @@ p.stats_text {
     margin-left: 6px;
     margin-right: 6px;
     padding: 2px;
+  }
+  .abouttile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .breadcrumbs {
+    display: none;
+  }
+}
+@media screen and (max-width: 620px) {
+  .aboutimage {
+    width: 100%;
+  }
+  .abouttile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .breadcrumbs {
+    display: none;
+  }
+  .intro_image-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .intro_image {
+    width: 60%;
+    height: 60%;
+  }
+  .intro_title {
+    font-size: 25px;
+  }
+  .stat_bar {
+    width: 23%;
+  }
+  .stats_years {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+  .title_desc {
+    padding: 0px 50px;
+  }
+  .testimony {
+    margin-left: 4px;
+    margin-right: 4px;
+    padding: 1px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .intro_title {
+    font-size: 20px;
+  }
+  p.intro_text {
+    font-size: 13px;
+  }
+  .section_title {
+    font-size: 25px;
+  }
+  p.stats_text {
+    font-size: 13px;
+  }
+  .stat_bar {
+    width: 12%;
+  }
+  .stats_number,
+  .stats_number1 {
+    font-size: 20px;
+  }
+  .stats_type,
+  .stats_type1 {
+    font-size: 12px;
+  }
+  .sub_border {
+    width: 30%;
+  }
+  .hero_subtitle {
+    width: 100px;
+  }
+  .title_desc {
+    padding: 20px;
+  }
+  .team_content1 {
+    width: 300px;
+    height: 400px;
+  }
+  .team_img img {
+    width: 300px;
+    height: 300px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .hero_image img {
+    width: 300px;
+    margin-right: 0px;
+  }
+  .team_content1 {
+    width: 250px;
+    height: 370px;
+  }
+  .team_img img {
+    width: 250px;
+    height: 250px;
+  }
+  .team_desti {
+    font-size: 22px;
+  }
+  .stat_bar {
+    width: 5%;
+  }
+  .stats_last_icon1 {
+    padding-left: 10px;
+  }
+  .stats_new_icon1 {
+    padding-right: 10px;
+  }
+  .stats_years {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .stats_new_content,
+  .stats_new_content1 {
+    padding-right: 0px;
+  }
+  .stats_last_content,
+  .stats_last_content1 {
+    padding-left: 0px;
+  }
+  .stats_new_icon {
+    padding-left: 20px;
+  }
+  .stats_last_icon {
+    padding-right: 20px;
+  }
+  .stats_last_icon1 {
+    padding-right: 15px;
+  }
+  .stats_new_icon1 {
+    padding-left: 15px;
   }
 }
