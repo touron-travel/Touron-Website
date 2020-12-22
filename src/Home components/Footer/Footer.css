@@ -116,29 +116,28 @@
 
 /* Responsive */
 
-@media (max-width: 768px) {
-  .footer {
-    padding: 10px 10px;
-    position: relative;
-  }
-  .footnav {
-    border-bottom: none;
-    padding-bottom: 0px;
-  }
-  .footnav .navigations {
+@media screen and (max-width: 768px) {
+  .navigations {
     display: none;
-    padding: 0;
-    margin: 0;
+  }
+  .social-icons {
+    position: relative;
+    top: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .footer-section {
     display: flex;
     flex-direction: column;
   }
-  .icons {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .tour-types,
+  .links,
+  .ideas {
+    border-bottom: 1px solid #fff;
+  }
+  ._title {
+    padding-top: 20px;
   }
 }

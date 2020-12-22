@@ -173,6 +173,7 @@ const MyVisaRequests = () => {
             paddingLeft: 20,
             marginRight: 20,
             top: 18,
+            cursor: "pointer",
           }}
         />
         <div className="requests-info-visa">

@@ -109,6 +109,7 @@ const Support = () => {
               paddingLeft: 20,
               marginRight: 20,
               top: 18,
+              cursor: "pointer",
             }}
           />
           <div className="support-section">

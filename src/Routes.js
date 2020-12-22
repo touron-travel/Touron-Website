@@ -111,11 +111,7 @@ export default function Routes() {
           autoDismiss={true}
         >
           <ScrollToTop>
-            {adminRoutes ? null : (
-              <div className="nav">
-                <Navbar />
-              </div>
-            )}
+            {adminRoutes ? null : <Navbar />}
             <Switch>
               <Route path="/" exact component={Home} />
               <Route path="/about" component={About} />
@@ -165,11 +161,7 @@ export default function Routes() {
               <Route path="/trendingplaces" component={Adminpage} />
               <Route path="/coupons" component={Adminpage} />
             </Switch>
-            {adminRoutes ? null : (
-              <div className="footer">
-                <Footer />
-              </div>
-            )}
+            {adminRoutes ? null : <Footer />}
           </ScrollToTop>
         </ToastProvider>
       </Router>

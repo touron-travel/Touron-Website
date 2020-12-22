@@ -309,6 +309,7 @@ const SavedTours = () => {
             paddingLeft: 20,
             marginRight: 20,
             top: 18,
+            cursor: "pointer",
           }}
         />
         <Profilenav title={"Saved Tours"} />
