@@ -171,6 +171,7 @@ const UserDetails = () => {
             paddingLeft: 20,
             marginRight: 20,
             top: 18,
+            cursor: "pointer",
           }}
         />
         <div className="account">

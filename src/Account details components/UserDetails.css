@@ -241,6 +241,14 @@
   font-family: "Open Sans", sans-serif;
   line-height: 1.7;
 }
+.toggleSidebar {
+  margin-left: -240px;
+  transition: 0.2s ease-out;
+}
+.toggleSideba {
+  width: 300px;
+  transition: 0.2s ease-in;
+}
 
 @media (max-height: 578px) {
   .account {
@@ -264,13 +272,4 @@
     cursor: pointer;
     transform: translate(-40%, -30%);
   }
-}
-
-.toggleSidebar {
-  margin-left: -240px;
-  transition: 0.2s ease-out;
-}
-.toggleSideba {
-  width: 300px;
-  transition: 0.2s ease-in;
 }

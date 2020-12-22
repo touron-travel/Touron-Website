@@ -584,6 +584,21 @@ p.stats_text {
   }
 }
 @media screen and (max-width: 360px) {
+  .aboutimage {
+    height: 60vh;
+  }
+  .aboutimage::after {
+    height: 60vh;
+  }
+  .abouttile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+  }
+  .bread {
+    font-size: 20px;
+  }
   .hero_image img {
     width: 300px;
     margin-right: 0px;
@@ -631,5 +646,53 @@ p.stats_text {
   }
   .stats_new_icon1 {
     padding-left: 15px;
+  }
+}
+@media screen and (max-width: 280px) {
+  .stats_new_icon1 {
+    padding: 20px 0 0 0;
+  }
+  .stats_last_icon1 {
+    padding: 20px 0 0 0;
+  }
+  .stat_bar {
+    width: 4%;
+  }
+  .stats_new_icon,
+  .stats_last_icon,
+  .stats_last_icon1,
+  .stats_new_icon1 {
+    display: none;
+  }
+  .stats_years_new {
+    padding-right: 10px;
+  }
+  .stats_years_last {
+    padding-left: 10px;
+  }
+  .stats_number,
+  .stats_number1,
+  .stats_type,
+  .stats_type1 {
+    display: flex;
+    justify-content: center;
+  }
+  .heading_section .subheading {
+    font-size: 25px;
+  }
+  .hero_title {
+    font-size: 20px;
+  }
+  .hero_desc {
+    text-align: initial;
+  }
+  p.intro_text {
+    text-align: initial;
+  }
+  .team_img img {
+    width: 220px;
+  }
+  .team_content1 {
+    width: 220px;
   }
 }
