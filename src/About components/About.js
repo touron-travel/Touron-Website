@@ -23,6 +23,23 @@ export default function About() {
     slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
+    responsive: [
+      {
+        breakpoint: 620,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -71,20 +88,14 @@ export default function About() {
       </div>
 
       <div className="stats">
-        <div>
-          <div>
-            <div className="section_title">years statistics</div>
-          </div>
-        </div>
-        <div>
-          <div>
-            <p className="stats_text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-              quis vulputate eros, iaculis consequat nisl. Nunc et suscipit
-              urna. Integer elementum orci eu vehicula pretium. Donec bibendum
-              tristique condimentum. Aenean in lacus ligula.
-            </p>
-          </div>
+        <div className="stats-content">
+          <div className="section_title">years statistics</div>
+          <p className="stats_text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+            quis vulputate eros, iaculis consequat nisl. Nunc et suscipit urna.
+            Integer elementum orci eu vehicula pretium. Donec bibendum tristique
+            condimentum. Aenean in lacus ligula.
+          </p>
         </div>
 
         <div className="stats_years">

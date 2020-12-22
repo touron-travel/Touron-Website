@@ -195,7 +195,6 @@
   width: 700px;
   margin-bottom: 15px;
   border-radius: 10px;
-  /* background-color: #00000010; */
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.16);
 }
 .visa-questionss {
@@ -282,7 +281,6 @@
   .form-row .visa-group {
     width: 100%;
     padding: 0 12px;
-    /* margin-bottom: 10px; */
   }
   .form-row .visa-group1 {
     width: 100%;
@@ -302,27 +300,17 @@
 }
 
 @media screen and (max-width: 480px) {
+  .visa-details-categories {
+    height: 50px;
+  }
   .salaried {
-    background-color: #db6500;
-    border-radius: 30px;
-    margin-right: 10px;
-    cursor: pointer;
-    font-size: 20px;
+    font-size: 13px;
   }
   .selfEmployed {
-    background-color: #db6500;
-    border-radius: 30px;
-    margin-left: 10px;
-    cursor: pointer;
-    font-size: 20px;
+    font-size: 13px;
   }
   .none {
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.5s;
-    border: 1.5px solid #434343;
-    color: #434343;
-    font-size: 10px;
+    font-size: 13px;
   }
   .visa-countryName {
     padding: 0px 10px;
@@ -336,16 +324,6 @@
   }
   .visa-country-search .form-control {
     width: 100px;
-  }
-  .salaried {
-    cursor: pointer;
-    font-size: 8px;
-    margin-bottom: 0;
-  }
-  .selfEmployed {
-    cursor: pointer;
-    font-size: 8px;
-    margin-bottom: 0;
   }
   .visa-content {
     display: flex;
@@ -389,13 +367,6 @@
   .selfEmployed-details {
     padding-top: 30px;
   }
-  .none {
-    transition: 0.5s;
-    border: 1.5px solid #434343;
-    color: #434343;
-    font-size: 10px;
-    margin: 0;
-  }
   .questionss p {
     font-size: 15px;
     margin-top: 5px;
@@ -421,5 +392,17 @@
   }
   .visa-group label {
     font-size: 10px;
+  }
+  .visa-details-categories {
+    height: 45px;
+  }
+  .salaried {
+    font-size: 12px;
+  }
+  .selfEmployed {
+    font-size: 12px;
+  }
+  .none {
+    font-size: 12px;
   }
 }
