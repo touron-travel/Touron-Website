@@ -661,7 +661,7 @@ export default function Popular_tour(props) {
               </div>
             </div>
           </div>
-          <div className="question_block">
+<div className="question_block">
             <div className="question_block-title">Get a Question?</div>
             <div className="question_block-text">
               Do not hesitage to give us a call. We are an expert team and we
@@ -669,7 +669,7 @@ export default function Popular_tour(props) {
             </div>
             <div className="question_block-tel">+1 1235 6789 10</div>
             <div className="question_block-mail">info@hellodigi.ru</div>
-          </div>
+          </div>          
         </div>
       </div>
     </>
