@@ -73,12 +73,92 @@
 .countryInner_about {
   display: flex;
   padding: 75px 75px 0;
+  justify-content: space-between;
 }
 .countryInner_aboutLeft {
-  flex-basis: 50%;
+  flex-basis: 60%;
 }
 .countryInner_aboutRight {
-  flex-basis: 50%;
+  flex-basis: 35%;
+  box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
+  background-color: #fff !important;
+  border-radius: 30px;
+  padding: 60px 28px 28px;
+}
+.countryInner_tit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.countryInner_tith {
+  padding-left: 10px;
+  font-size: 20px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #db6500;
+}
+.countryInner_form {
+  border-bottom: 1px solid #db6500;
+  padding-bottom: 30px;
+}
+.countryInner_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.countryInner_str {
+  font-size: 12px;
+  color: #666666;
+  padding: 25px 0 10px 0;
+}
+.countryInner_amt {
+  display: flex;
+  padding-bottom: 30px;
+  align-items: center;
+}
+.countryInner_amt1 {
+  font-size: 20px;
+  color: #333333;
+}
+.countryInner_amt2 {
+  font-size: 20px;
+  color: #db6500;
+  padding: 0 5px;
+}
+.countryInner_amt3 {
+  font-size: 12px;
+}
+.countryInner_button {
+  border: none;
+  outline: none;
+  background-color: #db6500;
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-weight: 700;
+}
+.countryInner_form .countryInner_names input,
+.countryInner_form .countryInner_no input,
+.countryInner_form .countryInner_mail input,
+.countryInner_form .countryInner_persons input,
+.countryInner_form .countryInner_date input {
+  padding: 10px 20px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+.countryInner_form .countryInner_names,
+.countryInner_form .countryInner_no,
+.countryInner_form .countryInner_mail,
+.countryInner_form .countryInner_persons,
+.countryInner_form .countryInner_date {
+  border: 1.5px solid gray;
+  margin: 20px 0;
+  border-radius: 30px;
+}
+.countryInner_i {
+  padding-left: 10px;
+  padding-bottom: 5px;
+  font-size: 30px;
 }
 .inner_home {
   display: flex;
