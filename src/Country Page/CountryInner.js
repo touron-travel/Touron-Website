@@ -13,6 +13,7 @@ import { AiOutlineUserAdd, AiOutlineWhatsApp } from "react-icons/ai";
 import { FiMail } from "react-icons/fi";
 import { GiPerson } from "react-icons/gi";
 import { MdDateRange } from "react-icons/md";
+import { HiOutlineCalendar } from "react-icons/hi";
 
 const CountryInner = () => {
   const { countryid, countryname } = useParams();
@@ -288,13 +289,35 @@ const CountryInner = () => {
                       size="30"
                       required
                     />
+                    <div className="countryInner_date-model">
+                      <div className="countryInner_date-model-type">
+                        <HiOutlineCalendar />
+                        <div>Travel dates are?</div>
+                      </div>
+                      <div className="countryInner-date-model-cat">
+                        <div className="flexible">Flexible</div>
+                        <div className="flexible">Fixed</div>
+                      </div>
+                      <div className="countryInner_month">
+                        <HiOutlineCalendar />
+                        <div>Select the month of travel</div>
+                      </div>
+                      <div className="countryInner_month-cat">
+                        <div className="month-cat">Jan</div>
+                        <div className="month-cat">Feb</div>
+                        <div className="month-cat">Mar</div>
+                        <div className="month-cat">Apr</div>
+                        <div className="month-cat">May</div>
+                        <div className="month-cat">Jun</div>
+                        <div className="month-cat">Jul</div>
+                        <div className="month-cat">Aug</div>
+                        <div className="month-cat">Sept</div>
+                        <div className="month-cat">Oct</div>
+                        <div className="month-cat">Nov</div>
+                        <div className="month-cat">Dec</div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="countryInner_str">Starting form</div>
-                <div className="countryInner_amt">
-                  <div className="countryInner_amt1">₹</div>
-                  <div className="countryInner_amt2">10,000</div>
-                  <div className="countryInner_amt3">per person</div>
                 </div>
                 <div className="countryInner_btn">
                   <button className="countryInner_button">PLAN NOW</button>
