@@ -1,5 +1,6 @@
 import firebase from "firebase";
 
+
 // const firebaseConfig = {
 //   apiKey: "AIzaSyCCZ2bo_iPbtvarsADQe84qX2s9cWPMq3U",
 //   authDomain: "touronapp-248e4.firebaseapp.com",
@@ -26,7 +27,7 @@ let fire;
 if (!firebase.apps.length) {
   fire = firebase.initializeApp(firebaseConfig, "touron-webapp");
 } else {
-  fire = firebase.app(); // if already initialized, use that one
+  fire = firebase.app(); 
 }
 
 export let firedb = fire.database();

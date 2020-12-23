@@ -38,7 +38,7 @@ const LuxuryTour = () => {
   console.log("step :>> ", step);
   useEffect(() => {
     if (isAuthenticated()) return setIsLoggedin(true);
-  });
+  },[]);
 
   const [modalIsOpen, setIsOpen] = useState(false);
   const [formModalIsOpen, setFormModalOpen] = useState(false);
@@ -110,14 +110,16 @@ const LuxuryTour = () => {
     formatedMonth = month < 10 ? "0" + month : month;
   });
   const nextStep = () => {
-    if (step == 2 && !isLoggedin) {
+    if (step === 2 && !isLoggedin) {
       openModal();
       return;
     }
-    if (fromDate == "" && toDate == "") {
-      return;
+
+    if (fromDate === "" && toDate === ""  ) {
+      return 
     }
-    if (step !== 5 && tourType !== "") setStep(step + 1);
+
+    setStep(step + 1)
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
@@ -126,7 +128,13 @@ const LuxuryTour = () => {
   const renderForm = (step) => {
     switch (step) {
       case 1:
-        return <Tourtype tourType={tourType} setTourType={setTourType} />;
+        return  <Tourtype
+        tourType={tourType}
+        setTourType={(e) => {
+          setTourType(e);
+          setStep(step + 1);
+        }}
+      />;
       case 2:
         return (
           <Travellertype
@@ -146,11 +154,27 @@ const LuxuryTour = () => {
             nextStep={() => nextStep()}
             setSolo={() => {
               setTravellerType("Solo");
+              setStep(step + 1)
             }}
-            setFamily={() => setTravellerType("Family")}
-            setFriends={() => setTravellerType("Friends")}
-            setGroup={() => setTravellerType("Group")}
-          />
+            setFamily={() =>{
+
+             setTravellerType("Family")
+            setStep(step+1)
+            }
+            }
+             setFriends={() =>{
+
+             setTravellerType("Friends")
+            setStep(step+1)
+            }
+            }
+             setGroup={() =>{
+
+             setTravellerType("Group")
+          setStep(step+1)
+          }
+            }/>
+
         );
       case 3:
         return (
@@ -290,7 +314,7 @@ const LuxuryTour = () => {
               <div className="previous-button" onClick={() => prevStep()}>
                 Previous
               </div>
-              {step == 5 ? (
+              {step === 5 ? (
                 <div
                   className="submit-button"
                   onClick={() => {

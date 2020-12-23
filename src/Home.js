@@ -37,7 +37,7 @@ export default function Home() {
       <div className="topdestination">
         <TopDestination />
       </div>
-      <OurPartners />
+      {/* <OurPartners /> */}
     </div>
   );
 }

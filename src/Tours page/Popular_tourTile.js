@@ -1,9 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Popular_tour.css";
-import * as AiIcons from "react-icons/ai";
 import { isAuthenticated } from "../Login components/auth";
-import { firedb } from "../firebase";
-import { Link } from "react-router-dom";
 export default function Popular_tourTile({ t }) {
   const [uid, setUid] = useState("");
 

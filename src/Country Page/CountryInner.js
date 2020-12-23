@@ -11,9 +11,11 @@ import { SemipolarLoading } from "react-loadingg";
 import { Form } from "reactstrap";
 import { AiOutlineUserAdd, AiOutlineWhatsApp } from "react-icons/ai";
 import { FiMail } from "react-icons/fi";
-import { GiPerson } from "react-icons/gi";
+import { GiPerson, GiCalendar } from "react-icons/gi";
 import { MdDateRange } from "react-icons/md";
 import { HiOutlineCalendar } from "react-icons/hi";
+import { RiCalendar2Line } from "react-icons/ri";
+import DatePicker from "react-datepicker";
 
 const CountryInner = () => {
   const { countryid, countryname } = useParams();
@@ -26,6 +28,20 @@ const CountryInner = () => {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedTour, setSelectedTour] = useState("");
   const [countryLoaded, setCountryLoaded] = useState(false);
+  const [datemodel, setDateModel] = useState(false);
+  const [toggleInfo, setToggleInfo] = useState("Flexible");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+
+  const onChange = (dates) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+  };
+
+  const openDateModel = () => {
+    setDateModel(!datemodel);
+  };
 
   var sectionStyle = {
     backgroundImage: `url(${countryDetails.imageUrl})`,
@@ -91,6 +107,60 @@ const CountryInner = () => {
     arrows: true,
     slidesToShow: 6.5,
     slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 360,
+        settings: {
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 280,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
+    ],
   };
   return (
     <div className="countryInner_Details">
@@ -241,6 +311,7 @@ const CountryInner = () => {
                 </div>
               </div>
             </div>
+
             <div className="countryInner_aboutRight">
               <Form>
                 <div className="countryInner_tit">
@@ -288,34 +359,102 @@ const CountryInner = () => {
                       placeholder="Dates of travel"
                       size="30"
                       required
+                      onClick={openDateModel}
                     />
-                    <div className="countryInner_date-model">
+                    <div
+                      className={
+                        datemodel
+                          ? "countryInner_date-model"
+                          : "countryInner_date-model-none"
+                      }
+                    >
                       <div className="countryInner_date-model-type">
                         <HiOutlineCalendar />
-                        <div>Travel dates are?</div>
+                        <div className="countryInner-d">Travel dates are?</div>
                       </div>
                       <div className="countryInner-date-model-cat">
-                        <div className="flexible">Flexible</div>
-                        <div className="flexible">Fixed</div>
+                        <div
+                          onClick={() => {
+                            setToggleInfo("Flexible");
+                          }}
+                          className={
+                            toggleInfo === "Flexible"
+                              ? "date-flexible"
+                              : "date-none"
+                          }
+                        >
+                          Flexible
+                        </div>
+                        <div
+                          onClick={() => {
+                            setToggleInfo("Fixed");
+                            const openDate = document.getElementById(
+                              "date-cal"
+                            );
+                            // openDate.click();
+                          }}
+                          className={
+                            toggleInfo === "Fixed" ? "date-fixed" : "date-none"
+                          }
+                        >
+                          Fixed
+                        </div>
                       </div>
-                      <div className="countryInner_month">
-                        <HiOutlineCalendar />
-                        <div>Select the month of travel</div>
-                      </div>
-                      <div className="countryInner_month-cat">
-                        <div className="month-cat">Jan</div>
-                        <div className="month-cat">Feb</div>
-                        <div className="month-cat">Mar</div>
-                        <div className="month-cat">Apr</div>
-                        <div className="month-cat">May</div>
-                        <div className="month-cat">Jun</div>
-                        <div className="month-cat">Jul</div>
-                        <div className="month-cat">Aug</div>
-                        <div className="month-cat">Sept</div>
-                        <div className="month-cat">Oct</div>
-                        <div className="month-cat">Nov</div>
-                        <div className="month-cat">Dec</div>
-                      </div>
+                      {toggleInfo === "Flexible" ? (
+                        <>
+                          <div className="countryInner_month">
+                            <HiOutlineCalendar />
+                            <div className="countryInner-d">
+                              Select the month of travel
+                            </div>
+                          </div>
+                          <div className="countryInner_month-cat">
+                            <div className="month-cat">Jan</div>
+                            <div className="month-cat">Feb</div>
+                            <div className="month-cat">Mar</div>
+                            <div className="month-cat">Apr</div>
+                            <div className="month-cat">May</div>
+                            <div className="month-cat">Jun</div>
+                            <div className="month-cat">Jul</div>
+                            <div className="month-cat">Aug</div>
+                            <div className="month-cat">Sept</div>
+                            <div className="month-cat">Oct</div>
+                            <div className="month-cat">Nov</div>
+                            <div className="month-cat">Dec</div>
+                          </div>
+                          <div className="countryInner_week">
+                            <RiCalendar2Line />
+                            <div className="countryInner-d">
+                              Select the week of travel
+                            </div>
+                          </div>
+                          <div className="countryInner_week-cat">
+                            <div className="week-cat">1st week</div>
+                            <div className="week-cat">2nd week</div>
+                            <div className="week-cat">3rd week</div>
+                            <div className="week-cat">4th week</div>
+                          </div>
+                        </>
+                      ) : (
+                        <>
+                          <div className="countryInner_calender">
+                            <GiCalendar />
+                            <div className="countryInner-d">
+                              Select the start date of travel
+                            </div>
+                          </div>
+                          <div className="datePicker">
+                            <DatePicker
+                              selected={startDate}
+                              onChange={onChange}
+                              startDate={startDate}
+                              endDate={endDate}
+                              selectsRange
+                              inline
+                            />
+                          </div>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

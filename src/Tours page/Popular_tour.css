@@ -282,8 +282,7 @@
   top: -2px;
 }
 .question_block {
-  width: 410px;
-  /* height: 308px; */
+  width: 70%;
   background: #db6500;
   border-radius: 14px;
   padding: 34px 30px;
@@ -300,7 +299,6 @@
   font-weight: 500;
   color: #fff;
   line-height: 1.5;
-  width: 350px;
   margin-bottom: 20px;
 }
 .question_block-tel {

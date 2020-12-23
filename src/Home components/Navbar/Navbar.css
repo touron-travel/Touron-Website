@@ -110,7 +110,7 @@
     position: absolute;
     cursor: pointer;
     right: 3%;
-    top: 40%;
+    top: 50%;
     transform: translate(-5%, -50%);
     z-index: 12;
     display: flex;

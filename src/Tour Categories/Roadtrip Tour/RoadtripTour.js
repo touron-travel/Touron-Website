@@ -8,7 +8,6 @@ import Checkout from "../Reusable components/Checkout";
 import Travelmode from "../Reusable components/Travelmode";
 import Roadtripques1 from "../Reusable components/Roadtripques1";
 import Roadtripques from "../Reusable components/Roadtripques";
-import Drivetype from "../Reusable components/Drivetype";
 import { isAuthenticated } from "../../Login components/auth";
 import Modals from "../Modal";
 import Modal from "react-modal";
@@ -17,7 +16,7 @@ import { Link } from "react-router-dom";
 import { firedb } from "../../firebase";
 import { ApiContext } from "../../Context/ApiContext";
 
-const RoadtripTour = (params) => {
+const RoadtripTour = () => {
   const { userInfo } = useContext(ApiContext);
   const [number, setNumber] = useState(userInfo.phoneNumber);
   const [name, setName] = useState(userInfo.name);
@@ -42,13 +41,12 @@ const RoadtripTour = (params) => {
   const [year, setYear] = useState();
   const [isLoggedin, setIsLoggedin] = useState(false);
   const { user } = isAuthenticated();
-
   let random;
   let formatedMonth;
 
   useEffect(() => {
     if (isAuthenticated()) return setIsLoggedin(true);
-  });
+  },[]);
 
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
@@ -126,17 +124,19 @@ const RoadtripTour = (params) => {
     setMonth(requestDate.getMonth() + 1);
     setYear(currentYear.toString().slice(2, 5));
     formatedMonth = month < 10 ? "0" + month : month;
+    console.log('formatedMonth', formatedMonth)
   });
 
   const nextStep = () => {
-    if (step == 2 && !isLoggedin) {
+    if (step === 2 && !isLoggedin) {
       openModal();
       return;
     }
-    if (fromDate == "" && toDate == "") {
-      return;
+     
+    if (fromDate === "" && toDate === ""  &&  step == 4 ) {
+      return 
     }
-    if (step !== 7 && travelMode !== "") setStep(step + 1);
+    setStep(step + 1)
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
@@ -427,7 +427,7 @@ const RoadtripTour = (params) => {
               <div className="previous-button" onClick={() => prevStep()}>
                 Previous
               </div>
-              {step == 7 ? (
+              {step === 7 ? (
                 <div className="submit-button" onClick={() => submitData()}>
                   Submit
                 </div>

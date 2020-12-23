@@ -11,26 +11,26 @@ const Tourtype = ({ tourType, setTourType }) => {
       <div className="tour-type">
         <div
           className={
-            tourType == "Domestic" ? "domestic-selected domestic" : "domestic"
+            tourType === "Domestic" ? "domestic-selected domestic" : "domestic"
           }
           onClick={() => setTourType("Domestic")}
         >
           <div style={{ position: "absolute", top: "10px", right: "10px" }}>
-            {tourType == "Domestic" ? <Checked /> : null}
+            {tourType === "Domestic" ? <Checked /> : null}
           </div>
           <img src={Domestic} alt="" />
           <h6>Domestic</h6>
         </div>
         <div
           className={
-            tourType == "International"
+            tourType === "International"
               ? "international-selected international"
               : "international"
           }
           onClick={() => setTourType("International")}
         >
           <div style={{ position: "absolute", top: "10px", right: "10px" }}>
-            {tourType == "International" ? <Checked /> : null}
+            {tourType === "International" ? <Checked /> : null}
           </div>
           <img src={International} alt="" />
           <h6>International</h6>

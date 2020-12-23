@@ -23,7 +23,7 @@ const Tourpreference = ({
       <div className="travellertype-row1">
         <div
           className={
-            tourPreferance == "Adventure" ? " solo traveltype" : "traveltype"
+            tourPreferance === "Adventure" ? " solo traveltype" : "traveltype"
           }
           onClick={() => {
             setAdventure();
@@ -32,15 +32,15 @@ const Tourpreference = ({
         >
           <div className="traveltype-details">
             <div className="traveltype-details-category">
-              {tourPreferance == "Adventure" ? <Checked /> : null}
+              {tourPreferance === "Adventure" ? <Checked /> : null}
             </div>
-            <img src={imgSrc1} />
+            <img src={imgSrc1} alt='a' />
             <h2>Adventure</h2>
           </div>
         </div>
         <div
           className={
-            tourPreferance == "Relaxation" ? " family traveltype" : "traveltype"
+            tourPreferance === "Relaxation" ? " family traveltype" : "traveltype"
           }
           onClick={() => {
             setRelaxation();
@@ -49,9 +49,9 @@ const Tourpreference = ({
         >
           <div className="traveltype-details">
             <div className="traveltype-details-category">
-              {tourPreferance == "Relaxation" ? <Checked /> : null}
+              {tourPreferance === "Relaxation" ? <Checked /> : null}
             </div>
-            <img src={imgSrc2} />
+            <img src={imgSrc2}  alt='a' />
             <h2>Relaxation</h2>
           </div>
         </div>
@@ -59,7 +59,7 @@ const Tourpreference = ({
       <div className="travellertype-row2">
         <div
           className={
-            tourPreferance == "Cultural" ? " friends traveltype" : "traveltype"
+            tourPreferance === "Cultural" ? " friends traveltype" : "traveltype"
           }
           onClick={() => {
             setCultural();
@@ -68,15 +68,15 @@ const Tourpreference = ({
         >
           <div className="traveltype-details">
             <div className="traveltype-details-category">
-              {tourPreferance == "Cultural" ? <Checked /> : null}
+              {tourPreferance === "Cultural" ? <Checked /> : null}
             </div>
-            <img src={imgSrc3} />
+            <img src={imgSrc3}  alt='a' />
             <h2>Cultural</h2>
           </div>
         </div>
         <div
           className={
-            tourPreferance == "Explore" ? " honeymoon traveltype" : "traveltype"
+            tourPreferance === "Explore" ? " honeymoon traveltype" : "traveltype"
           }
           onClick={() => {
             setExplore();
@@ -85,9 +85,9 @@ const Tourpreference = ({
         >
           <div className="traveltype-details">
             <div className="traveltype-details-category">
-              {tourPreferance == "Explore" ? <Checked /> : null}
+              {tourPreferance === "Explore" ? <Checked /> : null}
             </div>
-            <img src={imgSrc4} />
+            <img src={imgSrc4}  alt='a' />
             <h2>Explore</h2>
           </div>
         </div>
@@ -100,7 +100,7 @@ const Tourpreference = ({
     >
       <div>
         <div style={{ position: "absolute", top: -30, right: -20 }}>
-          {tourPreferance == "Honeymoon" ? <Checked /> : null}
+          {tourPreferance === "Honeymoon" ? <Checked /> : null}
         </div>
         <img src={imgSrc4} />
 

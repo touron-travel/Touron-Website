@@ -13,7 +13,7 @@ import { isAuthenticated } from "../../Login components/auth";
 import Modals from "../Modal";
 import Modal from "react-modal";
 import { AiFillCloseCircle } from "react-icons/ai";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ApiContext } from "../../Context/ApiContext";
 import { firedb } from "../../firebase";
 
@@ -42,7 +42,7 @@ const PlannedTour = () => {
   let formatedMonth;
   useEffect(() => {
     if (isAuthenticated()) return setIsLoggedin(true);
-  });
+  },[]);
   console.log("fromDate,toDate :>> ", fromDate, toDate);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [formModalIsOpen, setFormModalOpen] = useState(false);
@@ -112,20 +112,23 @@ const PlannedTour = () => {
     random = Math.floor((Math.random() + 4) * 345334 * Math.random());
     const requestDate = new Date();
     let currentYear = requestDate.getFullYear();
-    setDate(requestDate.getDate());
     setMonth(requestDate.getMonth() + 1);
+    setDate(requestDate.getDate());
     setYear(currentYear.toString().slice(2, 4));
     formatedMonth = month < 10 ? "0" + month : month;
+    console.log('formatedMonth', formatedMonth)
   });
   const nextStep = () => {
-    if (step == 2 && !isLoggedin) {
+    if (step === 2 && !isLoggedin) {
       openModal();
       return;
     }
-    if (fromDate == "" && toDate == "") {
-      return;
+     
+    if (fromDate === "" && toDate === ""  &&  step == 5 ) {
+      return 
     }
-    if (step !== 7 && tourType !== "" && step !== 2) setStep(step + 1);
+    setStep(step + 1)
+
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
@@ -372,7 +375,7 @@ const PlannedTour = () => {
               <div className="previous-button" onClick={() => prevStep()}>
                 Previous
               </div>
-              {step == 7 ? (
+              {step === 7 ? (
                 <div
                   className="submit-button"
                   onClick={() => {
