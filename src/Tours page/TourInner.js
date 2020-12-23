@@ -70,7 +70,7 @@ const TourInner = () => {
               </h1>
             </div>
 
-            <div style={{ display: "flex" }}>
+            <div className='TourName_Navigation_container'>
               <div className="TourName_Navigation">
                 <div className="AboutTour">
                   <h1>{tourDetails.tourName}</h1>
