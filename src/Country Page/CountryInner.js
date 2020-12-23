@@ -8,6 +8,11 @@ import { ApiContext } from "../Context/ApiContext";
 import Slider from "react-slick";
 import { Link } from "react-scroll";
 import { SemipolarLoading } from "react-loadingg";
+import { Form } from "reactstrap";
+import { AiOutlineUserAdd, AiOutlineWhatsApp } from "react-icons/ai";
+import { FiMail } from "react-icons/fi";
+import { GiPerson } from "react-icons/gi";
+import { MdDateRange } from "react-icons/md";
 
 const CountryInner = () => {
   const { countryid, countryname } = useParams();
@@ -289,7 +294,71 @@ const CountryInner = () => {
                 </div>
               </div>
             </div>
+
+            <div className="countryInner_aboutRight">
+              <Form>
+                <div className="countryInner_tit">
+                  <b>Customise your trip to</b>
+                  <div className="countryInner_tith">
+                    <b>{countryDetails.countryName}</b>
+                  </div>
+                </div>
+                <div className="countryInner_form">
+                  <div className="countryInner_names">
+                    <AiOutlineUserAdd className="countryInner_i" />
+                    <input type="text" placeholder="Name" size="30" required />
+                  </div>
+                  <div className="countryInner_no">
+                    <AiOutlineWhatsApp className="countryInner_i" />
+                    <input
+                      type="number"
+                      placeholder="Whatsapp no."
+                      size="30"
+                      required
+                    />
+                  </div>
+                  <div className="countryInner_mail">
+                    <FiMail className="countryInner_i" />
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      size="30"
+                      required
+                    />
+                  </div>
+                  <div className="countryInner_persons">
+                    <GiPerson className="countryInner_i" />
+                    <input
+                      type="number"
+                      placeholder="No. of travallers"
+                      size="30"
+                      required
+                    />
+                  </div>
+                  <div className="countryInner_date">
+                    <MdDateRange className="countryInner_i" />
+                    <input
+                      type="text"
+                      placeholder="Dates of travel"
+                      size="30"
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="countryInner_str">Starting form</div>
+                <div className="countryInner_amt">
+                  <div className="countryInner_amt1">₹</div>
+                  <div className="countryInner_amt2">10,000</div>
+                  <div className="countryInner_amt3">per person</div>
+                </div>
+                <div className="countryInner_btn">
+                  <button className="countryInner_button">PLAN NOW</button>
+                </div>
+              </Form>
+            </div>
+
             {/* <div className="countryInner_aboutRight">Content</div> */}
+
           </div>
           <div className="highlights">
             <div className="highlights_title">
