@@ -20,18 +20,10 @@ export default function About() {
     autoplay: true,
     infinite: true,
     speed: 1000,
-    slidesToShow: 3,
+    slidesToShow: 2,
     slidesToScroll: 1,
     arrows: false,
     responsive: [
-      {
-        breakpoint: 620,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          initialSlide: 2,
-        },
-      },
       {
         breakpoint: 480,
         settings: {

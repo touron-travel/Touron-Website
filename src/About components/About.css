@@ -502,6 +502,9 @@ p.stats_text {
   }
 }
 @media screen and (max-width: 620px) {
+  .testimony_section {
+    height: 80vh;
+  }
   .aboutimage {
     width: 100%;
   }
@@ -542,6 +545,9 @@ p.stats_text {
   }
 }
 @media screen and (max-width: 480px) {
+  .testimony_section {
+    height: 80vh;
+  }
   .intro_title {
     font-size: 20px;
   }
@@ -560,6 +566,12 @@ p.stats_text {
   .stats_number,
   .stats_number1 {
     font-size: 20px;
+  }
+  .stats_new_icon,
+  .stats_last_icon,
+  .stats_last_icon1,
+  .stats_new_icon1 {
+    display: none;
   }
   .stats_type,
   .stats_type1 {
@@ -582,8 +594,24 @@ p.stats_text {
     width: 300px;
     height: 300px;
   }
+  .stats_number,
+  .stats_number1,
+  .stats_type,
+  .stats_type1 {
+    display: flex;
+    justify-content: center;
+  }
+  .stats_years_new {
+    padding-right: 20px;
+  }
+  .stats_years_last {
+    padding-left: 20px;
+  }
 }
 @media screen and (max-width: 360px) {
+  .testimony_section {
+    height: 80vh;
+  }
   .aboutimage {
     height: 60vh;
   }
@@ -647,6 +675,9 @@ p.stats_text {
   .stats_new_icon1 {
     padding-left: 15px;
   }
+  .heading_section .subheading {
+    font-size: 30px;
+  }
 }
 @media screen and (max-width: 280px) {
   .stats_new_icon1 {
@@ -658,25 +689,14 @@ p.stats_text {
   .stat_bar {
     width: 4%;
   }
-  .stats_new_icon,
-  .stats_last_icon,
-  .stats_last_icon1,
-  .stats_new_icon1 {
-    display: none;
-  }
+
   .stats_years_new {
     padding-right: 10px;
   }
   .stats_years_last {
     padding-left: 10px;
   }
-  .stats_number,
-  .stats_number1,
-  .stats_type,
-  .stats_type1 {
-    display: flex;
-    justify-content: center;
-  }
+
   .heading_section .subheading {
     font-size: 25px;
   }
@@ -694,5 +714,14 @@ p.stats_text {
   }
   .team_content1 {
     width: 220px;
+  }
+  .intro_title {
+    font-size: 16px;
+  }
+  .intro_content {
+    padding: 30px;
+  }
+  .hero_image img {
+    width: 200px;
   }
 }
