@@ -112,12 +112,12 @@ const HoneymoonTour = () => {
     formatedMonth = month < 10 ? "0" + month : month;
   });
   const nextStep = () => {
-    if (step == 2 && !isLoggedin) {
+    if (step === 2 && !isLoggedin) {
       openModal();
       return;
     }
 
-    if (fromDate == "" && toDate == "") {
+    if (fromDate === "" && toDate === "") {
       return;
     }
     if (step !== 5 && tourType !== "") setStep(step + 1);
@@ -275,7 +275,7 @@ const HoneymoonTour = () => {
               <div className="previous-button" onClick={() => prevStep()}>
                 Previous
               </div>
-              {step == 5 ? (
+              {step === 5 ? (
                 <div
                   className="submit-button"
                   onClick={() => {

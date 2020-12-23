@@ -123,7 +123,7 @@ const Signup = ({ history }) => {
                 <div className="mobile">
                   <i className="fas fa-phone"></i>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Mobile no"
                     size="35"
                     required
@@ -164,7 +164,7 @@ const Signup = ({ history }) => {
                 <div className="password">
                   <i className="fas fa-lock"></i>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Enter OTP"
                     size="35"
                     required

@@ -10,7 +10,6 @@ import { ApiContext } from "../Context/ApiContext";
 import Popular_tourTile from "./Popular_tourTile";
 import Slider from "react-slick";
 import { SemipolarLoading } from "react-loadingg";
-import { Input } from "reactstrap";
 export default function Popular_tour(props) {
   const { countries } = useContext(ApiContext);
   const [tour, setTour] = useState([]);
@@ -110,6 +109,7 @@ export default function Popular_tour(props) {
     if (tourCategory !== "") filterTourType(tourCategory);
     if (idealType !== "") filterIdealType(idealType);
   }, [page]);
+
   useEffect(() => {
     if (idealType !== "") filterIdealType(idealType);
   }, [page]);
@@ -121,12 +121,12 @@ export default function Popular_tour(props) {
   }, [page]);
 
   function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
+    const { className, onClick } = props;
     return <div className={className} onClick={onClick}></div>;
   }
 
   function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
+    const { className,  onClick } = props;
     return <div className={className} onClick={onClick}></div>;
   }
 
@@ -205,7 +205,7 @@ export default function Popular_tour(props) {
                     className="country-name"
                     style={{
                       color:
-                        countryName == country.countryName ? "#db6500" : "#fff",
+                        countryName === country.countryName ? "#db6500" : "#fff",
                     }}
                   >
                     {country.countryName}
@@ -217,14 +217,14 @@ export default function Popular_tour(props) {
         </Slider>
       </div>
       <div className="cities_container">
-        {countryName == "" ? null : <h1>Cities in {countryName} : </h1>}
-        {cityNames.length == 0 ? null : (
+        {countryName === "" ? null : <h1>Cities in {countryName} : </h1>}
+        {cityNames.length === 0 ? null : (
           <div className="cityname_container">
             {cityNames.map((c, index) => {
               return (
                 <h4
                   className={
-                    cityName == c.cityName || cityNames.length == 1
+                    cityName === c.cityName || cityNames.length === 1
                       ? "active"
                       : ""
                   }
@@ -252,16 +252,13 @@ export default function Popular_tour(props) {
                 <SemipolarLoading
                   style={{
                     top: "230px",
-                    // alignItems: "center",
                     left: "400px",
                   }}
-                  // color="#4834d4"
                   size="large"
                 />
                 <h4
                   style={{
                     top: "230px",
-                    // alignItems: "center",
                     left: "400px",
                   }}
                 >
@@ -286,7 +283,7 @@ export default function Popular_tour(props) {
               </div>
             ) : (
               <>
-                {tour.length == 0 && page == 1 && cityName !== "" ? (
+                {tour.length === 0 && page === 1 && cityName !== "" ? (
                   <>
                     <h1>Tours not Found </h1>
                     <img
@@ -314,7 +311,7 @@ export default function Popular_tour(props) {
               </>
             )}
           </div>
-          {tour.length == 0 || tourLength == 4 || tourLength <= 4 ? null : (
+          {tour.length === 0 || tourLength === 4 || tourLength <= 4 ? null : (
             <div className="pageno_flex">
               <div className="previous">
                 <div
@@ -347,18 +344,7 @@ export default function Popular_tour(props) {
           <div className="tour_category">
             <div className="tour_category-title">Tour Category</div>
 
-            {/* <label htmlFor="jhbdc">jkbsdhbdhb</label>
-            <input type="radio" name="Activities" value="Activities" />
-            <label htmlFor="jhbdc">wc jdc</label>
-
-            <input type="radio" name="Activities" value="Activities" />
-            <input type="radio" name="Activities" value="Activities" />
-            <label htmlFor="jhbdc">knwcj</label>
-
-            <input type="radio" name="Activities" value="Activities" />
-            <label htmlFor="jhbdc">wkjdnce</label>
-
-            <input type="radio" name="Activities" value="Activities" /> */}
+           
             <div className="tour_category-list">
               <ul>
                 <li
@@ -373,7 +359,7 @@ export default function Popular_tour(props) {
                     onClick={() => {
                       filterTourCategory("Activities");
                     }}
-                    checked={tourCategory == "Activities" ? true : false}
+                    checked={tourCategory === "Activities" ? true : false}
                   />
                   Outdoor Activities
                 </li>
@@ -390,7 +376,7 @@ export default function Popular_tour(props) {
                       filterTourCategory("Hop On and Off");
                     }}
                     className="tour_category-list-checkbox"
-                    checked={tourCategory == "Hop On and Off" ? true : false}
+                    checked={tourCategory === "Hop On and Off" ? true : false}
                   />
                   Hop On and Off
                 </li>
@@ -404,7 +390,7 @@ export default function Popular_tour(props) {
                       filterTourCategory("Attraction");
                     }}
                     type="radio"
-                    checked={tourCategory == "Attraction" ? true : false}
+                    checked={tourCategory === "Attraction" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Attraction
@@ -419,7 +405,7 @@ export default function Popular_tour(props) {
                       filterTourCategory("Learning");
                     }}
                     type="radio"
-                    checked={tourCategory == "Learning" ? true : false}
+                    checked={tourCategory === "Learning" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Learning
@@ -436,7 +422,7 @@ export default function Popular_tour(props) {
                       filterIdealType("Family and kids");
                     }}
                     type="radio"
-                    checked={idealType == "Family and kids" ? true : false}
+                    checked={idealType === "Family and kids" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Family and kids
@@ -451,7 +437,7 @@ export default function Popular_tour(props) {
                       filterIdealType("Young Couple");
                     }}
                     type="radio"
-                    checked={idealType == "Young Couple" ? true : false}
+                    checked={idealType === "Young Couple" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Young Couple
@@ -466,7 +452,7 @@ export default function Popular_tour(props) {
                       filterIdealType("Solo");
                     }}
                     type="radio"
-                    checked={idealType == "Solo" ? true : false}
+                    checked={idealType === "Solo" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Solo
@@ -481,7 +467,7 @@ export default function Popular_tour(props) {
                       filterIdealType("Mature Couple");
                     }}
                     type="radio"
-                    checked={idealType == "Mature Couple" ? true : false}
+                    checked={idealType === "Mature Couple" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Mature Couple
@@ -496,7 +482,7 @@ export default function Popular_tour(props) {
                       filterTourType("Full Day Tour");
                     }}
                     type="radio"
-                    checked={tourType == "Full Day Tour" ? true : false}
+                    checked={tourType === "Full Day Tour" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Full Day Tour
@@ -511,7 +497,7 @@ export default function Popular_tour(props) {
                       filterTourType("Half Day Tour");
                     }}
                     type="radio"
-                    checked={tourType == "Half Day Tour" ? true : false}
+                    checked={tourType === "Half Day Tour" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Half Day Tour
@@ -526,7 +512,7 @@ export default function Popular_tour(props) {
                       filterTourType("Night Tour");
                     }}
                     type="radio"
-                    checked={tourType == "Night Tour" ? true : false}
+                    checked={tourType === "Night Tour" ? true : false}
                     className="tour_category-list-checkbox"
                   />
                   Night Tour
@@ -661,7 +647,7 @@ export default function Popular_tour(props) {
               </div>
             </div>
           </div>
-          <div className="question_block">
+<div className="question_block">
             <div className="question_block-title">Get a Question?</div>
             <div className="question_block-text">
               Do not hesitage to give us a call. We are an expert team and we
@@ -669,7 +655,7 @@ export default function Popular_tour(props) {
             </div>
             <div className="question_block-tel">+1 1235 6789 10</div>
             <div className="question_block-mail">info@hellodigi.ru</div>
-          </div>
+          </div>          
         </div>
       </div>
     </>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./SavedTours.css";
 import Profilenav from "./Profilenav";
 import Profilepage from "./Profilepage";
@@ -316,13 +316,12 @@ const SavedTours = () => {
         <div className="tours-container">
           {tours.map((t) => (
             <div className="tour">
-              <img src={t.imageUrl} alt="tour image " />
+              <img src={t.imageUrl} alt="tour" />
               <div className="tourdetails">
-                <h6 tag="h6" className="mb-2 text-muted">
+                <h6  className="mb-2 text-muted">
                   {t.cityName}
                 </h6>
-                <h4 tag="h5">{t.tourName}</h4>
-                {/* <p>{t.aboutTour.slice(0, 100)}</p> */}
+                <h4>{t.tourName}</h4>
               </div>
             </div>
           ))}

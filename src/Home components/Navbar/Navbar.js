@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, withRouter, Link } from "react-router-dom";
+import React, { useState, useEffect} from "react";
+import { NavLink, withRouter } from "react-router-dom";
 import "./Navbar.css";
 import Logo from "../../assests/logo2.png";
 // import { BiUserCircle } from "react-icons/bi";
 import { GrTextAlignCenter } from "react-icons/gr";
 import { RiAccountCircleFill } from "react-icons/ri";
-import { isAuthenticated, signout } from "../../Login components/auth";
 import Dropdown from "./Dropdown";
-
+import { isAuthenticated } from "../../Login components/auth";
 const Navbar = ({ history }) => {
-  const [dropdown, setDropdown] = useState(false);
 
+
+
+
+  const [dropdown, setDropdown] = useState(false);
   const [navHide, setNavHide] = useState(true);
   const [clicked, setClicked] = useState(false);
-
   const handleClick = () => setClicked(!clicked);
-
   const handleNavHide = () => setNavHide(!navHide);
   const onDropdownClick = () => {
     setNavHide(false);

@@ -10,7 +10,7 @@ import { isAuthenticated } from "../Login components/auth";
 import { useToasts } from "react-toast-notifications";
 import { FcPlus } from "react-icons/fc";
 import { RiCloseCircleFill } from "react-icons/ri";
-import { Collapse, Button, CardBody, Card } from "reactstrap";
+import { Collapse } from "reactstrap";
 
 const Visa = () => {
   const { countries } = useContext(ApiContext);
@@ -21,7 +21,6 @@ const Visa = () => {
   const [countryName, setCountryName] = useState("Thailand");
   const [visaDetails, setVisaDetails] = useState({});
   console.log(visaDetails.selfEmployedDocs, "de");
-  const [personType, setPersonType] = useState("");
   const [show, setshow] = useState(false);
   const [step, setStep] = useState(0);
   const [name, setName] = useState("");
@@ -232,7 +231,11 @@ const Visa = () => {
             })}
           </div>
         );
+
+        default:
+          break;
     }
+
   };
 
   return (
@@ -293,7 +296,7 @@ const Visa = () => {
             <h4 className="visa-countryName"> {visaDetails.countryName}</h4>
             <i className="fa fa-chevron-right"></i>
             <h4 className="visa-countryName">
-              {step == 0 ? "Salaried" : "Self Employed"}
+              {step === 0 ? "Salaried" : "Self Employed"}
             </h4>
           </div>
           <div className="visa-content">
