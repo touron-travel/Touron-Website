@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./OurPartners.css";
 import image1 from "../../assests/logo/dubai.png";
 import image2 from "../../assests/logo/dubai.png";
@@ -68,16 +68,8 @@ const images = [
   },
 ];
 
-const OurPartners = (props) => {
-  var settings = {
-    infinite: true,
-    autoplay: true,
-    speed: 4000,
-    slidesToShow: 4,
-    slidesToScroll: 2,
-    arrows: true,
-    dots: true,
-  };
+const OurPartners = () => {
+
 
   return (
     <div className="ourpartner-container">

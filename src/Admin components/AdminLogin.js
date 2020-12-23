@@ -12,7 +12,7 @@ const AdminLogin = () => {
     let value = setAdminRoute(location.pathname);
     console.log("value :>> ", value);
     setAdminRoutes(value);
-  }, []);
+  });
   return (
     <div className="adminDashboard">
       <div className="login_box">

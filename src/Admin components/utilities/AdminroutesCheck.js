@@ -10,15 +10,6 @@ export const setAdminRoute = (pathname) => {
     "/profile/myvisa-requests",
     "/profile/faq",
     "/profile/support",
-
-    // "/admin",
-    // "/management",
-    // "/packages",
-    // "/pages",
-    // "/categories",
-    // "/advertisement",
-    // "/trendingplaces",
-    // "/coupons",
   ];
 
   let isAdminRoute = adminRoutes.includes(pathname);

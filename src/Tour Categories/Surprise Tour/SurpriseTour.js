@@ -127,11 +127,11 @@ const SurpriseTour = (params) => {
   });
 
   const nextStep = () => {
-    if (step == 2 && !isLoggedin) {
+    if (step === 2 && !isLoggedin) {
       openModal();
       return;
     }
-    if (fromDate == "" && toDate == "") {
+    if (fromDate === "" && toDate === "") {
       return;
     }
     if (step !== 8 && tourType !== "") setStep(step + 1);
@@ -428,7 +428,7 @@ const SurpriseTour = (params) => {
               <div className="previous-button" onClick={() => prevStep()}>
                 Previous
               </div>
-              {step == 8 ? (
+              {step === 8 ? (
                 <div
                   className="submit-button"
                   onClick={() => {

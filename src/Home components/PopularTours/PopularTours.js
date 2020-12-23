@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Slider from "react-slick";
 import "./PopularTours.css";
-import axios from "axios";
-import { API } from "../../backend";
 import PopularTourTile from "./PopularTourTile";
 import home1 from "../../assests/home1.jpg";
 import home2 from "../../assests/home2.jpg";
@@ -368,15 +366,14 @@ export default function PopularTours() {
       __v: 0,
     },
   ];
-  const [tour, setTour] = useState(tours);
 
   function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
+    const { className,  onClick } = props;
     return <div className={className} onClick={onClick}></div>;
   }
 
   function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
+    const { className,  onClick } = props;
     return <div className={className} onClick={onClick} />;
   }
 
@@ -410,7 +407,7 @@ export default function PopularTours() {
       <div className="tour-slider-home">
         <div className="tour-slider">
           <Slider {...settings} accessibility pauseOnHover={false}>
-            {tour.map((t, index) => {
+            {tours.map((t, index) => {
               return <PopularTourTile t={t} key={index} />;
             })}
           </Slider>

@@ -1,19 +1,17 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState,  useContext } from "react";
 import { Popover, PopoverBody } from "reactstrap";
 import "./UserDropdown.css";
 
 import { UserMenuItems } from "./UserMenuItems";
 import { Link, Redirect } from "react-router-dom";
-import { isAuthenticated, signout } from "../Login components/auth";
+import {  signout } from "../Login components/auth";
 import { ApiContext } from "../Context/ApiContext";
-import * as BsIcons from "react-icons/bs";
 
 const Profilenav = (props) => {
   const [userDropdown, setUserDropdown] = useState(false);
   const toggle = () => setUserDropdown(!userDropdown);
   const { userInfo } = useContext(ApiContext);
 
-  const { user } = isAuthenticated();
 
   return (
     <div className="account-head">
@@ -45,7 +43,7 @@ const Profilenav = (props) => {
                   // target="_blank"
                   className={item.className}
                   onClick={() => {
-                    if (item.title == "Logout") {
+                    if (item.title === "Logout") {
                       signout(() => {
                         return <Redirect to="/" />;
                       });

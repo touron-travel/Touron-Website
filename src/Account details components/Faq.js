@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState} from "react";
 import Profilenav from "./Profilenav";
 import "./Faq.css";
 import FaqQuestion from "./FaqQuestions";
-import { Collapse, Button, CardBody, Card } from "reactstrap";
+import { Collapse } from "reactstrap";
 import { FcPlus } from "react-icons/fc";
 import { RiCloseCircleFill } from "react-icons/ri";
 import Profilepage from "./Profilepage";
@@ -50,7 +50,7 @@ const Faq = () => {
             className="general"
             style={{
               borderBottom:
-                selectedType == "general" ? "5px solid #40E0D0" : "",
+                selectedType === "general" ? "5px solid #40E0D0" : "",
             }}
             onClick={() => setSelectedType("general")}
           >
@@ -60,7 +60,7 @@ const Faq = () => {
             className="booking"
             onClick={() => setSelectedType("booking")}
             style={{
-              borderBottom: selectedType == "booking" ? "5px solid tomato" : "",
+              borderBottom: selectedType === "booking" ? "5px solid tomato" : "",
             }}
           >
             <h6>Booking</h6>
@@ -70,7 +70,7 @@ const Faq = () => {
             onClick={() => setSelectedType("support")}
             style={{
               borderBottom:
-                selectedType == "support" ? "5px solid #40E0D0" : "",
+                selectedType === "support" ? "5px solid #40E0D0" : "",
             }}
           >
             <h6>Support</h6>
@@ -79,9 +79,9 @@ const Faq = () => {
 
         <div className="questions-container">
           {FaqQuestions.map((q, index) => {
-            if (q.type == selectedType)
+            if (q.type === selectedType)
               return (
-                <div className="questions">
+                <div className="questions" key={index}>
                   <div className="faq-question">
                     <h1>{q.question}</h1>
                     {collapseOpen === index ? (

@@ -22,7 +22,7 @@ const Travellertype = ({
       <div className="travellertype-row1">
         <div
           className={
-            travellerType == "Solo" ? " solo traveltype" : "traveltype"
+            travellerType === "Solo" ? " solo traveltype" : "traveltype"
           }
           onClick={() => {
             setSolo();
@@ -31,15 +31,15 @@ const Travellertype = ({
         >
           <div className="traveltype-details">
             <div style={{ position: "absolute", top: 5, right: 5 }}>
-              {travellerType == "Solo" ? <Checked /> : null}
+              {travellerType === "Solo" ? <Checked /> : null}
             </div>
-            <img src={imgSrc1} />
+            <img src={imgSrc1} alt='a' />
             <h2>Solo</h2>
           </div>
         </div>
         <div
           className={
-            travellerType == "Family" ? " family traveltype" : "traveltype"
+            travellerType === "Family" ? " family traveltype" : "traveltype"
           }
           onClick={() => {
             setFamily();
@@ -48,9 +48,9 @@ const Travellertype = ({
         >
           <div className="traveltype-details">
             <div style={{ position: "absolute", top: 5, right: 5 }}>
-              {travellerType == "Family" ? <Checked /> : null}
+              {travellerType === "Family" ? <Checked /> : null}
             </div>
-            <img src={imgSrc2} />
+            <img src={imgSrc2} alt='a'/>
             <h2>Family</h2>
           </div>
         </div>
@@ -58,7 +58,7 @@ const Travellertype = ({
       <div className="travellertype-row2">
         <div
           className={
-            travellerType == "Friends" ? " friends traveltype" : "traveltype"
+            travellerType === "Friends" ? " friends traveltype" : "traveltype"
           }
           onClick={() => {
             setFriends();
@@ -67,15 +67,15 @@ const Travellertype = ({
         >
           <div className="traveltype-details">
             <div style={{ position: "absolute", top: 5, right: 5 }}>
-              {travellerType == "Friends" ? <Checked /> : null}
+              {travellerType === "Friends" ? <Checked /> : null}
             </div>
-            <img src={imgSrc3} />
+            <img src={imgSrc3} alt = 'a' />
             <h2>Friends</h2>
           </div>
         </div>
         <div
           className={
-            travellerType == "Group" ? " honeymoon traveltype" : "traveltype"
+            travellerType === "Group" ? " honeymoon traveltype" : "traveltype"
           }
           onClick={() => {
             setGroup();
@@ -84,9 +84,9 @@ const Travellertype = ({
         >
           <div className="traveltype-details">
             <div style={{ position: "absolute", top: 5, right: 5 }}>
-              {travellerType == "Group" ? <Checked /> : null}
+              {travellerType === "Group" ? <Checked /> : null}
             </div>
-            <img src={imgSrc4} />
+            <img src={imgSrc4} alt='a' />
             <h2>Group</h2>
           </div>
         </div>
