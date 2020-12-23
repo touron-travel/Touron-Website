@@ -131,10 +131,11 @@ const SurpriseTour = (params) => {
       openModal();
       return;
     }
-    if (fromDate === "" && toDate === "") {
-      return;
+     
+    if (fromDate === "" && toDate === ""  &&  step == 6 ) {
+      return 
     }
-    if (step !== 8 && tourType !== "") setStep(step + 1);
+    setStep(step + 1)
   };
 
   const prevStep = () => {

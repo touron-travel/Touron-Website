@@ -35,7 +35,7 @@ const MyRequest = () => {
   const [status, setStatus] = useState("");
   const [key, setKey] = useState("");
   const [loading, setLoading] = useState(false);
-
+console.log('userRequest', userRequest)
   const getDepatureDate = (date) => {
     const countDate = Date.parse(date);
 
@@ -93,7 +93,7 @@ const MyRequest = () => {
             req.push(d.val());
           }
         });
-        setUserRequest(req);
+        setUserRequest(req.reverse());
         setLoading(false);
       }
     });
@@ -102,8 +102,16 @@ const MyRequest = () => {
     setLoading(true);
     firedb.ref("requests").on("value", (data) => {
       if (data) {
+      
+        let newReq = { }
+        let revReq = Object.keys(data.val()).reverse()
+        revReq.forEach(i=>{
+          newReq[i] = data.val()[i]
+        })
+
         setUserRequest({
-          ...data.val(),
+
+          ...newReq
         });
       }
       setLoading(false);
@@ -580,7 +588,7 @@ const MyRequest = () => {
               </div>
             </div>
 
-            {!userInfo.admin ? (
+            {userInfo.admin ? (
               <>
                 <div className="status-flex">
                   <div className="status">

@@ -22,6 +22,7 @@ const LuxuryDestination = ({
             className="luxury-dest"
             onChange={(e) => setDestination(e.target.value)}
             value={destination}
+            placeholder='Select country'
           >
             <option value="Country1">Country1</option>
             <option value="Country1">Country1</option>

@@ -69,8 +69,13 @@ const MyVisaRequests = () => {
     setLoading(true);
     firedb.ref("visaSubmission").on("value", (data) => {
       if (data) {
+        let newVr= { }
+        let revVr = Object.keys(data.val()).reverse()
+        revVr.forEach(i=>{
+          newVr[i] = data.val()[i]
+        })
         setVisaRequest({
-          ...data.val(),
+          ...newVr
         });
       }
       setLoading(false);
@@ -88,7 +93,7 @@ const MyVisaRequests = () => {
           }
         });
       }
-      setVisaRequest(vr);
+      setVisaRequest(vr.reverse());
       setLoading(false);
     });
   };

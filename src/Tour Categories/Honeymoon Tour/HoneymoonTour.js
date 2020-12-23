@@ -117,10 +117,12 @@ const HoneymoonTour = () => {
       return;
     }
 
-    if (fromDate === "" && toDate === "") {
-      return;
+    if (fromDate === "" && toDate === ""  ) {
+      return 
     }
-    if (step !== 5 && tourType !== "") setStep(step + 1);
+
+    setStep(step + 1)
+  
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
@@ -129,7 +131,13 @@ const HoneymoonTour = () => {
   const renderForm = (step) => {
     switch (step) {
       case 1:
-        return <Tourtype tourType={tourType} setTourType={setTourType} />;
+        return  <Tourtype
+        tourType={tourType}
+        setTourType={(e) => {
+          setTourType(e);
+          setStep(step + 1);
+        }}
+      />;
       case 2:
         return (
           <Travelmode
@@ -143,8 +151,17 @@ const HoneymoonTour = () => {
             name1={"Train"}
             name2={"Flight"}
             travelMode={travelMode}
-            setTrain={() => setTravelMode("Train")}
-            setFlight={() => setTravelMode("Flight")}
+            setTrain={() =>{
+
+            setTravelMode("Train")
+            setStep(step + 1)
+          }}
+            setFlight={() =>{
+
+             setTravelMode("Flight")
+            setStep(step + 1)
+
+          }}
           />
         );
       case 3:

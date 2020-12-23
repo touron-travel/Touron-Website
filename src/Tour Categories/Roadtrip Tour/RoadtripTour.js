@@ -132,10 +132,11 @@ const RoadtripTour = () => {
       openModal();
       return;
     }
-    if (fromDate === "" && toDate === "") {
-      return;
+     
+    if (fromDate === "" && toDate === ""  &&  step == 4 ) {
+      return 
     }
-    if (step !== 7 && travelMode !== "") setStep(step + 1);
+    setStep(step + 1)
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);

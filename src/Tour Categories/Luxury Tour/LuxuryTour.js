@@ -114,10 +114,12 @@ const LuxuryTour = () => {
       openModal();
       return;
     }
-    if (fromDate === "" && toDate === "") {
-      return;
+
+    if (fromDate === "" && toDate === ""  ) {
+      return 
     }
-    if (step !== 5 && tourType !== "") setStep(step + 1);
+
+    setStep(step + 1)
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
@@ -126,7 +128,13 @@ const LuxuryTour = () => {
   const renderForm = (step) => {
     switch (step) {
       case 1:
-        return <Tourtype tourType={tourType} setTourType={setTourType} />;
+        return  <Tourtype
+        tourType={tourType}
+        setTourType={(e) => {
+          setTourType(e);
+          setStep(step + 1);
+        }}
+      />;
       case 2:
         return (
           <Travellertype
@@ -146,11 +154,27 @@ const LuxuryTour = () => {
             nextStep={() => nextStep()}
             setSolo={() => {
               setTravellerType("Solo");
+              setStep(step + 1)
             }}
-            setFamily={() => setTravellerType("Family")}
-            setFriends={() => setTravellerType("Friends")}
-            setGroup={() => setTravellerType("Group")}
-          />
+            setFamily={() =>{
+
+             setTravellerType("Family")
+            setStep(step+1)
+            }
+            }
+             setFriends={() =>{
+
+             setTravellerType("Friends")
+            setStep(step+1)
+            }
+            }
+             setGroup={() =>{
+
+             setTravellerType("Group")
+          setStep(step+1)
+          }
+            }/>
+
         );
       case 3:
         return (

@@ -123,10 +123,12 @@ const PlannedTour = () => {
       openModal();
       return;
     }
-    if (fromDate === "" && toDate === "") {
-      return;
+     
+    if (fromDate === "" && toDate === ""  &&  step == 5 ) {
+      return 
     }
-    if (step !== 7 && tourType !== "" && step !== 2) setStep(step + 1);
+    setStep(step + 1)
+
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);
