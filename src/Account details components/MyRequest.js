@@ -103,14 +103,12 @@ console.log('userRequest', userRequest)
     firedb.ref("requests").on("value", (data) => {
       if (data) {
       
-        let newReq = { }
+        let newReq = {}
         let revReq = Object.keys(data.val()).reverse()
         revReq.forEach(i=>{
           newReq[i] = data.val()[i]
         })
-
         setUserRequest({
-
           ...newReq
         });
       }
