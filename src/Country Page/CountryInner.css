@@ -75,7 +75,6 @@
 
   padding: 75px 75px 0;
   justify-content: space-between;
-
 }
 .countryInner_aboutLeft {
   flex-basis: 60%;
@@ -85,7 +84,7 @@
   box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.16);
   background-color: #fff !important;
   border-radius: 30px;
-  padding: 30px;
+  padding: 60px 28px 28px;
   height: 100%;
 }
 .countryInner_tit {
@@ -101,34 +100,11 @@
 }
 .countryInner_form {
   border-bottom: 1px solid #db6500;
-  padding-bottom: 30px;
 }
 .countryInner_btn {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.countryInner_str {
-  font-size: 12px;
-  color: #666666;
-  padding: 25px 0 10px 0;
-}
-.countryInner_amt {
-  display: flex;
-  padding-bottom: 30px;
-  align-items: center;
-}
-.countryInner_amt1 {
-  font-size: 20px;
-  color: #333333;
-}
-.countryInner_amt2 {
-  font-size: 20px;
-  color: #db6500;
-  padding: 0 5px;
-}
-.countryInner_amt3 {
-  font-size: 12px;
 }
 .countryInner_button {
   border: none;
@@ -137,6 +113,7 @@
   padding: 10px 20px;
   border-radius: 24px;
   font-weight: 700;
+  margin-top: 30px;
 }
 .countryInner_form .countryInner_names input,
 .countryInner_form .countryInner_no input,
@@ -144,10 +121,8 @@
 .countryInner_form .countryInner_persons input,
 .countryInner_form .countryInner_date input {
   padding: 10px 20px;
-  background: transparent;
   border: none;
   outline: none;
-  color: #fff;
 }
 .countryInner_form .countryInner_names,
 .countryInner_form .countryInner_no,
@@ -158,10 +133,111 @@
   margin: 20px 0;
   border-radius: 30px;
 }
+.countryInner_form .countryInner_date {
+  position: relative;
+}
 .countryInner_i {
   padding-left: 10px;
   padding-bottom: 5px;
   font-size: 30px;
+}
+.countryInner_date-model {
+  position: absolute;
+  top: 48px;
+  left: 25px;
+  width: 300px;
+  border: 6px;
+  padding: 12px;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(238, 238, 238);
+  box-shadow: rgba(4, 32, 66, 0.2) 0px 3px 3px;
+}
+.countryInner_date-model-none {
+  display: none;
+}
+.countryInner_date-model-type {
+  display: flex;
+  align-items: center;
+  color: rgb(102, 102, 102);
+  font-size: 14px;
+}
+.countryInner-date-model-cat {
+  display: flex;
+}
+.countryInner-d {
+  padding: 0 4px;
+}
+.date-flexible,
+.date-fixed {
+  cursor: pointer;
+  background-color: rgb(255, 255, 255);
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 20px;
+  color: #db6500;
+  box-shadow: rgba(4, 32, 66, 0.2) 0px 8px 20px -10px;
+  margin: 10px 12px 0;
+}
+.date-none {
+  cursor: pointer;
+  background-color: rgb(239, 242, 241);
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 20px;
+  color: rgb(51, 51, 51);
+  margin: 10px 12px 0;
+}
+.datePicker {
+  padding-top: 12px;
+}
+.countryInner_month,
+.countryInner_week,
+.countryInner_calender {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  color: rgb(102, 102, 102);
+  font-size: 14px;
+}
+.countryInner_month-cat {
+  display: flex;
+  /* flex-flow: row wrap; */
+  flex-wrap: wrap;
+  /* align-items: flex-start; */
+  justify-content: space-evenly;
+}
+.month-cat {
+  padding: 5px;
+  margin: 5px;
+  font-weight: 500;
+  color: rgb(51, 51, 51);
+  font-size: 14px;
+}
+.month-cat:hover {
+  text-align: center;
+  padding: 5px;
+  margin: 5px;
+  background-color: #db6500;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #fff;
+}
+.countryInner_week-cat {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 12px;
+}
+.week-cat {
+  padding: 4px;
+  color: rgb(51, 51, 51);
+  font-size: 12px;
+}
+.week-cat:hover {
+  padding: 4px;
+  background-color: #db6500;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
 }
 .inner_home {
   display: flex;
@@ -601,7 +677,7 @@
   }
   .countryInner_tour-title h2 {
     font-size: 35px;
-    text-align: center
+    text-align: center;
   }
 }
 
@@ -643,7 +719,6 @@
     position: relative;
     transition: 0.5s;
   }
-  
 }
 @media (max-width: 360px) {
   .countryInner_image,
@@ -696,16 +771,16 @@
   .inner_name {
     font-size: 30px;
   }
-   .countryInner_tour-title h2 {
+  .countryInner_tour-title h2 {
     font-size: 20px;
-     padding: 0px
+    padding: 0px;
   }
   .similartour_slide {
-/*   margin: 20px; */
-    padding:  0px;
-/*     margin: 10px */
-/*   padding: 0 10px 0 35px; */
-}
+    /*   margin: 20px; */
+    padding: 0px;
+    /*     margin: 10px */
+    /*   padding: 0 10px 0 35px; */
+  }
 }
 @media (max-width: 280px) {
   .highlights_about-desc p {
