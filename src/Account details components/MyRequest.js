@@ -40,6 +40,11 @@ const MyRequest = () => {
   const [status, setStatus] = useState("");
   const [key, setKey] = useState("");
   const [loading, setLoading] = useState(false);
+  const [clicked, setClicked] = useState(false);
+  const toggleSidebar = () => {
+    setClicked(!clicked);
+  };
+
 
 
 const [weekPopover, setWeekPopover] = useState(false);
@@ -64,7 +69,11 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
     const d = Math.floor(gap / day);
     return d;
   };
+
+
+
   let weekReq = []
+
  const weekRequest = ()=>{
   let count = 0
   userRequestDates.forEach(d=>{
@@ -264,10 +273,6 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
   const handleClick = (e, index) => {
     e.preventDefault();
     setCurrentpage(index);
-  };
-  const [clicked, setClicked] = useState(false);
-  const toggleSidebar = () => {
-    setClicked(!clicked);
   };
 
   const [currentPage, setCurrentpage] = useState(0);
@@ -663,7 +668,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
                     )})}
                          </Popover>
                     <tr>
-                      <td>Lat Month Request</td>
+                      <td>Last Month Request</td>
                     
                       <td  id='monthPopover' style={{cursor:'pointer'}}>{monthRequest()}</td>
                     </tr>

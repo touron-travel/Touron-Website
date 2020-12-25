@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext,useEffect } from "react";
 import "./Login.css";
 import { Link, Redirect } from "react-router-dom";
 import { auth, firedb } from "../firebase";
@@ -6,6 +6,7 @@ import { storeAuthToken } from "./auth";
 import { Ripple } from "react-spinners-css";
 import { ApiContext } from "../Context/ApiContext";
 export default function Login({ history }) {
+  
   const [password, setPassword] = useState("123456789");
   const [email, setEmail] = useState("dins@gmail.com");
   const [loaded, setLoaded] = useState(false);
@@ -31,7 +32,24 @@ export default function Login({ history }) {
         setLoaded(false);
         console.log(err.message, "po");
       });
+
+
+
   };
+
+
+  useEffect(()=>{
+    
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        console.log('user', user)
+      } else {
+        // No user is signed in.
+      }
+    });
+  
+  },[])
 
   return (
     <>
