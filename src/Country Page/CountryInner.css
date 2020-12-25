@@ -174,17 +174,12 @@
   padding: 12px;
   background: rgb(255, 255, 255);
   border: 1px solid rgb(238, 238, 238);
-  z-index: 2;
   box-shadow: rgba(4, 32, 66, 0.2) 0px 3px 3px;
   z-index: 2;
 }
 .countryInner_date-model-none,
 .countryInner_persons-model-none {
-
-.react-datepicker__day--selected{
-  border-radius: 3rem;
-  background-color: red;
-  color: #fff;
+  display: none;
 }
 .adult,
 .child {
