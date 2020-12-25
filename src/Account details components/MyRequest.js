@@ -35,7 +35,7 @@ const MyRequest = () => {
   const [status, setStatus] = useState("");
   const [key, setKey] = useState("");
   const [loading, setLoading] = useState(false);
-console.log('userRequest', userRequest)
+  console.log("userRequest", userRequest);
   const getDepatureDate = (date) => {
     const countDate = Date.parse(date);
 
@@ -76,7 +76,7 @@ console.log('userRequest', userRequest)
 
   useEffect(() => {
     getUserRequest();
-    if (!userInfo.admin) getAllRequest();
+    if (userInfo.admin) getAllRequest();
   }, []);
 
   const getUserRequest = () => {
@@ -102,16 +102,14 @@ console.log('userRequest', userRequest)
     setLoading(true);
     firedb.ref("requests").on("value", (data) => {
       if (data) {
-      
-        let newReq = { }
-        let revReq = Object.keys(data.val()).reverse()
-        revReq.forEach(i=>{
-          newReq[i] = data.val()[i]
-        })
+        let newReq = {};
+        let revReq = Object.keys(data.val()).reverse();
+        revReq.forEach((i) => {
+          newReq[i] = data.val()[i];
+        });
 
         setUserRequest({
-
-          ...newReq
+          ...newReq,
         });
       }
       setLoading(false);
