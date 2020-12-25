@@ -43,7 +43,7 @@ const PlannedTour = () => {
   let formatedMonth;
   useEffect(() => {
     if (isAuthenticated()) return setIsLoggedin(true);
-  },[]);
+  }, []);
   console.log("fromDate,toDate :>> ", fromDate, toDate);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [formModalIsOpen, setFormModalOpen] = useState(false);
@@ -99,7 +99,7 @@ const PlannedTour = () => {
       tourCost: 0,
       userID: user.uid,
       tourCategory: "Planned Tour",
-      requestDate: moment().subtract(10,'days').toLocaleString()
+      requestDate: new Date().toDateString(),
     };
 
     console.log("values :>> ", values);
@@ -119,7 +119,7 @@ const PlannedTour = () => {
     setDate(requestDate.getDate());
     setYear(currentYear.toString().slice(2, 4));
     formatedMonth = month < 10 ? "0" + month : month;
-    console.log('formatedMonth', formatedMonth)
+    console.log("formatedMonth", formatedMonth);
   });
 
 
@@ -134,12 +134,11 @@ const PlannedTour = () => {
       openModal();
       return;
     }
-     
-    if (fromDate === "" && toDate === ""  &&  step == 5 ) {
-      return 
-    }
-    setStep(step + 1)
 
+    if (fromDate === "" && toDate === "" && step == 5) {
+      return;
+    }
+    setStep(step + 1);
   };
   const prevStep = () => {
     if (step !== 1) setStep(step - 1);

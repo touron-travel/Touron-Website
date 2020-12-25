@@ -15,27 +15,109 @@ import { GiPerson, GiCalendar } from "react-icons/gi";
 import { MdDateRange } from "react-icons/md";
 import { HiOutlineCalendar } from "react-icons/hi";
 import { RiCalendar2Line } from "react-icons/ri";
+import { BiDuplicate } from "react-icons/bi";
 import DatePicker from "react-datepicker";
+import { isAuthenticated } from "../Login components/auth";
+import { firedb } from "../firebase";
 
 const CountryInner = () => {
   const { countryid, countryname } = useParams();
   const { countries } = useContext(ApiContext);
-
+  const { userInfo } = useContext(ApiContext);
   const [countryDetails, setCountryDetails] = useState({});
-
   const [tourDetails, setTourDetails] = useState([]);
   const [cityDetails, setCityDetails] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedTour, setSelectedTour] = useState("");
   const [countryLoaded, setCountryLoaded] = useState(false);
-  const [datemodel, setDateModel] = useState(false);
+  const [dateModel, setDateModel] = useState(false);
+  const [personsModel, setPersonsModel] = useState(false);
+  const [adult, setAdult] = useState(0);
+  const [children, setChildren] = useState(0);
   const [toggleInfo, setToggleInfo] = useState("Flexible");
-  const [startDate, setStartDate] = useState(new Date());
+  const [tourCategories, setTourCategories] = useState("");
+  const [name, setName] = useState(userInfo.name);
+  const [number, setNumber] = useState(userInfo.phoneNumber);
+  const [departure, setDeparture] = useState('');
+  const [date, setDate] = useState();
+  const [month, setMonth] = useState();
+  const [year, setYear] = useState();
+  const { user } = isAuthenticated();
+  let random;
+  let formatedMonth;
+  const [startDate, setStartDate] = useState(new Date().toDateString());
 
+
+
+  const submitData = () => {
+    let values = {
+      fromDate: startDate,
+      tourType: "",
+      travellerType: "",
+      adult: adult,
+      children: children,
+      travelMode: "",
+      preferanece: "",
+      destination: countryDetails.countryName,
+      startPoint: departure,
+      name: name,
+      number: number,
+      budget: "",
+      requestID: `T0-${date}${formatedMonth}${year}-${random}`,
+      status: "Query Received",
+      plans: "",
+      reports: "",
+      tourCost: "",
+      userID: user.uid,
+      tourCategory: tourCategories,
+      requestDate: new Date().toDateString(),
+
+    };
+
+    console.log("values :>> ", values);
+    firedb
+      .ref(`requests`)
+      .push(values)
+      .then((data) => console.log("data", data))
+      .catch((err) => console.log("err", err));
+  };
+
+  useEffect(() => {
+    random = Math.floor((Math.random() + 4) * 345334 * Math.random());
+    const requestDate = new Date();
+    let currentYear = requestDate.getFullYear();
+    setMonth(requestDate.getMonth() + 1);
+    setDate(requestDate.getDate());
+    setYear(currentYear.toString().slice(2, 4));
+    formatedMonth = month < 10 ? "0" + month : month;
+    console.log("formatedMonth", formatedMonth);
+  });
 
   const openDateModel = () => {
-    setDateModel(!datemodel);
+    setDateModel(!dateModel);
   };
+
+  const openPersonsModel = () => {
+    setPersonsModel(!personsModel);
+    setDateModel(false);
+  };
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const weeks = ["1st week", "2nd week", "3rd week", "4th week"];
 
   var sectionStyle = {
     backgroundImage: `url(${countryDetails.imageUrl})`,
@@ -317,7 +399,14 @@ const CountryInner = () => {
                 <div className="countryInner_form">
                   <div className="countryInner_names">
                     <AiOutlineUserAdd className="countryInner_i" />
-                    <input type="text" placeholder="Name" size="30" required />
+                    <input
+                      type="text"
+                      placeholder="Name"
+                      size="30"
+                      required
+                      onChange={(e) => setName(e.target.value)}
+                      value={name}
+                    />
                   </div>
                   <div className="countryInner_no">
                     <AiOutlineWhatsApp className="countryInner_i" />
@@ -326,38 +415,112 @@ const CountryInner = () => {
                       placeholder="Whatsapp no."
                       size="30"
                       required
+                      onChange={(e) => setNumber(e.target.value)}
+                      value={number}
                     />
                   </div>
                   <div className="countryInner_mail">
                     <FiMail className="countryInner_i" />
                     <input
-                      type="email"
-                      placeholder="Email"
+                      type="text"
+                      placeholder="Departure City"
                       size="30"
                       required
+                      onChange={(e) => setDeparture(e.target.value)}
+                      value={departure}
                     />
                   </div>
                   <div className="countryInner_persons">
-                    <GiPerson className="countryInner_i" />
-                    <input
-                      type="number"
-                      placeholder="No. of travallers"
-                      size="30"
-                      required
-                    />
-                  </div>
-                  <div className="countryInner_date">
-                    <MdDateRange className="countryInner_i" />
-                    <input
-                      type="text"
-                      placeholder="Dates of travel"
-                      size="30"
-                      required
-                      onClick={openDateModel}
-                    />
+                    <div
+                      className="countryInner_persons-flex"
+                      onClick={openPersonsModel}
+                    >
+                      <div className="countryInner_ii">
+                        <GiPerson />
+                      </div>
+                      <div className="countryInner_inputp">
+                        {adult == 0 && children == 0 ? (
+                          "No. of travellers"
+                        ) : (
+                          <h6>
+                            {adult} adults, {children} childrens
+                          </h6>
+                        )}
+                      </div>
+                    </div>
                     <div
                       className={
-                        datemodel
+                        personsModel
+                          ? "countryInner_persons-model"
+                          : "countryInner_persons-model-none"
+                      }
+                    >
+                      <div className="adult-main-flex">
+                        <div className="adult">Adults</div>
+                        <div className="adult-flex">
+                          <div
+                            className="adult-sub"
+                            onClick={() => {
+                              if (adult !== 0) setAdult(adult - 1);
+                            }}
+                          >
+                            -
+                          </div>
+                          <div className="adult-no">{adult}</div>
+                          <div
+                            className="adult-add"
+                            onClick={() => {
+                              setAdult(adult + 1);
+                            }}
+                          >
+                            +
+                          </div>
+                        </div>
+                      </div>
+                      <div className="child-main-flex">
+                        <div className="child">Children</div>
+                        <div className="child-flex">
+                          <div
+                            className="child-sub"
+                            onClick={() => {
+                              if (children !== 0) setChildren(children - 1);
+                            }}
+                          >
+                            -
+                          </div>
+                          <div className="child-no">{children}</div>
+                          <div
+                            className="child-add"
+                            onClick={() => {
+                              setChildren(children + 1);
+                            }}
+                          >
+                            +
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="countryInner_date">
+                    <div
+                      className="countryInner_date-flex"
+                      onClick={openDateModel}
+                    >
+                      <div className="countryInner_ii">
+                        <MdDateRange />
+                      </div>
+                      <div className="countryInner_inputd">
+                        {startDate === "" ? (
+                          "Dates of travel"
+                        ) : (
+                          <h6>Travel Date:{startDate}</h6>
+                        
+                        )}
+                      </div>
+                    </div>
+                    <div
+                      className={
+                        dateModel
                           ? "countryInner_date-model"
                           : "countryInner_date-model-none"
                       }
@@ -382,10 +545,6 @@ const CountryInner = () => {
                         <div
                           onClick={() => {
                             setToggleInfo("Fixed");
-                            const openDate = document.getElementById(
-                              "date-cal"
-                            );
-                            // openDate.click();
                           }}
                           className={
                             toggleInfo === "Fixed" ? "date-fixed" : "date-none"
@@ -403,18 +562,22 @@ const CountryInner = () => {
                             </div>
                           </div>
                           <div className="countryInner_month-cat">
-                            <div className="month-cat">Jan</div>
-                            <div className="month-cat">Feb</div>
-                            <div className="month-cat">Mar</div>
-                            <div className="month-cat">Apr</div>
-                            <div className="month-cat">May</div>
-                            <div className="month-cat">Jun</div>
-                            <div className="month-cat">Jul</div>
-                            <div className="month-cat">Aug</div>
-                            <div className="month-cat">Sept</div>
-                            <div className="month-cat">Oct</div>
-                            <div className="month-cat">Nov</div>
-                            <div className="month-cat">Dec</div>
+                            {months.map((months, i) => (
+                              <div
+                                key={i}
+                                onClick={() => setStartDate(months)}
+                                style={{backgroundColor: startDate.includes(months) ? 'red' : ''}}
+
+                                className={
+                                  "month-cat"
+                                  // startDate.includes(months)
+                                  //   ? "month-cat-true"
+                                  //   : "month-cat"
+                                }
+                              >
+                                {months}
+                              </div>
+                            ))}
                           </div>
                           <div className="countryInner_week">
                             <RiCalendar2Line />
@@ -423,10 +586,18 @@ const CountryInner = () => {
                             </div>
                           </div>
                           <div className="countryInner_week-cat">
-                            <div className="week-cat">1st week</div>
-                            <div className="week-cat">2nd week</div>
-                            <div className="week-cat">3rd week</div>
-                            <div className="week-cat">4th week</div>
+                            {weeks.map((weeks, i) => (
+                              <div
+                                key={i}
+                                className="week-cat"
+                                style={{backgroundColor: startDate.includes(weeks) ? 'red' : ''}}
+                                onClick={() =>
+                                  setStartDate(`${startDate},${weeks}`)
+                                }
+                              >
+                                {weeks}
+                              </div>
+                            ))}
                           </div>
                         </>
                       ) : (
@@ -439,8 +610,11 @@ const CountryInner = () => {
                           </div>
                           <div className="datePicker">
                             <DatePicker
-                              selected={startDate}
-                              onChange={(date)=> setStartDate(date)}
+                              onChange={(date)=> {
+                                  const d =  date.toDateString()
+                                  console.log('d', d)
+                                setStartDate(d)
+                              }}
                               inline
                             />
                           </div>
@@ -448,9 +622,28 @@ const CountryInner = () => {
                       )}
                     </div>
                   </div>
+                  <div className="countryInner_category">
+                    <BiDuplicate className="countryInner_i" />
+                    <select
+                      required
+                      onChange={(e) => {
+                        setTourCategories(e.target.value);
+                      }}
+                    >
+                      <option value="" disabled selected hidden>
+                        Tour category
+                      </option>
+                      <option value="Planned Tour">Planned Tour</option>
+                      <option value="Honeymoon Tour">Honeymoon Tour</option>
+                      <option value="Surprise Tour">Surprise Tour</option>
+                      <option value="Luxury Tour">Luxury Tour</option>
+                    </select>
+                  </div>
                 </div>
                 <div className="countryInner_btn">
-                  <button className="countryInner_button">PLAN NOW</button>
+                  <button className="countryInner_button" onClick={submitData}>
+                    PLAN NOW
+                  </button>
                 </div>
               </Form>
             </div>
