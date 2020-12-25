@@ -75,6 +75,8 @@ const LuxuryTour = () => {
       tourCost: 0,
       userID: user.uid,
       tourCategory: "Luxury Tour",
+      requestDate: new Date().toDateString()
+
     };
 
     console.log("values :>> ", values);

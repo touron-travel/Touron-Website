@@ -105,6 +105,8 @@ const SurpriseTour = (params) => {
       userID: user.uid,
       status: "Query Received",
       tourCost: 0,
+      requestDate: new Date().toDateString()
+
     };
     firedb
       .ref(`requests`)

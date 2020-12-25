@@ -23,6 +23,7 @@ export default function Login({ history }) {
         setPassword("");
         storeAuthToken(user);
         setLoaded(false);
+        
 
         return history.goBack();
       })

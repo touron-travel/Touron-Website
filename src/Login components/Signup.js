@@ -41,6 +41,7 @@ const Signup = ({ history }) => {
           photoURL: "",
           email: email,
           profession: "",
+          noOfRequest:0
         });
 
         axios

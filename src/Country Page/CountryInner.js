@@ -31,13 +31,7 @@ const CountryInner = () => {
   const [datemodel, setDateModel] = useState(false);
   const [toggleInfo, setToggleInfo] = useState("Flexible");
   const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
 
-  const onChange = (dates) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-  };
 
   const openDateModel = () => {
     setDateModel(!datemodel);
@@ -446,10 +440,7 @@ const CountryInner = () => {
                           <div className="datePicker">
                             <DatePicker
                               selected={startDate}
-                              onChange={onChange}
-                              startDate={startDate}
-                              endDate={endDate}
-                              selectsRange
+                              onChange={(date)=> setStartDate(date)}
                               inline
                             />
                           </div>
