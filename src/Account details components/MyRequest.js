@@ -118,7 +118,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
 
   useEffect(() => {
     getUserRequest();
-    if (!userInfo.admin) getAllRequest();
+    if (userInfo.admin) getAllRequest();
   }, []);
 
 
@@ -160,6 +160,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
   const getAllRequest = () => {
     setLoading(true);
     firedb.ref("requests").on("value", (data) => {
+    
       if (data !== null) {
         let newReq = {}
         console.log('data', data)
