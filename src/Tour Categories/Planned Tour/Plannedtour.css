@@ -1,28 +1,23 @@
-.Planned_tour-container {
+/* .Planned_tour-container {
   position: relative;
-}
+} */
 .Planned-form-container {
-  display: flex;
   background-color: #ecf0f1;
-  padding: 60px 30px;
+  padding:  30px;
   position: relative;
 }
 
 .planned_tour-form {
-  flex-basis: 50%;
-  margin: auto;
+  width: 50%;
+  margin: 0 auto;
   background-color: #fff;
   box-shadow: 0 2px 40px 0 rgba(4, 32, 66, 0.2);
   display: flex;
   flex-direction: column;
-  height: 730px;
   border-radius: 20px;
   z-index: 1;
 }
-.planned_tour-form-selected {
-  transform: translateX(-290px);
-  transition: 0.5s;
-}
+
 .planned_tour-form h1,
 .planned_tour-form-selected h1 {
   padding-top: 20px;
@@ -301,4 +296,75 @@
 .modal-loginbutton :hover,
 .modal-close:hover {
   cursor: pointer;
+}
+
+
+@media screen and (max-width:768px){
+.planned_tour-form {
+padding: 0px;
+width: 80%;
+}
+}
+@media screen and (max-width:620px){
+.planned_tour-form {
+flex-basis: 90%;
+padding: 0px;
+}
+.planned_tour-form h1{
+  font-size: 25px;
+}
+}
+@media screen and (max-width:480px){
+.planned_tour-form {
+flex-basis: 10%;
+padding: 0px;
+}
+.navigation_btn .previous-button,
+.navigation_btn .next-button {
+  padding: 10px 40px;
+  font-size: 16px;
+  margin: 30px 0px;
+}
+
+
+
+
+.navigation_btn .submit-button {
+  background-color: teal;
+  padding: 10px 50px;
+  border-radius: 20px;
+  font-size: 16px;
+}
+
+}
+@media screen and (max-width:360px){
+.planned_tour-form {
+flex-basis: 100%;
+/* width: 200px; */
+padding: 20px;
+}
+.Planned-form-container{
+  width: 100%;
+  padding: 15px 0px;
+
+  margin: 0;
+}
+.navigation_btn .previous-button,
+.navigation_btn .next-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 30px 10px;
+}
+.navigation_btn .submit-button {
+  background-color: teal;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+}
+}
+@media screen and (max-width:280px){
+.planned_tour-form {
+flex-basis: 100%;
+padding: 0px;
+}
 }

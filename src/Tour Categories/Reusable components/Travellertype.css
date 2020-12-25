@@ -1,7 +1,7 @@
 .travellertype-row1,
 .travellertype-row2 {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   align-items: center;
   justify-content: center;
 }
@@ -10,6 +10,7 @@
   align-items: "center";
   text-align: center;
   margin: "10px 20px";
+  
 }
 .traveltype {
   width: 40%;
@@ -79,3 +80,69 @@
     font-family: "Times New Roman", Times, serif;
   }
 }
+
+
+@media screen and (min-width:768px){
+  .travellertype_container h5 {
+  font-size: 18px;
+  margin-top: 10px;
+    
+  }
+}
+
+@media screen and (min-width:620px){
+  .travellertype_container h5 {
+  font-size: 16px;
+  margin-top: 10px;
+    
+  }
+  .traveltype img {
+    width: 80%;
+  }
+}
+@media screen and (min-width:480px){
+  .travellertype_container h5 {
+  font-size: 15px;
+  margin-top: 10px;
+    
+  }
+  .traveltype img {
+    width: 100%;
+  }
+}
+@media screen and (min-width:360px){
+  .travellertype_container h5 {
+  font-size: 15px;
+  margin-top: 10px;
+    
+
+  }
+  .traveltype{
+    margin: 10px;
+    padding: 0;
+  }
+  .traveltype img {
+    width: 90px;
+    height: 80%;
+  }
+}
+@media screen and (min-width:280px){
+  .travellertype_container h5 {
+  font-size: 15px;
+  margin-top: 10px;
+    
+
+  }
+  .traveltype{
+    margin: 10px;
+    padding: 0;
+  }
+  .traveltype img {
+    width: 70px;
+    height: 80%;
+  }
+}
+
+
+
+

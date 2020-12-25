@@ -16,6 +16,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { ApiContext } from "../../Context/ApiContext";
 import { firedb } from "../../firebase";
+import moment from 'moment'
 
 const PlannedTour = () => {
   const { userInfo } = useContext(ApiContext);
@@ -105,7 +106,8 @@ const PlannedTour = () => {
     firedb
       .ref(`requests`)
       .push(values)
-      .then((data) => console.log("data", data))
+      .then((data) =>{
+      })
       .catch((err) => console.log("err", err));
   };
 
@@ -119,6 +121,14 @@ const PlannedTour = () => {
     formatedMonth = month < 10 ? "0" + month : month;
     console.log("formatedMonth", formatedMonth);
   });
+
+
+
+  useEffect(()=>{
+
+
+    // console.log('noOfRequest', noOfRequest)
+  },[])
   const nextStep = () => {
     if (step === 2 && !isLoggedin) {
       openModal();

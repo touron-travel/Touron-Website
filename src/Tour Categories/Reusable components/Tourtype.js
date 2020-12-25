@@ -6,7 +6,7 @@ import International from "../../assests/planned-tour/International.png";
 
 const Tourtype = ({ tourType, setTourType }) => {
   return (
-    <div>
+    <div className='tourtype'>
       <h1>Pick the type of tour! </h1>
       <div className="tour-type">
         <div

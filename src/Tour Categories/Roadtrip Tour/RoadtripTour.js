@@ -84,6 +84,8 @@ const RoadtripTour = () => {
       plans: "",
       reports: "",
       tourCost: 0,
+      requestDate: new Date().toDateString()
+
     };
     console.log(values);
     firedb

@@ -7,11 +7,13 @@ import { HiInformationCircle } from "react-icons/hi";
 import { MdDeleteForever } from "react-icons/md";
 import { TiGroup, TiTicket } from "react-icons/ti";
 import { Ellipsis } from "react-spinners-css";
+import moment from 'moment';
 import {
   Input,
   Button,
   Table,
   Modal,
+  Popover,
   Pagination,
   PaginationLink,
   PaginationItem,
@@ -31,15 +33,26 @@ const MyRequest = () => {
   const [internationalModal, setInternationalModal] = useState(false);
   const [detailsModal, setDetailsModal] = useState(false);
   const [userRequest, setUserRequest] = useState([]);
+  const [totalUserRequest, setTotalUserRequest] = useState([]);
+  const [userRequestDates, setUserRequestDates] = useState([]);
+  const [userRequestCount, setUserRequestCount] = useState(0);
   const [selectedRequest, setSelectedRequest] = useState({});
   const [status, setStatus] = useState("");
   const [key, setKey] = useState("");
   const [loading, setLoading] = useState(false);
-  console.log("userRequest", userRequest);
+
+
+const [weekPopover, setWeekPopover] = useState(false);
+const [monthPopover, setMonthPopover] = useState(false);
+const [totalPopover, setTotalPopover] = useState(false);
+
+const toggleWeekPopover = () => setWeekPopover(!weekPopover);
+const toggleMonthPopover = () => setMonthPopover(!monthPopover);
+const toggleTotalPopover = () => setTotalPopover(!totalPopover);
+
+
   const getDepatureDate = (date) => {
     const countDate = Date.parse(date);
-
-    console.log("countDate", countDate);
     const now = new Date().getTime();
     const gap = countDate - now;
 
@@ -51,9 +64,38 @@ const MyRequest = () => {
     const d = Math.floor(gap / day);
     return d;
   };
+  let weekReq = []
+ const weekRequest = ()=>{
+  let count = 0
+  userRequestDates.forEach(d=>{
+  const ds = moment()
+ const date = moment().subtract(7, 'days')
+
+    if(moment(d.requestDate).isBetween(date,ds)){
+      count = count + 1
+      weekReq.push(d)
+    }
+  })
+  return count
+ }
+
+ let monthReq = []
+ const monthRequest = ()=>{
+
+   let count = 0
+  userRequestDates.forEach(d=>{
+    const ds = moment()
+    const month = moment().subtract(31, 'days')
+    if(moment(d.requestDate).isBetween(month,ds)){
+      count = count + 1
+      monthReq.push(d)
+    }
+  })
+  return count
+ }
+
 
   const { userInfo } = useContext(ApiContext);
-  console.log("userRequest", userInfo.admin);
   const openDomesticModal = () => {
     setDomesticModal(true);
   };
@@ -79,9 +121,10 @@ const MyRequest = () => {
     if (userInfo.admin) getAllRequest();
   }, []);
 
+
+  
   const getUserRequest = () => {
     setLoading(true);
-
     const { user } = isAuthenticated();
 
     firedb.ref("requests").on("value", (data) => {
@@ -98,19 +141,39 @@ const MyRequest = () => {
       }
     });
   };
+
+  const getUserRequestCount = (uid) => {
+
+    firedb.ref("requests").on("value", (data) => {
+      if (data !== null) {
+        let req = [];
+        data.forEach((d) => {
+          if (d.val().userID == uid) {
+            req.push(d.val());
+          }
+        });
+        setUserRequestDates(req)
+        setUserRequestCount(req.length);
+      }
+    });
+  };
   const getAllRequest = () => {
     setLoading(true);
     firedb.ref("requests").on("value", (data) => {
-      if (data) {
-        let newReq = {};
-        let revReq = Object.keys(data.val()).reverse();
-        revReq.forEach((i) => {
-          newReq[i] = data.val()[i];
-        });
-
-        setUserRequest({
-          ...newReq,
-        });
+    
+      if (data !== null) {
+        let newReq = {}
+        console.log('data', data)
+        if(data !== null && data !== undefined){
+          let revReq = Object.keys(data.val()).reverse()
+          revReq.forEach(i=>{
+            newReq[i] = data.val()[i]
+          })
+          setUserRequest({
+            ...newReq
+          });
+        }
+      
       }
       setLoading(false);
     });
@@ -306,6 +369,8 @@ const MyRequest = () => {
                               setKey(c);
                               setSelectedRequest(userRequest[c]);
                               openDetailsModal();
+                              getUserRequestCount(userRequest[c].userID)
+                              // weekRequest(userRequest[c].requestDate)
                             }}
                           >
                             <td>{userRequest[c].status}</td>
@@ -551,6 +616,72 @@ const MyRequest = () => {
                       <td>Children(s)</td>
                       <td>{selectedRequest.children}</td>
                     </tr>
+                  </tbody>
+                </Table>
+                <Table bordered>
+                  <thead>
+                    <tr>
+                      <th className="title-companions">
+                        <TiGroup className="title-companions-icon" />
+                        User History
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Name</td>
+                      <td>{selectedRequest.name}</td>
+                    </tr>
+                    <tr>
+                      <td>Total Request</td>
+                      <td  id='totalPopover'  style={{cursor:'pointer'}}>{userRequestCount}</td>
+                    </tr>
+                    <Popover placement="right" isOpen={totalPopover} target="totalPopover" toggle={toggleTotalPopover}  >
+                    {userRequestDates.map((t,index)=>{
+                      return (
+
+                      <h6 style={{padding:8,margin:0,cursor:'pointer',backgroundColor: selectedRequest.requestID == t.requestID ? '#53E0BC' : ''}} onClick={()=>{
+                        closeDetailsModal()
+                        setSelectedRequest(t)
+                        openDetailsModal()
+                      }}>{index + 1}.{t.requestID} - {t.requestDate}</h6>
+                    )})}
+
+      </Popover>
+                  
+                    <tr >
+                      <td>Last Week Request</td>
+                      <td id='weekPopover' style={{cursor:'pointer'}}>{weekRequest()}</td>
+                    </tr>
+                    <Popover placement="right" isOpen={weekPopover} target="weekPopover" toggle={toggleWeekPopover} >
+                    {weekReq.map((w,index)=>{
+                      return (
+                      <h6 style={{padding:8,margin:0,cursor:'pointer',backgroundColor: selectedRequest.requestID == w.requestID ? '#53E0BC' : ''}} onClick={()=>{
+                        closeDetailsModal()
+                        setSelectedRequest(w)
+                        openDetailsModal()
+                      }}>{index + 1}.{w.requestID} - {w.requestDate}</h6>
+                    )})}
+                         </Popover>
+                    <tr>
+                      <td>Lat Month Request</td>
+                    
+                      <td  id='monthPopover' style={{cursor:'pointer'}}>{monthRequest()}</td>
+                    </tr>
+                    <Popover placement="right" isOpen={monthPopover} target="monthPopover" toggle={toggleMonthPopover} >
+                    {monthReq.map((m,index)=>{
+                      return (
+
+                      <h6 style={{padding:8,margin:0, cursor:'pointer',backgroundColor: selectedRequest.requestID == m.requestID ? '#53E0BC' : ''}} onClick={()=>{
+                        closeDetailsModal()
+                        setSelectedRequest(m)
+                        openDetailsModal()
+                      }}>{index + 1}.{m.requestID} - {m.requestDate.toString()}</h6>
+                    )})}
+
+      </Popover>
+                  
+                  
                   </tbody>
                 </Table>
               </div>
