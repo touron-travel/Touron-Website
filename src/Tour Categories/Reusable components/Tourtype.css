@@ -28,7 +28,7 @@
 .domestic img,
 .international img {
   width: 60%;
-  height: 50%;
+  /* height: 50%; */
 }
 .international h6,
 .domestic h6 {
@@ -49,7 +49,7 @@
   .domestic,
   .international {
     width: 30%;
-    height: 200px;
+    /* height: 200px; */
     background-color: #fff;
     box-shadow: 0 2px 20px 0 rgba(4, 32, 66, 0.2);
     margin: 50px 30px;
@@ -74,7 +74,7 @@
   .domestic img,
   .international img {
     width: 50%;
-    height: 40%;
+    /* height: 40%; */
   }
   .international h6,
   .domestic h6 {
@@ -101,6 +101,9 @@
   margin:25px;
  
 }
+.travelmode-image {
+  height: 80px;
+}
   }
   @media screen and (max-width:620px){
     .tourtype h1{
@@ -116,7 +119,7 @@
     .domestic img,
 .international img {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 .international h6,
 .domestic h6 {
@@ -128,9 +131,15 @@
   cursor: pointer;
   /* background-color: tomato; */
 }
-  
+.travelmode-image {
+  height: 85px;
+}
   }
-
+  @media screen and (max-width:480px){
+    .travelmode-image {
+      height: 55px;
+    }
+  }
   @media screen and (max-width:360px){
     .tourtype h1{
       font-size: 20px;
@@ -148,7 +157,9 @@
 .domestic h6 {
   font-size: 16px;
 }
-
+.travelmode-image {
+  height: 55px;
+}
 
   }
 
@@ -171,6 +182,12 @@
 .domestic h6 {
   font-size: 16px;
 }
-
+.travelmode-image {
+  height: 45px;
+}
+.travelmode h1{
+  font-size: 13px;
+  padding: 0 10px;
+}
 
   }

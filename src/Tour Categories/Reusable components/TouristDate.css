@@ -1,28 +1,4 @@
-/* .tourist-Date {
-  width: 100%;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-content: space-evenly;
-}
-.date-from label,
-.date-to label {
-  color: gray;
-  font-weight: 700;
-}
-.from-category,
-.to-category {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.from-category img,
-.to-category img {
-  width: 50%;
-  height: 47%;
-} */
+
 
 .nice-dates-day {
   color: #111;
@@ -77,4 +53,20 @@
   font-size: 20px;
   font-family: "Times New Roman", Times, serif;
   margin-left: 20px;
+}
+
+@media screen and (max-width:620px){
+  .date-range input {
+    margin: 0 auto;
+    padding: 6px;
+    border-radius: 4px;
+    width: 85%;
+  }
+
+}
+@media screen and (max-width:360px){
+  .from-date label,
+  .to-date label {
+    font-size: 16px;
+  }
 }

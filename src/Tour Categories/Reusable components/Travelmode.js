@@ -15,8 +15,8 @@ const Travelmode = ({
 }) => {
   console.log(travelMode, "mode");
   return (
-    <div>
-      <h1 style={{ fontSize: "20px" }}>
+    <div className='travelmode'>
+      <h1 >
         It’s all about the journey! Select your preferred mode of travel
       </h1>
       <div className="tour-type">
@@ -43,7 +43,7 @@ const Travelmode = ({
           <div style={{ position: "absolute", top: "10px", right: "10px" }}>
             {travelMode == name2 ? <Checked /> : null}
           </div>
-          <img src={imgSrc2} alt="" />
+          <img src='https://image.freepik.com/free-vector/boeing-plane-illustration_138676-2405.jpg' alt="" className='travelmode-image' />
           <h6>{name2}</h6>
         </div>
       </div>
