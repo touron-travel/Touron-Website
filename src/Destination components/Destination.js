@@ -66,7 +66,7 @@ export default function Destination() {
   return (
     <ReactGlobe
     height="100vh"
-    globeTexture="https://raw.githubusercontent.com/chrisrzhou/react-globe/main/textures/globe_dark.jpg"
+    globeTexture="https://st.depositphotos.com/2101611/4338/v/600/depositphotos_43381183-stock-illustration-light-gray-detailed-world-map.jpg"
     markers={markers}
     width="100vw"
     options={options}

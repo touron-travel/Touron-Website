@@ -20,11 +20,14 @@ import * as BiIcons from "react-icons/bi";
 
 const Support = () => {
   const { addToast } = useToasts();
+  // const { addToast } = useToasts();
   const [queries, setQueries] = useState([]);
   const { userInfo } = useContext(ApiContext);
   const [values, setValues] = useState({
     name: "",
     email: "",
+
+
     mobileNumber: "",
     queryType: "",
     comments: "",
