@@ -9,12 +9,12 @@ import { TiGroup, TiTicket } from "react-icons/ti";
 import { Ellipsis } from "react-spinners-css";
 import moment from 'moment';
 import {
-  Input,
   Button,
   Table,
   Modal,
   Popover,
   Pagination,
+  Input,
   PaginationLink,
   PaginationItem,
 } from "reactstrap";
@@ -41,10 +41,16 @@ const MyRequest = () => {
   const [key, setKey] = useState("");
   const [loading, setLoading] = useState(false);
   const [clicked, setClicked] = useState(false);
+  const [querystatus, setQueryStatus] = useState("");
+  const [category, setCategory] = useState("");
+  const [requestId, setRequestId] = useState("");
   const toggleSidebar = () => {
     setClicked(!clicked);
   };
 
+console.log('requestId', requestId)
+  console.log('key', key)
+  // console.log('user', user)
 
 
 const [weekPopover, setWeekPopover] = useState(false);
@@ -127,9 +133,12 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
 
   useEffect(() => {
     getUserRequest();
-    if (userInfo.admin) getAllRequest();
+    if (!userInfo.admin) getAllRequest();
   }, []);
 
+  useEffect(()=>{
+filterRequests()
+  },[])
 
   
   const getUserRequest = () => {
@@ -189,6 +198,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
   };
 
   const updateRequest = () => {
+    console.log('key', key)
     firedb
       .ref(`requests/${key}`)
       .update({
@@ -222,6 +232,10 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
   };
 
   const colors = [
+    {
+      name: "All",
+      color: "#f39c12",
+    },
     {
       name: "Query Received",
       color: "#f39c12",
@@ -267,6 +281,55 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
       color: "#55efc4",
     },
   ];
+
+  
+  const getColor = (status) => {
+    let color = "";
+    colors.filter((c) => {
+      if (c.name === status) color = c.color;
+    });
+    return color;
+  };
+
+  const filterRequests = () => {
+    if (querystatus !== "") {
+      let rs = {};
+      const tour = Object.keys(userRequest).map((r) => {
+        console.log('r', r)
+        if (userRequest[r].status === querystatus) {
+          rs[r] = userRequest[r];
+        }
+      });
+      console.log('rs', rs)
+      return rs;
+    } else if (category !== "") {
+      let rs = {};
+      const tour = Object.keys(userRequest).map((r) => {
+        console.log('r', r)
+
+        if (userRequest[r].tourCategory === category) {
+          rs[r] = userRequest[r];
+        }
+      });
+      console.log('rs', rs)
+      return rs;
+    }else if (requestId !== "") {
+      let rs ={}
+      const tour = Object.keys(userRequest).map((r) => {
+        console.log('r', r)
+
+        if (userRequest[r].requestID === requestId) {
+          rs[r] = userRequest[r];
+        }
+      });
+
+      console.log('rs', rs)
+      return rs;
+    } 
+    else {
+      return userRequest;
+    }
+  };
 
   let pageSize = 7;
   let pagesCount = Math.ceil(Object.keys(userRequest).length / pageSize);
@@ -339,9 +402,70 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
               </div>
             </div>
           </div>
+
+          <div className='filter-section'>
+            <div>
+
+          <label>Request Id </label>
+          <Input type='text'  
+                      className="user-input-alter user-input"
+                      onChange={(e)=>setRequestId(e.target.value)}
+                      value={requestId}
+          
+          />
+            </div>
+         
+            <div>
+
+          <label>Request Id </label>
+          <Input
+                      type="select"
+                      onChange={(e) => setCategory(e.target.value)}
+                      value={category}
+                    >
+                    <option value=''>All</option>
+                    <option value='Planned Tour'>Planned Tour</option>
+                    <option value='Surprise Tour'>Surprise Tour</option>
+                    <option value='Honeymoon Tour'>Honeymoon Tour</option>
+                    <option value='Luxury Tour'>Luxury Tour</option>
+                    <option value='Road Trip'>Road Trip</option>
+                    </Input>
+            </div>
+         
+            <div>
+
+          <label>Request Id </label>
+          <Input
+                      type="select"
+                      onChange={(e) =>{
+                        setQueryStatus(e.target.value)
+                        setTimeout(()=>{
+filterRequests()
+                        },1500)
+                        filterRequests()
+                      } }
+                      value={querystatus}
+                    >
+                      {colors.map((c, index) => {
+                        return (
+                          <option key={index} value={c.name == 'All' ? '' : c.name}>
+                            {c.name}
+                          </option>
+                        );
+                      })}
+                    </Input>
+            </div>
+         
+       
+
+        </div>
         </div>
 
+      
+
+
         <div className="requests-table">
+       
           <Table hover bordered>
             <thead>
               <tr>
@@ -362,7 +486,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
                 <>
                   {userRequest.length !== 0 ? (
                     <>
-                      {Object.keys(userRequest)
+                      {Object.keys(filterRequests())
                         .slice(
                           currentPage * pageSize,
                           (currentPage + 1) * pageSize
@@ -371,6 +495,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
                           <tr
                             key={i}
                             onClick={() => {
+                              console.log('c', i)
                               setKey(c);
                               setSelectedRequest(userRequest[c]);
                               openDetailsModal();
@@ -378,7 +503,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
                               // weekRequest(userRequest[c].requestDate)
                             }}
                           >
-                            <td>{userRequest[c].status}</td>
+                            <td style={{ color:`${getColor(userRequest[c].status)}`}}>{userRequest[c].status}</td>
                             <td>{userRequest[c].requestID}</td>
                             <td>{userRequest[c].tourCategory}</td>
                             <td>
@@ -722,7 +847,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
               </div>
             </div>
 
-            {userInfo.admin ? (
+            {!userInfo.admin ? (
               <>
                 <div className="status-flex">
                   <div className="status">

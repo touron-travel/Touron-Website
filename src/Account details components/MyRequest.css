@@ -9,7 +9,7 @@
   overflow: scroll;
 }
 .requests-info {
-  height: 400px;
+  height: 75vh;
 
   width: 100%;
 
@@ -260,4 +260,11 @@
   border: 2px solid #2b3139;
   padding: 8px;
   border-radius: 10px;
+}
+
+.filter-section{
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
 }
