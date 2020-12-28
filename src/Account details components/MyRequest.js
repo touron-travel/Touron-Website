@@ -230,6 +230,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
       .catch((err) => console.log("err :>> ", err));
   };
 
+ 
   const colors = [
     {
       name: "All",
@@ -416,7 +417,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
          
             <div>
 
-          <label>Request Id </label>
+          <label>Tour Category </label>
           <Input
                       type="select"
                       onChange={(e) => setCategory(e.target.value)}
@@ -433,13 +434,13 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
          
             <div>
 
-          <label>Request Id </label>
+          <label>Query Status</label>
           <Input
                       type="select"
                       onChange={(e) =>{
                         setQueryStatus(e.target.value)
                         setTimeout(()=>{
-filterRequests()
+// filterRequests()
                         },1500)
                         filterRequests()
                       } }
@@ -454,8 +455,6 @@ filterRequests()
                       })}
                     </Input>
             </div>
-         
-       
 
         </div>
         </div>
