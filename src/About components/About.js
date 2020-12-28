@@ -1,12 +1,10 @@
 import React from "react";
 import "./About.css";
-// import bg from "../assests/bg_3.jpg";
 import intro from "../assests/intro.png";
 import stats_1 from "../assests/stats_1.png";
 import stats_2 from "../assests/stats_2.png";
 import stats_3 from "../assests/stats_3.png";
 import stats_4 from "../assests/stats_4.png";
-// import testimg from "../assests/testimg.jpg";
 import person1 from "../assests/person_1.jpg";
 import team1 from "../assests/team_1.jpg";
 import team2 from "../assests/team_2.jpg";
