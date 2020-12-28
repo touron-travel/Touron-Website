@@ -50,7 +50,7 @@ const MyRequest = () => {
 
 console.log('requestId', requestId)
   console.log('key', key)
-  console.log('user', user)
+  // console.log('user', user)
 
 
 const [weekPopover, setWeekPopover] = useState(false);
@@ -404,7 +404,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
           </div>
 
           <div className='filter-section'>
-            <div>
+            <div className='reqid'>
 
           <label>Request Id </label>
           <Input type='text'  

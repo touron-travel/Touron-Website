@@ -9,10 +9,8 @@
   overflow: scroll;
 }
 .requests-info {
-  height: 75vh;
-
+  height: 73vh;
   width: 100%;
-
   background: #24c6dc;
   background: -webkit-linear-gradient(to right, #514a9d, #24c6dc);
   background: linear-gradient(to right, #514a9d, #24c6dc);
@@ -42,12 +40,14 @@
 
 .requests-body-container {
   display: flex;
+  /* flex-wrap: wrap; */
 }
 .card-body {
   flex-basis: 30%;
   background-color: white;
   border-radius: 5px;
-  height: 120px;
+  /* height: 120px; */
+  max-height: 120px;
   display: flex;
   margin: 0px 20px;
   justify-content: space-between;
@@ -87,6 +87,7 @@
 .requests-table {
   padding: 50px 20px;
   position: relative;
+  /* overflow: scroll; */
 }
 
 .requests-table Table {
@@ -267,4 +268,113 @@
   padding: 20px;
   display: flex;
   justify-content: space-evenly;
+}
+
+@media screen and (max-width:768px){
+  .pagination {
+    margin-top: 30%;
+    margin-right: 20px;
+  }
+
+  
+.requests-body-container {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.card-body {
+  flex-basis: 30%;
+  max-width: 250px;
+  margin: 10px 20px;
+}
+
+.requests-table Table {
+  position: absolute;
+  top:20px;
+  width: 100%;
+
+}
+
+
+}
+
+@media screen and (max-width:620px){
+  .pagination {
+    margin-top: 53%;
+    margin-right: 20px;
+  }
+  
+.requests-body-container {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.card-body {
+  flex-basis: 30%;
+  max-width: 250px;
+  margin: 10px 20px;
+}
+
+
+}
+@media screen and (max-width:480px){
+  
+  .requests-body-container{
+    /* height: 80vh; */
+  }
+  .reqid{
+    display: none;
+  }
+
+  .pagination {
+    margin-top: 67%;
+    margin-right: 20px;
+  }
+  
+.requests-body-container {
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.card-body {
+  flex-basis: 30%;
+  max-width: 250px;
+  margin: 10px 20px;
+}
+
+
+}
+@media screen and (max-width:360px){
+  .requests-info{
+    height: 90vh;
+  }
+ 
+
+.filter-section{
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  /* flex-wrap: wrap; */
+  padding: 50px 20px;
+  justify-content: space-evenly;
+  /* align-items: center; */
+}
+  .pagination {
+    margin-top: 115%;
+    margin-right: 20px;
+  }
+  
+
+.card-body {
+  flex-basis: 40%;
+  max-width: 250px;
+  margin: 10px 20px;
+}
+
+.requests-table Table {
+  position: absolute;
+  top:20px;
+  width: 100%;
+}
+
 }

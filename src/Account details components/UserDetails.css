@@ -4,7 +4,7 @@
   background-image: url(https://images.unsplash.com/photo-1444525873963-75d329ef9e1b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8&auto=format&fit=crop&w=600&q=60);
   background-size: cover;
   background-position: center;
-  height: 65vh;
+  height: 60vh;
   /* width: auto; */
   position: relative;
 }
@@ -27,10 +27,11 @@
 .account-head {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   position: relative;
   z-index: 1;
-  padding: 30px 39px;
+  padding: 23px 30px;
 }
 .account-title h4 {
   text-transform: uppercase;
@@ -248,6 +249,7 @@
 .toggleSideba {
   width: 300px;
   transition: 0.2s ease-in;
+
 }
 
 .MdEdit {
@@ -283,6 +285,9 @@
 }
 
 @media screen and (max-width: 768px) {
+  .toggleSideba {
+    width: 30%;
+  }
   .account {
     height: 100vh;
   }
@@ -316,6 +321,9 @@
   }
 }
 @media screen and (max-width: 480px) {
+  .toggleSideba {
+    width: 45%;
+  }
   .account-profile-page {
     position: relative;
     top: -70px;
@@ -340,6 +348,13 @@
   }
 }
 @media screen and (max-width: 360px) {
+  .account-title h4 {
+    font-size: 12px;
+  
+  }
+  .toggleSideba {
+    width: 50%;
+  }
   .account-profile-column2 {
     width: 300px;
     margin-bottom: 30px;
@@ -370,5 +385,9 @@
   }
   .account-column-info {
     padding: 18px;
+  }
+  .account-title h4 {
+    font-size: 5px;
+  
   }
 }
