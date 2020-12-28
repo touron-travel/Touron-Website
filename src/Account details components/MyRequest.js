@@ -21,7 +21,7 @@ import {
 import Profilenav from "./Profilenav";
 import Profilepage from "./Profilepage";
 import { firedb } from "../firebase";
-import { isAuthenticated } from "../Login components/auth";
+import { isAdmin, isAuthenticated } from "../Login components/auth";
 import { ApiContext } from "../Context/ApiContext";
 import { useToasts } from "react-toast-notifications";
 import * as BiIcons from "react-icons/bi";
@@ -133,11 +133,11 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
 
   useEffect(() => {
     getUserRequest();
-    if (!userInfo.admin) getAllRequest();
+    if (userInfo.admin) getAllRequest();
   }, []);
 
   useEffect(()=>{
-filterRequests()
+    console.log('isAdmin(', isAdmin())
   },[])
 
   
@@ -181,7 +181,6 @@ filterRequests()
     
       if (data !== null) {
         let newReq = {}
-        console.log('data', data)
         if(data !== null && data !== undefined){
           let revReq = Object.keys(data.val()).reverse()
           revReq.forEach(i=>{
@@ -847,7 +846,7 @@ filterRequests()
               </div>
             </div>
 
-            {!userInfo.admin ? (
+            {userInfo.admin ? (
               <>
                 <div className="status-flex">
                   <div className="status">

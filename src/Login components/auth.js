@@ -23,14 +23,27 @@ export const storeadmintoken = (adminToken) => {
   }
 };
 export const isAdmin = () => {
-  if (typeof window == "undefined") {
-    return false;
-  }
-  if (localStorage.getItem("adminToken")) {
-    return JSON.parse(localStorage.getItem("adminToken"));
-  } else {
-    return false;
-  }
+
+  const uid = auth.currentUser
+  console.log('uid', uid)
+  // firedb.ref(`userGeneralInfo/${uid}`).on("value", (data) => {
+  //   if (data.val() !== null) {
+  //     let val = data.val();
+  //     console.log("val :>> ", val);
+     
+
+  //     console.log(val.admin, "admin");
+  //     return val.admin
+  //   }
+  // });
+  // if (typeof window == "undefined") {
+  //   return false;
+  // }
+  // if (localStorage.getItem("adminToken")) {
+  //   return JSON.parse(localStorage.getItem("adminToken"));
+  // } else {
+  //   return false;
+  // }
 };
 
 export const signout = (next) => {

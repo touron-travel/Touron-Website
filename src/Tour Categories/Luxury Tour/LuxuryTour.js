@@ -218,6 +218,9 @@ const LuxuryTour = () => {
             budget={budget}
           />
         );
+
+        default:
+          break;
     }
   };
 

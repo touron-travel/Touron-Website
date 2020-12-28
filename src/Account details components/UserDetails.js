@@ -359,12 +359,7 @@ const UserDetails = () => {
                 id="DisabledAutoHideExample"
                 onClick={handleEditClick}
                 size={28}
-                style={{
-                  position: "relative",
-                  right: -50,
-                  top: 18,
-                  cursor: "pointer",
-                }}
+               className='MdEdit'
               />
             </div>
             <div className="profile-center">
