@@ -50,7 +50,7 @@ const MyRequest = () => {
 
 console.log('requestId', requestId)
   console.log('key', key)
-  // console.log('user', user)
+  console.log('user', user)
 
 
 const [weekPopover, setWeekPopover] = useState(false);
