@@ -177,14 +177,14 @@ const TourInner = () => {
                 )}
               </div>
             </div>
-            <div className="question_block">
+            <div className="question_blocks">
               <div className="question_block-title">Get a Question?</div>
               <div className="question_block-text">
                 Do not hesitage to give us a call. We are an expert team and we
                 are happy to talk to you.
               </div>
-              <div className="question_block-tel">+1 1235 6789 10</div>
-              <div className="question_block-mail">info@hellodigi.ru</div>
+              <div className="question_block-tel">+91 8667801206</div>
+              <div className="question_block-mail">touronholidayz@gmail.com</div>
             </div>
           </div>
           <div className="similar">

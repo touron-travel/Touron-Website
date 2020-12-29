@@ -66,27 +66,10 @@ export default function Destination() {
   return (
     <ReactGlobe
     height="100vh"
-    globeTexture="https://st.depositphotos.com/2101611/4338/v/600/depositphotos_43381183-stock-illustration-light-gray-detailed-world-map.jpg"
+    // globeTexture="https://st.depositphotos.com/2101611/4338/v/600/depositphotos_43381183-stock-illustration-light-gray-detailed-world-map.jpg"
     markers={markers}
     width="100vw"
-    options={options}
+    // options={options}
   />
-  //   <ReactGlobe
-  //     height="100vh"
-  //     globeCloudsTexture={null}
-  //     globeTexture="https://your/own/globe.jpg"
-  //     initialCoordinates={[1.3521, 103.8198]}
-  //     markers={markers}
-  //     options={options}
-  //     width="100%"
-  //     onClickMarker={(marker, markerObject, event) => console.log(marker, markerObject, event)}
-  //     onGetGlobe={setGlobe}
-  //     onMouseOutMarker={(marker, markerObject, event) => console.log(marker, markerObject, event)}
-  //     onGlobeTextureLoaded={() => console.log('globe loaded')}
-  //     onMouseOverMarker={(marker, markerObject, event) => console.log(marker, markerObject, event)}
-  //  />
   )
-  {/* return <div>
-    <ReactGlobe/>
-  </div>; */}
 }

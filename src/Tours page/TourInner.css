@@ -271,10 +271,12 @@
   .Informations_Container {
   display: flex;
   padding: 10px;
-    flex-direction:column;
+  justify-content: center;
+  align-items: center;
 }
 .Informations {
-  flex-basis: 100%;
+  /* width: 50%; */
+  flex-basis: 50%;
 }
 
 .Informations .labels {
@@ -309,6 +311,7 @@
   }
   .question_block {
     width: 100%;
+    background-color: khaki;
   
   }
   .question_block-text {

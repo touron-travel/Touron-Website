@@ -133,7 +133,7 @@ const toggleTotalPopover = () => setTotalPopover(!totalPopover);
 
   useEffect(() => {
     getUserRequest();
-    if (userInfo.admin) getAllRequest();
+    if (!userInfo.admin) getAllRequest();
   }, []);
 
   useEffect(()=>{

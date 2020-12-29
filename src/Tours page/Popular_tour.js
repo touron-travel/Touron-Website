@@ -143,7 +143,7 @@ export default function Popular_tour(props) {
   return (
     <>
       <div className="Popular_tours">
-        <div className="pop_title_search">
+        {/* <div className="pop_title_search">
           <div className="poptitle">Search Tours</div>
           <div className="popsearch">
             <form className="searches">
@@ -182,8 +182,8 @@ export default function Popular_tour(props) {
               <button className="search_bt">Submit</button>
             </form>
           </div>
-        </div>
-      </div>
+        </div>*/}
+      </div> 
       <div className="country-slider">
         <Slider {...settings}>
           {countries.map((country, index) => {
@@ -245,7 +245,7 @@ export default function Popular_tour(props) {
       </div>
 
       <div className="poptour_section">
-        <div>
+        <div className='poptour-section-left'>
           <div className="poptour-api">
             {contentLoaded ? (
               <div className="loader">
@@ -264,22 +264,7 @@ export default function Popular_tour(props) {
                 >
                   Loading ...
                 </h4>
-                {/* <RectGraduallyShowLoading
-         style={{
-           top: "150px",
-           alignItems: "center",
-           left: "48%",
-         }}
-         color="#4834d4"
-       />
-       <CircleLoading
-         style={{
-           top: "150px",
-           alignItems: "center",
-           left: "48%",
-         }}
-         color="#4834d4"
-       /> */}
+               
               </div>
             ) : (
               <>
@@ -287,7 +272,8 @@ export default function Popular_tour(props) {
                   <>
                     <h1>Tours not Found </h1>
                     <img
-                      src="https://image.freepik.com/free-vector/404-error-with-cute-animal-concept-illustration_114360-1919.jpg"
+                    src='https://image.freepik.com/free-vector/error-404-found-glitch-effect_8024-5.jpg'
+                      // src="https://image.freepik.com/free-vector/404-error-with-cute-animal-concept-illustration_114360-1919.jpg"
                       alt=""
                     />
                   </>
@@ -311,7 +297,7 @@ export default function Popular_tour(props) {
               </>
             )}
           </div>
-          {tour.length === 0 || tourLength === 4 || tourLength <= 4 ? null : (
+          {tour.length === 0 || tourLength === 4 || tourLength <= 4 || contentLoaded ? null : (
             <div className="pageno_flex">
               <div className="previous">
                 <div
@@ -340,7 +326,7 @@ export default function Popular_tour(props) {
             </div>
           )}
         </div>
-        <div>
+        <div  className='poptour-section-right'>
           <div className="tour_category">
             <div className="tour_category-title">Tour Category</div>
 
@@ -647,14 +633,14 @@ export default function Popular_tour(props) {
               </div>
             </div>
           </div>
-<div className="question_block">
+<div className="question_blocks">
             <div className="question_block-title">Get a Question?</div>
             <div className="question_block-text">
               Do not hesitage to give us a call. We are an expert team and we
               are happy to talk to you.
             </div>
-            <div className="question_block-tel">+1 1235 6789 10</div>
-            <div className="question_block-mail">info@hellodigi.ru</div>
+            <div className="question_block-tel">+91 8667801206</div>
+            <div className="question_block-mail">touronholidayz@gmail.com</div>
           </div>          
         </div>
       </div>

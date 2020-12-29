@@ -29,18 +29,10 @@ export default function Popular_countries() {
     getCountries();
   }, [pageSize, page]);
   return (
-    <>
+    <div className='Popular_countries_container'>
       <div className="Popular_countries">
         <div className="popularCountry_Back">
-          <div className="popcountry">
-            <Link to="/" className="popcountry1">
-              Home
-            </Link>
-            <span className="seperator">/</span>
-            <Link to="#" className="defaultcountry">
-              Most popular countries
-            </Link>
-          </div>
+         
           <div className="countriesSection-title">
             <div className="countrySection-Subtitle">
               Explore tours by countries
@@ -75,6 +67,9 @@ export default function Popular_countries() {
                 </Link>
                 <Link className="plink" to="/popular_tour">
                   <p className="countryview">View all tours</p>
+                </Link>
+                <Link className="plink" to="/popular_tour">
+                  <p className="countryview hide">{c.countryName}</p>
                 </Link>
               </div>
             );
@@ -174,6 +169,6 @@ export default function Popular_countries() {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }
